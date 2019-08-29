@@ -1,0 +1,6 @@
+github "SVProgressHUD/SVProgressHUD"
+github "ealeksandrov/EAIntroView"
+github "ReactiveX/RxSwift" ~> 5.0
+github "kishikawakatsumi/KeychainAccess"
+github "ashleymills/Reachability.swift"
+github "scenee/FloatingPanel"

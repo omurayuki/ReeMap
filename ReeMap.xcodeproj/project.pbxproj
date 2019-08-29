@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		186DC8CAA7AAB694A6F50E9B /* Pods_ReeMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D5FF67ACEC6F97BF77027A /* Pods_ReeMap.framework */; };
+		C966EAB62317E4FF00005EE5 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C966EAB52317E4FE00005EE5 /* R.generated.swift */; };
+		C9B2F0CF2317964600F29B51 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0CE2317964600F29B51 /* SVProgressHUD.framework */; };
+		C9B2F0D3231797C900F29B51 /* EAIntroView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0D1231797C900F29B51 /* EAIntroView.framework */; };
+		C9B2F0D4231797C900F29B51 /* EARestrictedScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0D2231797C900F29B51 /* EARestrictedScrollView.framework */; };
+		C9B2F0DE2317A54100F29B51 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0DD2317A54100F29B51 /* KeychainAccess.framework */; };
+		C9B2F0DF2317A54100F29B51 /* KeychainAccess.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0DD2317A54100F29B51 /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C9B2F0E22317A59200F29B51 /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0E12317A59200F29B51 /* Reachability.framework */; };
+		C9B2F0EF2317CEFD00F29B51 /* ReeMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B2F0EE2317CEFD00F29B51 /* ReeMapUITests.swift */; };
+		C9B2F0F72317CF7400F29B51 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B2F0F62317CF7400F29B51 /* SnapshotHelper.swift */; };
+		C9B2F0F92317D37200F29B51 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9B2F0F82317D37200F29B51 /* GoogleService-Info.plist */; };
 		C9B9F44F231765C00013ED05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9F44E231765C00013ED05 /* AppDelegate.swift */; };
 		C9B9F451231765C00013ED05 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9F450231765C00013ED05 /* ViewController.swift */; };
 		C9B9F454231765C00013ED05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F452231765C00013ED05 /* Main.storyboard */; };
@@ -14,7 +25,48 @@
 		C9B9F459231765C10013ED05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F457231765C10013ED05 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C9B2F0F12317CEFD00F29B51 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9B9F443231765C00013ED05 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C9B9F44A231765C00013ED05;
+			remoteInfo = ReeMap;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C9B2F0E02317A54100F29B51 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C9B2F0DF2317A54100F29B51 /* KeychainAccess.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2BAAC434B119FA3119DFC9FE /* Pods-ReeMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReeMap.release.xcconfig"; path = "Target Support Files/Pods-ReeMap/Pods-ReeMap.release.xcconfig"; sourceTree = "<group>"; };
+		9426181F4ECB86C66672C99E /* Pods-ReeMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReeMap.debug.xcconfig"; path = "Target Support Files/Pods-ReeMap/Pods-ReeMap.debug.xcconfig"; sourceTree = "<group>"; };
+		C966EAB52317E4FE00005EE5 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		C9B2F0CE2317964600F29B51 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
+		C9B2F0D1231797C900F29B51 /* EAIntroView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EAIntroView.framework; path = Carthage/Build/iOS/EAIntroView.framework; sourceTree = "<group>"; };
+		C9B2F0D2231797C900F29B51 /* EARestrictedScrollView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EARestrictedScrollView.framework; path = Carthage/Build/iOS/EARestrictedScrollView.framework; sourceTree = "<group>"; };
+		C9B2F0D62317A42900F29B51 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		C9B2F0D92317A4B100F29B51 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		C9B2F0DB2317A53300F29B51 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
+		C9B2F0DD2317A54100F29B51 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
+		C9B2F0E12317A59200F29B51 /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = Carthage/Build/iOS/Reachability.framework; sourceTree = "<group>"; };
+		C9B2F0E42317A67600F29B51 /* FloatingPanel.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = FloatingPanel.framework.dSYM; path = Carthage/Build/iOS/FloatingPanel.framework.dSYM; sourceTree = "<group>"; };
+		C9B2F0EC2317CEFD00F29B51 /* ReeMapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReeMapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9B2F0EE2317CEFD00F29B51 /* ReeMapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReeMapUITests.swift; sourceTree = "<group>"; };
+		C9B2F0F02317CEFD00F29B51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9B2F0F62317CF7400F29B51 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		C9B2F0F82317D37200F29B51 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C9B9F44B231765C00013ED05 /* ReeMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReeMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B9F44E231765C00013ED05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9B9F450231765C00013ED05 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,24 +74,77 @@
 		C9B9F455231765C10013ED05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9B9F458231765C10013ED05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9B9F45A231765C10013ED05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5D5FF67ACEC6F97BF77027A /* Pods_ReeMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReeMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C9B9F448231765C00013ED05 /* Frameworks */ = {
+		C9B2F0E92317CEFD00F29B51 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C9B9F448231765C00013ED05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9B2F0E22317A59200F29B51 /* Reachability.framework in Frameworks */,
+				C9B2F0DE2317A54100F29B51 /* KeychainAccess.framework in Frameworks */,
+				C9B2F0D3231797C900F29B51 /* EAIntroView.framework in Frameworks */,
+				C9B2F0D4231797C900F29B51 /* EARestrictedScrollView.framework in Frameworks */,
+				C9B2F0CF2317964600F29B51 /* SVProgressHUD.framework in Frameworks */,
+				186DC8CAA7AAB694A6F50E9B /* Pods_ReeMap.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30930E1C5D9AAC74D56645FD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9426181F4ECB86C66672C99E /* Pods-ReeMap.debug.xcconfig */,
+				2BAAC434B119FA3119DFC9FE /* Pods-ReeMap.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		AA67C0CD851106E09160443A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C9B2F0E42317A67600F29B51 /* FloatingPanel.framework.dSYM */,
+				C9B2F0E12317A59200F29B51 /* Reachability.framework */,
+				C9B2F0DB2317A53300F29B51 /* KeychainAccess.framework */,
+				C9B2F0D92317A4B100F29B51 /* RxCocoa.framework */,
+				C9B2F0D62317A42900F29B51 /* RxSwift.framework */,
+				C9B2F0D1231797C900F29B51 /* EAIntroView.framework */,
+				C9B2F0D2231797C900F29B51 /* EARestrictedScrollView.framework */,
+				C9B2F0CE2317964600F29B51 /* SVProgressHUD.framework */,
+				F5D5FF67ACEC6F97BF77027A /* Pods_ReeMap.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C9B2F0ED2317CEFD00F29B51 /* ReeMapUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C9B2F0F62317CF7400F29B51 /* SnapshotHelper.swift */,
+				C9B2F0EE2317CEFD00F29B51 /* ReeMapUITests.swift */,
+				C9B2F0F02317CEFD00F29B51 /* Info.plist */,
+			);
+			path = ReeMapUITests;
+			sourceTree = "<group>";
+		};
 		C9B9F442231765C00013ED05 = {
 			isa = PBXGroup;
 			children = (
+				C9B2F0DD2317A54100F29B51 /* KeychainAccess.framework */,
 				C9B9F44D231765C00013ED05 /* ReeMap */,
+				C9B2F0ED2317CEFD00F29B51 /* ReeMapUITests */,
 				C9B9F44C231765C00013ED05 /* Products */,
+				30930E1C5D9AAC74D56645FD /* Pods */,
+				AA67C0CD851106E09160443A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -47,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				C9B9F44B231765C00013ED05 /* ReeMap.app */,
+				C9B2F0EC2317CEFD00F29B51 /* ReeMapUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,8 +163,10 @@
 				C9B9F44E231765C00013ED05 /* AppDelegate.swift */,
 				C9B9F450231765C00013ED05 /* ViewController.swift */,
 				C9B9F452231765C00013ED05 /* Main.storyboard */,
+				C966EAB52317E4FE00005EE5 /* R.generated.swift */,
 				C9B9F455231765C10013ED05 /* Assets.xcassets */,
 				C9B9F457231765C10013ED05 /* LaunchScreen.storyboard */,
+				C9B2F0F82317D37200F29B51 /* GoogleService-Info.plist */,
 				C9B9F45A231765C10013ED05 /* Info.plist */,
 			);
 			path = ReeMap;
@@ -67,13 +175,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C9B2F0EB2317CEFD00F29B51 /* ReeMapUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9B2F0F32317CEFD00F29B51 /* Build configuration list for PBXNativeTarget "ReeMapUITests" */;
+			buildPhases = (
+				C9B2F0E82317CEFD00F29B51 /* Sources */,
+				C9B2F0E92317CEFD00F29B51 /* Frameworks */,
+				C9B2F0EA2317CEFD00F29B51 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C9B2F0F22317CEFD00F29B51 /* PBXTargetDependency */,
+			);
+			name = ReeMapUITests;
+			productName = ReeMapUITests;
+			productReference = C9B2F0EC2317CEFD00F29B51 /* ReeMapUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		C9B9F44A231765C00013ED05 /* ReeMap */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C9B9F45D231765C10013ED05 /* Build configuration list for PBXNativeTarget "ReeMap" */;
 			buildPhases = (
+				CC056601A1FE5AC8B2C1F557 /* [CP] Check Pods Manifest.lock */,
+				C966EAB42317E2EF00005EE5 /* ShellScript */,
 				C9B9F447231765C00013ED05 /* Sources */,
 				C9B9F448231765C00013ED05 /* Frameworks */,
 				C9B9F449231765C00013ED05 /* Resources */,
+				12B9B0B3AE4EC4D4DBC250A9 /* [CP] Embed Pods Frameworks */,
+				C9B2F0D02317964D00F29B51 /* ShellScript */,
+				C9B2F0D5231797D900F29B51 /* ShellScript */,
+				C9B2F0D82317A43900F29B51 /* ShellScript */,
+				C9B2F0E02317A54100F29B51 /* Embed Frameworks */,
+				C9B2F0E32317A5A900F29B51 /* ShellScript */,
+				C966EAB22317D89200005EE5 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -94,6 +229,10 @@
 				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = Swifter;
 				TargetAttributes = {
+					C9B2F0EB2317CEFD00F29B51 = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = C9B9F44A231765C00013ED05;
+					};
 					C9B9F44A231765C00013ED05 = {
 						CreatedOnToolsVersion = 10.3;
 					};
@@ -113,16 +252,25 @@
 			projectRoot = "";
 			targets = (
 				C9B9F44A231765C00013ED05 /* ReeMap */,
+				C9B2F0EB2317CEFD00F29B51 /* ReeMapUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C9B2F0EA2317CEFD00F29B51 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9B9F449231765C00013ED05 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C9B9F459231765C10013ED05 /* LaunchScreen.storyboard in Resources */,
+				C9B2F0F92317D37200F29B51 /* GoogleService-Info.plist in Resources */,
 				C9B9F456231765C10013ED05 /* Assets.xcassets in Resources */,
 				C9B9F454231765C00013ED05 /* Main.storyboard in Resources */,
 			);
@@ -130,17 +278,209 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		12B9B0B3AE4EC4D4DBC250A9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReeMap/Pods-ReeMap-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReeMap/Pods-ReeMap-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C966EAB22317D89200005EE5 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		C966EAB42317E2EF00005EE5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
+		C9B2F0D02317964D00F29B51 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		C9B2F0D5231797D900F29B51 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/EAIntroView.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/EARestrictedScrollView.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/EAIntroView.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/EARestrictedScrollView.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		C9B2F0D82317A43900F29B51 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		C9B2F0E32317A5A900F29B51 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Reachability.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		CC056601A1FE5AC8B2C1F557 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ReeMap-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		C9B2F0E82317CEFD00F29B51 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9B2F0EF2317CEFD00F29B51 /* ReeMapUITests.swift in Sources */,
+				C9B2F0F72317CF7400F29B51 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9B9F447231765C00013ED05 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C9B9F451231765C00013ED05 /* ViewController.swift in Sources */,
 				C9B9F44F231765C00013ED05 /* AppDelegate.swift in Sources */,
+				C966EAB62317E4FF00005EE5 /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C9B2F0F22317CEFD00F29B51 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C9B9F44A231765C00013ED05 /* ReeMap */;
+			targetProxy = C9B2F0F12317CEFD00F29B51 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C9B9F452231765C00013ED05 /* Main.storyboard */ = {
@@ -162,6 +502,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C9B2F0F42317CEFD00F29B51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5WF5Y5M59G;
+				INFOPLIST_FILE = ReeMapUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.icloud.g1221438.ReeMapUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ReeMap;
+			};
+			name = Debug;
+		};
+		C9B2F0F52317CEFD00F29B51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5WF5Y5M59G;
+				INFOPLIST_FILE = ReeMapUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.icloud.g1221438.ReeMapUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ReeMap;
+			};
+			name = Release;
+		};
 		C9B9F45B231765C10013ED05 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -280,16 +658,21 @@
 		};
 		C9B9F45E231765C10013ED05 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9426181F4ECB86C66672C99E /* Pods-ReeMap.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9BM69LRYZ5;
+				DEVELOPMENT_TEAM = 5WF5Y5M59G;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ReeMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.icloud.g1221438.ReeMap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.g1221438.ReeMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -298,16 +681,21 @@
 		};
 		C9B9F45F231765C10013ED05 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2BAAC434B119FA3119DFC9FE /* Pods-ReeMap.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9BM69LRYZ5;
+				DEVELOPMENT_TEAM = 5WF5Y5M59G;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ReeMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.icloud.g1221438.ReeMap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.g1221438.ReeMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -317,6 +705,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C9B2F0F32317CEFD00F29B51 /* Build configuration list for PBXNativeTarget "ReeMapUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9B2F0F42317CEFD00F29B51 /* Debug */,
+				C9B2F0F52317CEFD00F29B51 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C9B9F446231765C00013ED05 /* Build configuration list for PBXProject "ReeMap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
