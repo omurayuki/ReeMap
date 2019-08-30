@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C9B9F44A231765C00013ED05"
-               BuildableName = "ReeMap.app"
-               BlueprintName = "ReeMap"
+               BlueprintIdentifier = "C94CAD5A23191A2300BB1BB6"
+               BuildableName = "DEVELOP.app"
+               BlueprintName = "DEVELOP"
                ReferencedContainer = "container:ReeMap.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C9B9F44A231765C00013ED05"
-            BuildableName = "ReeMap.app"
-            BlueprintName = "ReeMap"
+            BlueprintIdentifier = "C94CAD5A23191A2300BB1BB6"
+            BuildableName = "DEVELOP.app"
+            BlueprintName = "DEVELOP"
             ReferencedContainer = "container:ReeMap.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,9 +65,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C9B9F44A231765C00013ED05"
-            BuildableName = "ReeMap.app"
-            BlueprintName = "ReeMap"
+            BlueprintIdentifier = "C94CAD5A23191A2300BB1BB6"
+            BuildableName = "DEVELOP.app"
+            BlueprintName = "DEVELOP"
             ReferencedContainer = "container:ReeMap.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -84,9 +84,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C9B9F44A231765C00013ED05"
-            BuildableName = "ReeMap.app"
-            BlueprintName = "ReeMap"
+            BlueprintIdentifier = "C94CAD5A23191A2300BB1BB6"
+            BuildableName = "DEVELOP.app"
+            BlueprintName = "DEVELOP"
             ReferencedContainer = "container:ReeMap.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

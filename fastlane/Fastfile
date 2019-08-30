@@ -1,0 +1,101 @@
+require 'dotenv'
+Dotenv.load
+
+fastlane_version "2.129.0"
+
+default_platform(:ios)
+
+platform :ios do
+	PLIST_PATH = "./ReeMap/Info.plist"
+  BUNDLE_ID  = get_info_plist_value(path: PLIST_PATH, key: "CFBundleIdentifier")
+	VERSION    = get_info_plist_value(path: PLIST_PATH, key: "CFBundleShortVersionString")
+	BUILD      = get_info_plist_value(path: PLIST_PATH, key: "CFBundleVersion")
+	SCHEME     = BUNDLE_ID.include?("Develop") ? "DEVELOP" : "RELEASE"
+	# 要変更
+	DEPLOYGATE_API_TOKEN = "APIトークン"
+	DEPLOYGATE_USER      = "ユーザ/グループ名"
+
+	before_all do
+		ENV["SLACK_URL"] = ENV["SLACK"]
+	end
+
+	platform :ios do
+		lane :test do
+			scan
+		end
+	end
+
+	desc "import cert"
+	private_lane :import_cert do
+		next unless Helper.is_ci?
+		KEYCHAIN_NAME     = ENV["KEYCHAIN_NAME"]
+		KEYCHAIN_PASSWORD = ENV["KEYCHAIN_PASSWORD"]
+		create_keychain(
+			name: KEYCHAIN_NAME,
+			password: KEYCHAIN_PASSWORD,
+			default_keychain: true,
+			unlock: true,
+			timeout: 3600,
+		)
+		import_certificate(
+			certificate_path: "./certs/distribution.p12",
+			keychain_name: KEYCHAIN_NAME,
+			keychain_password: KEYCHAIN_PASSWORD,
+		)
+	end
+
+	desc "archive debug and deploy by DeployGate"
+	lane :deploy_debug do
+		import_cert
+		sigh(
+			adhoc: true,
+		)
+		gym(
+			scheme: SCHEME,
+			configuration: "DEVELOP",
+		)
+		message = "開発環境 v#{VERSION}(#{BUILD})"
+		deploygate(
+			api_token: DEPLOYGATE_API_TOKEN,
+			user: DEPLOYGATE_USER,
+			message: message,
+		)
+		slack(
+			message: message
+		)
+	end
+
+	desc "archive release and upload to iTunesConnect"
+	lane :release do
+		import_cert
+		sigh
+		gym(
+			scheme: SCHEME,
+		)
+		deliver(
+			# メタデータもアップロードしたいから要変更
+			skip_screenshots: true,
+			skip_metadata: true,
+		)
+		release_tag
+	end
+
+	desc "add release tag"
+	private_lane :release_tag do |tag|
+		add_git_tag(
+			tag: "v#{VERSION}",
+			force: true,
+		)
+		push_git_tags(
+			force: true
+		)
+	end
+
+	error do |lane, exception|
+		next unless Helper.is_ci?
+		slack(
+			message: exception.message,
+			success: false
+		)
+	end
+end
