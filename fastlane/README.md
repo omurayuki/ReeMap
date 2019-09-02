@@ -15,19 +15,6 @@ Install _fastlane_ using
 or alternatively using `brew cask install fastlane`
 
 # Available Actions
-### deploy_debug
-```
-fastlane deploy_debug
-```
-archive debug and deploy by DeployGate
-### release
-```
-fastlane release
-```
-archive release and upload to iTunesConnect
-
-----
-
 ## iOS
 ### ios test
 ```

@@ -7,23 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		186DC8CAA7AAB694A6F50E9B /* Pods_ReeMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D5FF67ACEC6F97BF77027A /* Pods_ReeMap.framework */; };
-		C94CAD5E23191A2300BB1BB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9F450231765C00013ED05 /* ViewController.swift */; };
-		C94CAD5F23191A2300BB1BB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9F44E231765C00013ED05 /* AppDelegate.swift */; };
-		C94CAD6023191A2300BB1BB6 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C966EAB52317E4FE00005EE5 /* R.generated.swift */; };
-		C94CAD6223191A2300BB1BB6 /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0E12317A59200F29B51 /* Reachability.framework */; };
-		C94CAD6323191A2300BB1BB6 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0DD2317A54100F29B51 /* KeychainAccess.framework */; };
-		C94CAD6423191A2300BB1BB6 /* EAIntroView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0D1231797C900F29B51 /* EAIntroView.framework */; };
-		C94CAD6523191A2300BB1BB6 /* EARestrictedScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0D2231797C900F29B51 /* EARestrictedScrollView.framework */; };
-		C94CAD6623191A2300BB1BB6 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0CE2317964600F29B51 /* SVProgressHUD.framework */; };
-		C94CAD6723191A2300BB1BB6 /* Pods_ReeMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D5FF67ACEC6F97BF77027A /* Pods_ReeMap.framework */; };
-		C94CAD6923191A2300BB1BB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F457231765C10013ED05 /* LaunchScreen.storyboard */; };
-		C94CAD6A23191A2300BB1BB6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9B2F0F82317D37200F29B51 /* GoogleService-Info.plist */; };
-		C94CAD6B23191A2300BB1BB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F455231765C10013ED05 /* Assets.xcassets */; };
-		C94CAD6C23191A2300BB1BB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F452231765C00013ED05 /* Main.storyboard */; };
-		C94CAD7223191A2300BB1BB6 /* KeychainAccess.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0DD2317A54100F29B51 /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C94CAD8323192C3A00BB1BB6 /* UnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94CAD8223192C3A00BB1BB6 /* UnitTest.swift */; };
 		C94CAD9123192DEA00BB1BB6 /* UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94CAD9023192DEA00BB1BB6 /* UITest.swift */; };
+		C94CAD9C231984B600BB1BB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9F450231765C00013ED05 /* ViewController.swift */; };
+		C94CAD9D231984B600BB1BB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9F44E231765C00013ED05 /* AppDelegate.swift */; };
+		C94CAD9E231984B600BB1BB6 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C966EAB52317E4FE00005EE5 /* R.generated.swift */; };
+		C94CADA0231984B600BB1BB6 /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0E12317A59200F29B51 /* Reachability.framework */; };
+		C94CADA1231984B600BB1BB6 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0DD2317A54100F29B51 /* KeychainAccess.framework */; };
+		C94CADA2231984B600BB1BB6 /* EAIntroView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0D1231797C900F29B51 /* EAIntroView.framework */; };
+		C94CADA3231984B600BB1BB6 /* EARestrictedScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0D2231797C900F29B51 /* EARestrictedScrollView.framework */; };
+		C94CADA4231984B600BB1BB6 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0CE2317964600F29B51 /* SVProgressHUD.framework */; };
+		C94CADA5231984B600BB1BB6 /* Pods_RELEASE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A33926E73176D728CFF4842 /* Pods_RELEASE.framework */; };
+		C94CADA7231984B600BB1BB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F457231765C10013ED05 /* LaunchScreen.storyboard */; };
+		C94CADA8231984B600BB1BB6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9B2F0F82317D37200F29B51 /* GoogleService-Info.plist */; };
+		C94CADA9231984B600BB1BB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F455231765C10013ED05 /* Assets.xcassets */; };
+		C94CADAA231984B600BB1BB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F452231765C00013ED05 /* Main.storyboard */; };
+		C94CADB0231984B600BB1BB6 /* KeychainAccess.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0DD2317A54100F29B51 /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C966EAB62317E4FF00005EE5 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C966EAB52317E4FE00005EE5 /* R.generated.swift */; };
 		C9B2F0CF2317964600F29B51 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0CE2317964600F29B51 /* SVProgressHUD.framework */; };
 		C9B2F0D3231797C900F29B51 /* EAIntroView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0D1231797C900F29B51 /* EAIntroView.framework */; };
@@ -37,6 +36,7 @@
 		C9B9F454231765C00013ED05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F452231765C00013ED05 /* Main.storyboard */; };
 		C9B9F456231765C10013ED05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F455231765C10013ED05 /* Assets.xcassets */; };
 		C9B9F459231765C10013ED05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F457231765C10013ED05 /* LaunchScreen.storyboard */; };
+		FA748930DF556BB51A75243B /* Pods_RELEASE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A33926E73176D728CFF4842 /* Pods_RELEASE.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,13 +57,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C94CAD7123191A2300BB1BB6 /* Embed Frameworks */ = {
+		C94CADAF231984B600BB1BB6 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C94CAD7223191A2300BB1BB6 /* KeychainAccess.framework in Embed Frameworks */,
+				C94CADB0231984B600BB1BB6 /* KeychainAccess.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -82,15 +82,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2BAAC434B119FA3119DFC9FE /* Pods-ReeMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReeMap.release.xcconfig"; path = "Target Support Files/Pods-ReeMap/Pods-ReeMap.release.xcconfig"; sourceTree = "<group>"; };
-		9426181F4ECB86C66672C99E /* Pods-ReeMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReeMap.debug.xcconfig"; path = "Target Support Files/Pods-ReeMap/Pods-ReeMap.debug.xcconfig"; sourceTree = "<group>"; };
-		C94CAD7823191A2300BB1BB6 /* DEVELOP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DEVELOP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A33926E73176D728CFF4842 /* Pods_RELEASE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RELEASE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		79F437F1D2A00A5B187496C0 /* Pods-RELEASE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RELEASE.debug.xcconfig"; path = "Target Support Files/Pods-RELEASE/Pods-RELEASE.debug.xcconfig"; sourceTree = "<group>"; };
+		B770D8D78F373E7B241B4F94 /* Pods-RELEASE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RELEASE.release.xcconfig"; path = "Target Support Files/Pods-RELEASE/Pods-RELEASE.release.xcconfig"; sourceTree = "<group>"; };
 		C94CAD8023192C3A00BB1BB6 /* UnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94CAD8223192C3A00BB1BB6 /* UnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTest.swift; sourceTree = "<group>"; };
 		C94CAD8423192C3A00BB1BB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C94CAD8E23192DE900BB1BB6 /* UITest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94CAD9023192DEA00BB1BB6 /* UITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITest.swift; sourceTree = "<group>"; };
 		C94CAD9223192DEA00BB1BB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C94CADB6231984B600BB1BB6 /* DEVELOP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DEVELOP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C966EAB52317E4FE00005EE5 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		C9B2F0CE2317964600F29B51 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		C9B2F0D1231797C900F29B51 /* EAIntroView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EAIntroView.framework; path = Carthage/Build/iOS/EAIntroView.framework; sourceTree = "<group>"; };
@@ -113,19 +114,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C94CAD6123191A2300BB1BB6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C94CAD6223191A2300BB1BB6 /* Reachability.framework in Frameworks */,
-				C94CAD6323191A2300BB1BB6 /* KeychainAccess.framework in Frameworks */,
-				C94CAD6423191A2300BB1BB6 /* EAIntroView.framework in Frameworks */,
-				C94CAD6523191A2300BB1BB6 /* EARestrictedScrollView.framework in Frameworks */,
-				C94CAD6623191A2300BB1BB6 /* SVProgressHUD.framework in Frameworks */,
-				C94CAD6723191A2300BB1BB6 /* Pods_ReeMap.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C94CAD7D23192C3A00BB1BB6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -140,6 +128,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C94CAD9F231984B600BB1BB6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C94CADA0231984B600BB1BB6 /* Reachability.framework in Frameworks */,
+				C94CADA1231984B600BB1BB6 /* KeychainAccess.framework in Frameworks */,
+				C94CADA2231984B600BB1BB6 /* EAIntroView.framework in Frameworks */,
+				C94CADA3231984B600BB1BB6 /* EARestrictedScrollView.framework in Frameworks */,
+				C94CADA4231984B600BB1BB6 /* SVProgressHUD.framework in Frameworks */,
+				C94CADA5231984B600BB1BB6 /* Pods_RELEASE.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9B9F448231765C00013ED05 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -149,7 +150,7 @@
 				C9B2F0D3231797C900F29B51 /* EAIntroView.framework in Frameworks */,
 				C9B2F0D4231797C900F29B51 /* EARestrictedScrollView.framework in Frameworks */,
 				C9B2F0CF2317964600F29B51 /* SVProgressHUD.framework in Frameworks */,
-				186DC8CAA7AAB694A6F50E9B /* Pods_ReeMap.framework in Frameworks */,
+				FA748930DF556BB51A75243B /* Pods_RELEASE.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,8 +160,8 @@
 		30930E1C5D9AAC74D56645FD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9426181F4ECB86C66672C99E /* Pods-ReeMap.debug.xcconfig */,
-				2BAAC434B119FA3119DFC9FE /* Pods-ReeMap.release.xcconfig */,
+				79F437F1D2A00A5B187496C0 /* Pods-RELEASE.debug.xcconfig */,
+				B770D8D78F373E7B241B4F94 /* Pods-RELEASE.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -177,6 +178,7 @@
 				C9B2F0D2231797C900F29B51 /* EARestrictedScrollView.framework */,
 				C9B2F0CE2317964600F29B51 /* SVProgressHUD.framework */,
 				F5D5FF67ACEC6F97BF77027A /* Pods_ReeMap.framework */,
+				1A33926E73176D728CFF4842 /* Pods_RELEASE.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -216,9 +218,9 @@
 			isa = PBXGroup;
 			children = (
 				C9B9F44B231765C00013ED05 /* RELEASE.app */,
-				C94CAD7823191A2300BB1BB6 /* DEVELOP.app */,
 				C94CAD8023192C3A00BB1BB6 /* UnitTest.xctest */,
 				C94CAD8E23192DE900BB1BB6 /* UITest.xctest */,
+				C94CADB6231984B600BB1BB6 /* DEVELOP.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -241,32 +243,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C94CAD5A23191A2300BB1BB6 /* DEVELOP */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C94CAD7523191A2300BB1BB6 /* Build configuration list for PBXNativeTarget "DEVELOP" */;
-			buildPhases = (
-				C94CAD5B23191A2300BB1BB6 /* [CP] Check Pods Manifest.lock */,
-				C94CAD5C23191A2300BB1BB6 /* ShellScript */,
-				C94CAD5D23191A2300BB1BB6 /* Sources */,
-				C94CAD6123191A2300BB1BB6 /* Frameworks */,
-				C94CAD6823191A2300BB1BB6 /* Resources */,
-				C94CAD6D23191A2300BB1BB6 /* [CP] Embed Pods Frameworks */,
-				C94CAD6E23191A2300BB1BB6 /* ShellScript */,
-				C94CAD6F23191A2300BB1BB6 /* ShellScript */,
-				C94CAD7023191A2300BB1BB6 /* ShellScript */,
-				C94CAD7123191A2300BB1BB6 /* Embed Frameworks */,
-				C94CAD7323191A2300BB1BB6 /* ShellScript */,
-				C94CAD7423191A2300BB1BB6 /* SwiftLint */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = DEVELOP;
-			productName = ReeMap;
-			productReference = C94CAD7823191A2300BB1BB6 /* DEVELOP.app */;
-			productType = "com.apple.product-type.application";
-		};
 		C94CAD7F23192C3A00BB1BB6 /* UnitTest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C94CAD8723192C3A00BB1BB6 /* Build configuration list for PBXNativeTarget "UnitTest" */;
@@ -302,6 +278,32 @@
 			productName = UITest;
 			productReference = C94CAD8E23192DE900BB1BB6 /* UITest.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		C94CAD98231984B600BB1BB6 /* DEVELOP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C94CADB3231984B600BB1BB6 /* Build configuration list for PBXNativeTarget "DEVELOP" */;
+			buildPhases = (
+				C94CAD99231984B600BB1BB6 /* [CP] Check Pods Manifest.lock */,
+				C94CAD9A231984B600BB1BB6 /* ShellScript */,
+				C94CAD9B231984B600BB1BB6 /* Sources */,
+				C94CAD9F231984B600BB1BB6 /* Frameworks */,
+				C94CADA6231984B600BB1BB6 /* Resources */,
+				C94CADAB231984B600BB1BB6 /* [CP] Embed Pods Frameworks */,
+				C94CADAC231984B600BB1BB6 /* ShellScript */,
+				C94CADAD231984B600BB1BB6 /* ShellScript */,
+				C94CADAE231984B600BB1BB6 /* ShellScript */,
+				C94CADAF231984B600BB1BB6 /* Embed Frameworks */,
+				C94CADB1231984B600BB1BB6 /* ShellScript */,
+				C94CADB2231984B600BB1BB6 /* SwiftLint */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DEVELOP;
+			productName = ReeMap;
+			productReference = C94CADB6231984B600BB1BB6 /* DEVELOP.app */;
+			productType = "com.apple.product-type.application";
 		};
 		C9B9F44A231765C00013ED05 /* RELEASE */ = {
 			isa = PBXNativeTarget;
@@ -366,7 +368,7 @@
 			projectRoot = "";
 			targets = (
 				C9B9F44A231765C00013ED05 /* RELEASE */,
-				C94CAD5A23191A2300BB1BB6 /* DEVELOP */,
+				C94CAD98231984B600BB1BB6 /* DEVELOP */,
 				C94CAD7F23192C3A00BB1BB6 /* UnitTest */,
 				C94CAD8D23192DE900BB1BB6 /* UITest */,
 			);
@@ -374,17 +376,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		C94CAD6823191A2300BB1BB6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C94CAD6923191A2300BB1BB6 /* LaunchScreen.storyboard in Resources */,
-				C94CAD6A23191A2300BB1BB6 /* GoogleService-Info.plist in Resources */,
-				C94CAD6B23191A2300BB1BB6 /* Assets.xcassets in Resources */,
-				C94CAD6C23191A2300BB1BB6 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C94CAD7E23192C3A00BB1BB6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -396,6 +387,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C94CADA6231984B600BB1BB6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C94CADA7231984B600BB1BB6 /* LaunchScreen.storyboard in Resources */,
+				C94CADA8231984B600BB1BB6 /* GoogleService-Info.plist in Resources */,
+				C94CADA9231984B600BB1BB6 /* Assets.xcassets in Resources */,
+				C94CADAA231984B600BB1BB6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,7 +423,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ReeMap/Pods-ReeMap-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-RELEASE/Pods-RELEASE-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
@@ -446,10 +448,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReeMap/Pods-ReeMap-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RELEASE/Pods-RELEASE-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C94CAD5B23191A2300BB1BB6 /* [CP] Check Pods Manifest.lock */ = {
+		C94CAD99231984B600BB1BB6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -464,14 +466,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ReeMap-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-RELEASE-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C94CAD5C23191A2300BB1BB6 /* ShellScript */ = {
+		C94CAD9A231984B600BB1BB6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -490,7 +492,7 @@
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
-		C94CAD6D23191A2300BB1BB6 /* [CP] Embed Pods Frameworks */ = {
+		C94CADAB231984B600BB1BB6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -498,7 +500,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ReeMap/Pods-ReeMap-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-RELEASE/Pods-RELEASE-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
@@ -523,10 +525,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReeMap/Pods-ReeMap-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RELEASE/Pods-RELEASE-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C94CAD6E23191A2300BB1BB6 /* ShellScript */ = {
+		C94CADAC231984B600BB1BB6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -544,7 +546,7 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
-		C94CAD6F23191A2300BB1BB6 /* ShellScript */ = {
+		C94CADAD231984B600BB1BB6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -565,7 +567,7 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
-		C94CAD7023191A2300BB1BB6 /* ShellScript */ = {
+		C94CADAE231984B600BB1BB6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -584,7 +586,7 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
-		C94CAD7323191A2300BB1BB6 /* ShellScript */ = {
+		C94CADB1231984B600BB1BB6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -602,7 +604,7 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
-		C94CAD7423191A2300BB1BB6 /* SwiftLint */ = {
+		C94CADB2231984B600BB1BB6 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -748,7 +750,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ReeMap-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-RELEASE-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -758,16 +760,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C94CAD5D23191A2300BB1BB6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C94CAD5E23191A2300BB1BB6 /* ViewController.swift in Sources */,
-				C94CAD5F23191A2300BB1BB6 /* AppDelegate.swift in Sources */,
-				C94CAD6023191A2300BB1BB6 /* R.generated.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C94CAD7C23192C3A00BB1BB6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -781,6 +773,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C94CAD9123192DEA00BB1BB6 /* UITest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C94CAD9B231984B600BB1BB6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C94CAD9C231984B600BB1BB6 /* ViewController.swift in Sources */,
+				C94CAD9D231984B600BB1BB6 /* AppDelegate.swift in Sources */,
+				C94CAD9E231984B600BB1BB6 /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -829,56 +831,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		C94CAD7623191A2300BB1BB6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9426181F4ECB86C66672C99E /* Pods-ReeMap.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5WF5Y5M59G;
-				DISPLAY_NAME = "開発用アプリ";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = "$(SRCROOT)/ReeMap/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				OTHER_SWIFT_FLAGS = "-D DEVELOP";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail.g1221438.ReeMap-Develop";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		C94CAD7723191A2300BB1BB6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2BAAC434B119FA3119DFC9FE /* Pods-ReeMap.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5WF5Y5M59G;
-				DISPLAY_NAME = "開発用アプリ";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = "$(SRCROOT)/ReeMap/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				OTHER_SWIFT_FLAGS = "-D DEVELOP";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail.g1221438.ReeMap-Develop";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		C94CAD8823192C3A00BB1BB6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -954,6 +906,52 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = RELEASE;
+			};
+			name = Release;
+		};
+		C94CADB4231984B600BB1BB6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79F437F1D2A00A5B187496C0 /* Pods-RELEASE.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5WF5Y5M59G;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = ReeMap/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.g1221438.ReeMap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C94CADB5231984B600BB1BB6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B770D8D78F373E7B241B4F94 /* Pods-RELEASE.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5WF5Y5M59G;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = ReeMap/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.g1221438.ReeMap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1075,7 +1073,7 @@
 		};
 		C9B9F45E231765C10013ED05 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9426181F4ECB86C66672C99E /* Pods-ReeMap.debug.xcconfig */;
+			baseConfigurationReference = 79F437F1D2A00A5B187496C0 /* Pods-RELEASE.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1098,7 +1096,7 @@
 		};
 		C9B9F45F231765C10013ED05 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2BAAC434B119FA3119DFC9FE /* Pods-ReeMap.release.xcconfig */;
+			baseConfigurationReference = B770D8D78F373E7B241B4F94 /* Pods-RELEASE.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1122,15 +1120,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C94CAD7523191A2300BB1BB6 /* Build configuration list for PBXNativeTarget "DEVELOP" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C94CAD7623191A2300BB1BB6 /* Debug */,
-				C94CAD7723191A2300BB1BB6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		C94CAD8723192C3A00BB1BB6 /* Build configuration list for PBXNativeTarget "UnitTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1145,6 +1134,15 @@
 			buildConfigurations = (
 				C94CAD9623192DEA00BB1BB6 /* Debug */,
 				C94CAD9723192DEA00BB1BB6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C94CADB3231984B600BB1BB6 /* Build configuration list for PBXNativeTarget "DEVELOP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C94CADB4231984B600BB1BB6 /* Debug */,
+				C94CADB5231984B600BB1BB6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
