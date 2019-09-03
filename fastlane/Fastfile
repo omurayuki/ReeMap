@@ -32,6 +32,14 @@ platform :ios do
 		lane :release do
 			increment_build_number # ビルドナンバーincrement
 			capture_screenshots
+			match( # 証明書生成, 取得action
+        readonly: true # 証明書読み取りオンリー
+			)
+			automatic_code_signing(
+        targets: "TargetName",
+        code_sign_identity: "Yuki Omura",
+        profile_name: "match AppStore com.gmail.g1221438.ReeMap",
+			)
 			gym( # アプリビルド
 				workspace: "ReeMap.xcworkspace",
 				configuration: "Release",
