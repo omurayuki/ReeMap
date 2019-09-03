@@ -17,7 +17,7 @@ platform :ios do
 		carthage(
 			platform: "iOS"
 		)
-		ENV["SLACK_URL"] = ENV["SLACK"]
+		ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
 	end
 
 	platform :ios do
@@ -53,7 +53,9 @@ platform :ios do
 				metadata_path: "./metadata",
 				automatic_release: true,
 			)
-			slack
+			slack(
+				message: "Successfully deployed new App Update."
+			)
 		end
 	end
 

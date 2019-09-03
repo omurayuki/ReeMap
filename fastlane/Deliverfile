@@ -16,10 +16,10 @@ release_notes({
 
 
 # キーワード
-keywords(
+keywords({
   'en-US' => "Reminder, Map",
 	'ja' => "リマインダー,マップ"
-)
+})
 
 # そのまま申請する場合はtrue しない場合はfalse
 submit_for_review false
