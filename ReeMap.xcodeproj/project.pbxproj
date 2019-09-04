@@ -13,7 +13,6 @@
 		C94CAD9D231984B600BB1BB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9F44E231765C00013ED05 /* AppDelegate.swift */; };
 		C94CAD9E231984B600BB1BB6 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C966EAB52317E4FE00005EE5 /* R.generated.swift */; };
 		C94CADA0231984B600BB1BB6 /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0E12317A59200F29B51 /* Reachability.framework */; };
-		C94CADA1231984B600BB1BB6 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0DD2317A54100F29B51 /* KeychainAccess.framework */; };
 		C94CADA2231984B600BB1BB6 /* EAIntroView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0D1231797C900F29B51 /* EAIntroView.framework */; };
 		C94CADA3231984B600BB1BB6 /* EARestrictedScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0D2231797C900F29B51 /* EARestrictedScrollView.framework */; };
 		C94CADA4231984B600BB1BB6 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0CE2317964600F29B51 /* SVProgressHUD.framework */; };
@@ -22,14 +21,11 @@
 		C94CADA8231984B600BB1BB6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9B2F0F82317D37200F29B51 /* GoogleService-Info.plist */; };
 		C94CADA9231984B600BB1BB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F455231765C10013ED05 /* Assets.xcassets */; };
 		C94CADAA231984B600BB1BB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F452231765C00013ED05 /* Main.storyboard */; };
-		C94CADB0231984B600BB1BB6 /* KeychainAccess.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0DD2317A54100F29B51 /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C966EAB62317E4FF00005EE5 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C966EAB52317E4FE00005EE5 /* R.generated.swift */; };
 		C9A83800231E887700BC880C /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A837FF231E887700BC880C /* SnapshotHelper.swift */; };
 		C9B2F0CF2317964600F29B51 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0CE2317964600F29B51 /* SVProgressHUD.framework */; };
 		C9B2F0D3231797C900F29B51 /* EAIntroView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0D1231797C900F29B51 /* EAIntroView.framework */; };
 		C9B2F0D4231797C900F29B51 /* EARestrictedScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0D2231797C900F29B51 /* EARestrictedScrollView.framework */; };
-		C9B2F0DE2317A54100F29B51 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0DD2317A54100F29B51 /* KeychainAccess.framework */; };
-		C9B2F0DF2317A54100F29B51 /* KeychainAccess.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0DD2317A54100F29B51 /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C9B2F0E22317A59200F29B51 /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0E12317A59200F29B51 /* Reachability.framework */; };
 		C9B2F0F92317D37200F29B51 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9B2F0F82317D37200F29B51 /* GoogleService-Info.plist */; };
 		C9B9F44F231765C00013ED05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9F44E231765C00013ED05 /* AppDelegate.swift */; };
@@ -65,7 +61,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C94CADB0231984B600BB1BB6 /* KeychainAccess.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,7 +71,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C9B2F0DF2317A54100F29B51 /* KeychainAccess.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,7 +99,6 @@
 		C9B2F0D62317A42900F29B51 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		C9B2F0D92317A4B100F29B51 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		C9B2F0DB2317A53300F29B51 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
-		C9B2F0DD2317A54100F29B51 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		C9B2F0E12317A59200F29B51 /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = Carthage/Build/iOS/Reachability.framework; sourceTree = "<group>"; };
 		C9B2F0E42317A67600F29B51 /* FloatingPanel.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = FloatingPanel.framework.dSYM; path = Carthage/Build/iOS/FloatingPanel.framework.dSYM; sourceTree = "<group>"; };
 		C9B2F0F82317D37200F29B51 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -139,7 +132,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C94CADA0231984B600BB1BB6 /* Reachability.framework in Frameworks */,
-				C94CADA1231984B600BB1BB6 /* KeychainAccess.framework in Frameworks */,
 				C94CADA2231984B600BB1BB6 /* EAIntroView.framework in Frameworks */,
 				C94CADA3231984B600BB1BB6 /* EARestrictedScrollView.framework in Frameworks */,
 				C94CADA4231984B600BB1BB6 /* SVProgressHUD.framework in Frameworks */,
@@ -153,7 +145,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9B2F0E22317A59200F29B51 /* Reachability.framework in Frameworks */,
-				C9B2F0DE2317A54100F29B51 /* KeychainAccess.framework in Frameworks */,
 				C9B2F0D3231797C900F29B51 /* EAIntroView.framework in Frameworks */,
 				C9B2F0D4231797C900F29B51 /* EARestrictedScrollView.framework in Frameworks */,
 				C9B2F0CF2317964600F29B51 /* SVProgressHUD.framework in Frameworks */,
@@ -215,7 +206,6 @@
 		C9B9F442231765C00013ED05 = {
 			isa = PBXGroup;
 			children = (
-				C9B2F0DD2317A54100F29B51 /* KeychainAccess.framework */,
 				C9B9F44D231765C00013ED05 /* ReeMap */,
 				C94CAD8123192C3A00BB1BB6 /* UnitTest */,
 				C94CAD8F23192DEA00BB1BB6 /* UITest */,
@@ -360,6 +350,8 @@
 					C94CAD8D23192DE900BB1BB6 = {
 						CreatedOnToolsVersion = 10.3;
 						TestTargetID = C9B9F44A231765C00013ED05;
+					};
+					C94CAD98231984B600BB1BB6 = {
 					};
 					C9B9F44A231765C00013ED05 = {
 						CreatedOnToolsVersion = 10.3;
@@ -516,7 +508,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/R.generated.swift,
+				"$SRCROOT/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -683,7 +675,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/R.generated.swift,
+				"$SRCROOT/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1109,7 +1101,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = 5WF5Y5M59G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1136,7 +1128,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = 5WF5Y5M59G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -3,4 +3,3 @@ github "ealeksandrov/EAIntroView"
 github "ReactiveX/RxSwift" ~> 5.0
 github "ashleymills/Reachability.swift"
 github "scenee/FloatingPanel"
-github "kishikawakatsumi/KeychainAccess"

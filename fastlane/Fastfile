@@ -13,10 +13,6 @@ BUILD      = get_info_plist_value(path: PLIST_PATH, key: "CFBundleVersion")
 SCHEME     = BUNDLE_ID.include?("Develop") ? "DEVELOP" : "RELEASE"
 
 before_all do
-	cocoapods
-	carthage(
-		platform: "iOS"
-	)
 	ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
 end
 
@@ -29,14 +25,22 @@ platform :ios do
 		slack
 	end
 
+	lane :setup do
+		cocoapods
+		carthage(
+			platform: "iOS"
+		)
+	end
+
 	lane :release do
+		setup
 		increment_build_number # ビルドナンバーincrement
 		capture_screenshots
 		match( # 証明書生成, 取得action
 			readonly: true # 証明書読み取りオンリー
 		)
 		automatic_code_signing(
-			targets: "TargetName",
+			targets: "RELEASE",
 			code_sign_identity: "Yuki Omura",
 			profile_name: "match AppStore com.gmail.g1221438.ReeMap",
 		)
@@ -47,6 +51,11 @@ platform :ios do
 			silent: true,
 			clean: true,
 			output_name: "ReeMap.ipa",
+			export_options: {
+				provisioningProfiles: {
+					"com.gmail.g1221438.ReeMap" => "match AppStore com.gmail.g1221438.ReeMap"
+				}
+			},
 			xcargs: "PROVISIONING_PROFILE_SPECIFIER='match AppStore com.gmail.g1221438.ReeMap'"
 		)
 		deliver(
@@ -56,16 +65,50 @@ platform :ios do
 			automatic_release: false,
 		)
 		slack(
-			message: "Successfully deployed new App Update."
+			message: "Successfully deployed to App Store Connect."
+		)
+	end
+
+	lane :testflight do
+		setup
+		increment_build_number
+		match( # 証明書生成, 取得action
+			readonly: true # 証明書読み取りオンリー
+		)
+		automatic_code_signing(
+			targets: "RELEASE",
+			code_sign_identity: "Yuki Omura",
+			profile_name: "match AppStore com.gmail.g1221438.ReeMap",
+		)
+		gym( # アプリビルド
+			workspace: "ReeMap.xcworkspace",
+			configuration: "Debug",
+			scheme: "RELEASE",
+			silent: true,
+			clean: true,
+			output_name: "ReeMap.ipa",
+			export_options: {
+				provisioningProfiles: {
+					"com.gmail.g1221438.ReeMap" => "match AppStore com.gmail.g1221438.ReeMap"
+				}
+			},
+			xcargs: "PROVISIONING_PROFILE_SPECIFIER='match AppStore com.gmail.g1221438.ReeMap'"
+		)
+		upload_to_testflight()
+		slack(
+			message: "Successfully deployed to Test Flight."
 		)
 	end
 end
 
+after_all do |lane|
+end
+
 error do |lane, exception|
 	next unless Helper.is_ci?
-	slack(
-		message: exception.message,
-		success: false
-	)
+		slack(
+			message: exception.message,
+			success: false
+		)
 end
 end

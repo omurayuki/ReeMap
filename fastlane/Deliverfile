@@ -13,7 +13,7 @@ name({
 release_notes({
   'en-US' => "This is First Release.",
   'ja' => "リリースしました。"
-
+})
 
 # キーワード
 keywords({
