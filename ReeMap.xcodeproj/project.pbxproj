@@ -24,6 +24,7 @@
 		C94CADAA231984B600BB1BB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F452231765C00013ED05 /* Main.storyboard */; };
 		C94CADB0231984B600BB1BB6 /* KeychainAccess.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0DD2317A54100F29B51 /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C966EAB62317E4FF00005EE5 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C966EAB52317E4FE00005EE5 /* R.generated.swift */; };
+		C9A83800231E887700BC880C /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A837FF231E887700BC880C /* SnapshotHelper.swift */; };
 		C9B2F0CF2317964600F29B51 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0CE2317964600F29B51 /* SVProgressHUD.framework */; };
 		C9B2F0D3231797C900F29B51 /* EAIntroView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0D1231797C900F29B51 /* EAIntroView.framework */; };
 		C9B2F0D4231797C900F29B51 /* EARestrictedScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0D2231797C900F29B51 /* EARestrictedScrollView.framework */; };
@@ -97,6 +98,7 @@
 		C94CAD9223192DEA00BB1BB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C94CADB6231984B600BB1BB6 /* DEVELOP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DEVELOP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C966EAB52317E4FE00005EE5 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		C9A837FF231E887700BC880C /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		C9B2F0CE2317964600F29B51 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		C9B2F0D1231797C900F29B51 /* EAIntroView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EAIntroView.framework; path = Carthage/Build/iOS/EAIntroView.framework; sourceTree = "<group>"; };
 		C9B2F0D2231797C900F29B51 /* EARestrictedScrollView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EARestrictedScrollView.framework; path = Carthage/Build/iOS/EARestrictedScrollView.framework; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 		C94CAD8F23192DEA00BB1BB6 /* UITest */ = {
 			isa = PBXGroup;
 			children = (
+				C9A837FF231E887700BC880C /* SnapshotHelper.swift */,
 				C94CAD9023192DEA00BB1BB6 /* UITest.swift */,
 				C94CAD9223192DEA00BB1BB6 /* Info.plist */,
 			);
@@ -329,6 +332,7 @@
 				C9B2F0E02317A54100F29B51 /* Embed Frameworks */,
 				C9B2F0E32317A5A900F29B51 /* ShellScript */,
 				C966EAB22317D89200005EE5 /* SwiftLint */,
+				C94B58C4231F4CC7007EEE0D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -459,6 +463,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RELEASE/Pods-RELEASE-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C94B58C4231F4CC7007EEE0D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${SRCROOT}/ReeMap/GoogleService-info.plist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
 		C94CAD99231984B600BB1BB6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -494,7 +516,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -661,7 +683,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -781,6 +803,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C94CAD9123192DEA00BB1BB6 /* UITest.swift in Sources */,
+				C9A83800231E887700BC880C /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1084,7 +1107,9 @@
 			baseConfigurationReference = 79F437F1D2A00A5B187496C0 /* Pods-RELEASE.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 5WF5Y5M59G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1097,8 +1122,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.g1221438.ReeMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.gmail.g1221438.ReeMap";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -1107,7 +1134,9 @@
 			baseConfigurationReference = B770D8D78F373E7B241B4F94 /* Pods-RELEASE.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 5WF5Y5M59G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1120,8 +1149,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.g1221438.ReeMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.gmail.g1221438.ReeMap";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
