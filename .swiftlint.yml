@@ -123,8 +123,8 @@ excluded:
 
 # 1行の文字列制限
 line_length:
-- 200   # warning
-- 300   # error
+- 400   # warning
+- 600   # error
 
 # 型の行数制限
 type_body_length:
