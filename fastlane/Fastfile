@@ -10,14 +10,10 @@ PLIST_PATH = "./ReeMap/Info.plist"
 BUNDLE_ID  = get_info_plist_value(path: PLIST_PATH, key: "CFBundleIdentifier")
 VERSION    = get_info_plist_value(path: PLIST_PATH, key: "CFBundleShortVersionString")
 BUILD      = get_info_plist_value(path: PLIST_PATH, key: "CFBundleVersion")
-SCHEME     = BUNDLE_ID.include?("Develop") ? "DEVELOP" : "RELEASE"
 
 before_all do
-	cocoapods
-	carthage(
-		platform: "iOS"
-	)
 	ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+	ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"] = "gyuz-vund-kqia-piws"
 end
 
 platform :ios do
@@ -29,16 +25,22 @@ platform :ios do
 		slack
 	end
 
+	lane :setup do
+		cocoapods
+		carthage(
+			platform: "iOS"
+		)
+	end
+
 	lane :release do
+		setup
 		increment_build_number # ビルドナンバーincrement
 		capture_screenshots
 		match( # 証明書生成, 取得action
 			readonly: true # 証明書読み取りオンリー
 		)
-		automatic_code_signing(
-			targets: "TargetName",
-			code_sign_identity: "Yuki Omura",
-			profile_name: "match AppStore com.gmail.g1221438.ReeMap",
+		sigh(
+			force: false
 		)
 		gym( # アプリビルド
 			workspace: "ReeMap.xcworkspace",
@@ -47,25 +49,59 @@ platform :ios do
 			silent: true,
 			clean: true,
 			output_name: "ReeMap.ipa",
-			xcargs: "PROVISIONING_PROFILE_SPECIFIER='match AppStore com.gmail.g1221438.ReeMap'"
+			export_options: {
+				provisioningProfiles: {
+					"com.gmail.g1221438.ReeMap" => "match AppStore com.gmail.g1221438.ReeMap"
+				}
+			}
 		)
 		deliver(
 			force: true,
 			metadata_path: "./metadata",
-			# automatic_release: true,
-			automatic_release: false,
+			automatic_release: true,
 		)
 		slack(
-			message: "Successfully deployed new App Update."
+			message: "Successfully deployed to App Store Connect."
+		)
+	end
+
+	lane :deploy_testflight do
+		setup
+		increment_build_number
+		match( # 証明書生成, 取得action
+			readonly: true # 証明書読み取りオンリー
+		)
+		sigh(
+			force: false
+		)
+		gym( # アプリビルド
+			workspace: "ReeMap.xcworkspace",
+			configuration: "Release",
+			scheme: "RELEASE",
+			silent: true,
+			clean: true,
+			output_name: "ReeMap.ipa",
+			export_options: {
+				provisioningProfiles: {
+					"com.gmail.g1221438.ReeMap" => "match AppStore com.gmail.g1221438.ReeMap"
+				}
+			}
+		)
+		upload_to_testflight()
+		slack(
+			message: "Successfully deployed to Test Flight."
 		)
 	end
 end
 
+after_all do |lane|
+end
+
 error do |lane, exception|
 	next unless Helper.is_ci?
-	slack(
-		message: exception.message,
-		success: false
-	)
+		slack(
+			message: exception.message,
+			success: false
+		)
 end
 end
