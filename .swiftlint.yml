@@ -19,18 +19,18 @@ disabled_rules:
 - switch_case_on_newline # caseと同じ行に記述したいため
 - trailing_closure # RxSwiftのOnNextでwarningが出るため
 - trailing_whitespace
+- identifier_name
+- superfluous_disable_command
 
 opt_in_rules:
 - anyobject_protocol
 - array_init
-- attributes
 - closure_body_length
 - closure_end_indentation
 - closure_spacing
 - collection_alignment
 - conditional_returns_on_newline
 - contains_over_first_not_nil
-- convenience_type
 - discouraged_object_literal
 - discouraged_optional_boolean
 - discouraged_optional_collection
@@ -41,14 +41,12 @@ opt_in_rules:
 - explicit_init
 - explicit_self
 - explicit_type_interface
-- extension_access_modifier
 - fallthrough
 - fatal_error_message
 - file_header
 - file_name
 - first_where
 - force_unwrapping
-- function_default_parameter_at_end
 - identical_operands
 - implicit_return
 - joined_default_parameter
@@ -95,7 +93,6 @@ opt_in_rules:
 - trailing_closure
 - unavailable_function
 - unneeded_parentheses_in_closure_argument
-- untyped_error_in_catch
 - unused_import
 - unused_private_declaration
 - vertical_parameter_alignment_on_call
@@ -134,22 +131,10 @@ type_name:
   min_length: 3
   max_length: 40
   excluded:
+  - C
+  - E
   - ui
   - UI
-
-identifier_name:
-  min_length:
-    error: 2
-  excluded:
-    - ui
-    - UI
-    - id
-    - URL
-    - x
-    - y
-    - vc
-    - on
-  reporter: "xcode"
 
 implicitly_unwrapped_optional:
   excluded:
@@ -160,10 +145,13 @@ implicitly_unwrapped_optional:
     - ViewController
 
 multiline_parameters_brackets:
-  excluede:
+  excluded:
     - disposeBag
     - DisposeBag
 
 multiline_arguments_brackets:
-  excluede:
+  excluded:
     - disposeBag
+
+missing_docs:
+  - internal
