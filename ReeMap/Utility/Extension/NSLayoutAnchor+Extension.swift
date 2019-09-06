@@ -1,4 +1,4 @@
-// swiftLint:enable:next file_name
+// swiftlint:disable all
 import UIKit
 
 extension UIView {

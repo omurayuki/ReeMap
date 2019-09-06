@@ -1,3 +1,4 @@
+// swiftlint:disable all
 import Foundation
 
 class AppUserDefaults {
@@ -50,8 +51,8 @@ extension AppUserDefaults {
         return data.map {
             do {
                 return try JSONDecoder().decode(T.self, from: $0)
-            } catch let error as Error {
-                fatalError("could not decode value - Error content: \(error)")
+            } catch let error {
+                fatalError("could not decode value - Error content: \(error.localizedDescription)")
             }
         }
     }
