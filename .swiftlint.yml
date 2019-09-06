@@ -23,14 +23,12 @@ disabled_rules:
 opt_in_rules:
 - anyobject_protocol
 - array_init
-- attributes
 - closure_body_length
 - closure_end_indentation
 - closure_spacing
 - collection_alignment
 - conditional_returns_on_newline
 - contains_over_first_not_nil
-- convenience_type
 - discouraged_object_literal
 - discouraged_optional_boolean
 - discouraged_optional_collection
@@ -47,8 +45,8 @@ opt_in_rules:
 - file_header
 - file_name
 - first_where
-- force_unwrapping
 - function_default_parameter_at_end
+- force_unwrapping
 - identical_operands
 - implicit_return
 - joined_default_parameter
@@ -160,10 +158,13 @@ implicitly_unwrapped_optional:
     - ViewController
 
 multiline_parameters_brackets:
-  excluede:
+  excluded:
     - disposeBag
     - DisposeBag
 
 multiline_arguments_brackets:
-  excluede:
+  excluded:
     - disposeBag
+
+missing_docs:
+  - internal

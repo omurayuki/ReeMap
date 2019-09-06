@@ -7,6 +7,9 @@ protocol MainMapUIProtocol: UI {
     
     var mapView: MKMapView { get }
     var locationManager: CLLocationManager { get }
+    var regionInMeters: Double { get }
+    
+    func centerViewOnUserLocation()
 }
 
 final class MainMapUI: MainMapUIProtocol {
@@ -25,7 +28,7 @@ final class MainMapUI: MainMapUIProtocol {
         return locationManager
     }()
     
-    private var regionInMeters: Double = {
+    private(set) var regionInMeters: Double = {
         10_000
     }()
 }
@@ -33,6 +36,10 @@ final class MainMapUI: MainMapUIProtocol {
 extension MainMapUI {
     
     func setup() {
+        guard let view = rootView else { return }
+        [mapView].forEach { view.addSubview($0) }
+        
+//        mapView
         centerViewOnUserLocation()
     }
     
