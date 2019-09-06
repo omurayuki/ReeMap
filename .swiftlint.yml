@@ -39,7 +39,6 @@ opt_in_rules:
 - explicit_init
 - explicit_self
 - explicit_type_interface
-- extension_access_modifier
 - fallthrough
 - fatal_error_message
 - file_header
@@ -147,6 +146,10 @@ identifier_name:
     - y
     - vc
     - on
+    - c
+    - e
+    - m
+    - _constraint
   reporter: "xcode"
 
 implicitly_unwrapped_optional:
