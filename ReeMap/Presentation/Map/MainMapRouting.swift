@@ -4,7 +4,7 @@ protocol MainMapRoutingProtocol: Routing {
     
 }
 
-final class MainMainMapRouting: MainMapRoutingProtocol {
+final class MainMapRouting: MainMapRoutingProtocol {
     
     weak var viewController: UIViewController?
 }

@@ -26,7 +26,7 @@ final class MainMapUI: MainMapUIProtocol {
     }()
     
     private var regionInMeters: Double = {
-        return 10_000
+        10_000
     }()
 }
 
@@ -38,9 +38,9 @@ extension MainMapUI {
     
     func centerViewOnUserLocation() {
         if let location = locationManager.location?.coordinate {
-            let region = MKCoordinateRegion.init(center: location,
-                                                 latitudinalMeters: regionInMeters,
-                                                 longitudinalMeters: regionInMeters)
+            let region = MKCoordinateRegion(center: location,
+                                            latitudinalMeters: regionInMeters,
+                                            longitudinalMeters: regionInMeters)
             mapView.setRegion(region, animated: true)
         }
     }
