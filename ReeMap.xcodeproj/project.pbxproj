@@ -52,6 +52,7 @@
 		C9A056452322532500EB9563 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A056442322532500EB9563 /* VerticalStackView.swift */; };
 		C9A056472322533E00EB9563 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A056462322533E00EB9563 /* PaddingTextField.swift */; };
 		C9A056492322537500EB9563 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A056482322537500EB9563 /* TableViewDataSource.swift */; };
+		C9A0564C232263B000EB9563 /* MultipleCounting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A0564B232263B000EB9563 /* MultipleCounting.swift */; };
 		C9A83800231E887700BC880C /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A837FF231E887700BC880C /* SnapshotHelper.swift */; };
 		C9B2F0D3231797C900F29B51 /* EAIntroView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0D1231797C900F29B51 /* EAIntroView.framework */; };
 		C9B2F0D4231797C900F29B51 /* EARestrictedScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0D2231797C900F29B51 /* EARestrictedScrollView.framework */; };
@@ -66,6 +67,7 @@
 		C9D6C5E82321089B0064AACD /* MainMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6C5E72321089B0064AACD /* MainMapViewModel.swift */; };
 		C9D6C5EC232109C20064AACD /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6C5EB232109C20064AACD /* UI.swift */; };
 		C9D6C5EE232109E20064AACD /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6C5ED232109E20064AACD /* Routing.swift */; };
+		C9DFA0772322833200EDCBCE /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DFA0762322833200EDCBCE /* Kingfisher.framework */; };
 		E1654FF77DC3DF1FF58C8D01 /* Pods_DEVELOP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E10187F25C1CD365AA94B2 /* Pods_DEVELOP.framework */; };
 		FA748930DF556BB51A75243B /* Pods_RELEASE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A33926E73176D728CFF4842 /* Pods_RELEASE.framework */; };
 /* End PBXBuildFile section */
@@ -157,6 +159,7 @@
 		C9A056442322532500EB9563 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		C9A056462322533E00EB9563 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		C9A056482322537500EB9563 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
+		C9A0564B232263B000EB9563 /* MultipleCounting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleCounting.swift; sourceTree = "<group>"; };
 		C9A837FF231E887700BC880C /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		C9B2F0CE2317964600F29B51 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		C9B2F0D1231797C900F29B51 /* EAIntroView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EAIntroView.framework; path = Carthage/Build/iOS/EAIntroView.framework; sourceTree = "<group>"; };
@@ -178,6 +181,7 @@
 		C9D6C5E72321089B0064AACD /* MainMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapViewModel.swift; sourceTree = "<group>"; };
 		C9D6C5EB232109C20064AACD /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
 		C9D6C5ED232109E20064AACD /* Routing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
+		C9DFA0762322833200EDCBCE /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		F5D5FF67ACEC6F97BF77027A /* Pods_ReeMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReeMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -213,6 +217,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9DFA0772322833200EDCBCE /* Kingfisher.framework in Frameworks */,
 				C9A0562D2322506A00EB9563 /* MBProgressHUD.framework in Frameworks */,
 				C9B2F0E22317A59200F29B51 /* Reachability.framework in Frameworks */,
 				C9B2F0D3231797C900F29B51 /* EAIntroView.framework in Frameworks */,
@@ -238,6 +243,7 @@
 		AA67C0CD851106E09160443A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C9DFA0762322833200EDCBCE /* Kingfisher.framework */,
 				C9A0562C2322506A00EB9563 /* MBProgressHUD.framework */,
 				C9B2F0E42317A67600F29B51 /* FloatingPanel.framework.dSYM */,
 				C9B2F0E12317A59200F29B51 /* Reachability.framework */,
@@ -327,6 +333,14 @@
 			path = Custom;
 			sourceTree = "<group>";
 		};
+		C9A0564A2322639F00EB9563 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C9A0564B232263B000EB9563 /* MultipleCounting.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		C9B9F442231765C00013ED05 = {
 			isa = PBXGroup;
 			children = (
@@ -406,10 +420,11 @@
 		C9D6C5DF2321081C0064AACD /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				C9A0564A2322639F00EB9563 /* Service */,
 				C9A056432322531000EB9563 /* Custom */,
 				C909511E23224A900080A25B /* Widget */,
-				C9095111232240450080A25B /* Extension */,
 				C914952D232237A300FCF3AB /* Util */,
+				C9095111232240450080A25B /* Extension */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1035,6 +1050,7 @@
 				C9D6C5EC232109C20064AACD /* UI.swift in Sources */,
 				C9A0563A2322528F00EB9563 /* Array+Extension.swift in Sources */,
 				C9095113232240560080A25B /* Date+Extension.swift in Sources */,
+				C9A0564C232263B000EB9563 /* MultipleCounting.swift in Sources */,
 				C9D6C5E12321086C0064AACD /* MainMapViewController.swift in Sources */,
 				C909510D2322380D0080A25B /* KeyboardNotifier.swift in Sources */,
 				C9A056382322527600EB9563 /* Animation+Extension.swift in Sources */,
