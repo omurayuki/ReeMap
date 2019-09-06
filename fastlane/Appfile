@@ -1,9 +1,10 @@
 require 'dotenv'
 Dotenv.load
 
-app_identifier(ENV['BUNDLE_IDENTIFIER']) # The bundle identifier of your app
-apple_id(ENV['APPLE_ID']) # Your Apple email address
-team_name(ENV['TEAM_NAME'])
+app_identifier("com.gmail.g1221438.ReeMap") # The bundle identifier of your app
+apple_id("yuki.guriguri.55@gmail.com") # Your Apple email address
+team_name("Yuki Omura")
+team_id("5WF5Y5M59G")
 
 
 # For more information about the Appfile, see:
