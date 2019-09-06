@@ -1,3 +1,4 @@
+// swiftLint:enable:next file_name
 import UIKit
 
 extension UIView {

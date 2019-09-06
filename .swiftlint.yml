@@ -19,6 +19,7 @@ disabled_rules:
 - switch_case_on_newline # caseと同じ行に記述したいため
 - trailing_closure # RxSwiftのOnNextでwarningが出るため
 - trailing_whitespace
+- identifier_name
 
 opt_in_rules:
 - anyobject_protocol
@@ -133,24 +134,6 @@ type_name:
   excluded:
   - ui
   - UI
-
-identifier_name:
-  min_length:
-    error: 2
-  excluded:
-    - ui
-    - UI
-    - id
-    - URL
-    - x
-    - y
-    - vc
-    - on
-    - c
-    - e
-    - m
-    - _constraint
-  reporter: "xcode"
 
 implicitly_unwrapped_optional:
   excluded:

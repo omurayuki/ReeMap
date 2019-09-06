@@ -56,6 +56,7 @@ protocol KeyboardHandler {
 
 extension KeyboardHandler where Self: UIViewController {
     
+    // swiftlint:enable:next discarded_notification_center_observer
     func addKeyboardObservers(_ completion: ((_ response: Bool) -> Void)?  = nil) {
         NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification,
                                                object: nil,
