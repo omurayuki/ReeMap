@@ -16,15 +16,7 @@ end
 
 platform :ios do
 
-	lane :setup do
-		cocoapods
-		carthage(
-			platform: "iOS"
-		)
-	end
-
 	lane :test do
-		setup
 		scan(
 			workspace: "ReeMap.xcworkspace",
 			clean: true # テスト前にclean実行
@@ -33,7 +25,6 @@ platform :ios do
 	end
 
 	lane :release do
-		setup
 		increment_build_number # ビルドナンバーincrement
 		capture_screenshots
 		match( # 証明書生成, 取得action
@@ -66,7 +57,6 @@ platform :ios do
 	end
 
 	lane :deploy_testflight do
-		setup
 		increment_build_number
 		match( # 証明書生成, 取得action
 			readonly: true # 証明書読み取りオンリー
