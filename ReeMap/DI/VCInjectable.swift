@@ -12,7 +12,7 @@ protocol VCInjectable {
     var viewModel: ViewModel! { get set }
     var disposeBag: DisposeBag! { get set }
     
-    func setupDI()
+    func setupConfig()
     
     mutating func inject(
         ui: UI,

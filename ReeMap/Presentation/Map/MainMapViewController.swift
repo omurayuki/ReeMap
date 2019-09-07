@@ -11,24 +11,22 @@ extension MainMapViewController: VCInjectable {
     typealias Routing = MainMapRoutingProtocol
     typealias ViewModel = MainMapViewModelType
     
-    func setupDI() {
-        ui.rootView = self.view
+    func setupConfig() {
         ui.locationManager.delegate = self
-        routing.viewController = self
     }
 }
 
 final class MainMapViewController: UIViewController {
     
-    var ui: MainMapUIProtocol!
-    var routing: MainMapRoutingProtocol!
+    var ui: MainMapUIProtocol! { didSet { ui.viewController = self } }
+    var routing: MainMapRoutingProtocol! { didSet { routing.viewController = self } }
     var viewModel: MainMapViewModelType!
     var disposeBag: DisposeBag!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupDI()
+        setupConfig()
         setupUI()
         setupViewModel()
     }

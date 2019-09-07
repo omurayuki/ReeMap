@@ -14,7 +14,7 @@ protocol MainMapUIProtocol: UI {
 
 final class MainMapUI: MainMapUIProtocol {
     
-    weak var rootView: UIView?
+    weak var viewController: UIViewController?
     
     private(set) var mapView: MKMapView = {
         let mapView = MKMapView()
@@ -39,7 +39,11 @@ extension MainMapUI {
         guard let view = rootView else { return }
         [mapView].forEach { view.addSubview($0) }
         
-//        mapView
+        mapView.anchor()
+            .centerToSuperview()
+            .edgesToSuperview()
+            .activate()
+        
         centerViewOnUserLocation()
     }
     
