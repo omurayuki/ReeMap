@@ -37,6 +37,7 @@ extension MainMapUI {
     
     func setup() {
         guard let vc = viewController else { return }
+        vc.view.backgroundColor = .white
         [mapView].forEach { vc.view.addSubview($0) }
         
         mapView.anchor()

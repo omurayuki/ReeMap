@@ -70,6 +70,7 @@
 		C9DFA0772322833200EDCBCE /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DFA0762322833200EDCBCE /* Kingfisher.framework */; };
 		C9EA2AE42323B3D60034BB1D /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA2AE32323B3D60034BB1D /* Container.swift */; };
 		C9EA2AE62323B3E90034BB1D /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA2AE52323B3E90034BB1D /* ServiceFactory.swift */; };
+		C9EA2AE82323B63E0034BB1D /* AppDelegate+Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA2AE72323B63E0034BB1D /* AppDelegate+Container.swift */; };
 		E1654FF77DC3DF1FF58C8D01 /* Pods_DEVELOP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E10187F25C1CD365AA94B2 /* Pods_DEVELOP.framework */; };
 		FA748930DF556BB51A75243B /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
@@ -186,6 +187,7 @@
 		C9DFA0762322833200EDCBCE /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		C9EA2AE32323B3D60034BB1D /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		C9EA2AE52323B3E90034BB1D /* ServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
+		C9EA2AE72323B63E0034BB1D /* AppDelegate+Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Container.swift"; sourceTree = "<group>"; };
 		F5D5FF67ACEC6F97BF77027A /* Pods_ReeMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReeMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -378,6 +380,7 @@
 				C9D6C5DC232107EF0064AACD /* ViewModel */,
 				C9D6C5DB232107E20064AACD /* Presentation */,
 				C9B9F44E231765C00013ED05 /* AppDelegate.swift */,
+				C9EA2AE72323B63E0034BB1D /* AppDelegate+Container.swift */,
 				C966EAB52317E4FE00005EE5 /* R.generated.swift */,
 				C914952B2322089500FCF3AB /* Localizable.strings */,
 				C9B9F455231765C10013ED05 /* Assets.xcassets */,
@@ -1032,6 +1035,7 @@
 				C96C72D023211FA0001C2FA6 /* VCBuildable.swift in Sources */,
 				C9A056362322526400EB9563 /* UIImageView+Extension.swift in Sources */,
 				C909512823224DA00080A25B /* UIViewController+Extension.swift in Sources */,
+				C9EA2AE82323B63E0034BB1D /* AppDelegate+Container.swift in Sources */,
 				C9A056342322524D00EB9563 /* UIImage+Extension.swift in Sources */,
 				C9A056302322521900EB9563 /* UIView+Extension.swift in Sources */,
 				C9D6C5E52321087F0064AACD /* MainMapRouting.swift in Sources */,
@@ -1333,6 +1337,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = ReeMap/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1360,6 +1365,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = ReeMap/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
