@@ -540,13 +540,14 @@
 				C9B9F448231765C00013ED05 /* Frameworks */,
 				C9B9F449231765C00013ED05 /* Resources */,
 				12B9B0B3AE4EC4D4DBC250A9 /* [CP] Embed Pods Frameworks */,
-				C9B2F0D02317964D00F29B51 /* ShellScript */,
-				C9B2F0D5231797D900F29B51 /* ShellScript */,
-				C9B2F0D82317A43900F29B51 /* ShellScript */,
+				C9B2F0D02317964D00F29B51 /* MBProgressHUD */,
+				C9B2F0D5231797D900F29B51 /* EAIntroView */,
+				C9B2F0D82317A43900F29B51 /* Rx */,
 				C9B2F0E02317A54100F29B51 /* Embed Frameworks */,
-				C9B2F0E32317A5A900F29B51 /* ShellScript */,
+				C9B2F0E32317A5A900F29B51 /* Reachability */,
 				C966EAB22317D89200005EE5 /* SwiftLint */,
-				C94B58C4231F4CC7007EEE0D /* ShellScript */,
+				C94B58C4231F4CC7007EEE0D /* KingFisher */,
+				C9EA2AE2232396A00034BB1D /* env */,
 			);
 			buildRules = (
 			);
@@ -676,7 +677,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RELEASE/Pods-RELEASE-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C94B58C4231F4CC7007EEE0D /* ShellScript */ = {
+		C94B58C4231F4CC7007EEE0D /* KingFisher */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -686,6 +687,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 			);
+			name = KingFisher;
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -904,7 +906,7 @@
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
-		C9B2F0D02317964D00F29B51 /* ShellScript */ = {
+		C9B2F0D02317964D00F29B51 /* MBProgressHUD */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -914,6 +916,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/MBProgressHUD.framework",
 			);
+			name = MBProgressHUD;
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -922,7 +925,7 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
-		C9B2F0D5231797D900F29B51 /* ShellScript */ = {
+		C9B2F0D5231797D900F29B51 /* EAIntroView */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -933,6 +936,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/EAIntroView.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/EARestrictedScrollView.framework",
 			);
+			name = EAIntroView;
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -943,7 +947,7 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
-		C9B2F0D82317A43900F29B51 /* ShellScript */ = {
+		C9B2F0D82317A43900F29B51 /* Rx */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -954,6 +958,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 			);
+			name = Rx;
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -962,7 +967,7 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
-		C9B2F0E32317A5A900F29B51 /* ShellScript */ = {
+		C9B2F0E32317A5A900F29B51 /* Reachability */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -972,6 +977,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Reachability.framework",
 			);
+			name = Reachability;
 			outputFileListPaths = (
 			);
 			outputPaths = (
