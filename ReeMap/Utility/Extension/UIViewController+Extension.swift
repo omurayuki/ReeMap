@@ -35,13 +35,18 @@ extension UIViewController {
     }
     
     func showError(message: String) {
-        let alert = UIAlertController.createSimpleOkMessage(title: "エラー", message: message)
+        let alert = UIAlertController.createSimpleOkMessage(title: R.string.localizable.error_title(), message: message)
         present(alert, animated: true)
     }
     
     func showSuccess(message: String) {
-        let alert = UIAlertController.createSimpleOkMessage(title: "成功", message: message)
+        let alert = UIAlertController.createSimpleOkMessage(title: R.string.localizable.success_title(), message: message)
         present(alert, animated: true)
+    }
+    
+    func showAttentionAlert(message: String) {
+        let alert = UIAlertController.createSimpleOkMessage(title: R.string.localizable.attention_title(), message: message)
+        self.present(alert, animated: true)
     }
     
     func validatePasswordMatch(pass: String, rePass: String, completion: @escaping (_ pass: String?) -> Void) {

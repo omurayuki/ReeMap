@@ -2,10 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Privacy - Location When In Use Usage Description</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>&quot;ReeMap&quot;を使用するため、常に位置情報の利用を許可しますか？</string>
+	<string>&quot;ReeMap&quot;の使用中に位置情報の利用を許可しますか？</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>&quot;ReeMap&quot;を使用するためには位置情報を常に取得する必要があります</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>&quot;ReeMap&quot;を使用するためには位置情報を常に取得する必要があります</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -15,7 +17,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>$(PRODUCT_NAME)</string>
+	<string>ReeMap</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>

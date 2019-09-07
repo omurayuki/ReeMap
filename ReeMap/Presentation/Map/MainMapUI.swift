@@ -25,6 +25,7 @@ final class MainMapUI: MainMapUIProtocol {
     private(set) var locationManager: CLLocationManager = {
         let locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 10
         return locationManager
     }()
     

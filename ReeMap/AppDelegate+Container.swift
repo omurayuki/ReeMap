@@ -5,19 +5,19 @@ extension AppDelegate {
     static let container = Container()
         .register(Bundle.self, instance: Bundle.main)
 
-        // UI
+        // MARK: UI
         .register(MainMapUIProtocol.self) { _ in MainMapUI() }
     
-        // Routing
+        // MARK: Routing
         .register(MainMapRoutingProtocol.self) { _ in MainMapRouting() }
     
-        // ViewModel
+        // MARK: ViewModel
         .register(MainMapViewModelType.self) { _ in MainMapViewModel() }
     
-        // DisposeBag
+        // MARK: DisposeBag
         .register(DisposeBag.self) { _ in DisposeBag() }
     
-        // ViewController
+        // MARK: ViewController
         .register(MainMapViewController.self) {
             AnyVCBuilder<MainMapViewController>()
                 .with(ui: $0.resolve(MainMapUIProtocol.self))

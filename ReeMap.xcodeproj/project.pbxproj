@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D29D517AEA6AC0B4727218F /* Pods_RELEASE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE13E5F8D85CB04782CFA33 /* Pods_RELEASE.framework */; };
 		B0F2E18830F25AC73C723BCC /* Pods_DEVELOP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA10798BF676B0DCDCD9DB5 /* Pods_DEVELOP.framework */; };
 		C909510B232237C70080A25B /* AppUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C909510A232237C70080A25B /* AppUserDefault.swift */; };
 		C909510D2322380D0080A25B /* KeyboardNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C909510C2322380D0080A25B /* KeyboardNotifier.swift */; };
@@ -23,6 +22,8 @@
 		C909512623224D810080A25B /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C909512523224D810080A25B /* UITextField+Extension.swift */; };
 		C909512823224DA00080A25B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C909512723224DA00080A25B /* UIViewController+Extension.swift */; };
 		C914952C2322089500FCF3AB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C914952B2322089500FCF3AB /* Localizable.strings */; };
+		C92C822A2323FC0B00983C36 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92C82292323FC0B00983C36 /* MapKit.framework */; };
+		C92C822B232406F700983C36 /* Pods_RELEASE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE13E5F8D85CB04782CFA33 /* Pods_RELEASE.framework */; };
 		C94CAD8323192C3A00BB1BB6 /* UnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94CAD8223192C3A00BB1BB6 /* UnitTest.swift */; };
 		C94CAD9123192DEA00BB1BB6 /* UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94CAD9023192DEA00BB1BB6 /* UITest.swift */; };
 		C94CAD9D231984B600BB1BB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9F44E231765C00013ED05 /* AppDelegate.swift */; };
@@ -134,6 +135,7 @@
 		C909512523224D810080A25B /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		C909512723224DA00080A25B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		C914952B2322089500FCF3AB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		C92C82292323FC0B00983C36 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C94CAD8023192C3A00BB1BB6 /* UnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94CAD8223192C3A00BB1BB6 /* UnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTest.swift; sourceTree = "<group>"; };
 		C94CAD8423192C3A00BB1BB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -220,12 +222,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C92C822B232406F700983C36 /* Pods_RELEASE.framework in Frameworks */,
 				C9DFA0772322833200EDCBCE /* Kingfisher.framework in Frameworks */,
 				C9A0562D2322506A00EB9563 /* MBProgressHUD.framework in Frameworks */,
 				C9B2F0E22317A59200F29B51 /* Reachability.framework in Frameworks */,
 				C9B2F0D3231797C900F29B51 /* EAIntroView.framework in Frameworks */,
+				C92C822A2323FC0B00983C36 /* MapKit.framework in Frameworks */,
 				C9B2F0D4231797C900F29B51 /* EARestrictedScrollView.framework in Frameworks */,
-				0D29D517AEA6AC0B4727218F /* Pods_RELEASE.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +249,7 @@
 		AA67C0CD851106E09160443A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C92C82292323FC0B00983C36 /* MapKit.framework */,
 				C9DFA0762322833200EDCBCE /* Kingfisher.framework */,
 				C9A0562C2322506A00EB9563 /* MBProgressHUD.framework */,
 				C9B2F0E42317A67600F29B51 /* FloatingPanel.framework.dSYM */,
@@ -582,6 +586,11 @@
 					};
 					C9B9F44A231765C00013ED05 = {
 						CreatedOnToolsVersion = 10.3;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -757,7 +766,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -888,7 +897,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1333,7 +1342,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = ReeMap/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1361,7 +1370,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = ReeMap/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

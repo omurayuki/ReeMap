@@ -26,10 +26,10 @@ final class MainMapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupConfig()
         setupUI()
         setupViewModel()
+        requestCurrentLocation()
     }
     
     private func setupUI() {
@@ -43,7 +43,13 @@ final class MainMapViewController: UIViewController {
 
 extension MainMapViewController {
     
-
+    func requestCurrentLocation() {
+        ui.locationManager.requestAlwaysAuthorization()
+        let status = CLLocationManager.authorizationStatus()
+        if status == .authorizedAlways {
+            ui.locationManager.startUpdatingLocation()
+        }
+    }
 }
 
 // TODO: Create Delegate Class
@@ -59,13 +65,18 @@ extension MainMapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
-        case .notDetermined:
-            manager.requestWhenInUseAuthorization()
+        case .authorizedAlways:
+            // 位置情報取得の開始処理
+            ui.locationManager.startUpdatingLocation()
+        case .denied:
+            showAttentionAlert(message: R.string.localizable.attention_message())
+        case .authorizedWhenInUse:
+            showAttentionAlert(message: R.string.localizable.attention_message())
         default: break
         }
     }
 }
 
 extension MainMapViewController: MKMapViewDelegate {
-    
+
 }
