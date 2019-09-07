@@ -12,6 +12,7 @@ extension MainMapViewController: VCInjectable {
     typealias ViewModel = MainMapViewModelType
     
     func setupConfig() {
+        ui.mapView.delegate = self
         ui.locationManager.delegate = self
     }
 }
@@ -42,37 +43,7 @@ final class MainMapViewController: UIViewController {
 
 extension MainMapViewController {
     
-    // TODO: Create LocationManager Class
-    func checkLocationService() {
-        if CLLocationManager.locationServicesEnabled() {
-            checkLocationAuthorization()
-        } else {
-            // TODO: Show alert letting the user know they have to turn this on.
-        }
-    }
-    
-    func checkLocationAuthorization() {
-        switch CLLocationManager.authorizationStatus() {
-        case .authorizedWhenInUse:
-            ui.mapView.showsUserLocation = true
-            ui.centerViewOnUserLocation()
-            ui.locationManager.startUpdatingLocation()
-        case .authorizedAlways:
-            ui.mapView.showsUserLocation = true
-            ui.centerViewOnUserLocation()
-            ui.locationManager.startUpdatingLocation()
-        case .denied:
-            // TODO: prompt handling
-            break
-        case .notDetermined:
-            // TODO: prompt handling
-            ui.locationManager.requestWhenInUseAuthorization()
-        case .restricted:
-            // TODO: prompt handling
-            break
-        default: break
-        }
-    }
+
 }
 
 // TODO: Create Delegate Class
@@ -87,6 +58,14 @@ extension MainMapViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        checkLocationAuthorization()
+        switch status {
+        case .notDetermined:
+            manager.requestWhenInUseAuthorization()
+        default: break
+        }
     }
+}
+
+extension MainMapViewController: MKMapViewDelegate {
+    
 }
