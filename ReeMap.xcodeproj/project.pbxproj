@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -68,8 +68,10 @@
 		C9D6C5EC232109C20064AACD /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6C5EB232109C20064AACD /* UI.swift */; };
 		C9D6C5EE232109E20064AACD /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6C5ED232109E20064AACD /* Routing.swift */; };
 		C9DFA0772322833200EDCBCE /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DFA0762322833200EDCBCE /* Kingfisher.framework */; };
+		C9EA2AE42323B3D60034BB1D /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA2AE32323B3D60034BB1D /* Container.swift */; };
+		C9EA2AE62323B3E90034BB1D /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA2AE52323B3E90034BB1D /* ServiceFactory.swift */; };
 		E1654FF77DC3DF1FF58C8D01 /* Pods_DEVELOP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E10187F25C1CD365AA94B2 /* Pods_DEVELOP.framework */; };
-		FA748930DF556BB51A75243B /* Pods_RELEASE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A33926E73176D728CFF4842 /* Pods_RELEASE.framework */; };
+		FA748930DF556BB51A75243B /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +184,8 @@
 		C9D6C5EB232109C20064AACD /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
 		C9D6C5ED232109E20064AACD /* Routing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
 		C9DFA0762322833200EDCBCE /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
+		C9EA2AE32323B3D60034BB1D /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		C9EA2AE52323B3E90034BB1D /* ServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
 		F5D5FF67ACEC6F97BF77027A /* Pods_ReeMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReeMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -221,7 +225,7 @@
 				C9B2F0E22317A59200F29B51 /* Reachability.framework in Frameworks */,
 				C9B2F0D3231797C900F29B51 /* EAIntroView.framework in Frameworks */,
 				C9B2F0D4231797C900F29B51 /* EARestrictedScrollView.framework in Frameworks */,
-				FA748930DF556BB51A75243B /* Pods_RELEASE.framework in Frameworks */,
+				FA748930DF556BB51A75243B /* (null) in Frameworks */,
 				6EBAFCD27D04E72D8A08D4BF /* Pods_RELEASE.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,6 +465,8 @@
 				C96C72CF23211FA0001C2FA6 /* VCBuildable.swift */,
 				C96C72D123211FC4001C2FA6 /* AnyVCBuilder.swift */,
 				C96C72D323211FE1001C2FA6 /* VCInjectable.swift */,
+				C9EA2AE32323B3D60034BB1D /* Container.swift */,
+				C9EA2AE52323B3E90034BB1D /* ServiceFactory.swift */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -713,7 +719,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -861,7 +867,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1003,6 +1009,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9D6C5EE232109E20064AACD /* Routing.swift in Sources */,
+				C9EA2AE62323B3E90034BB1D /* ServiceFactory.swift in Sources */,
 				C9A056452322532500EB9563 /* VerticalStackView.swift in Sources */,
 				C96C72CE23211C36001C2FA6 /* ViewModel.swift in Sources */,
 				C9B9F44F231765C00013ED05 /* AppDelegate.swift in Sources */,
@@ -1039,6 +1046,7 @@
 				C9D6C5E82321089B0064AACD /* MainMapViewModel.swift in Sources */,
 				C9A05642232252FE00EB9563 /* Optional+Extension.swift in Sources */,
 				C909511D23224A700080A25B /* UIColor+Extension.swift in Sources */,
+				C9EA2AE42323B3D60034BB1D /* Container.swift in Sources */,
 				C9A056492322537500EB9563 /* TableViewDataSource.swift in Sources */,
 				C9A0563C232252AE00EB9563 /* UITableView+Extension.swift in Sources */,
 			);

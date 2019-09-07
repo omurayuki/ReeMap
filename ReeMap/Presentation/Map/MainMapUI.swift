@@ -36,8 +36,8 @@ final class MainMapUI: MainMapUIProtocol {
 extension MainMapUI {
     
     func setup() {
-        guard let view = rootView else { return }
-        [mapView].forEach { view.addSubview($0) }
+        guard let vc = viewController else { return }
+        [mapView].forEach { vc.view.addSubview($0) }
         
         mapView.anchor()
             .centerToSuperview()
