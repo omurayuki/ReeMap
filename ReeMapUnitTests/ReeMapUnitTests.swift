@@ -1,14 +1,14 @@
 //
-//  UnitTest.swift
-//  UnitTest
+//  ReeMapUnitTests.swift
+//  ReeMapUnitTests
 //
-//  Created by オムラユウキ on 2019/08/30.
+//  Created by オムラユウキ on 2019/09/08.
 //  Copyright © 2019 Swifter. All rights reserved.
 //
 
 import XCTest
 
-class UnitTest: XCTestCase {
+class ReeMapUnitTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -19,7 +19,8 @@ class UnitTest: XCTestCase {
     }
 
     func testExample() {
-        print("okok")
+        // This is an example of a functional test case.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
     func testPerformanceExample() {
