@@ -34,7 +34,6 @@ final class MainMapViewController: UIViewController {
     }
     
     private func setupUI() {
-        
     }
     
     private func setupViewModel() {
