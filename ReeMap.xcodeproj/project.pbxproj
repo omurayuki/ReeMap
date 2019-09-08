@@ -674,7 +674,6 @@
 				"$(SRCROOT)/output.xcfilelist",
 			);
 			outputPaths = (
-				"&{SRCROOT}/ReeMap/GoogleService-info.plist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
