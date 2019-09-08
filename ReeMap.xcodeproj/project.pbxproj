@@ -44,6 +44,7 @@
 		C9855A782324C70300AA7DC6 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9855A762324C70300AA7DC6 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C9855A7A2324C73D00AA7DC6 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9855A792324C73D00AA7DC6 /* RxRelay.framework */; };
 		C9855A7B2324C73D00AA7DC6 /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9855A792324C73D00AA7DC6 /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C99513BF23257B5000931012 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99513BE23257B5000931012 /* LocationService.swift */; };
 		C9A056302322521900EB9563 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A0562F2322521900EB9563 /* UIView+Extension.swift */; };
 		C9A056322322522C00EB9563 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A056312322522C00EB9563 /* UIStackView+Extension.swift */; };
 		C9A056342322524D00EB9563 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A056332322524D00EB9563 /* UIImage+Extension.swift */; };
@@ -57,7 +58,7 @@
 		C9A056452322532500EB9563 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A056442322532500EB9563 /* VerticalStackView.swift */; };
 		C9A056472322533E00EB9563 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A056462322533E00EB9563 /* PaddingTextField.swift */; };
 		C9A056492322537500EB9563 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A056482322537500EB9563 /* TableViewDataSource.swift */; };
-		C9A0564C232263B000EB9563 /* MultipleCounting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A0564B232263B000EB9563 /* MultipleCounting.swift */; };
+		C9A0564C232263B000EB9563 /* CountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A0564B232263B000EB9563 /* CountService.swift */; };
 		C9A83800231E887700BC880C /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A837FF231E887700BC880C /* SnapshotHelper.swift */; };
 		C9B2F0F92317D37200F29B51 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9B2F0F82317D37200F29B51 /* GoogleService-Info.plist */; };
 		C9B9F44F231765C00013ED05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9F44E231765C00013ED05 /* AppDelegate.swift */; };
@@ -169,6 +170,7 @@
 		C9855A722324C6A400AA7DC6 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		C9855A762324C70300AA7DC6 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		C9855A792324C73D00AA7DC6 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
+		C99513BE23257B5000931012 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		C9A0562C2322506A00EB9563 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		C9A0562F2322521900EB9563 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		C9A056312322522C00EB9563 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
@@ -183,7 +185,7 @@
 		C9A056442322532500EB9563 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		C9A056462322533E00EB9563 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		C9A056482322537500EB9563 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
-		C9A0564B232263B000EB9563 /* MultipleCounting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleCounting.swift; sourceTree = "<group>"; };
+		C9A0564B232263B000EB9563 /* CountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountService.swift; sourceTree = "<group>"; };
 		C9A837FF231E887700BC880C /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		C9B2F0CE2317964600F29B51 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		C9B2F0D1231797C900F29B51 /* EAIntroView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EAIntroView.framework; path = Carthage/Build/iOS/EAIntroView.framework; sourceTree = "<group>"; };
@@ -370,7 +372,8 @@
 		C9A0564A2322639F00EB9563 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				C9A0564B232263B000EB9563 /* MultipleCounting.swift */,
+				C9A0564B232263B000EB9563 /* CountService.swift */,
+				C99513BE23257B5000931012 /* LocationService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -982,6 +985,7 @@
 				C96C72CE23211C36001C2FA6 /* ViewModel.swift in Sources */,
 				C9B9F44F231765C00013ED05 /* AppDelegate.swift in Sources */,
 				C909512423224AD90080A25B /* UILabel+Extension.swift in Sources */,
+				C99513BF23257B5000931012 /* LocationService.swift in Sources */,
 				C9A0563E232252C500EB9563 /* UIPageController+Extension.swift in Sources */,
 				C96C72D423211FE1001C2FA6 /* VCInjectable.swift in Sources */,
 				C9A056322322522C00EB9563 /* UIStackView+Extension.swift in Sources */,
@@ -992,7 +996,7 @@
 				C9D6C5EC232109C20064AACD /* UI.swift in Sources */,
 				C9A0563A2322528F00EB9563 /* Array+Extension.swift in Sources */,
 				C9095113232240560080A25B /* Date+Extension.swift in Sources */,
-				C9A0564C232263B000EB9563 /* MultipleCounting.swift in Sources */,
+				C9A0564C232263B000EB9563 /* CountService.swift in Sources */,
 				C9D6C5E12321086C0064AACD /* MainMapViewController.swift in Sources */,
 				C909510D2322380D0080A25B /* KeyboardNotifier.swift in Sources */,
 				C9A056382322527600EB9563 /* Animation+Extension.swift in Sources */,

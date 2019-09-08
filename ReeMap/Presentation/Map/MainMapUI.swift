@@ -19,12 +19,16 @@ final class MainMapUI: MainMapUIProtocol {
     private(set) var mapView: MKMapView = {
         let mapView = MKMapView()
         mapView.showsUserLocation = true
+        mapView.showsCompass = true
+        mapView.showsScale = true
         return mapView
     }()
     
+    // TODO - ViewModelに移動
     private(set) var locationManager: CLLocationManager = {
         let locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.distanceFilter = 10
         return locationManager
     }()
