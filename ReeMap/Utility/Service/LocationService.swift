@@ -6,8 +6,9 @@ class LocationService: NSObject {
     var locationManager: CLLocationManager {
         didSet {
             locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+            locationManager.distanceFilter = 5
             locationManager.allowsBackgroundLocationUpdates = true
-            locationManager.pausesLocationUpdatesAutomatically = true // バッテリー消費量を抑えられる
+            locationManager.pausesLocationUpdatesAutomatically = false // trueにするとバッテリー消費量を抑えられるが、一度取得がされなくなるとフォアグラウンドにくるまで位置情報取得開始がされない
         }
     }
     
