@@ -13,7 +13,6 @@ extension MainMapViewController: VCInjectable {
     
     func setupConfig() {
         ui.mapView.delegate = self
-        ui.locationManager.delegate = self
     }
 }
 
@@ -23,6 +22,10 @@ final class MainMapViewController: UIViewController {
     var routing: MainMapRoutingProtocol! { didSet { routing.viewController = self } }
     var viewModel: MainMapViewModelType!
     var disposeBag: DisposeBag!
+    
+    var isZooming: Bool?
+    var isBlockingAutoZoom: Bool?
+    var didInitialZoom: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +51,22 @@ extension MainMapViewController {
         let status = CLLocationManager.authorizationStatus()
         if status == .authorizedAlways {
             ui.locationManager.startUpdatingLocation()
+        }
+    }
+    
+    // showTurnOnLocationServiceAlert
+    
+    func zoomTo(location: CLLocation) {
+        if didInitialZoom == false {
+            let coordinate = location.coordinate
+            let region = MKCoordinateRegion.init(center: coordinate, latitudinalMeters: 300, longitudinalMeters: 300)
+            ui.mapView.setRegion(region, animated: false)
+            didInitialZoom = true
+        }
+        
+        if isBlockingAutoZoom == false {
+            isZooming = true
+            ui.mapView.setCenter(location.coordinate, animated: true)
         }
     }
 }
