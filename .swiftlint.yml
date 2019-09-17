@@ -31,8 +31,6 @@ opt_in_rules:
 - collection_alignment
 - conditional_returns_on_newline
 - contains_over_first_not_nil
-- discouraged_object_literal
-- discouraged_optional_boolean
 - discouraged_optional_collection
 - empty_count
 - empty_string

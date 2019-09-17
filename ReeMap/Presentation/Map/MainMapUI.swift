@@ -6,10 +6,8 @@ import UIKit
 protocol MainMapUIProtocol: UI {
     
     var mapView: MKMapView { get }
-    var locationManager: CLLocationManager { get }
-    var regionInMeters: Double { get }
-    
-    func centerViewOnUserLocation()
+    var currentLocationBtn: UIButton { get }
+    var menuBtn: UIButton { get }
 }
 
 final class MainMapUI: MainMapUIProtocol {
@@ -24,17 +22,18 @@ final class MainMapUI: MainMapUIProtocol {
         return mapView
     }()
     
-    // TODO - ViewModelに移動
-    private(set) var locationManager: CLLocationManager = {
-        let locationManager = CLLocationManager()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        locationManager.distanceFilter = 10
-        return locationManager
+    private(set) var currentLocationBtn: UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "Icon-App-83.5x83.5-3"), for: .normal)
+        button.clipsToBounds = true
+        return button
     }()
     
-    private(set) var regionInMeters: Double = {
-        10_000
+    private(set) var menuBtn: UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "Icon-App-83.5x83.5-1"), for: .normal)
+        button.clipsToBounds = true
+        return button
     }()
 }
 
@@ -43,22 +42,25 @@ extension MainMapUI {
     func setup() {
         guard let vc = viewController else { return }
         vc.view.backgroundColor = .white
-        [mapView].forEach { vc.view.addSubview($0) }
+        [mapView, currentLocationBtn, menuBtn].forEach { vc.view.addSubview($0) }
         
         mapView.anchor()
             .centerToSuperview()
             .edgesToSuperview()
             .activate()
         
-        centerViewOnUserLocation()
-    }
-    
-    func centerViewOnUserLocation() {
-        if let location = locationManager.location?.coordinate {
-            let region = MKCoordinateRegion(center: location,
-                                            latitudinalMeters: regionInMeters,
-                                            longitudinalMeters: regionInMeters)
-            mapView.setRegion(region, animated: true)
-        }
+        currentLocationBtn.anchor()
+            .top(to: mapView.topAnchor, constant: 35)
+            .right(to: mapView.rightAnchor, constant: -20)
+            .width(constant: 35)
+            .height(constant: 35)
+            .activate()
+        
+        menuBtn.anchor()
+            .top(to: mapView.topAnchor, constant: 35)
+            .left(to: mapView.leftAnchor, constant: 20)
+            .width(constant: 35)
+            .height(constant: 35)
+            .activate()
     }
 }

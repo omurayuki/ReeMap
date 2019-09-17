@@ -1,74 +1,78 @@
 import CoreLocation
-import Foundation
+import UIKit
 
-class LocationService: NSObject {
+final class LocationService: NSObject {
     
-    var locationManager: CLLocationManager
+    static var sharedInstance = LocationService()
+    let locationManager: CLLocationManager
     var locationDataArray: [CLLocation]
-    var useFilter: Bool
     
-    init(locationManager: CLLocationManager) {
-        self.locationManager = locationManager
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
-        self.locationManager.distanceFilter = 5
-        self.locationManager.allowsBackgroundLocationUpdates = true
-        self.locationManager.pausesLocationUpdatesAutomatically = false
-        self.locationManager.requestWhenInUseAuthorization()
+    override init() {
+        locationManager = CLLocationManager()
+        
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        locationManager.distanceFilter = 5
+        
+        locationManager.requestAlwaysAuthorization()
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.pausesLocationUpdatesAutomatically = false
         locationDataArray = [CLLocation]()
-        useFilter = true
+        
         super.init()
-        self.locationManager.delegate = self
+        
+        locationManager.delegate = self
     }
-}
-
-extension LocationService {
     
     func startUpdatingLocation() {
-        #warning("何かユーザーにアクションを働きかける Onにしてください")
-        CLLocationManager.locationServicesEnabled() ? locationManager.startUpdatingLocation() : ()
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedAlways:
+            locationManager.startUpdatingLocation()
+        default:
+            showTurnOnLocationServiceAlert()
+        }
     }
     
     func filterAndAddLocation(_ location: CLLocation) -> Bool {
         let age = -location.timestamp.timeIntervalSinceNow
-        if age > 10 { return false } // Locaiton is old.
-        if location.horizontalAccuracy < 0 { return false } // Latitidue and longitude values are invalid.
-        if location.horizontalAccuracy > 100 { return false } // Accuracy is too low.
+        if age > 10 { return false }
+        if location.horizontalAccuracy < 0 { return false }
+        if location.horizontalAccuracy > 100 { return false }
         locationDataArray.append(location)
+        
         return true
+    }
+    
+    func showTurnOnLocationServiceAlert() {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "showTurnOnLocationServiceAlert"), object: nil)
+    }
+    
+    func notifiyDidUpdateLocation(newLocation: CLLocation) {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "didUpdateLocation"), object: nil, userInfo: ["location": newLocation])
     }
 }
 
 extension LocationService: CLLocationManagerDelegate {
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    public func locationManager(_ manager: CLLocationManager,
+                                didUpdateLocations locations: [CLLocation]) {
         if let newLocation = locations.last {
-            print("(\(newLocation.coordinate.latitude), \(newLocation.coordinate.latitude))")
-            
             var locationAdded: Bool
-            if useFilter {
-                locationAdded = filterAndAddLocation(newLocation)
-            } else {
-                locationDataArray.append(newLocation)
-                locationAdded = true
-            }
-            
+            locationAdded = filterAndAddLocation(newLocation)
             if locationAdded {
-                // newLocationを使って処理
+                notifiyDidUpdateLocation(newLocation: newLocation)
             }
         }
     }
     
-    func locationManager(_ manager: CLLocationManager,
-                         didFailWithError error: Error) {
+    public func locationManager(_ manager: CLLocationManager,
+                                didFailWithError error: Error) {
         if (error as NSError).domain == kCLErrorDomain && (error as NSError).code == CLError.Code.denied.rawValue {
-            //User denied your app access to location information.
+            showTurnOnLocationServiceAlert()
         }
     }
     
-    func locationManager(_ manager: CLLocationManager,
-                         didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
-            //You can resume logging by calling startUpdatingLocation here
-        }
+    public func locationManager(_ manager: CLLocationManager,
+                                didChangeAuthorization status: CLAuthorizationStatus) {
+        startUpdatingLocation()
     }
 }

@@ -62,6 +62,7 @@
 		C9A0564C232263B000EB9563 /* CountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A0564B232263B000EB9563 /* CountService.swift */; };
 		C9A83800231E887700BC880C /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A837FF231E887700BC880C /* SnapshotHelper.swift */; };
 		C9B2F0F92317D37200F29B51 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9B2F0F82317D37200F29B51 /* GoogleService-Info.plist */; };
+		C9B379C62330661E00D1BF77 /* UserAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B379C52330661E00D1BF77 /* UserAnnotation.swift */; };
 		C9B9F44F231765C00013ED05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9F44E231765C00013ED05 /* AppDelegate.swift */; };
 		C9B9F456231765C10013ED05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F455231765C10013ED05 /* Assets.xcassets */; };
 		C9B9F459231765C10013ED05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F457231765C10013ED05 /* LaunchScreen.storyboard */; };
@@ -177,6 +178,7 @@
 		C9B2F0E12317A59200F29B51 /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = Carthage/Build/iOS/Reachability.framework; sourceTree = "<group>"; };
 		C9B2F0E42317A67600F29B51 /* FloatingPanel.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = FloatingPanel.framework.dSYM; path = Carthage/Build/iOS/FloatingPanel.framework.dSYM; sourceTree = "<group>"; };
 		C9B2F0F82317D37200F29B51 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C9B379C52330661E00D1BF77 /* UserAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnnotation.swift; sourceTree = "<group>"; };
 		C9B9F44B231765C00013ED05 /* RELEASE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RELEASE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B9F44E231765C00013ED05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9B9F455231765C10013ED05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -354,6 +356,14 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		C9B379C72330662D00D1BF77 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C9B379C52330661E00D1BF77 /* UserAnnotation.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C9B9F442231765C00013ED05 = {
 			isa = PBXGroup;
 			children = (
@@ -412,6 +422,7 @@
 		C9D6C5DB232107E20064AACD /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				C9B379C72330662D00D1BF77 /* View */,
 				C9D6C5E9232109810064AACD /* UI */,
 				C9D6C5EA232109850064AACD /* Routing */,
 				C9D6C5E6232108820064AACD /* Map */,
@@ -958,6 +969,7 @@
 				C9A056322322522C00EB9563 /* UIStackView+Extension.swift in Sources */,
 				C9A056472322533E00EB9563 /* PaddingTextField.swift in Sources */,
 				C909511B23224A3B0080A25B /* UIButton+Extension.swift in Sources */,
+				C9B379C62330661E00D1BF77 /* UserAnnotation.swift in Sources */,
 				C9A05640232252EC00EB9563 /* String+Extension.swift in Sources */,
 				C9095115232242D60080A25B /* DateFormatter+Extension.swift in Sources */,
 				C9D6C5EC232109C20064AACD /* UI.swift in Sources */,
