@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		17EAAF4D75FECFDC10FB1CFF /* Pods_RELEASE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6EC022F1E13C0F9768F4281 /* Pods_RELEASE.framework */; };
+		C90595E62332B026008D113D /* PlaceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90595E52332B026008D113D /* PlaceEntity.swift */; };
+		C90595E92332B178008D113D /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90595E82332B178008D113D /* Entity.swift */; };
 		C909510B232237C70080A25B /* AppUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C909510A232237C70080A25B /* AppUserDefault.swift */; };
 		C909510D2322380D0080A25B /* KeyboardNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C909510C2322380D0080A25B /* KeyboardNotifier.swift */; };
 		C9095113232240560080A25B /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9095112232240560080A25B /* Date+Extension.swift */; };
@@ -23,6 +25,7 @@
 		C909512823224DA00080A25B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C909512723224DA00080A25B /* UIViewController+Extension.swift */; };
 		C914952C2322089500FCF3AB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C914952B2322089500FCF3AB /* Localizable.strings */; };
 		C92C822A2323FC0B00983C36 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92C82292323FC0B00983C36 /* MapKit.framework */; };
+		C9369C3F2332ADFE0040B02C /* DummyPlaces.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9369C3E2332ADFE0040B02C /* DummyPlaces.plist */; };
 		C94CAD9123192DEA00BB1BB6 /* UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94CAD9023192DEA00BB1BB6 /* UITest.swift */; };
 		C94CAD9D231984B600BB1BB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9F44E231765C00013ED05 /* AppDelegate.swift */; };
 		C94CADA0231984B600BB1BB6 /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0E12317A59200F29B51 /* Reachability.framework */; };
@@ -125,6 +128,8 @@
 		5CC04CCD4F9DCAAD0D8C8164 /* Pods-RELEASE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RELEASE.release.xcconfig"; path = "Target Support Files/Pods-RELEASE/Pods-RELEASE.release.xcconfig"; sourceTree = "<group>"; };
 		67E10187F25C1CD365AA94B2 /* Pods_DEVELOP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DEVELOP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFBCB02E5ED6560BE3E4DA65 /* Pods-DEVELOP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DEVELOP.release.xcconfig"; path = "Target Support Files/Pods-DEVELOP/Pods-DEVELOP.release.xcconfig"; sourceTree = "<group>"; };
+		C90595E52332B026008D113D /* PlaceEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceEntity.swift; sourceTree = "<group>"; };
+		C90595E82332B178008D113D /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		C909510A232237C70080A25B /* AppUserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserDefault.swift; sourceTree = "<group>"; };
 		C909510C2322380D0080A25B /* KeyboardNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNotifier.swift; sourceTree = "<group>"; };
 		C9095112232240560080A25B /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
@@ -140,6 +145,7 @@
 		C909512723224DA00080A25B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		C914952B2322089500FCF3AB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C92C82292323FC0B00983C36 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C9369C3E2332ADFE0040B02C /* DummyPlaces.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DummyPlaces.plist; sourceTree = "<group>"; };
 		C94CAD8E23192DE900BB1BB6 /* UITest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94CAD9023192DEA00BB1BB6 /* UITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITest.swift; sourceTree = "<group>"; };
 		C94CAD9223192DEA00BB1BB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -283,6 +289,29 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C90595E42332B00C008D113D /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				C90595E82332B178008D113D /* Entity.swift */,
+				C90595E52332B026008D113D /* PlaceEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		C90595EA2332B2F8008D113D /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		C90595EB2332B2FD008D113D /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataStore;
+			sourceTree = "<group>";
+		};
 		C9095111232240450080A25B /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,6 +435,7 @@
 				C9B9F457231765C10013ED05 /* LaunchScreen.storyboard */,
 				C9B2F0F82317D37200F29B51 /* GoogleService-Info.plist */,
 				C9B9F45A231765C10013ED05 /* Info.plist */,
+				C9369C3E2332ADFE0040B02C /* DummyPlaces.plist */,
 			);
 			path = ReeMap;
 			sourceTree = "<group>";
@@ -449,6 +479,9 @@
 		C9D6C5DE2321080F0064AACD /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				C90595EB2332B2FD008D113D /* DataStore */,
+				C90595EA2332B2F8008D113D /* Repository */,
+				C90595E42332B00C008D113D /* Entity */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -666,6 +699,7 @@
 				C9B9F459231765C10013ED05 /* LaunchScreen.storyboard in Resources */,
 				C9B2F0F92317D37200F29B51 /* GoogleService-Info.plist in Resources */,
 				C9B9F456231765C10013ED05 /* Assets.xcassets in Resources */,
+				C9369C3F2332ADFE0040B02C /* DummyPlaces.plist in Resources */,
 				C914952C2322089500FCF3AB /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -964,9 +998,11 @@
 				C96C72CE23211C36001C2FA6 /* ViewModel.swift in Sources */,
 				C9B9F44F231765C00013ED05 /* AppDelegate.swift in Sources */,
 				C909512423224AD90080A25B /* UILabel+Extension.swift in Sources */,
+				C90595E92332B178008D113D /* Entity.swift in Sources */,
 				C99513BF23257B5000931012 /* LocationService.swift in Sources */,
 				C9A0563E232252C500EB9563 /* UIPageController+Extension.swift in Sources */,
 				C96C72D423211FE1001C2FA6 /* VCInjectable.swift in Sources */,
+				C90595E62332B026008D113D /* PlaceEntity.swift in Sources */,
 				C9A056322322522C00EB9563 /* UIStackView+Extension.swift in Sources */,
 				C9A056472322533E00EB9563 /* PaddingTextField.swift in Sources */,
 				C909511B23224A3B0080A25B /* UIButton+Extension.swift in Sources */,

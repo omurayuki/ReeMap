@@ -36,6 +36,21 @@ final class MainMapViewController: UIViewController {
         setupConfig()
         setupUI()
         setupViewModel()
+        // 1
+        let location = CLLocationCoordinate2D(latitude: 35.658581,
+                                              longitude: 139.745433)
+        
+        // 2
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: location, span: span)
+        ui.mapView.setRegion(region, animated: true)
+        
+        //3
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        annotation.title = "Big Ben"
+        annotation.subtitle = "London"
+        ui.mapView.addAnnotation(annotation)
     }
 }
 
