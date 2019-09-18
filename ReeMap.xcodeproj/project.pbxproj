@@ -10,6 +10,7 @@
 		17EAAF4D75FECFDC10FB1CFF /* Pods_RELEASE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6EC022F1E13C0F9768F4281 /* Pods_RELEASE.framework */; };
 		C90595E62332B026008D113D /* PlaceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90595E52332B026008D113D /* PlaceEntity.swift */; };
 		C90595E92332B178008D113D /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90595E82332B178008D113D /* Entity.swift */; };
+		C90595F12332B3E2008D113D /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90595F02332B3E2008D113D /* Place.swift */; };
 		C909510B232237C70080A25B /* AppUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C909510A232237C70080A25B /* AppUserDefault.swift */; };
 		C909510D2322380D0080A25B /* KeyboardNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C909510C2322380D0080A25B /* KeyboardNotifier.swift */; };
 		C9095113232240560080A25B /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9095112232240560080A25B /* Date+Extension.swift */; };
@@ -130,6 +131,7 @@
 		AFBCB02E5ED6560BE3E4DA65 /* Pods-DEVELOP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DEVELOP.release.xcconfig"; path = "Target Support Files/Pods-DEVELOP/Pods-DEVELOP.release.xcconfig"; sourceTree = "<group>"; };
 		C90595E52332B026008D113D /* PlaceEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceEntity.swift; sourceTree = "<group>"; };
 		C90595E82332B178008D113D /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		C90595F02332B3E2008D113D /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		C909510A232237C70080A25B /* AppUserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserDefault.swift; sourceTree = "<group>"; };
 		C909510C2322380D0080A25B /* KeyboardNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNotifier.swift; sourceTree = "<group>"; };
 		C9095112232240560080A25B /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
@@ -312,6 +314,35 @@
 			path = DataStore;
 			sourceTree = "<group>";
 		};
+		C90595EC2332B375008D113D /* Translator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Translator;
+			sourceTree = "<group>";
+		};
+		C90595ED2332B382008D113D /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		C90595EE2332B3A4008D113D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C90595F02332B3E2008D113D /* Place.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C90595EF2332B3B5008D113D /* ViewData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewData;
+			sourceTree = "<group>";
+		};
 		C9095111232240450080A25B /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -452,6 +483,7 @@
 		C9D6C5DB232107E20064AACD /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				C90595EF2332B3B5008D113D /* ViewData */,
 				C9B379C72330662D00D1BF77 /* View */,
 				C9D6C5E9232109810064AACD /* UI */,
 				C9D6C5EA232109850064AACD /* Routing */,
@@ -472,6 +504,9 @@
 		C9D6C5DD232108020064AACD /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				C90595EE2332B3A4008D113D /* Model */,
+				C90595ED2332B382008D113D /* UseCase */,
+				C90595EC2332B375008D113D /* Translator */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -1018,6 +1053,7 @@
 				C9A056382322527600EB9563 /* Animation+Extension.swift in Sources */,
 				C909512223224AC30080A25B /* UIFont+Extension.swift in Sources */,
 				C96C72D023211FA0001C2FA6 /* VCBuildable.swift in Sources */,
+				C90595F12332B3E2008D113D /* Place.swift in Sources */,
 				C9A056362322526400EB9563 /* UIImageView+Extension.swift in Sources */,
 				C909512823224DA00080A25B /* UIViewController+Extension.swift in Sources */,
 				C9EA2AE82323B63E0034BB1D /* AppDelegate+Container.swift in Sources */,

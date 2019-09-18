@@ -1,19 +1,19 @@
 import Foundation
 
-protocol Place {
+protocol PlaceProtocol {
     
     var title: String { get set }
     var latitude: Double { get set }
-    var longtitude: Double { get set }
+    var longitude: Double { get set }
 }
 
-extension PlaceEntity: Place {}
+extension PlaceEntity: PlaceProtocol {}
 
 struct PlaceEntity: Entity {
     
     var title: String
     var latitude: Double
-    var longtitude: Double
+    var longitude: Double
     
     init(document: [String: Any]) {
         guard
@@ -23,11 +23,11 @@ struct PlaceEntity: Entity {
         else {
             self.title = ""
             self.latitude = 0.0
-            self.longtitude = 0.0
+            self.longitude = 0.0
             return
         }
         self.title = title
         self.latitude = latitude
-        self.longtitude = longitude
+        self.longitude = longitude
     }
 }
