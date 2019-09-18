@@ -25,7 +25,6 @@
 		C92C822A2323FC0B00983C36 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92C82292323FC0B00983C36 /* MapKit.framework */; };
 		C94CAD9123192DEA00BB1BB6 /* UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94CAD9023192DEA00BB1BB6 /* UITest.swift */; };
 		C94CAD9D231984B600BB1BB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9F44E231765C00013ED05 /* AppDelegate.swift */; };
-		C94CAD9E231984B600BB1BB6 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C966EAB52317E4FE00005EE5 /* R.generated.swift */; };
 		C94CADA0231984B600BB1BB6 /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0E12317A59200F29B51 /* Reachability.framework */; };
 		C94CADA2231984B600BB1BB6 /* EAIntroView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0D1231797C900F29B51 /* EAIntroView.framework */; };
 		C94CADA3231984B600BB1BB6 /* EARestrictedScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0D2231797C900F29B51 /* EARestrictedScrollView.framework */; };
@@ -33,7 +32,6 @@
 		C94CADA7231984B600BB1BB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F457231765C10013ED05 /* LaunchScreen.storyboard */; };
 		C94CADA8231984B600BB1BB6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9B2F0F82317D37200F29B51 /* GoogleService-Info.plist */; };
 		C94CADA9231984B600BB1BB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F455231765C10013ED05 /* Assets.xcassets */; };
-		C966EAB62317E4FF00005EE5 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C966EAB52317E4FE00005EE5 /* R.generated.swift */; };
 		C96C72CE23211C36001C2FA6 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C72CD23211C36001C2FA6 /* ViewModel.swift */; };
 		C96C72D023211FA0001C2FA6 /* VCBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C72CF23211FA0001C2FA6 /* VCBuildable.swift */; };
 		C96C72D223211FC4001C2FA6 /* AnyVCBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C72D123211FC4001C2FA6 /* AnyVCBuilder.swift */; };
@@ -73,6 +71,8 @@
 		C9D6C5E82321089B0064AACD /* MainMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6C5E72321089B0064AACD /* MainMapViewModel.swift */; };
 		C9D6C5EC232109C20064AACD /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6C5EB232109C20064AACD /* UI.swift */; };
 		C9D6C5EE232109E20064AACD /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6C5ED232109E20064AACD /* Routing.swift */; };
+		C9D89F842331BFC60044FEE9 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D89F832331BFC60044FEE9 /* R.generated.swift */; };
+		C9D89F852331BFCE0044FEE9 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D89F832331BFC60044FEE9 /* R.generated.swift */; };
 		C9E3F3AF2324A0EA00141BBC /* input.xcfilelist in Sources */ = {isa = PBXBuildFile; fileRef = C9E3F3AE2324A0EA00141BBC /* input.xcfilelist */; };
 		C9EA2AE42323B3D60034BB1D /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA2AE32323B3D60034BB1D /* Container.swift */; };
 		C9EA2AE62323B3E90034BB1D /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA2AE52323B3E90034BB1D /* ServiceFactory.swift */; };
@@ -144,7 +144,6 @@
 		C94CAD9023192DEA00BB1BB6 /* UITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITest.swift; sourceTree = "<group>"; };
 		C94CAD9223192DEA00BB1BB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C94CADB6231984B600BB1BB6 /* DEVELOP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DEVELOP.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C966EAB52317E4FE00005EE5 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		C96C72CD23211C36001C2FA6 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		C96C72CF23211FA0001C2FA6 /* VCBuildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCBuildable.swift; sourceTree = "<group>"; };
 		C96C72D123211FC4001C2FA6 /* AnyVCBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyVCBuilder.swift; sourceTree = "<group>"; };
@@ -193,6 +192,7 @@
 		C9D6C5E72321089B0064AACD /* MainMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapViewModel.swift; sourceTree = "<group>"; };
 		C9D6C5EB232109C20064AACD /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
 		C9D6C5ED232109E20064AACD /* Routing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
+		C9D89F832331BFC60044FEE9 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		C9DFA0762322833200EDCBCE /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		C9E3F3AE2324A0EA00141BBC /* input.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = input.xcfilelist; sourceTree = "<group>"; };
 		C9EA2AE32323B3D60034BB1D /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
@@ -400,7 +400,7 @@
 				C9D6C5DB232107E20064AACD /* Presentation */,
 				C9B9F44E231765C00013ED05 /* AppDelegate.swift */,
 				C9EA2AE72323B63E0034BB1D /* AppDelegate+Container.swift */,
-				C966EAB52317E4FE00005EE5 /* R.generated.swift */,
+				C9D89F832331BFC60044FEE9 /* R.generated.swift */,
 				C914952B2322089500FCF3AB /* Localizable.strings */,
 				C9B9F455231765C10013ED05 /* Assets.xcassets */,
 				C9B9F457231765C10013ED05 /* LaunchScreen.storyboard */,
@@ -906,11 +906,11 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/R.generated.swift,
+				$SRCROOT/$PROJECT_NAME/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/$PROJECT_NAME/R.generated.swift\"\n";
 		};
 		C97CDE89232818AC00E1BF75 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -949,7 +949,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C94CAD9D231984B600BB1BB6 /* AppDelegate.swift in Sources */,
-				C94CAD9E231984B600BB1BB6 /* R.generated.swift in Sources */,
+				C9D89F852331BFCE0044FEE9 /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -959,6 +959,7 @@
 			files = (
 				C9D6C5EE232109E20064AACD /* Routing.swift in Sources */,
 				C9EA2AE62323B3E90034BB1D /* ServiceFactory.swift in Sources */,
+				C9D89F842331BFC60044FEE9 /* R.generated.swift in Sources */,
 				C9A056452322532500EB9563 /* VerticalStackView.swift in Sources */,
 				C96C72CE23211C36001C2FA6 /* ViewModel.swift in Sources */,
 				C9B9F44F231765C00013ED05 /* AppDelegate.swift in Sources */,
@@ -994,7 +995,6 @@
 				C9E3F3AF2324A0EA00141BBC /* input.xcfilelist in Sources */,
 				C9095119232247930080A25B /* UIAlertController+Extension.swift in Sources */,
 				C9D6C5E3232108770064AACD /* MainMapUI.swift in Sources */,
-				C966EAB62317E4FF00005EE5 /* R.generated.swift in Sources */,
 				C909512623224D810080A25B /* UITextField+Extension.swift in Sources */,
 				C9D6C5E82321089B0064AACD /* MainMapViewModel.swift in Sources */,
 				C9A05642232252FE00EB9563 /* Optional+Extension.swift in Sources */,
