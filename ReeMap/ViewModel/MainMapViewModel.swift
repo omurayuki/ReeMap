@@ -3,20 +3,12 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-protocol MainMapViewModelInput {
-    
-    func setIsInitialZoom(_ bool: Bool)
-    func setIsBlockingAutoZoom(_ bool: Bool)
-    func setIsZoom(_ bool: Bool)
-    func setZoomBlockingTimer(_ timer: Timer?)
-}
+protocol MainMapViewModelInput {}
 
 protocol MainMapViewModelOutput {
     
-    func isBlockingAutoZoom() -> Bool
-    func isZoom() -> Bool
-    func getZoomBlockingTimer() -> Timer
     func zoomTo(location: CLLocation, left: () -> Void, right: () -> Void)
+    func changeZoomState()
 }
 
 protocol MainMapViewModelType: ViewModel {
@@ -25,7 +17,7 @@ protocol MainMapViewModelType: ViewModel {
     var outputs: MainMapViewModelOutput { get }
 }
 
-struct MainMapViewModel: MainMapViewModelType, MainMapViewModelInput, MainMapViewModelOutput {
+final class MainMapViewModel: NSObject, MainMapViewModelType, MainMapViewModelInput, MainMapViewModelOutput {
     
     var inputs: MainMapViewModelInput { return self }
     var outputs: MainMapViewModelOutput { return self }
@@ -35,48 +27,33 @@ struct MainMapViewModel: MainMapViewModelType, MainMapViewModelInput, MainMapVie
     private var blockingAutoZoom = BehaviorRelay<Bool?>(value: nil)
     private var zoomBlockingTimer = BehaviorRelay<Timer?>(value: nil)
     
-    init() {
+    override init() {
         
     }
     
-    func setIsInitialZoom(_ bool: Bool) {
-        initialZoom.accept(bool)
-    }
-    
-    func isInitialZoom() -> Bool {
-        return initialZoom.value
-    }
-    
-    func setIsBlockingAutoZoom(_ bool: Bool) {
-        return blockingAutoZoom.accept(bool)
-    }
-    
-    func isBlockingAutoZoom() -> Bool {
-        return blockingAutoZoom.value ?? Bool()
-    }
-    
-    func setIsZoom(_ bool: Bool) {
-        zooming.accept(bool)
-    }
-    
-    func isZoom() -> Bool {
-        return zooming.value ?? Bool()
-    }
-    
-    func setZoomBlockingTimer(_ timer: Timer?) {
-        zoomBlockingTimer.accept(timer)
-    }
-    
-    func getZoomBlockingTimer() -> Timer {
-        return zoomBlockingTimer.value ?? Timer()
-    }
-    
     func zoomTo(location: CLLocation, left: () -> Void, right: () -> Void) {
-        if isInitialZoom() == false {
+        if initialZoom.value == false {
             left()
+            initialZoom.accept(true)
         }
-        if isBlockingAutoZoom() == false {
+        if blockingAutoZoom.value == false {
+            zooming.accept(true)
             right()
+        }
+    }
+    
+    func changeZoomState() {
+        if zooming.value == true {
+            zooming.accept(false)
+            blockingAutoZoom.accept(false)
+        } else {
+            blockingAutoZoom.accept(true)
+            guard let timer = zoomBlockingTimer.value else { return }
+            if timer.isValid { timer.invalidate() }
+            zoomBlockingTimer.accept(.scheduledTimer(withTimeInterval: 10.0, repeats: false, block: { [unowned self] _ in
+                self.zoomBlockingTimer.accept(nil)
+                self.blockingAutoZoom.accept(false)
+            }))
         }
     }
 }

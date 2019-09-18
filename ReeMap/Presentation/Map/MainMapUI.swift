@@ -19,6 +19,8 @@ final class MainMapUI: MainMapUIProtocol {
         mapView.showsUserLocation = true
         mapView.showsCompass = true
         mapView.showsScale = true
+        mapView.showsCompass = false
+        mapView.showsScale = false
         return mapView
     }()
     

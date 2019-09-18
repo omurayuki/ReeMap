@@ -99,9 +99,7 @@ extension MainMapViewController {
                                  left: {
             let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 300, longitudinalMeters: 300)
             ui.mapView.setRegion(region, animated: false)
-            viewModel.inputs.setIsInitialZoom(true)
         }) {
-            viewModel.inputs.setIsZoom(true)
             ui.mapView.setCenter(location.coordinate, animated: true)
         }
     }
@@ -120,17 +118,6 @@ extension MainMapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        if viewModel.outputs.isZoom() == true {
-            viewModel.inputs.setIsZoom(false)
-            viewModel.inputs.setIsBlockingAutoZoom(false)
-        } else {
-            viewModel.inputs.setIsBlockingAutoZoom(true)
-            let timer = viewModel.outputs.getZoomBlockingTimer()
-            if timer.isValid { timer.invalidate() }
-            viewModel.inputs.setZoomBlockingTimer(.scheduledTimer(withTimeInterval: 10.0, repeats: false, block: { [unowned self] _ in
-                self.viewModel.inputs.setZoomBlockingTimer(nil)
-                self.viewModel.inputs.setIsBlockingAutoZoom(false)
-            }))
-        }
+        viewModel.outputs.changeZoomState()
     }
 }
