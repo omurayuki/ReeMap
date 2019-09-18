@@ -18,7 +18,7 @@ extension MainMapViewController: VCInjectable {
 
 final class MainMapViewController: UIViewController {
     
-    struct Const {
+    private struct Const {
         static let didUpdateLocation = "didUpdateLocation"
         static let showTurnOnLocationServiceAlert = "showTurnOnLocationServiceAlert"
     }
@@ -28,19 +28,14 @@ final class MainMapViewController: UIViewController {
     var viewModel: MainMapViewModelType!
     var disposeBag: DisposeBag!
     
+    // - TODO: デバック用なので後で消す
     var polyline: MKPolyline?
-    var isZooming: Bool?
-    var isBlockingAutoZoom: Bool?
-    var zoomBlockingTimer: Timer?
-    var didInitialZoom: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConfig()
         setupUI()
         setupViewModel()
-        
-        self.didInitialZoom = false
     }
 }
 
@@ -82,30 +77,31 @@ extension MainMapViewController {
             }).disposed(by: disposeBag)
     }
     
+    // - TODO: デバック用なので後で消す
     func updatePolylines() {
         var coordinateArray = [CLLocationCoordinate2D]()
         coordinateArray = LocationService.sharedInstance.locationDataArray.compactMap { $0.coordinate }
-        self.clearPolyline()
-        self.polyline = MKPolyline(coordinates: coordinateArray, count: coordinateArray.count)
+        clearPolyline()
+        polyline = MKPolyline(coordinates: coordinateArray, count: coordinateArray.count)
         ui.mapView.addOverlay(polyline ?? MKPolyline())
     }
     
+    // - TODO: デバック用なので後で消す
     func clearPolyline() {
-        if self.polyline != nil {
+        if polyline != nil {
             ui.mapView.removeOverlay(polyline ?? MKPolyline())
-            self.polyline = nil
+            polyline = nil
         }
     }
-
-    func zoomTo(location: CLLocation) {
-        if self.didInitialZoom == false {
-            let coordinate = location.coordinate
-            let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 300, longitudinalMeters: 300)
+    
+    private func zoomTo(location: CLLocation) {
+        viewModel.outputs.zoomTo(location: location,
+                                 left: {
+            let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 300, longitudinalMeters: 300)
             ui.mapView.setRegion(region, animated: false)
-            self.didInitialZoom = true
-        }
-        if self.isBlockingAutoZoom == false {
-            self.isZooming = true
+            viewModel.inputs.setIsInitialZoom(true)
+        }) {
+            viewModel.inputs.setIsZoom(true)
             ui.mapView.setCenter(location.coordinate, animated: true)
         }
     }
@@ -113,6 +109,7 @@ extension MainMapViewController {
 
 extension MainMapViewController: MKMapViewDelegate {
     
+    // - TODO: デバック用なので後で消す
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         guard let overlay = overlay as? MKPolyline else { return MKOverlayRenderer() }
         let polylineRenderer = MKPolylineRenderer(polyline: overlay)
@@ -123,20 +120,17 @@ extension MainMapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        if self.isZooming == true {
-            self.isZooming = false
-            self.isBlockingAutoZoom = false
+        if viewModel.outputs.isZoom() == true {
+            viewModel.inputs.setIsZoom(false)
+            viewModel.inputs.setIsBlockingAutoZoom(false)
         } else {
-            self.isBlockingAutoZoom = true
-            if let timer = self.zoomBlockingTimer {
-                if timer.isValid {
-                    timer.invalidate()
-                }
-            }
-            self.zoomBlockingTimer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: false, block: { _ in
-                self.zoomBlockingTimer = nil
-                self.isBlockingAutoZoom = false
-            })
+            viewModel.inputs.setIsBlockingAutoZoom(true)
+            let timer = viewModel.outputs.getZoomBlockingTimer()
+            if timer.isValid { timer.invalidate() }
+            viewModel.inputs.setZoomBlockingTimer(.scheduledTimer(withTimeInterval: 10.0, repeats: false, block: { [unowned self] _ in
+                self.viewModel.inputs.setZoomBlockingTimer(nil)
+                self.viewModel.inputs.setIsBlockingAutoZoom(false)
+            }))
         }
     }
 }
