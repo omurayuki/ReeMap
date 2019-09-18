@@ -11,7 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let vc = AppDelegate.container.resolve(MainMapViewController.self)
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
-        LocationService.sharedInstance.startUpdatingLocation()
+        LocationService.sharedInstance.requestAuthorization()
         FirebaseApp.configure()
         
         return true

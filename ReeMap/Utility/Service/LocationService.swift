@@ -13,7 +13,6 @@ final class LocationService: NSObject {
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.distanceFilter = 5
         
-        locationManager.requestAlwaysAuthorization()
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.pausesLocationUpdatesAutomatically = false
         locationDataArray = [CLLocation]()
@@ -23,10 +22,16 @@ final class LocationService: NSObject {
         locationManager.delegate = self
     }
     
+    func requestAuthorization() {
+        locationManager.requestAlwaysAuthorization()
+    }
+    
     func startUpdatingLocation() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedAlways:
             locationManager.startUpdatingLocation()
+        case .notDetermined:
+            break
         default:
             showTurnOnLocationServiceAlert()
         }
