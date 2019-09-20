@@ -18,11 +18,6 @@ extension MainMapViewController: VCInjectable {
 
 final class MainMapViewController: UIViewController {
     
-    private struct Const {
-        static let didUpdateLocation = "didUpdateLocation"
-        static let showTurnOnLocationServiceAlert = "showTurnOnLocationServiceAlert"
-    }
-    
     var ui: MainMapUIProtocol! { didSet { ui.viewController = self } }
     var routing: MainMapRoutingProtocol! { didSet { routing.viewController = self } }
     var viewModel: MainMapViewModelType!
@@ -72,7 +67,7 @@ extension MainMapViewController {
             }).disposed(by: disposeBag)
         
         NotificationCenter.default.rx
-            .notification(Notification.Name(rawValue: Const.didUpdateLocation))
+            .notification(.didUpdateLocation)
             .subscribe(onNext: { [unowned self] notification in
                 if let userInfo = notification.userInfo {
                     self.updatePolylines()
@@ -83,7 +78,7 @@ extension MainMapViewController {
             }).disposed(by: disposeBag)
         
         NotificationCenter.default.rx
-            .notification(Notification.Name(rawValue: Const.showTurnOnLocationServiceAlert))
+            .notification(.showTurnOnLocationServiceAlert)
             .subscribe(onNext: { [unowned self] _ in
                 self.routing.showSettingsAlert {
                     guard let url = URL(string: UIApplication.openSettingsURLString) else { return }

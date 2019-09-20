@@ -48,11 +48,11 @@ final class LocationService: NSObject {
     }
     
     func showTurnOnLocationServiceAlert() {
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "showTurnOnLocationServiceAlert"), object: nil)
+        NotificationUtils.didUpdate(notification: .showTurnOnLocationServiceAlert)
     }
     
     func notifiyDidUpdateLocation(newLocation: CLLocation) {
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "didUpdateLocation"), object: nil, userInfo: ["location": newLocation])
+        NotificationUtils.didUpdate(notification: .didUpdateLocation, userInfo: ["location": newLocation])
     }
 }
 

@@ -11,7 +11,7 @@
 		C90595E62332B026008D113D /* PlaceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90595E52332B026008D113D /* PlaceEntity.swift */; };
 		C90595E92332B178008D113D /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90595E82332B178008D113D /* Entity.swift */; };
 		C90595F12332B3E2008D113D /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90595F02332B3E2008D113D /* Place.swift */; };
-		C909510B232237C70080A25B /* AppUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C909510A232237C70080A25B /* AppUserDefault.swift */; };
+		C909510B232237C70080A25B /* AppUserDefaultUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C909510A232237C70080A25B /* AppUserDefaultUtils.swift */; };
 		C909510D2322380D0080A25B /* KeyboardNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C909510C2322380D0080A25B /* KeyboardNotifier.swift */; };
 		C9095113232240560080A25B /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9095112232240560080A25B /* Date+Extension.swift */; };
 		C9095115232242D60080A25B /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9095114232242D60080A25B /* DateFormatter+Extension.swift */; };
@@ -81,6 +81,7 @@
 		C9EA2AE42323B3D60034BB1D /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA2AE32323B3D60034BB1D /* Container.swift */; };
 		C9EA2AE62323B3E90034BB1D /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA2AE52323B3E90034BB1D /* ServiceFactory.swift */; };
 		C9EA2AE82323B63E0034BB1D /* AppDelegate+Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA2AE72323B63E0034BB1D /* AppDelegate+Container.swift */; };
+		C9FC93332335109E00B1EFA9 /* NotificationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FC93322335109E00B1EFA9 /* NotificationUtils.swift */; };
 		E1654FF77DC3DF1FF58C8D01 /* Pods_DEVELOP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E10187F25C1CD365AA94B2 /* Pods_DEVELOP.framework */; };
 /* End PBXBuildFile section */
 
@@ -132,7 +133,7 @@
 		C90595E52332B026008D113D /* PlaceEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceEntity.swift; sourceTree = "<group>"; };
 		C90595E82332B178008D113D /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		C90595F02332B3E2008D113D /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
-		C909510A232237C70080A25B /* AppUserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserDefault.swift; sourceTree = "<group>"; };
+		C909510A232237C70080A25B /* AppUserDefaultUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserDefaultUtils.swift; sourceTree = "<group>"; };
 		C909510C2322380D0080A25B /* KeyboardNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNotifier.swift; sourceTree = "<group>"; };
 		C9095112232240560080A25B /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		C9095114232242D60080A25B /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
@@ -206,6 +207,7 @@
 		C9EA2AE32323B3D60034BB1D /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		C9EA2AE52323B3E90034BB1D /* ServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
 		C9EA2AE72323B63E0034BB1D /* AppDelegate+Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Container.swift"; sourceTree = "<group>"; };
+		C9FC93322335109E00B1EFA9 /* NotificationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUtils.swift; sourceTree = "<group>"; };
 		D6EC022F1E13C0F9768F4281 /* Pods_RELEASE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RELEASE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E139BA72F7B9E2D04C1A6676 /* Pods-RELEASE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RELEASE.debug.xcconfig"; path = "Target Support Files/Pods-RELEASE/Pods-RELEASE.debug.xcconfig"; sourceTree = "<group>"; };
 		F5D5FF67ACEC6F97BF77027A /* Pods_ReeMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReeMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -382,8 +384,8 @@
 		C914952D232237A300FCF3AB /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				C909510A232237C70080A25B /* AppUserDefault.swift */,
-				C909510C2322380D0080A25B /* KeyboardNotifier.swift */,
+				C909510A232237C70080A25B /* AppUserDefaultUtils.swift */,
+				C9FC93322335109E00B1EFA9 /* NotificationUtils.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -411,6 +413,7 @@
 			isa = PBXGroup;
 			children = (
 				C9A0564B232263B000EB9563 /* CountService.swift */,
+				C909510C2322380D0080A25B /* KeyboardNotifier.swift */,
 				C99513BE23257B5000931012 /* LocationService.swift */,
 			);
 			path = Service;
@@ -1026,6 +1029,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9FC93332335109E00B1EFA9 /* NotificationUtils.swift in Sources */,
 				C9D6C5EE232109E20064AACD /* Routing.swift in Sources */,
 				C9EA2AE62323B3E90034BB1D /* ServiceFactory.swift in Sources */,
 				C9D89F842331BFC60044FEE9 /* R.generated.swift in Sources */,
@@ -1062,7 +1066,7 @@
 				C9D6C5E52321087F0064AACD /* MainMapRouting.swift in Sources */,
 				C909512023224AA00080A25B /* TextComponent.swift in Sources */,
 				C9095117232242FE0080A25B /* NSLayoutAnchor+Extension.swift in Sources */,
-				C909510B232237C70080A25B /* AppUserDefault.swift in Sources */,
+				C909510B232237C70080A25B /* AppUserDefaultUtils.swift in Sources */,
 				C96C72D223211FC4001C2FA6 /* AnyVCBuilder.swift in Sources */,
 				C9E3F3AF2324A0EA00141BBC /* input.xcfilelist in Sources */,
 				C9095119232247930080A25B /* UIAlertController+Extension.swift in Sources */,
