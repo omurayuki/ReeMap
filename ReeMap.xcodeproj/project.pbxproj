@@ -27,6 +27,10 @@
 		C914952C2322089500FCF3AB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C914952B2322089500FCF3AB /* Localizable.strings */; };
 		C92C822A2323FC0B00983C36 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92C82292323FC0B00983C36 /* MapKit.framework */; };
 		C9369C3F2332ADFE0040B02C /* DummyPlaces.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9369C3E2332ADFE0040B02C /* DummyPlaces.plist */; };
+		C94A1A502335177700974431 /* MapUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A4F2335177700974431 /* MapUseCase.swift */; };
+		C94A1A522335178400974431 /* MapTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A512335178400974431 /* MapTranslator.swift */; };
+		C94A1A542335187D00974431 /* MapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A532335187D00974431 /* MapRepository.swift */; };
+		C94A1A562335189A00974431 /* MapRemoteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A552335189A00974431 /* MapRemoteDataStore.swift */; };
 		C94CAD9123192DEA00BB1BB6 /* UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94CAD9023192DEA00BB1BB6 /* UITest.swift */; };
 		C94CAD9D231984B600BB1BB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9F44E231765C00013ED05 /* AppDelegate.swift */; };
 		C94CADA0231984B600BB1BB6 /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0E12317A59200F29B51 /* Reachability.framework */; };
@@ -36,6 +40,7 @@
 		C94CADA7231984B600BB1BB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F457231765C10013ED05 /* LaunchScreen.storyboard */; };
 		C94CADA8231984B600BB1BB6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9B2F0F82317D37200F29B51 /* GoogleService-Info.plist */; };
 		C94CADA9231984B600BB1BB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F455231765C10013ED05 /* Assets.xcassets */; };
+		C96483BF23352E3D0023BB7D /* MapDataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96483BE23352E3D0023BB7D /* MapDataStoreFactory.swift */; };
 		C96C72CE23211C36001C2FA6 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C72CD23211C36001C2FA6 /* ViewModel.swift */; };
 		C96C72D023211FA0001C2FA6 /* VCBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C72CF23211FA0001C2FA6 /* VCBuildable.swift */; };
 		C96C72D223211FC4001C2FA6 /* AnyVCBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C72D123211FC4001C2FA6 /* AnyVCBuilder.swift */; };
@@ -149,10 +154,15 @@
 		C914952B2322089500FCF3AB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C92C82292323FC0B00983C36 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C9369C3E2332ADFE0040B02C /* DummyPlaces.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DummyPlaces.plist; sourceTree = "<group>"; };
+		C94A1A4F2335177700974431 /* MapUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUseCase.swift; sourceTree = "<group>"; };
+		C94A1A512335178400974431 /* MapTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTranslator.swift; sourceTree = "<group>"; };
+		C94A1A532335187D00974431 /* MapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRepository.swift; sourceTree = "<group>"; };
+		C94A1A552335189A00974431 /* MapRemoteDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRemoteDataStore.swift; sourceTree = "<group>"; };
 		C94CAD8E23192DE900BB1BB6 /* UITest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94CAD9023192DEA00BB1BB6 /* UITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITest.swift; sourceTree = "<group>"; };
 		C94CAD9223192DEA00BB1BB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C94CADB6231984B600BB1BB6 /* DEVELOP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DEVELOP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C96483BE23352E3D0023BB7D /* MapDataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDataStoreFactory.swift; sourceTree = "<group>"; };
 		C96C72CD23211C36001C2FA6 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		C96C72CF23211FA0001C2FA6 /* VCBuildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCBuildable.swift; sourceTree = "<group>"; };
 		C96C72D123211FC4001C2FA6 /* AnyVCBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyVCBuilder.swift; sourceTree = "<group>"; };
@@ -305,6 +315,7 @@
 		C90595EA2332B2F8008D113D /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				C94A1A532335187D00974431 /* MapRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -312,6 +323,7 @@
 		C90595EB2332B2FD008D113D /* DataStore */ = {
 			isa = PBXGroup;
 			children = (
+				C96483BD23352E240023BB7D /* Map */,
 			);
 			path = DataStore;
 			sourceTree = "<group>";
@@ -319,6 +331,7 @@
 		C90595EC2332B375008D113D /* Translator */ = {
 			isa = PBXGroup;
 			children = (
+				C94A1A512335178400974431 /* MapTranslator.swift */,
 			);
 			path = Translator;
 			sourceTree = "<group>";
@@ -326,6 +339,7 @@
 		C90595ED2332B382008D113D /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				C94A1A4F2335177700974431 /* MapUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -398,6 +412,15 @@
 				C94CAD9223192DEA00BB1BB6 /* Info.plist */,
 			);
 			path = UITest;
+			sourceTree = "<group>";
+		};
+		C96483BD23352E240023BB7D /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				C94A1A552335189A00974431 /* MapRemoteDataStore.swift */,
+				C96483BE23352E3D0023BB7D /* MapDataStoreFactory.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		C9A056432322531000EB9563 /* Custom */ = {
@@ -1045,8 +1068,11 @@
 				C9A056322322522C00EB9563 /* UIStackView+Extension.swift in Sources */,
 				C9A056472322533E00EB9563 /* PaddingTextField.swift in Sources */,
 				C909511B23224A3B0080A25B /* UIButton+Extension.swift in Sources */,
+				C94A1A502335177700974431 /* MapUseCase.swift in Sources */,
+				C94A1A522335178400974431 /* MapTranslator.swift in Sources */,
 				C9B379C62330661E00D1BF77 /* UserAnnotation.swift in Sources */,
 				C9A05640232252EC00EB9563 /* String+Extension.swift in Sources */,
+				C94A1A542335187D00974431 /* MapRepository.swift in Sources */,
 				C9095115232242D60080A25B /* DateFormatter+Extension.swift in Sources */,
 				C9D6C5EC232109C20064AACD /* UI.swift in Sources */,
 				C9A0563A2322528F00EB9563 /* Array+Extension.swift in Sources */,
@@ -1058,8 +1084,10 @@
 				C909512223224AC30080A25B /* UIFont+Extension.swift in Sources */,
 				C96C72D023211FA0001C2FA6 /* VCBuildable.swift in Sources */,
 				C90595F12332B3E2008D113D /* Place.swift in Sources */,
+				C94A1A562335189A00974431 /* MapRemoteDataStore.swift in Sources */,
 				C9A056362322526400EB9563 /* UIImageView+Extension.swift in Sources */,
 				C909512823224DA00080A25B /* UIViewController+Extension.swift in Sources */,
+				C96483BF23352E3D0023BB7D /* MapDataStoreFactory.swift in Sources */,
 				C9EA2AE82323B63E0034BB1D /* AppDelegate+Container.swift in Sources */,
 				C9A056342322524D00EB9563 /* UIImage+Extension.swift in Sources */,
 				C9A056302322521900EB9563 /* UIView+Extension.swift in Sources */,

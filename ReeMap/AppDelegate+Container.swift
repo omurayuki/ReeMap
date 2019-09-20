@@ -12,7 +12,7 @@ extension AppDelegate {
         .register(MainMapRoutingProtocol.self) { _ in MainMapRouting() }
     
         // MARK: ViewModel
-        .register(MainMapViewModelType.self) { _ in MainMapViewModel() }
+        .register(MainMapViewModelType.self) { _ in MainMapViewModel(useCase: MapUseCase(repository: MapRepository())) }
     
         // MARK: DisposeBag
         .register(DisposeBag.self) { _ in DisposeBag() }

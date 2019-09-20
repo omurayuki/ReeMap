@@ -56,6 +56,8 @@ extension MainMapViewController {
     }
     
     private func setupViewModel() {
+        viewModel.translate()
+        
         ui.currentLocationBtn.rx.tap.asDriver()
             .drive(onNext: { _ in
                 print("hoge")

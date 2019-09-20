@@ -1,13 +1,13 @@
 import Foundation
 
-protocol PlaceProtocol {
+protocol PlaceEntityProtocol {
     
     var title: String { get set }
     var latitude: Double { get set }
     var longitude: Double { get set }
 }
 
-extension PlaceEntity: PlaceProtocol {}
+extension PlaceEntity: PlaceEntityProtocol {}
 
 struct PlaceEntity: Entity {
     

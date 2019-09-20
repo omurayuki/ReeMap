@@ -15,9 +15,13 @@ protocol MainMapViewModelType: ViewModel {
     
     var inputs: MainMapViewModelInput { get }
     var outputs: MainMapViewModelOutput { get }
+    
+    func translate()
 }
 
 final class MainMapViewModel: NSObject, MainMapViewModelType, MainMapViewModelInput, MainMapViewModelOutput {
+    
+    private var useCase: MapUseCaseProtocol
     
     var inputs: MainMapViewModelInput { return self }
     var outputs: MainMapViewModelOutput { return self }
@@ -27,7 +31,11 @@ final class MainMapViewModel: NSObject, MainMapViewModelType, MainMapViewModelIn
     private var blockingAutoZoom = BehaviorRelay<Bool?>(value: nil)
     private var zoomBlockingTimer = BehaviorRelay<Timer?>(value: nil)
     
-    override init() {
+    init(useCase: MapUseCaseProtocol) {
+        self.useCase = useCase
+    }
+    
+    func translate() {
         
     }
     
