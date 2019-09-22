@@ -12,7 +12,7 @@ extension AppDelegate {
         .register(MainMapRoutingProtocol.self) { _ in MainMapRouting() }
     
         // MARK: ViewModel
-        .register(MainMapViewModelType.self) { _ in MainMapViewModel(useCase: MapUseCase(repository: MapRepository())) }
+        .register(MainMapViewModel.self) { _ in MainMapViewModel(useCase: MapUseCase(repository: MapRepository())) }
     
         // MARK: DisposeBag
         .register(DisposeBag.self) { _ in DisposeBag() }
@@ -22,7 +22,7 @@ extension AppDelegate {
             AnyVCBuilder<MainMapViewController>()
                 .with(ui: $0.resolve(MainMapUIProtocol.self))
                 .with(routing: $0.resolve(MainMapRoutingProtocol.self))
-                .with(viewModel: $0.resolve(MainMapViewModelType.self))
+                .with(viewModel: $0.resolve(MainMapViewModel.self))
                 .with(disposeBag: $0.resolve(DisposeBag.self))
                 .build()
         }

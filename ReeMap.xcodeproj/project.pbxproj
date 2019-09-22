@@ -26,7 +26,6 @@
 		C909512823224DA00080A25B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C909512723224DA00080A25B /* UIViewController+Extension.swift */; };
 		C914952C2322089500FCF3AB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C914952B2322089500FCF3AB /* Localizable.strings */; };
 		C92C822A2323FC0B00983C36 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92C82292323FC0B00983C36 /* MapKit.framework */; };
-		C9369C3F2332ADFE0040B02C /* DummyPlaces.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9369C3E2332ADFE0040B02C /* DummyPlaces.plist */; };
 		C94A1A502335177700974431 /* MapUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A4F2335177700974431 /* MapUseCase.swift */; };
 		C94A1A522335178400974431 /* MapTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A512335178400974431 /* MapTranslator.swift */; };
 		C94A1A542335187D00974431 /* MapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A532335187D00974431 /* MapRepository.swift */; };
@@ -40,6 +39,8 @@
 		C94CADA7231984B600BB1BB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F457231765C10013ED05 /* LaunchScreen.storyboard */; };
 		C94CADA8231984B600BB1BB6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9B2F0F82317D37200F29B51 /* GoogleService-Info.plist */; };
 		C94CADA9231984B600BB1BB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F455231765C10013ED05 /* Assets.xcassets */; };
+		C963AF5D233716F2005E10F9 /* Observable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963AF5C233716F2005E10F9 /* Observable+Extension.swift */; };
+		C963AF5F233721AC005E10F9 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963AF5E233721AC005E10F9 /* Annotation.swift */; };
 		C96483BF23352E3D0023BB7D /* MapDataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96483BE23352E3D0023BB7D /* MapDataStoreFactory.swift */; };
 		C96C72CE23211C36001C2FA6 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C72CD23211C36001C2FA6 /* ViewModel.swift */; };
 		C96C72D023211FA0001C2FA6 /* VCBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C72CF23211FA0001C2FA6 /* VCBuildable.swift */; };
@@ -153,7 +154,6 @@
 		C909512723224DA00080A25B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		C914952B2322089500FCF3AB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C92C82292323FC0B00983C36 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		C9369C3E2332ADFE0040B02C /* DummyPlaces.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DummyPlaces.plist; sourceTree = "<group>"; };
 		C94A1A4F2335177700974431 /* MapUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUseCase.swift; sourceTree = "<group>"; };
 		C94A1A512335178400974431 /* MapTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTranslator.swift; sourceTree = "<group>"; };
 		C94A1A532335187D00974431 /* MapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRepository.swift; sourceTree = "<group>"; };
@@ -162,6 +162,8 @@
 		C94CAD9023192DEA00BB1BB6 /* UITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITest.swift; sourceTree = "<group>"; };
 		C94CAD9223192DEA00BB1BB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C94CADB6231984B600BB1BB6 /* DEVELOP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DEVELOP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C963AF5C233716F2005E10F9 /* Observable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Extension.swift"; sourceTree = "<group>"; };
+		C963AF5E233721AC005E10F9 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		C96483BE23352E3D0023BB7D /* MapDataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDataStoreFactory.swift; sourceTree = "<group>"; };
 		C96C72CD23211C36001C2FA6 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		C96C72CF23211FA0001C2FA6 /* VCBuildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCBuildable.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 		C90595EF2332B3B5008D113D /* ViewData */ = {
 			isa = PBXGroup;
 			children = (
+				C963AF5E233721AC005E10F9 /* Annotation.swift */,
 			);
 			path = ViewData;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				C9A0563D232252C500EB9563 /* UIPageController+Extension.swift */,
 				C9A0563F232252EC00EB9563 /* String+Extension.swift */,
 				C9A05641232252FE00EB9563 /* Optional+Extension.swift */,
+				C963AF5C233716F2005E10F9 /* Observable+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -492,7 +496,6 @@
 				C9B9F457231765C10013ED05 /* LaunchScreen.storyboard */,
 				C9B2F0F82317D37200F29B51 /* GoogleService-Info.plist */,
 				C9B9F45A231765C10013ED05 /* Info.plist */,
-				C9369C3E2332ADFE0040B02C /* DummyPlaces.plist */,
 			);
 			path = ReeMap;
 			sourceTree = "<group>";
@@ -760,7 +763,6 @@
 				C9B9F459231765C10013ED05 /* LaunchScreen.storyboard in Resources */,
 				C9B2F0F92317D37200F29B51 /* GoogleService-Info.plist in Resources */,
 				C9B9F456231765C10013ED05 /* Assets.xcassets in Resources */,
-				C9369C3F2332ADFE0040B02C /* DummyPlaces.plist in Resources */,
 				C914952C2322089500FCF3AB /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1069,6 +1071,7 @@
 				C9A056472322533E00EB9563 /* PaddingTextField.swift in Sources */,
 				C909511B23224A3B0080A25B /* UIButton+Extension.swift in Sources */,
 				C94A1A502335177700974431 /* MapUseCase.swift in Sources */,
+				C963AF5D233716F2005E10F9 /* Observable+Extension.swift in Sources */,
 				C94A1A522335178400974431 /* MapTranslator.swift in Sources */,
 				C9B379C62330661E00D1BF77 /* UserAnnotation.swift in Sources */,
 				C9A05640232252EC00EB9563 /* String+Extension.swift in Sources */,
@@ -1105,6 +1108,7 @@
 				C909511D23224A700080A25B /* UIColor+Extension.swift in Sources */,
 				C9EA2AE42323B3D60034BB1D /* Container.swift in Sources */,
 				C9A056492322537500EB9563 /* TableViewDataSource.swift in Sources */,
+				C963AF5F233721AC005E10F9 /* Annotation.swift in Sources */,
 				C9A0563C232252AE00EB9563 /* UITableView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

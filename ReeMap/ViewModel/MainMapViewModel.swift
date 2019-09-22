@@ -3,28 +3,9 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-protocol MainMapViewModelInput {}
-
-protocol MainMapViewModelOutput {
+final class MainMapViewModel: ViewModel {
     
-    func zoomTo(location: CLLocation, left: () -> Void, right: () -> Void)
-    func changeZoomState()
-}
-
-protocol MainMapViewModelType: ViewModel {
-    
-    var inputs: MainMapViewModelInput { get }
-    var outputs: MainMapViewModelOutput { get }
-    
-    func translate()
-}
-
-final class MainMapViewModel: NSObject, MainMapViewModelType, MainMapViewModelInput, MainMapViewModelOutput {
-    
-    private var useCase: MapUseCaseProtocol
-    
-    var inputs: MainMapViewModelInput { return self }
-    var outputs: MainMapViewModelOutput { return self }
+    private let useCase: MapUseCaseProtocol
     
     private var initialZoom = BehaviorRelay<Bool>(value: false)
     private var zooming = BehaviorRelay<Bool?>(value: nil)
@@ -34,10 +15,21 @@ final class MainMapViewModel: NSObject, MainMapViewModelType, MainMapViewModelIn
     init(useCase: MapUseCaseProtocol) {
         self.useCase = useCase
     }
+}
+
+extension MainMapViewModel {
     
-    func translate() {
+    struct Input {}
+    
+    struct Output {}
+    
+    func transform(input: Input) -> Output {
         
+        return Output()
     }
+}
+
+extension MainMapViewModel {
     
     func zoomTo(location: CLLocation, left: () -> Void, right: () -> Void) {
         if initialZoom.value == false {
@@ -58,10 +50,16 @@ final class MainMapViewModel: NSObject, MainMapViewModelType, MainMapViewModelIn
             blockingAutoZoom.accept(true)
             guard let timer = zoomBlockingTimer.value else { return }
             if timer.isValid { timer.invalidate() }
-            zoomBlockingTimer.accept(.scheduledTimer(withTimeInterval: 10.0, repeats: false, block: { [unowned self] _ in
+            zoomBlockingTimer.accept(.scheduledTimer(withTimeInterval: 10.0,
+                                                     repeats: false,
+                                                     block: { [unowned self] _ in
                 self.zoomBlockingTimer.accept(nil)
                 self.blockingAutoZoom.accept(false)
             }))
         }
+    }
+    
+    func sample() -> Observable<[Place]> {
+        return useCase.fetchMemos()
     }
 }
