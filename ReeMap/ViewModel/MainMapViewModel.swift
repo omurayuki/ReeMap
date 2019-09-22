@@ -1,5 +1,6 @@
 import CoreLocation
 import Foundation
+import MapKit
 import RxCocoa
 import RxSwift
 
@@ -12,6 +13,9 @@ final class MainMapViewModel: ViewModel {
     private var blockingAutoZoom = BehaviorRelay<Bool?>(value: nil)
     private var zoomBlockingTimer = BehaviorRelay<Timer?>(value: nil)
     
+    private var annotations = BehaviorRelay<[Annotation]>(value: [])
+    private var currentLocation = BehaviorRelay<CLLocation>(value: CLLocation(latitude: 0, longitude: 0))
+    
     init(useCase: MapUseCaseProtocol) {
         self.useCase = useCase
     }
@@ -19,17 +23,44 @@ final class MainMapViewModel: ViewModel {
 
 extension MainMapViewModel {
     
-    struct Input {}
+    struct Input {
+        
+        let viewWillAppear: Observable<[Any]>
+    }
     
-    struct Output {}
+    struct Output {
+        
+        let places: Observable<[Place]>
+        let error: Observable<Error>
+        var didAnnotationFetched: Observable<[Annotation]>
+        var didLocationUpdated: Observable<CLLocation>
+    }
     
     func transform(input: Input) -> Output {
+        let places = input.viewWillAppear
+            .flatMap { [unowned self] _ -> Observable<Event<[Place]>> in
+                self.useCase.fetchMemos().do(onNext: { [unowned self] places in
+                    self.annotations
+                        .accept(places.compactMap { Annotation(title: $0.title,
+                                                               subtitle: nil,
+                                                               coordinate: CLLocationCoordinate2D(latitude: $0.latitude,
+                                                                                                  longitude: $0.longitude))
+                        })
+                }).materialize()
+            }.share(replay: 1)
         
-        return Output()
+        return Output(places: places.elements(),
+                      error: places.errors(),
+                      didAnnotationFetched: annotations.compactMap { $0 },
+                      didLocationUpdated: currentLocation.asObservable())
     }
 }
 
 extension MainMapViewModel {
+    
+    func updateLocation(_ location: CLLocation) {
+        currentLocation.accept(location)
+    }
     
     func zoomTo(location: CLLocation, left: () -> Void, right: () -> Void) {
         if initialZoom.value == false {
@@ -59,7 +90,13 @@ extension MainMapViewModel {
         }
     }
     
-    func sample() -> Observable<[Place]> {
-        return useCase.fetchMemos()
+    func compareCoodinate() {
+        var value = CLLocationDistance()
+        var value2 = CLLocationDistance()
+        annotations.value.forEach { annotation in
+            value = currentLocation.value.coordinate.latitude.distance(to: annotation.coordinate.latitude)
+            value2 = annotation.coordinate.latitude - currentLocation.value.coordinate.latitude
+            print(value == value2)
+        }
     }
 }

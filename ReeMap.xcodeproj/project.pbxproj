@@ -41,6 +41,7 @@
 		C94CADA9231984B600BB1BB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F455231765C10013ED05 /* Assets.xcassets */; };
 		C963AF5D233716F2005E10F9 /* Observable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963AF5C233716F2005E10F9 /* Observable+Extension.swift */; };
 		C963AF5F233721AC005E10F9 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963AF5E233721AC005E10F9 /* Annotation.swift */; };
+		C963AF6223376D74005E10F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963AF6123376D74005E10F9 /* Constants.swift */; };
 		C96483BF23352E3D0023BB7D /* MapDataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96483BE23352E3D0023BB7D /* MapDataStoreFactory.swift */; };
 		C96C72CE23211C36001C2FA6 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C72CD23211C36001C2FA6 /* ViewModel.swift */; };
 		C96C72D023211FA0001C2FA6 /* VCBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C72CF23211FA0001C2FA6 /* VCBuildable.swift */; };
@@ -164,6 +165,7 @@
 		C94CADB6231984B600BB1BB6 /* DEVELOP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DEVELOP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C963AF5C233716F2005E10F9 /* Observable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Extension.swift"; sourceTree = "<group>"; };
 		C963AF5E233721AC005E10F9 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
+		C963AF6123376D74005E10F9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C96483BE23352E3D0023BB7D /* MapDataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDataStoreFactory.swift; sourceTree = "<group>"; };
 		C96C72CD23211C36001C2FA6 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		C96C72CF23211FA0001C2FA6 /* VCBuildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCBuildable.swift; sourceTree = "<group>"; };
@@ -418,6 +420,14 @@
 			path = UITest;
 			sourceTree = "<group>";
 		};
+		C963AF6023376D64005E10F9 /* Consts */ = {
+			isa = PBXGroup;
+			children = (
+				C963AF6123376D74005E10F9 /* Constants.swift */,
+			);
+			path = Consts;
+			sourceTree = "<group>";
+		};
 		C96483BD23352E240023BB7D /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -553,6 +563,7 @@
 		C9D6C5DF2321081C0064AACD /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				C963AF6023376D64005E10F9 /* Consts */,
 				C9A0564A2322639F00EB9563 /* Service */,
 				C9A056432322531000EB9563 /* Custom */,
 				C909511E23224A900080A25B /* Widget */,
@@ -1074,6 +1085,7 @@
 				C963AF5D233716F2005E10F9 /* Observable+Extension.swift in Sources */,
 				C94A1A522335178400974431 /* MapTranslator.swift in Sources */,
 				C9B379C62330661E00D1BF77 /* UserAnnotation.swift in Sources */,
+				C963AF6223376D74005E10F9 /* Constants.swift in Sources */,
 				C9A05640232252EC00EB9563 /* String+Extension.swift in Sources */,
 				C94A1A542335187D00974431 /* MapRepository.swift in Sources */,
 				C9095115232242D60080A25B /* DateFormatter+Extension.swift in Sources */,

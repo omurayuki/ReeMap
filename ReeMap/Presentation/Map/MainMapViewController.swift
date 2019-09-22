@@ -18,48 +18,16 @@ extension MainMapViewController: VCInjectable {
 
 final class MainMapViewController: UIViewController {
     
-    private struct Const {
-        
-        static let annotation = "annotationView"
-    }
-    
     var ui: MainMapUIProtocol! { didSet { ui.viewController = self } }
     var routing: MainMapRoutingProtocol! { didSet { routing.viewController = self } }
     var viewModel: MainMapViewModel!
     var disposeBag: DisposeBag!
     
-    // - TODO: デバック用なので後で消す
-    var polyline: MKPolyline?
-    var placeArr = [Annotation]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.sample()
-            .subscribe(onNext: { [unowned self] places in
-                self.placeArr = places.compactMap { Annotation(title: $0.title,
-                                                               subtitle: nil,
-                                                               coordinate: CLLocationCoordinate2D(latitude: $0.latitude,
-                                                                                                  longitude: $0.longitude)) }
-                self.ui.mapView.addAnnotations(self.placeArr)
-            }).disposed(by: disposeBag)
         setupConfig()
         setupUI()
         setupViewModel()
-        // 1
-        let location = CLLocationCoordinate2D(latitude: 35.658581,
-                                              longitude: 139.745433)
-        
-        // 2
-        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        let region = MKCoordinateRegion(center: location, span: span)
-        ui.mapView.setRegion(region, animated: true)
-        
-        //3
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = location
-        annotation.title = "Big Ben"
-        annotation.subtitle = "London"
-        ui.mapView.addAnnotation(annotation)
     }
 }
 
@@ -70,8 +38,26 @@ extension MainMapViewController {
     }
     
     private func setupViewModel() {
-        let input = MainMapViewModel.Input()
+        let input = MainMapViewModel.Input(viewWillAppear: rx.sentMessage(#selector(viewWillAppear(_:))).asObservable())
         let output = viewModel.transform(input: input)
+        
+        output.places
+            .subscribe(onNext: { _ in }).disposed(by: disposeBag)
+        
+        output.error
+            .subscribe(onNext: { [unowned self] _ in
+                self.showError(message: R.string.localizable.error_message_network())
+            }).disposed(by: disposeBag)
+        
+        output.didAnnotationFetched
+            .subscribe(onNext: { [unowned self] annotations in
+                self.ui.mapView.addAnnotations(annotations)
+            }).disposed(by: disposeBag)
+        
+        output.didLocationUpdated
+            .subscribe(onNext: { [unowned self] _ in
+                self.viewModel.compareCoodinate()
+            }).disposed(by: disposeBag)
         
         ui.currentLocationBtn.rx.tap.asDriver()
             .drive(onNext: { _ in
@@ -83,26 +69,15 @@ extension MainMapViewController {
                 print("hoge")
             }).disposed(by: disposeBag)
         
-        NotificationCenter.default.rx
-            .notification(.didUpdateLocation)
+        NotificationCenter.default.rx.notification(.didUpdateLocation)
             .subscribe(onNext: { [unowned self] notification in
-                if let userInfo = notification.userInfo {
-                    self.updatePolylines()
-                    if let newLocation = userInfo["location"] as? CLLocation {
-                        self.zoomTo(location: newLocation)
-                        var value = CLLocationDistance()
-                        var value2 = CLLocationDistance()
-                        self.placeArr.forEach { place in
-                            value = newLocation.coordinate.latitude.distance(to: place.coordinate.latitude)
-                            value2 = place.coordinate.latitude - newLocation.coordinate.latitude
-                            print(value == value2)
-                        }
-                    }
+                if let newLocation = notification.userInfo?[Constants.DictKey.location] as? CLLocation {
+                    self.zoomTo(location: newLocation)
+                    self.viewModel.updateLocation(newLocation)
                 }
             }).disposed(by: disposeBag)
         
-        NotificationCenter.default.rx
-            .notification(.showTurnOnLocationServiceAlert)
+        NotificationCenter.default.rx.notification(.showTurnOnLocationServiceAlert)
             .subscribe(onNext: { [unowned self] _ in
                 self.routing.showSettingsAlert {
                     guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
@@ -111,28 +86,11 @@ extension MainMapViewController {
             }).disposed(by: disposeBag)
     }
     
-    // - TODO: デバック用なので後で消す
-    func updatePolylines() {
-        var coordinateArray = [CLLocationCoordinate2D]()
-        coordinateArray = LocationService.sharedInstance.locationDataArray.compactMap { $0.coordinate }
-        clearPolyline()
-        polyline = MKPolyline(coordinates: coordinateArray, count: coordinateArray.count)
-        ui.mapView.addOverlay(polyline ?? MKPolyline())
-    }
-    
-    // - TODO: デバック用なので後で消す
-    func clearPolyline() {
-        if polyline != nil {
-            ui.mapView.removeOverlay(polyline ?? MKPolyline())
-            polyline = nil
-        }
-    }
-    
     private func zoomTo(location: CLLocation) {
         viewModel.zoomTo(location: location,
-                                 left: {
+                         left: {
             let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 300, longitudinalMeters: 300)
-            ui.mapView.setRegion(region, animated: false)
+            ui.mapView.setRegion(region, animated: true)
         }) {
             ui.mapView.setCenter(location.coordinate, animated: true)
         }
@@ -141,16 +99,6 @@ extension MainMapViewController {
 
 extension MainMapViewController: MKMapViewDelegate {
     
-    // - TODO: デバック用なので後で消す
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        guard let overlay = overlay as? MKPolyline else { return MKOverlayRenderer() }
-        let polylineRenderer = MKPolylineRenderer(polyline: overlay)
-        polylineRenderer.strokeColor = .black
-        polylineRenderer.alpha = 0.5
-        polylineRenderer.lineWidth = 5.0
-        return polylineRenderer
-    }
-    
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
         viewModel.changeZoomState()
     }
@@ -158,7 +106,7 @@ extension MainMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation { return nil }
         guard
-            let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: Const.annotation) as? MKMarkerAnnotationView
+            let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: Constants.DictKey.annotationView) as? MKMarkerAnnotationView
         else { return MKMarkerAnnotationView() }
         return annotationView
     }

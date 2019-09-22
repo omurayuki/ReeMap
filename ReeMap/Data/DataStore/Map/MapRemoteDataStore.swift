@@ -15,7 +15,9 @@ struct MapRemoteDataStore: MapRemoteDataStoreProtocol {
                 ["title": "fuga", "latitude": 35.660238, "longitude": 139.730077]
             ]
             let places = array.compactMap { PlaceEntity(document: $0) }
-            observer.on(.next(places))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                observer.on(.next(places))
+            })
             return Disposables.create()
         })
     }

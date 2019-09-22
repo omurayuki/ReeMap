@@ -39,7 +39,7 @@ final class LocationService: NSObject {
     
     func filterAndAddLocation(_ location: CLLocation) -> Bool {
         let age = -location.timestamp.timeIntervalSinceNow
-        if age > 10 { return false }
+        if age > 5 { return false }
         if location.horizontalAccuracy < 0 { return false }
         if location.horizontalAccuracy > 100 { return false }
         locationDataArray.append(location)
