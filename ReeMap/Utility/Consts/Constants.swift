@@ -4,7 +4,7 @@ struct Constants {
     
     struct DictKey {
         
-        static let annotationView = "annotationView"
+        static let clusteringIdentifier = "clusteringIdentifier"
         static let location = "location"
     }
 }

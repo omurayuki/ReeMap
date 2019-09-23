@@ -30,11 +30,14 @@ final class MainMapViewController: UIViewController {
     
     // swiftlint:disable all
     private lazy var panelDelegate: PanelDelegate = { [unowned self] in
-        FloatingPanelDelegate(panel: .tipPanel, panelLayoutforHandler: { [unowned self] _, _ in
+        FloatingPanelDelegate(panel: .tipPanel, panelLayoutforHandler:
+        { [unowned self] _, _ in
             self.memoListVC.changeTableAlpha(0.2)
-        }, panelaDidMoveHandler: { [unowned self] progress in
+        }, panelaDidMoveHandler:
+        { [unowned self] progress in
             self.memoListVC.changeTableAlpha(progress)
-        }, panelEndDraggingHandler: { _, _, targetPosition in
+        }, panelEndDraggingHandler:
+        { _, _, targetPosition in
             UIView.Animator(duration: 0.25, options: .allowUserInteraction).animations { [unowned self] in
                 targetPosition == .tip ? (self.memoListVC.changeTableAlpha(0.2)) : (self.memoListVC.changeTableAlpha(1.0))
             }.animate()
@@ -134,8 +137,10 @@ extension MainMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation { return nil }
         guard
-            let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: Constants.DictKey.annotationView) as? MKMarkerAnnotationView
+            let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier,
+                                                                       for: annotation) as? MKMarkerAnnotationView
         else { return MKMarkerAnnotationView() }
+        annotationView.clusteringIdentifier = Constants.DictKey.clusteringIdentifier
         return annotationView
     }
     
