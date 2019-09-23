@@ -1,4 +1,4 @@
-import CoreLocation
+import FloatingPanel
 import Foundation
 import MapKit
 import UIKit
@@ -8,6 +8,11 @@ protocol MainMapUIProtocol: UI {
     var mapView: MKMapView { get }
     var currentLocationBtn: UIButton { get }
     var menuBtn: UIButton { get }
+    var memoFloatingPanel: FloatingPanelController { get }
+    
+    func setupFloating(contentVC: UIViewController, scrollView: UIScrollView)
+    func addPanel()
+    func removePanel()
 }
 
 final class MainMapUI: MainMapUIProtocol {
@@ -37,6 +42,18 @@ final class MainMapUI: MainMapUIProtocol {
         button.clipsToBounds = true
         return button
     }()
+    
+    private(set) var memoFloatingPanel: FloatingPanelController = {
+        let fpc = FloatingPanelController()
+        fpc.surfaceView.backgroundColor = .clear
+        if #available(iOS 11, *) {
+            fpc.surfaceView.cornerRadius = 13.0
+        } else {
+            fpc.surfaceView.cornerRadius = 0.0
+        }
+        fpc.surfaceView.shadowHidden = false
+        return fpc
+    }()
 }
 
 extension MainMapUI {
@@ -64,5 +81,19 @@ extension MainMapUI {
             .width(constant: 35)
             .height(constant: 35)
             .activate()
+    }
+    
+    func setupFloating(contentVC: UIViewController, scrollView: UIScrollView) {
+        memoFloatingPanel.set(contentViewController: contentVC)
+        memoFloatingPanel.track(scrollView: scrollView)
+    }
+    
+    func addPanel() {
+        guard let vc = viewController else { return }
+        memoFloatingPanel.addPanel(toParent: vc, animated: true)
+    }
+    
+    func removePanel() {
+        memoFloatingPanel.removePanelFromParent(animated: true)
     }
 }

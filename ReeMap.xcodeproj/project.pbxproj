@@ -26,6 +26,8 @@
 		C909512823224DA00080A25B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C909512723224DA00080A25B /* UIViewController+Extension.swift */; };
 		C914952C2322089500FCF3AB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C914952B2322089500FCF3AB /* Localizable.strings */; };
 		C92C822A2323FC0B00983C36 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92C82292323FC0B00983C36 /* MapKit.framework */; };
+		C949B7A32337F22C009E91FC /* FloatingPanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C949B7A22337F22C009E91FC /* FloatingPanel.framework */; };
+		C949B7A42337F22C009E91FC /* FloatingPanel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C949B7A22337F22C009E91FC /* FloatingPanel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C94A1A502335177700974431 /* MapUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A4F2335177700974431 /* MapUseCase.swift */; };
 		C94A1A522335178400974431 /* MapTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A512335178400974431 /* MapTranslator.swift */; };
 		C94A1A542335187D00974431 /* MapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A532335187D00974431 /* MapRepository.swift */; };
@@ -42,6 +44,7 @@
 		C963AF5D233716F2005E10F9 /* Observable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963AF5C233716F2005E10F9 /* Observable+Extension.swift */; };
 		C963AF5F233721AC005E10F9 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963AF5E233721AC005E10F9 /* Annotation.swift */; };
 		C963AF6223376D74005E10F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963AF6123376D74005E10F9 /* Constants.swift */; };
+		C963AF652337C241005E10F9 /* MemoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963AF642337C241005E10F9 /* MemoListViewController.swift */; };
 		C96483BF23352E3D0023BB7D /* MapDataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96483BE23352E3D0023BB7D /* MapDataStoreFactory.swift */; };
 		C96C72CE23211C36001C2FA6 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C72CD23211C36001C2FA6 /* ViewModel.swift */; };
 		C96C72D023211FA0001C2FA6 /* VCBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C72CF23211FA0001C2FA6 /* VCBuildable.swift */; };
@@ -89,6 +92,10 @@
 		C9EA2AE62323B3E90034BB1D /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA2AE52323B3E90034BB1D /* ServiceFactory.swift */; };
 		C9EA2AE82323B63E0034BB1D /* AppDelegate+Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA2AE72323B63E0034BB1D /* AppDelegate+Container.swift */; };
 		C9FC93332335109E00B1EFA9 /* NotificationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FC93322335109E00B1EFA9 /* NotificationUtils.swift */; };
+		C9FEEA602338979600C5C84D /* MemoContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FEEA5F2338979600C5C84D /* MemoContentViewController.swift */; };
+		C9FEEA622338AB9700C5C84D /* FloatingPanelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FEEA612338AB9700C5C84D /* FloatingPanelDelegate.swift */; };
+		C9FEEA642338AD1B00C5C84D /* BasicPanelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FEEA632338AD1B00C5C84D /* BasicPanelLayout.swift */; };
+		C9FEEA662338AD6F00C5C84D /* PanelCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FEEA652338AD6F00C5C84D /* PanelCase.swift */; };
 		E1654FF77DC3DF1FF58C8D01 /* Pods_DEVELOP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E10187F25C1CD365AA94B2 /* Pods_DEVELOP.framework */; };
 /* End PBXBuildFile section */
 
@@ -126,6 +133,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				C949B7A42337F22C009E91FC /* FloatingPanel.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -155,6 +163,7 @@
 		C909512723224DA00080A25B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		C914952B2322089500FCF3AB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C92C82292323FC0B00983C36 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C949B7A22337F22C009E91FC /* FloatingPanel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FloatingPanel.framework; path = Carthage/Build/iOS/FloatingPanel.framework; sourceTree = "<group>"; };
 		C94A1A4F2335177700974431 /* MapUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUseCase.swift; sourceTree = "<group>"; };
 		C94A1A512335178400974431 /* MapTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTranslator.swift; sourceTree = "<group>"; };
 		C94A1A532335187D00974431 /* MapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRepository.swift; sourceTree = "<group>"; };
@@ -166,6 +175,7 @@
 		C963AF5C233716F2005E10F9 /* Observable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Extension.swift"; sourceTree = "<group>"; };
 		C963AF5E233721AC005E10F9 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		C963AF6123376D74005E10F9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C963AF642337C241005E10F9 /* MemoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListViewController.swift; sourceTree = "<group>"; };
 		C96483BE23352E3D0023BB7D /* MapDataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDataStoreFactory.swift; sourceTree = "<group>"; };
 		C96C72CD23211C36001C2FA6 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		C96C72CF23211FA0001C2FA6 /* VCBuildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCBuildable.swift; sourceTree = "<group>"; };
@@ -222,6 +232,10 @@
 		C9EA2AE52323B3E90034BB1D /* ServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
 		C9EA2AE72323B63E0034BB1D /* AppDelegate+Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Container.swift"; sourceTree = "<group>"; };
 		C9FC93322335109E00B1EFA9 /* NotificationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUtils.swift; sourceTree = "<group>"; };
+		C9FEEA5F2338979600C5C84D /* MemoContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoContentViewController.swift; sourceTree = "<group>"; };
+		C9FEEA612338AB9700C5C84D /* FloatingPanelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelDelegate.swift; sourceTree = "<group>"; };
+		C9FEEA632338AD1B00C5C84D /* BasicPanelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicPanelLayout.swift; sourceTree = "<group>"; };
+		C9FEEA652338AD6F00C5C84D /* PanelCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelCase.swift; sourceTree = "<group>"; };
 		D6EC022F1E13C0F9768F4281 /* Pods_RELEASE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RELEASE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E139BA72F7B9E2D04C1A6676 /* Pods-RELEASE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RELEASE.debug.xcconfig"; path = "Target Support Files/Pods-RELEASE/Pods-RELEASE.debug.xcconfig"; sourceTree = "<group>"; };
 		F5D5FF67ACEC6F97BF77027A /* Pods_ReeMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReeMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -254,6 +268,7 @@
 				C97CDE8A23281C8400E1BF75 /* Kingfisher.framework in Frameworks */,
 				C97CDE8B23281C8400E1BF75 /* Reachability.framework in Frameworks */,
 				C97CDE8C23281C8400E1BF75 /* MBProgressHUD.framework in Frameworks */,
+				C949B7A32337F22C009E91FC /* FloatingPanel.framework in Frameworks */,
 				C97CDE8D23281C8400E1BF75 /* EAIntroView.framework in Frameworks */,
 				C97CDE8E23281C8400E1BF75 /* RxRelay.framework in Frameworks */,
 				C97CDE8F23281C8400E1BF75 /* RxSwift.framework in Frameworks */,
@@ -397,6 +412,7 @@
 			children = (
 				C909511F23224AA00080A25B /* TextComponent.swift */,
 				C9A056482322537500EB9563 /* TableViewDataSource.swift */,
+				C9FEEA612338AB9700C5C84D /* FloatingPanelDelegate.swift */,
 			);
 			path = Widget;
 			sourceTree = "<group>";
@@ -424,8 +440,17 @@
 			isa = PBXGroup;
 			children = (
 				C963AF6123376D74005E10F9 /* Constants.swift */,
+				C9FEEA652338AD6F00C5C84D /* PanelCase.swift */,
 			);
 			path = Consts;
+			sourceTree = "<group>";
+		};
+		C963AF632337C21C005E10F9 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				C963AF642337C241005E10F9 /* MemoListViewController.swift */,
+			);
+			path = List;
 			sourceTree = "<group>";
 		};
 		C96483BD23352E240023BB7D /* Map */ = {
@@ -442,6 +467,7 @@
 			children = (
 				C9A056442322532500EB9563 /* VerticalStackView.swift */,
 				C9A056462322533E00EB9563 /* PaddingTextField.swift */,
+				C9FEEA632338AD1B00C5C84D /* BasicPanelLayout.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -467,6 +493,7 @@
 		C9B9F442231765C00013ED05 = {
 			isa = PBXGroup;
 			children = (
+				C949B7A22337F22C009E91FC /* FloatingPanel.framework */,
 				C9E3F3AE2324A0EA00141BBC /* input.xcfilelist */,
 				C9855A652324ADFA00AA7DC6 /* output.xcfilelist */,
 				C9B9F44D231765C00013ED05 /* ReeMap */,
@@ -579,6 +606,8 @@
 				C9D6C5E02321086C0064AACD /* MainMapViewController.swift */,
 				C9D6C5E2232108770064AACD /* MainMapUI.swift */,
 				C9D6C5E42321087F0064AACD /* MainMapRouting.swift */,
+				C963AF632337C21C005E10F9 /* List */,
+				C9FEEA5E2338977D00C5C84D /* Memo */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -609,6 +638,14 @@
 				C9EA2AE52323B3E90034BB1D /* ServiceFactory.swift */,
 			);
 			path = DI;
+			sourceTree = "<group>";
+		};
+		C9FEEA5E2338977D00C5C84D /* Memo */ = {
+			isa = PBXGroup;
+			children = (
+				C9FEEA5F2338979600C5C84D /* MemoContentViewController.swift */,
+			);
+			path = Memo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1067,6 +1104,7 @@
 			files = (
 				C9FC93332335109E00B1EFA9 /* NotificationUtils.swift in Sources */,
 				C9D6C5EE232109E20064AACD /* Routing.swift in Sources */,
+				C9FEEA662338AD6F00C5C84D /* PanelCase.swift in Sources */,
 				C9EA2AE62323B3E90034BB1D /* ServiceFactory.swift in Sources */,
 				C9D89F842331BFC60044FEE9 /* R.generated.swift in Sources */,
 				C9A056452322532500EB9563 /* VerticalStackView.swift in Sources */,
@@ -1074,6 +1112,7 @@
 				C9B9F44F231765C00013ED05 /* AppDelegate.swift in Sources */,
 				C909512423224AD90080A25B /* UILabel+Extension.swift in Sources */,
 				C90595E92332B178008D113D /* Entity.swift in Sources */,
+				C9FEEA622338AB9700C5C84D /* FloatingPanelDelegate.swift in Sources */,
 				C99513BF23257B5000931012 /* LocationService.swift in Sources */,
 				C9A0563E232252C500EB9563 /* UIPageController+Extension.swift in Sources */,
 				C96C72D423211FE1001C2FA6 /* VCInjectable.swift in Sources */,
@@ -1095,10 +1134,12 @@
 				C9A0564C232263B000EB9563 /* CountService.swift in Sources */,
 				C9D6C5E12321086C0064AACD /* MainMapViewController.swift in Sources */,
 				C909510D2322380D0080A25B /* KeyboardNotifier.swift in Sources */,
+				C9FEEA642338AD1B00C5C84D /* BasicPanelLayout.swift in Sources */,
 				C9A056382322527600EB9563 /* Animation+Extension.swift in Sources */,
 				C909512223224AC30080A25B /* UIFont+Extension.swift in Sources */,
 				C96C72D023211FA0001C2FA6 /* VCBuildable.swift in Sources */,
 				C90595F12332B3E2008D113D /* Place.swift in Sources */,
+				C9FEEA602338979600C5C84D /* MemoContentViewController.swift in Sources */,
 				C94A1A562335189A00974431 /* MapRemoteDataStore.swift in Sources */,
 				C9A056362322526400EB9563 /* UIImageView+Extension.swift in Sources */,
 				C909512823224DA00080A25B /* UIViewController+Extension.swift in Sources */,
@@ -1119,6 +1160,7 @@
 				C9A05642232252FE00EB9563 /* Optional+Extension.swift in Sources */,
 				C909511D23224A700080A25B /* UIColor+Extension.swift in Sources */,
 				C9EA2AE42323B3D60034BB1D /* Container.swift in Sources */,
+				C963AF652337C241005E10F9 /* MemoListViewController.swift in Sources */,
 				C9A056492322537500EB9563 /* TableViewDataSource.swift in Sources */,
 				C963AF5F233721AC005E10F9 /* Annotation.swift in Sources */,
 				C9A0563C232252AE00EB9563 /* UITableView+Extension.swift in Sources */,
@@ -1286,7 +1328,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1346,6 +1388,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

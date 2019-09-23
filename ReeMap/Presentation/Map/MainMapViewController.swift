@@ -5,14 +5,19 @@ import RxCocoa
 import RxSwift
 import UIKit
 
+// 側作成 検索窓とか
+// ダミーデータのpanelへのつなぎこみ
+
 extension MainMapViewController: VCInjectable {
     
     typealias UI = MainMapUIProtocol
     typealias Routing = MainMapRoutingProtocol
     typealias ViewModel = MainMapViewModel
+    typealias PanelDelegate = FloatingPanelDelegate
     
     func setupConfig() {
         ui.mapView.delegate = self
+        ui.memoFloatingPanel.delegate = panelDelegate
     }
 }
 
@@ -23,17 +28,39 @@ final class MainMapViewController: UIViewController {
     var viewModel: MainMapViewModel!
     var disposeBag: DisposeBag!
     
+    // swiftlint:disable all
+    private lazy var panelDelegate: PanelDelegate = { [unowned self] in
+        FloatingPanelDelegate(panel: .tipPanel, panelLayoutforHandler: { [unowned self] _, _ in
+            self.memoListVC.changeTableAlpha(0.2)
+        }, panelaDidMoveHandler: { [unowned self] progress in
+            self.memoListVC.changeTableAlpha(progress)
+        }, panelEndDraggingHandler: { _, _, targetPosition in
+            UIView.Animator(duration: 0.25, options: .allowUserInteraction).animations { [unowned self] in
+                targetPosition == .tip ? (self.memoListVC.changeTableAlpha(0.2)) : (self.memoListVC.changeTableAlpha(1.0))
+            }.animate()
+        })
+    }()
+    // swiftlint:disable:previou
+    
+    let memoListVC = MemoListViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConfig()
         setupUI()
         setupViewModel()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        ui.addPanel()
+    }
 }
 
 extension MainMapViewController {
     
     private func setupUI() {
+        ui.setupFloating(contentVC: memoListVC, scrollView: memoListVC.tableView)
         ui.setup()
     }
     
@@ -60,8 +87,9 @@ extension MainMapViewController {
             }).disposed(by: disposeBag)
         
         ui.currentLocationBtn.rx.tap.asDriver()
-            .drive(onNext: { _ in
+            .drive(onNext: { [unowned self] _ in
                 print("hoge")
+                self.ui.removePanel()
             }).disposed(by: disposeBag)
         
         ui.menuBtn.rx.tap.asDriver()
