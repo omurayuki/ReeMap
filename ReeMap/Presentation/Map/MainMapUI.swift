@@ -13,6 +13,7 @@ protocol MainMapUIProtocol: UI {
     func setupFloating(contentVC: UIViewController, scrollView: UIScrollView)
     func addPanel()
     func removePanel()
+    func fullScreen(completion: @escaping () -> Void)
 }
 
 final class MainMapUI: MainMapUIProtocol {
@@ -95,5 +96,12 @@ extension MainMapUI {
     
     func removePanel() {
         noteFloatingPanel.removePanelFromParent(animated: true)
+    }
+    
+    func fullScreen(completion: @escaping () -> Void) {
+        UIView.animate(withDuration: 0.1) { [unowned self] in
+            self.noteFloatingPanel.move(to: .full, animated: true)
+            completion()
+        }
     }
 }

@@ -86,6 +86,10 @@
 		C9D6C5E82321089B0064AACD /* MainMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6C5E72321089B0064AACD /* MainMapViewModel.swift */; };
 		C9D6C5EC232109C20064AACD /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6C5EB232109C20064AACD /* UI.swift */; };
 		C9D6C5EE232109E20064AACD /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6C5ED232109E20064AACD /* Routing.swift */; };
+		C9D7C1B8233A25C500D933B5 /* NoteListUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D7C1B7233A25C500D933B5 /* NoteListUI.swift */; };
+		C9D7C1BA233A264100D933B5 /* NoteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D7C1B9233A264100D933B5 /* NoteListViewModel.swift */; };
+		C9D7C1BC233A270500D933B5 /* NoteListRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D7C1BB233A270500D933B5 /* NoteListRouting.swift */; };
+		C9D7C1BE233A2A5300D933B5 /* UISearchBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D7C1BD233A2A5300D933B5 /* UISearchBar+Extension.swift */; };
 		C9D89F842331BFC60044FEE9 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D89F832331BFC60044FEE9 /* R.generated.swift */; };
 		C9D89F852331BFCE0044FEE9 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D89F832331BFC60044FEE9 /* R.generated.swift */; };
 		C9E3F3AF2324A0EA00141BBC /* input.xcfilelist in Sources */ = {isa = PBXBuildFile; fileRef = C9E3F3AE2324A0EA00141BBC /* input.xcfilelist */; };
@@ -227,6 +231,10 @@
 		C9D6C5E72321089B0064AACD /* MainMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapViewModel.swift; sourceTree = "<group>"; };
 		C9D6C5EB232109C20064AACD /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
 		C9D6C5ED232109E20064AACD /* Routing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
+		C9D7C1B7233A25C500D933B5 /* NoteListUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListUI.swift; sourceTree = "<group>"; };
+		C9D7C1B9233A264100D933B5 /* NoteListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewModel.swift; sourceTree = "<group>"; };
+		C9D7C1BB233A270500D933B5 /* NoteListRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListRouting.swift; sourceTree = "<group>"; };
+		C9D7C1BD233A2A5300D933B5 /* UISearchBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Extension.swift"; sourceTree = "<group>"; };
 		C9D89F832331BFC60044FEE9 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		C9DFA0762322833200EDCBCE /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		C9E3F3AE2324A0EA00141BBC /* input.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = input.xcfilelist; sourceTree = "<group>"; };
@@ -405,6 +413,7 @@
 				C9A0563F232252EC00EB9563 /* String+Extension.swift */,
 				C9A05641232252FE00EB9563 /* Optional+Extension.swift */,
 				C963AF5C233716F2005E10F9 /* Observable+Extension.swift */,
+				C9D7C1BD233A2A5300D933B5 /* UISearchBar+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -451,6 +460,8 @@
 			isa = PBXGroup;
 			children = (
 				C963AF642337C241005E10F9 /* NoteListViewController.swift */,
+				C9D7C1B7233A25C500D933B5 /* NoteListUI.swift */,
+				C9D7C1BB233A270500D933B5 /* NoteListRouting.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -576,6 +587,7 @@
 			children = (
 				C96C72CD23211C36001C2FA6 /* ViewModel.swift */,
 				C9D6C5E72321089B0064AACD /* MainMapViewModel.swift */,
+				C9D7C1B9233A264100D933B5 /* NoteListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1129,6 +1141,7 @@
 				C96C72D423211FE1001C2FA6 /* VCInjectable.swift in Sources */,
 				C90595E62332B026008D113D /* PlaceEntity.swift in Sources */,
 				C9A056322322522C00EB9563 /* UIStackView+Extension.swift in Sources */,
+				C9D7C1BC233A270500D933B5 /* NoteListRouting.swift in Sources */,
 				C9A056472322533E00EB9563 /* PaddingTextField.swift in Sources */,
 				C909511B23224A3B0080A25B /* UIButton+Extension.swift in Sources */,
 				C94A1A502335177700974431 /* MapUseCase.swift in Sources */,
@@ -1171,7 +1184,10 @@
 				C9D6C5E82321089B0064AACD /* MainMapViewModel.swift in Sources */,
 				C9A05642232252FE00EB9563 /* Optional+Extension.swift in Sources */,
 				C909511D23224A700080A25B /* UIColor+Extension.swift in Sources */,
+				C9D7C1BE233A2A5300D933B5 /* UISearchBar+Extension.swift in Sources */,
+				C9D7C1BA233A264100D933B5 /* NoteListViewModel.swift in Sources */,
 				C9EA2AE42323B3D60034BB1D /* Container.swift in Sources */,
+				C9D7C1B8233A25C500D933B5 /* NoteListUI.swift in Sources */,
 				C963AF652337C241005E10F9 /* NoteListViewController.swift in Sources */,
 				C9A056492322537500EB9563 /* TableViewDataSource.swift in Sources */,
 				C963AF5F233721AC005E10F9 /* Annotation.swift in Sources */,

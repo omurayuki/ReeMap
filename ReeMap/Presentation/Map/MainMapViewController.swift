@@ -5,9 +5,6 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-// 側作成 検索窓とか
-// ダミーデータのpanelへのつなぎこみ
-
 extension MainMapViewController: VCInjectable {
     
     typealias UI = MainMapUIProtocol
@@ -18,6 +15,7 @@ extension MainMapViewController: VCInjectable {
     func setupConfig() {
         ui.mapView.delegate = self
         ui.noteFloatingPanel.delegate = panelDelegate
+        noteListVC.delegate = self
     }
 }
 
@@ -33,27 +31,26 @@ final class MainMapViewController: UIViewController {
         FloatingPanelDelegate(panel: .tipPanel,
            panelLayoutforHandler:
         { [unowned self] _, _ in
-            self.noteListVC.changeTableAlpha(0.2)
+            self.noteListVC.ui.changeTableAlpha(0.2)
         }, panelaDidMoveHandler:
         { [unowned self] progress in
-            self.noteListVC.changeTableAlpha(progress)
+            self.noteListVC.ui.changeTableAlpha(progress)
         }, panelEndDraggingHandler:
         { _, _, targetPosition in
             UIView.Animator(duration: 0.25, options: .allowUserInteraction).animations { [unowned self] in
-                targetPosition == .tip ? (self.noteListVC.changeTableAlpha(0.2)) : (self.noteListVC.changeTableAlpha(1.0))
+                targetPosition == .tip ? (self.noteListVC.ui.changeTableAlpha(0.2)) : (self.noteListVC.ui.changeTableAlpha(1.0))
             }.animate()
         })
     }()
     // swiftlint:disable:previou
-    
-    let noteListVC = NoteListViewController()
+
+    let noteListVC = AppDelegate.container.resolve(NoteListViewController.self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConfig()
         setupUI()
         setupViewModel()
-        noteListVC.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -65,7 +62,7 @@ final class MainMapViewController: UIViewController {
 extension MainMapViewController {
     
     private func setupUI() {
-        ui.setupFloating(contentVC: noteListVC, scrollView: noteListVC.tableView)
+        ui.setupFloating(contentVC: noteListVC, scrollView: noteListVC.ui.tableView)
         ui.setup()
     }
     
@@ -118,12 +115,15 @@ extension MainMapViewController {
                 }
             }).disposed(by: disposeBag)
     }
+}
+
+extension MainMapViewController {
     
     private func zoomTo(location: CLLocation) {
         viewModel.zoomTo(location: location,
                          left: {
-            let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 300, longitudinalMeters: 300)
-            ui.mapView.setRegion(region, animated: true)
+                            let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 300, longitudinalMeters: 300)
+                            ui.mapView.setRegion(region, animated: true)
         }) {
             ui.mapView.setCenter(location.coordinate, animated: true)
         }
@@ -155,9 +155,8 @@ extension MainMapViewController: MKMapViewDelegate {
 extension MainMapViewController: TappedSearchBarDelegate {
     
     func tappedSearchBar() {
-        UIView.animate(withDuration: 0.1) {
-            self.ui.noteFloatingPanel.move(to: .full, animated: true)
-            self.noteListVC.changeTableAlpha(1.0)
+        ui.fullScreen() {
+            self.noteListVC.ui.changeTableAlpha(1.0)
         }
     }
 }

@@ -1,7 +1,5 @@
 import UIKit
 
-// headerViewに関してはスクロールさせずに、規定範囲外に行ったら.....で対応
-
 class NoteTableHeaderView: UIView {
     
     var title: UILabel = {
