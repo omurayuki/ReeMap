@@ -8,7 +8,7 @@ protocol MainMapUIProtocol: UI {
     var mapView: MKMapView { get }
     var currentLocationBtn: UIButton { get }
     var menuBtn: UIButton { get }
-    var memoFloatingPanel: FloatingPanelController { get }
+    var noteFloatingPanel: FloatingPanelController { get }
     
     func setupFloating(contentVC: UIViewController, scrollView: UIScrollView)
     func addPanel()
@@ -43,7 +43,7 @@ final class MainMapUI: MainMapUIProtocol {
         return button
     }()
     
-    private(set) var memoFloatingPanel: FloatingPanelController = {
+    private(set) var noteFloatingPanel: FloatingPanelController = {
         let fpc = FloatingPanelController()
         fpc.surfaceView.backgroundColor = .clear
         if #available(iOS 11, *) {
@@ -84,16 +84,16 @@ extension MainMapUI {
     }
     
     func setupFloating(contentVC: UIViewController, scrollView: UIScrollView) {
-        memoFloatingPanel.set(contentViewController: contentVC)
-        memoFloatingPanel.track(scrollView: scrollView)
+        noteFloatingPanel.set(contentViewController: contentVC)
+        noteFloatingPanel.track(scrollView: scrollView)
     }
     
     func addPanel() {
         guard let vc = viewController else { return }
-        memoFloatingPanel.addPanel(toParent: vc, animated: true)
+        noteFloatingPanel.addPanel(toParent: vc, animated: true)
     }
     
     func removePanel() {
-        memoFloatingPanel.removePanelFromParent(animated: true)
+        noteFloatingPanel.removePanelFromParent(animated: true)
     }
 }
