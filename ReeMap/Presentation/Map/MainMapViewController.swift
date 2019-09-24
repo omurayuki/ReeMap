@@ -53,6 +53,7 @@ final class MainMapViewController: UIViewController {
         setupConfig()
         setupUI()
         setupViewModel()
+        noteListVC.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -148,5 +149,15 @@ extension MainMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let annotation = view.annotation as? Annotation else { return }
         print(annotation.title)
+    }
+}
+
+extension MainMapViewController: TappedSearchBarDelegate {
+    
+    func tappedSearchBar() {
+        UIView.animate(withDuration: 0.1) {
+            self.ui.noteFloatingPanel.move(to: .full, animated: true)
+            self.noteListVC.changeTableAlpha(1.0)
+        }
     }
 }
