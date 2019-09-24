@@ -14,7 +14,7 @@ extension NoteListViewController: VCInjectable {
     typealias UI = NoteListUIProtocol
     typealias Routing = NoteListRoutingProtocol
     typealias ViewModel = NoteListViewModel
-    typealias DataSource = TableViewDataSource<NoteListTableViewCell, (String)>
+    typealias DataSource = TableViewDataSource<NoteListTableViewCell, String>
     
     func setupConfig() {
         ui.tableView.dataSource = dataSource
@@ -33,7 +33,6 @@ class NoteListViewController: UIViewController {
     private(set) lazy var dataSource: DataSource = {
         DataSource(cellReuseIdentifier: String(describing: NoteListTableViewCell.self),
                    listItems: [],
-                   isSkelton: false,
                    cellConfigurationHandler: { cell, item, _ in
             cell.noteTitle.text = item
             cell.backgroundColor = .clear
@@ -47,12 +46,9 @@ class NoteListViewController: UIViewController {
         dataSource.listItems = ["hoge", "fuga"]
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if let headerView = ui.tableView.tableHeaderView as? NoteTableHeaderView {
-            ui.tableView.tableHeaderView?.frame.size.height = headerView.noteContent.frame.height + 150
-            ui.tableView.reloadData()
-        }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        ui.hideHeader()
     }
 }
 
@@ -64,6 +60,10 @@ extension NoteListViewController: UISearchBarDelegate {
         return true
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        ui.showHeader()
+    }
+    
     func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
         searchBar.resignFirstResponder()
         return true
@@ -71,6 +71,7 @@ extension NoteListViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
+        ui.hideHeader()
         searchBar.resignFirstResponder()
     }
     

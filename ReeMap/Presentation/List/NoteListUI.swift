@@ -9,6 +9,9 @@ protocol NoteListUIProtocol: UI {
     
     func changeTableAlpha(_ alpha: CGFloat)
     func setSearchText(fontSize: CGFloat)
+    func changeHeader(height: CGFloat, isFade: Bool)
+    func showHeader()
+    func hideHeader()
 }
 
 final class NoteListUI: NoteListUIProtocol {
@@ -87,5 +90,28 @@ extension NoteListUI {
     
     func setSearchText(fontSize: CGFloat) {
         searchBar.setSearchText(fontSize: 15)
+    }
+    
+    func changeHeader(height: CGFloat, isFade: Bool) {
+        tableView.beginUpdates()
+        if let headerView = tableView.tableHeaderView {
+            UIView.animate(withDuration: 0.25) { [unowned self] in
+                var frame = headerView.frame
+                frame.size.height = height
+                self.tableView.tableHeaderView?.frame.size.height = frame.height
+                isFade ? (self.tableView.tableHeaderView?.fadeOut(type: .slow)) : (self.tableView.tableHeaderView?.fadeIn(type: .slow))
+            }
+        }
+        tableView.endUpdates()
+    }
+    
+    func showHeader() {
+        if let headerView = tableView.tableHeaderView as? NoteTableHeaderView {
+            changeHeader(height: headerView.noteContent.frame.height + 150, isFade: false)
+        }
+    }
+    
+    func hideHeader() {
+        changeHeader(height: 0.0, isFade: true)
     }
 }
