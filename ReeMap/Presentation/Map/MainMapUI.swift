@@ -10,6 +10,7 @@ protocol MainMapUIProtocol: UI {
     var menuBtn: UIButton { get }
     var noteFloatingPanel: FloatingPanelController { get }
     
+    func setRegion(location: CLLocationCoordinate2D)
     func setupFloating(contentVC: UIViewController, scrollView: UIScrollView)
     func addPanel()
     func removePanel()
@@ -82,6 +83,11 @@ extension MainMapUI {
             .width(constant: 35)
             .height(constant: 35)
             .activate()
+    }
+    
+    func setRegion(location: CLLocationCoordinate2D) {
+        let region = MKCoordinateRegion(center: location, latitudinalMeters: 300, longitudinalMeters: 300)
+        mapView.setRegion(region, animated: true)
     }
     
     func setupFloating(contentVC: UIViewController, scrollView: UIScrollView) {

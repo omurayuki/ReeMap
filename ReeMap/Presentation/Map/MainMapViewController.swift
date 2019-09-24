@@ -27,7 +27,7 @@ final class MainMapViewController: UIViewController {
     var disposeBag: DisposeBag!
     
     // swiftlint:disable all
-    private lazy var panelDelegate: PanelDelegate = { [unowned self] in
+    private lazy var panelDelegate: PanelDelegate = {
         FloatingPanelDelegate(panel: .tipPanel,
            panelLayoutforHandler:
         { [unowned self] _, _ in
@@ -36,7 +36,7 @@ final class MainMapViewController: UIViewController {
         { [unowned self] progress in
             self.noteListVC.ui.changeTableAlpha(progress)
         }, panelEndDraggingHandler:
-        { _, _, targetPosition in
+        { [unowned self] _, _, targetPosition in
             UIView.Animator(duration: 0.25, options: .allowUserInteraction).animations { [unowned self] in
                 targetPosition == .tip ? (self.noteListVC.ui.changeTableAlpha(0.2)) : (self.noteListVC.ui.changeTableAlpha(1.0))
             }.animate()
@@ -90,8 +90,7 @@ extension MainMapViewController {
         
         ui.currentLocationBtn.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
-                print("hoge")
-                self.ui.removePanel()
+                self.ui.setRegion(location: self.ui.mapView.userLocation.coordinate)
             }).disposed(by: disposeBag)
         
         ui.menuBtn.rx.tap.asDriver()
@@ -122,8 +121,7 @@ extension MainMapViewController {
     private func zoomTo(location: CLLocation) {
         viewModel.zoomTo(location: location,
                          left: {
-                            let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 300, longitudinalMeters: 300)
-                            ui.mapView.setRegion(region, animated: true)
+            ui.setRegion(location: location.coordinate)
         }) {
             ui.mapView.setCenter(location.coordinate, animated: true)
         }
@@ -148,7 +146,9 @@ extension MainMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let annotation = view.annotation as? Annotation else { return }
-        print(annotation.title)
+        ui.noteFloatingPanel.move(to: .half, animated: true)
+        noteListVC.ui.changeTableAlpha(0.9)
+        noteListVC.ui.showHeader()
     }
 }
 
