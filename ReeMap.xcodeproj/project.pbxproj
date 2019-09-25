@@ -26,6 +26,9 @@
 		C909512823224DA00080A25B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C909512723224DA00080A25B /* UIViewController+Extension.swift */; };
 		C914952C2322089500FCF3AB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C914952B2322089500FCF3AB /* Localizable.strings */; };
 		C92C822A2323FC0B00983C36 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92C82292323FC0B00983C36 /* MapKit.framework */; };
+		C94996FA233B8F3500165AD6 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996F9233B8F3500165AD6 /* SideMenuViewController.swift */; };
+		C94996FC233BB30600165AD6 /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996FB233BB30600165AD6 /* SideMenuCell.swift */; };
+		C94996FE233BCD3E00165AD6 /* SideMenuUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996FD233BCD3E00165AD6 /* SideMenuUI.swift */; };
 		C949B7A32337F22C009E91FC /* FloatingPanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C949B7A22337F22C009E91FC /* FloatingPanel.framework */; };
 		C949B7A42337F22C009E91FC /* FloatingPanel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C949B7A22337F22C009E91FC /* FloatingPanel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C94A1A502335177700974431 /* MapUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A4F2335177700974431 /* MapUseCase.swift */; };
@@ -174,6 +177,9 @@
 		C909512723224DA00080A25B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		C914952B2322089500FCF3AB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C92C82292323FC0B00983C36 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C94996F9233B8F3500165AD6 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		C94996FB233BB30600165AD6 /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
+		C94996FD233BCD3E00165AD6 /* SideMenuUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuUI.swift; sourceTree = "<group>"; };
 		C949B7A22337F22C009E91FC /* FloatingPanel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FloatingPanel.framework; path = Carthage/Build/iOS/FloatingPanel.framework; sourceTree = "<group>"; };
 		C94A1A4F2335177700974431 /* MapUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUseCase.swift; sourceTree = "<group>"; };
 		C94A1A512335178400974431 /* MapTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTranslator.swift; sourceTree = "<group>"; };
@@ -506,6 +512,15 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
+		C94996F8233B8E4F00165AD6 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				C94996F9233B8F3500165AD6 /* SideMenuViewController.swift */,
+				C94996FD233BCD3E00165AD6 /* SideMenuUI.swift */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
 		C94CAD8F23192DEA00BB1BB6 /* UITest */ = {
 			isa = PBXGroup;
 			children = (
@@ -548,6 +563,7 @@
 			isa = PBXGroup;
 			children = (
 				C9915634233999BE0065ABF2 /* NoteListTableViewCell.swift */,
+				C94996FB233BB30600165AD6 /* SideMenuCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -647,6 +663,7 @@
 				C9D6C5E6232108820064AACD /* Map */,
 				C963AF632337C21C005E10F9 /* List */,
 				C9FEEA5E2338977D00C5C84D /* Note */,
+				C94996F8233B8E4F00165AD6 /* SideMenu */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -1037,6 +1054,7 @@
 				C9A056362322526400EB9563 /* UIImageView+Extension.swift in Sources */,
 				C909512823224DA00080A25B /* UIViewController+Extension.swift in Sources */,
 				C96483BF23352E3D0023BB7D /* MapDataStoreFactory.swift in Sources */,
+				C94996FA233B8F3500165AD6 /* SideMenuViewController.swift in Sources */,
 				C9EA2AE82323B63E0034BB1D /* AppDelegate+Container.swift in Sources */,
 				C9A056342322524D00EB9563 /* UIImage+Extension.swift in Sources */,
 				C9A056302322521900EB9563 /* UIView+Extension.swift in Sources */,
@@ -1055,11 +1073,13 @@
 				C9D7C1BE233A2A5300D933B5 /* UISearchBar+Extension.swift in Sources */,
 				C9D7C1BA233A264100D933B5 /* NoteListViewModel.swift in Sources */,
 				C9EA2AE42323B3D60034BB1D /* Container.swift in Sources */,
+				C94996FE233BCD3E00165AD6 /* SideMenuUI.swift in Sources */,
 				C9D7C1B8233A25C500D933B5 /* NoteListUI.swift in Sources */,
 				C963AF652337C241005E10F9 /* NoteListViewController.swift in Sources */,
 				C9A056492322537500EB9563 /* TableViewDataSource.swift in Sources */,
 				C963AF5F233721AC005E10F9 /* Annotation.swift in Sources */,
 				C9A0563C232252AE00EB9563 /* UITableView+Extension.swift in Sources */,
+				C94996FC233BB30600165AD6 /* SideMenuCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

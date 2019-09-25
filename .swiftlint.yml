@@ -88,7 +88,6 @@ opt_in_rules:
 - switch_case_on_newline
 - toggle_bool
 - trailing_closure
-- unneeded_parentheses_in_closure_argument
 - unused_import
 - unused_private_declaration
 - vertical_parameter_alignment_on_call

@@ -26,6 +26,9 @@ final class MainMapViewController: UIViewController {
     var viewModel: MainMapViewModel!
     var disposeBag: DisposeBag!
     
+    let sideMenuVC = SideMenuViewController()
+    private var isShownSidemenu: Bool { return sideMenuVC.parent == self }
+    
     // swiftlint:disable all
     private lazy var panelDelegate: PanelDelegate = {
         FloatingPanelDelegate(panel: .tipPanel,
@@ -51,6 +54,37 @@ final class MainMapViewController: UIViewController {
         setupConfig()
         setupUI()
         setupViewModel()
+        
+        ui.menuBtn.addTarget(self, action: #selector(sidemenuBarButtonTapped(sender:)), for: .touchUpInside)
+        
+        sideMenuVC.delegate = self
+    }
+    
+    @objc private func sidemenuBarButtonTapped(sender: Any) {
+        showSidemenu(animated: true)
+    }
+    
+    private func showSidemenu(contentAvailability: Bool = true, animated: Bool) {
+        if isShownSidemenu { return }
+        
+        addChild(sideMenuVC)
+        sideMenuVC.view.autoresizingMask = .flexibleHeight
+        sideMenuVC.view.frame = view.bounds
+        view.insertSubview(sideMenuVC.view, aboveSubview: view)
+        sideMenuVC.didMove(toParent: self)
+        if contentAvailability {
+            sideMenuVC.showContentView(animated: animated)
+        }
+    }
+    
+    private func hideSidemenu(animated: Bool) {
+        if !isShownSidemenu { return }
+        
+        sideMenuVC.hideContentView(animated: animated, completion: { (_) in
+            self.sideMenuVC.willMove(toParent: nil)
+            self.sideMenuVC.removeFromParent()
+            self.sideMenuVC.view.removeFromSuperview()
+        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -158,5 +192,12 @@ extension MainMapViewController: TappedSearchBarDelegate {
         ui.fullScreen() {
             self.noteListVC.ui.changeTableAlpha(1.0)
         }
+    }
+}
+
+extension MainMapViewController: SideMenuViewControllerDelegate {
+    
+    func sidemenuViewController(_ sidemenuViewController: SideMenuViewController, didSelectItemAt indexPath: IndexPath) {
+        hideSidemenu(animated: true)
     }
 }
