@@ -5,6 +5,22 @@
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C9D50CE92324F1CC003466A8"
+               BuildableName = "ReeMapUnitTests.xctest"
+               BlueprintName = "ReeMapUnitTests"
+               ReferencedContainer = "container:ReeMap.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
@@ -16,19 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C94CAD7F23192C3A00BB1BB6"
-               BuildableName = "UnitTest.xctest"
-               BlueprintName = "UnitTest"
-               ReferencedContainer = "container:ReeMap.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C94CAD8D23192DE900BB1BB6"
-               BuildableName = "UITest.xctest"
-               BlueprintName = "UITest"
+               BlueprintIdentifier = "C9D50CE92324F1CC003466A8"
+               BuildableName = "ReeMapUnitTests.xctest"
+               BlueprintName = "ReeMapUnitTests"
                ReferencedContainer = "container:ReeMap.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -46,6 +52,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "C9D50CE92324F1CC003466A8"
+            BuildableName = "ReeMapUnitTests.xctest"
+            BlueprintName = "ReeMapUnitTests"
+            ReferencedContainer = "container:ReeMap.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -55,6 +70,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "C9D50CE92324F1CC003466A8"
+            BuildableName = "ReeMapUnitTests.xctest"
+            BlueprintName = "ReeMapUnitTests"
+            ReferencedContainer = "container:ReeMap.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -1,0 +1,17 @@
+// title
+"frame_selected_action_sheet_edit" = "編集";
+"frame_selected_action_sheet_cancel" = "キャンセル";
+"error_title" = "エラー";
+"ok" = "OK";
+"success_title" = "成功";
+"attention_title" = "注意";
+"change_settings_title" = "位置情報を更新してください";
+"settings_title" = "設定";
+
+// message
+"error_message_network" = "ネットワークに接続出来ません";
+"attention_message" = "ReeMapを使用するためには、位置情報を常に許可する必要があります。設定から変更してください。";
+
+// content
+"no_title" = "no title";
+"title" = "Title";
