@@ -951,7 +951,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/$PROJECT_NAME/R.generated.swift",
+				$SRCROOT/$PROJECT_NAME/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1140,6 +1140,7 @@
 		};
 		C9B9F45B231765C10013ED05 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34AB8925437155EB64B3DFEF /* Pods-RELEASE.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1201,6 +1202,7 @@
 		};
 		C9B9F45C231765C10013ED05 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92C58BF802FA61AB8ADC9BD1 /* Pods-RELEASE.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
