@@ -9,85 +9,154 @@ extension MainMapViewController: VCInjectable {
     
     typealias UI = MainMapUIProtocol
     typealias Routing = MainMapRoutingProtocol
-    typealias ViewModel = MainMapViewModelType
+    typealias ViewModel = MainMapViewModel
+    typealias PanelDelegate = FloatingPanelDelegate
     
-    func setupDI() {
-        ui.rootView = self.view
-        ui.locationManager.delegate = self
-        routing.viewController = self
+    func setupConfig() {
+        ui.mapView.delegate = self
+        ui.noteFloatingPanel.delegate = panelDelegate
+        noteListVC.delegate = self
     }
 }
 
 final class MainMapViewController: UIViewController {
     
-    var ui: MainMapUIProtocol!
-    var routing: MainMapRoutingProtocol!
-    var viewModel: MainMapViewModelType!
+    var ui: MainMapUIProtocol! { didSet { ui.viewController = self } }
+    var routing: MainMapRoutingProtocol! { didSet { routing.viewController = self } }
+    var viewModel: MainMapViewModel!
     var disposeBag: DisposeBag!
+    
+    // swiftlint:disable all
+    private lazy var panelDelegate: PanelDelegate = {
+        FloatingPanelDelegate(panel: .tipPanel,
+           panelLayoutforHandler:
+        { [unowned self] _, _ in
+            self.noteListVC.ui.changeTableAlpha(0.2)
+        }, panelaDidMoveHandler:
+        { [unowned self] progress in
+            self.noteListVC.ui.changeTableAlpha(progress)
+        }, panelEndDraggingHandler:
+        { [unowned self] _, _, targetPosition in
+            UIView.Animator(duration: 0.25, options: .allowUserInteraction).animations { [unowned self] in
+                targetPosition == .tip ? (self.noteListVC.ui.changeTableAlpha(0.2)) : (self.noteListVC.ui.changeTableAlpha(1.0))
+            }.animate()
+        })
+    }()
+    // swiftlint:disable:previou
+
+    let noteListVC = AppDelegate.container.resolve(NoteListViewController.self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupDI()
+        setupConfig()
         setupUI()
         setupViewModel()
     }
     
-    private func setupUI() {
-    }
-    
-    private func setupViewModel() {
-        
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        ui.addPanel()
     }
 }
 
 extension MainMapViewController {
     
-    // TODO: Create LocationManager Class
-    func checkLocationService() {
-        if CLLocationManager.locationServicesEnabled() {
-            checkLocationAuthorization()
-        } else {
-            // TODO: Show alert letting the user know they have to turn this on.
-        }
+    private func setupUI() {
+        ui.setupFloating(contentVC: noteListVC, scrollView: noteListVC.ui.tableView)
+        ui.setup()
     }
     
-    func checkLocationAuthorization() {
-        switch CLLocationManager.authorizationStatus() {
-        case .authorizedWhenInUse:
-            ui.mapView.showsUserLocation = true
-            ui.centerViewOnUserLocation()
-            ui.locationManager.startUpdatingLocation()
-        case .authorizedAlways:
-            ui.mapView.showsUserLocation = true
-            ui.centerViewOnUserLocation()
-            ui.locationManager.startUpdatingLocation()
-        case .denied:
-            // TODO: prompt handling
-            break
-        case .notDetermined:
-            // TODO: prompt handling
-            ui.locationManager.requestWhenInUseAuthorization()
-        case .restricted:
-            // TODO: prompt handling
-            break
-        default: break
+    private func setupViewModel() {
+        let input = MainMapViewModel.Input(viewWillAppear: rx.sentMessage(#selector(viewWillAppear(_:))).asObservable())
+        let output = viewModel.transform(input: input)
+        
+        output.places
+            .subscribe(onNext: { _ in }).disposed(by: disposeBag)
+        
+        output.error
+            .subscribe(onNext: { [unowned self] _ in
+                self.showError(message: R.string.localizable.error_message_network())
+            }).disposed(by: disposeBag)
+        
+        output.didAnnotationFetched
+            .subscribe(onNext: { [unowned self] annotations in
+                self.ui.mapView.addAnnotations(annotations)
+            }).disposed(by: disposeBag)
+        
+        output.didLocationUpdated
+            .subscribe(onNext: { [unowned self] _ in
+                self.viewModel.compareCoodinate()
+            }).disposed(by: disposeBag)
+        
+        ui.currentLocationBtn.rx.tap.asDriver()
+            .drive(onNext: { [unowned self] _ in
+                self.ui.setRegion(location: self.ui.mapView.userLocation.coordinate)
+            }).disposed(by: disposeBag)
+        
+        ui.menuBtn.rx.tap.asDriver()
+            .drive(onNext: { _ in
+                print("hoge")
+            }).disposed(by: disposeBag)
+        
+        NotificationCenter.default.rx.notification(.didUpdateLocation)
+            .subscribe(onNext: { [unowned self] notification in
+                if let newLocation = notification.userInfo?[Constants.DictKey.location] as? CLLocation {
+                    self.zoomTo(location: newLocation)
+                    self.viewModel.updateLocation(newLocation)
+                }
+            }).disposed(by: disposeBag)
+        
+        NotificationCenter.default.rx.notification(.showTurnOnLocationServiceAlert)
+            .subscribe(onNext: { [unowned self] _ in
+                self.routing.showSettingsAlert {
+                    guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+                    UIApplication.shared.open(url, options: [:])
+                }
+            }).disposed(by: disposeBag)
+    }
+}
+
+extension MainMapViewController {
+    
+    private func zoomTo(location: CLLocation) {
+        viewModel.zoomTo(location: location,
+                         left: {
+            ui.setRegion(location: location.coordinate)
+        }) {
+            ui.mapView.setCenter(location.coordinate, animated: true)
         }
     }
 }
 
-// TODO: Create Delegate Class
-extension MainMapViewController: CLLocationManagerDelegate {
+extension MainMapViewController: MKMapViewDelegate {
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
-        let region = MKCoordinateRegion(center: location.coordinate,
-                                        latitudinalMeters: ui.regionInMeters,
-                                        longitudinalMeters: ui.regionInMeters)
-        ui.mapView.setRegion(region, animated: true)
+    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        viewModel.changeZoomState()
     }
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        checkLocationAuthorization()
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation { return nil }
+        guard
+            let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier,
+                                                                       for: annotation) as? MKMarkerAnnotationView
+        else { return MKMarkerAnnotationView() }
+        annotationView.clusteringIdentifier = Constants.DictKey.clusteringIdentifier
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let annotation = view.annotation as? Annotation else { return }
+        ui.noteFloatingPanel.move(to: .half, animated: true)
+        noteListVC.ui.changeTableAlpha(0.9)
+        noteListVC.ui.showHeader()
+    }
+}
+
+extension MainMapViewController: TappedSearchBarDelegate {
+    
+    func tappedSearchBar() {
+        ui.fullScreen() {
+            self.noteListVC.ui.changeTableAlpha(1.0)
+        }
     }
 }

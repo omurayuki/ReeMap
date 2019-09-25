@@ -7,7 +7,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let vc = AppDelegate.container.resolve(MainMapViewController.self)
+        window?.rootViewController = vc
+        window?.makeKeyAndVisible()
+        LocationService.sharedInstance.requestAuthorization()
         FirebaseApp.configure()
+        
         return true
     }
 
@@ -15,7 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidEnterBackground(_ application: UIApplication) {}
 
-    func applicationWillEnterForeground(_ application: UIApplication) {}
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        LocationService.sharedInstance.startUpdatingLocation()
+    }
 
     func applicationDidBecomeActive(_ application: UIApplication) {}
 

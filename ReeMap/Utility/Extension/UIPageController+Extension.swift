@@ -1,4 +1,4 @@
-// swiftlint:disable all
+// swiftlint:disable file_name
 import Foundation
 import UIKit
 

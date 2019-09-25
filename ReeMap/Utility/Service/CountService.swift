@@ -1,6 +1,6 @@
 import Foundation
 
-struct MultipleCounting {
+struct CountService {
     
     static func countMultipleItem<T: Comparable>(_ value: [T]) -> [(Any, Int)] {
         let multipleItemCodeCount = NSCountedSet(array: value)

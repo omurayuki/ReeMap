@@ -3,7 +3,7 @@ import UIKit
 
 protocol UI {
 
-    var rootView: UIView? { get set }
+    var viewController: UIViewController? { get set }
     
     func setup()
 }

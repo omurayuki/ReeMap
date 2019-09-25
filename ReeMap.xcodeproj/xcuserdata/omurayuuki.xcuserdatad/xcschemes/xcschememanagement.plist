@@ -4,22 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>DEVELOP.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>27</integer>
-		</dict>
 		<key>RELEASE.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>UITest.xcscheme_^#shared#^_</key>
+		<key>ReeMapUnitTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>51</integer>
 		</dict>
-		<key>UnitTest.xcscheme_^#shared#^_</key>
+		<key>UITest.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
@@ -53,6 +48,11 @@
 			<true/>
 		</dict>
 		<key>C9B9F44A231765C00013ED05</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C9D50CE92324F1CC003466A8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -35,13 +35,32 @@ extension UIViewController {
     }
     
     func showError(message: String) {
-        let alert = UIAlertController.createSimpleOkMessage(title: "エラー", message: message)
+        let alert = UIAlertController.createSimpleOkMessage(title: R.string.localizable.error_title(), message: message)
         present(alert, animated: true)
     }
     
     func showSuccess(message: String) {
-        let alert = UIAlertController.createSimpleOkMessage(title: "成功", message: message)
+        let alert = UIAlertController.createSimpleOkMessage(title: R.string.localizable.success_title(), message: message)
         present(alert, animated: true)
+    }
+    
+    func showAttentionAlert(message: String) {
+        let alert = UIAlertController.createSimpleOkMessage(title: R.string.localizable.attention_title(), message: message)
+        self.present(alert, animated: true)
+    }
+    
+    func showAlertSheet(title: String, message: String, actionTitle: String, completion: (() -> Void)? = nil) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        let action = UIAlertAction(title: actionTitle, style: .default) { _ -> Void in
+            completion?()
+        }
+        let cancelAction = UIAlertAction(title: R.string.localizable.frame_selected_action_sheet_cancel(), style: .cancel, handler: nil)
+        alert.addAction(action)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
     }
     
     func validatePasswordMatch(pass: String, rePass: String, completion: @escaping (_ pass: String?) -> Void) {

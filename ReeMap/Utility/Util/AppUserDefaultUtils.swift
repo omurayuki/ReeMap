@@ -1,7 +1,7 @@
 // swiftlint:disable all
 import Foundation
 
-class AppUserDefaults {
+class AppUserDefaultsUtils {
     
     // Email
     class func getAccountEmail() -> String {
@@ -13,7 +13,7 @@ class AppUserDefaults {
     }
 }
 
-extension AppUserDefaults {
+extension AppUserDefaultsUtils {
     
     private class func getStringValue(keyName: String) -> String {
         let userDefaults = UserDefaults.standard

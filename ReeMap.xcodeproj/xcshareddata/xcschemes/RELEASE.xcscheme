@@ -58,6 +58,16 @@
                ReferencedContainer = "container:ReeMap.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C9D50CE92324F1CC003466A8"
+               BuildableName = "ReeMapUnitTests.xctest"
+               BlueprintName = "ReeMapUnitTests"
+               ReferencedContainer = "container:ReeMap.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
@@ -91,6 +101,13 @@
             ReferencedContainer = "container:ReeMap.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "DYLD_PRINT_STATISTICS"
+            value = "1"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
