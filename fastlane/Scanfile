@@ -12,8 +12,6 @@ devices(["iPhone X", "iPhone 8"])
 
 open_report(true)
 
-clean(true)
-
 output_types("html")
 
 # Enable skip_build to skip debug builds for faster test performance
