@@ -8,9 +8,26 @@ protocol SideMenuViewControllerDelegate: NSObject {
     func sidemenuViewController(_ sidemenuViewController: SideMenuViewController, didSelectItemAt indexPath: IndexPath)
 }
 
+extension SideMenuViewController: VCInjectable {
+    
+    typealias UI = SideMenuUIProtocol
+    typealias Routing = Nillable
+    typealias ViewModel = Nillable
+    typealias DataSource = TableViewDataSource<SideMenuCell, String>
+    
+    func setupConfig() {
+        ui.tableView.dataSource = dataSource
+        ui.tableView.delegate = self
+        ui.tapGesture.delegate = self
+    }
+}
+
 class SideMenuViewController: UIViewController {
     
-    typealias DataSource = TableViewDataSource<SideMenuCell, String>
+    var ui: SideMenuUIProtocol! { didSet { ui.viewController = self } }
+    var routing: Nillable?
+    var viewModel: Nillable?
+    var disposeBag: DisposeBag!
     
     private(set) lazy var dataSource: DataSource = {
         DataSource(cellReuseIdentifier: String(describing: SideMenuCell.self),
@@ -22,36 +39,25 @@ class SideMenuViewController: UIViewController {
     
     weak var delegate: SideMenuViewControllerDelegate?
     
-    private lazy var ui: SideMenuUIProtocol = {
-        let ui = SideMenuUI()
-        ui.viewController = self
-        return ui
-    }()
-    
-    let disposeBag = DisposeBag()
-    
+    var isShown: Bool { return self.parent != nil }
     private var beganLocation: CGPoint = .zero
     private var beganState: Bool = false
     private var contentRatio: CGFloat {
         get {
-            return ui.contentView.frame.maxX / view.bounds.width * 0.7
+            return ui.contentView.frame.maxX / view.bounds.width * 0.6
         }
         set {
             ui.changeContentRatio(ratio: newValue)
         }
     }
     
-    var isShown: Bool { return self.parent != nil }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         ui.setup()
         setupViewModel()
-        ui.tableView.dataSource = dataSource
-        ui.tableView.delegate = self
-        ui.tapGesture.delegate = self
+        setupConfig()
+        dataSource.listItems = Menu.allCases.compactMap { $0.description }
         ui.tableView.reloadData()
-        dataSource.listItems = ["メモ作成", "設定", "お問い合わせ", "ホホホイ"]
     }
     
     private func setupViewModel() {

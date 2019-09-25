@@ -22,11 +22,12 @@ extension MainMapViewController: VCInjectable {
 final class MainMapViewController: UIViewController {
     
     var ui: MainMapUIProtocol! { didSet { ui.viewController = self } }
-    var routing: MainMapRoutingProtocol! { didSet { routing.viewController = self } }
-    var viewModel: MainMapViewModel!
+    var routing: MainMapRoutingProtocol? { didSet { routing?.viewController = self } }
+    var viewModel: MainMapViewModel?
     var disposeBag: DisposeBag!
     
-    let sideMenuVC = SideMenuViewController()
+    let noteListVC = AppDelegate.container.resolve(NoteListViewController.self)
+    let sideMenuVC = AppDelegate.container.resolve(SideMenuViewController.self)
     private var isShownSidemenu: Bool { return sideMenuVC.parent == self }
     
     // swiftlint:disable all
@@ -46,8 +47,6 @@ final class MainMapViewController: UIViewController {
         })
     }()
     // swiftlint:disable:previou
-
-    let noteListVC = AppDelegate.container.resolve(NoteListViewController.self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,24 +101,24 @@ extension MainMapViewController {
     
     private func setupViewModel() {
         let input = MainMapViewModel.Input(viewWillAppear: rx.sentMessage(#selector(viewWillAppear(_:))).asObservable())
-        let output = viewModel.transform(input: input)
+        let output = viewModel?.transform(input: input)
         
-        output.places
+        output?.places
             .subscribe(onNext: { _ in }).disposed(by: disposeBag)
         
-        output.error
+        output?.error
             .subscribe(onNext: { [unowned self] _ in
                 self.showError(message: R.string.localizable.error_message_network())
             }).disposed(by: disposeBag)
         
-        output.didAnnotationFetched
+        output?.didAnnotationFetched
             .subscribe(onNext: { [unowned self] annotations in
                 self.ui.mapView.addAnnotations(annotations)
             }).disposed(by: disposeBag)
         
-        output.didLocationUpdated
+        output?.didLocationUpdated
             .subscribe(onNext: { [unowned self] _ in
-                self.viewModel.compareCoodinate()
+                self.viewModel?.compareCoodinate()
             }).disposed(by: disposeBag)
         
         ui.currentLocationBtn.rx.tap.asDriver()
@@ -136,13 +135,13 @@ extension MainMapViewController {
             .subscribe(onNext: { [unowned self] notification in
                 if let newLocation = notification.userInfo?[Constants.DictKey.location] as? CLLocation {
                     self.zoomTo(location: newLocation)
-                    self.viewModel.updateLocation(newLocation)
+                    self.viewModel?.updateLocation(newLocation)
                 }
             }).disposed(by: disposeBag)
         
         NotificationCenter.default.rx.notification(.showTurnOnLocationServiceAlert)
             .subscribe(onNext: { [unowned self] _ in
-                self.routing.showSettingsAlert {
+                self.routing?.showSettingsAlert {
                     guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
                     UIApplication.shared.open(url, options: [:])
                 }
@@ -153,7 +152,7 @@ extension MainMapViewController {
 extension MainMapViewController {
     
     private func zoomTo(location: CLLocation) {
-        viewModel.zoomTo(location: location,
+        viewModel?.zoomTo(location: location,
                          left: {
             ui.setRegion(location: location.coordinate)
         }) {
@@ -165,7 +164,7 @@ extension MainMapViewController {
 extension MainMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        viewModel.changeZoomState()
+        viewModel?.changeZoomState()
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

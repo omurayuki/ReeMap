@@ -42,7 +42,7 @@ extension SideMenuUI {
         vc.view.addGestureRecognizer(tapGesture)
         
         var contentRect = vc.view.bounds
-        contentRect.size.width = vc.view.bounds.width * 0.7
+        contentRect.size.width = vc.view.bounds.width * 0.6
         contentRect.origin.x = -contentRect.width
         contentView.frame = contentRect
         tableView.frame = contentView.bounds
@@ -51,7 +51,7 @@ extension SideMenuUI {
     func changeContentRatio(ratio: CGFloat) {
         guard let vc = viewController else { return }
         let ratio = min(max(ratio, 0), 1)
-        contentView.frame.origin.x = vc.view.bounds.width * 0.7 * ratio - contentView.frame.width
+        contentView.frame.origin.x = vc.view.bounds.width * 0.6 * ratio - contentView.frame.width
         contentView.layer.shadowColor = UIColor.black.cgColor
         contentView.layer.shadowRadius = 3.0
         contentView.layer.shadowOpacity = 0.6

@@ -25,8 +25,8 @@ extension NoteListViewController: VCInjectable {
 class NoteListViewController: UIViewController {
     
     var ui: NoteListUIProtocol! { didSet { ui.viewController = self } }
-    var routing: NoteListRoutingProtocol! { didSet { routing.viewController = self } }
-    var viewModel: NoteListViewModel!
+    var routing: NoteListRoutingProtocol? { didSet { routing?.viewController = self } }
+    var viewModel: NoteListViewModel?
     var disposeBag: DisposeBag!
     weak var delegate: TappedSearchBarDelegate!
     

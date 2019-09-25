@@ -29,6 +29,8 @@
 		C94996FA233B8F3500165AD6 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996F9233B8F3500165AD6 /* SideMenuViewController.swift */; };
 		C94996FC233BB30600165AD6 /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996FB233BB30600165AD6 /* SideMenuCell.swift */; };
 		C94996FE233BCD3E00165AD6 /* SideMenuUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996FD233BCD3E00165AD6 /* SideMenuUI.swift */; };
+		C9499700233BE15D00165AD6 /* Nillable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996FF233BE15D00165AD6 /* Nillable.swift */; };
+		C9499702233BE1EC00165AD6 /* MenuCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9499701233BE1EC00165AD6 /* MenuCase.swift */; };
 		C949B7A32337F22C009E91FC /* FloatingPanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C949B7A22337F22C009E91FC /* FloatingPanel.framework */; };
 		C949B7A42337F22C009E91FC /* FloatingPanel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C949B7A22337F22C009E91FC /* FloatingPanel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C94A1A502335177700974431 /* MapUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A4F2335177700974431 /* MapUseCase.swift */; };
@@ -180,6 +182,8 @@
 		C94996F9233B8F3500165AD6 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		C94996FB233BB30600165AD6 /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
 		C94996FD233BCD3E00165AD6 /* SideMenuUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuUI.swift; sourceTree = "<group>"; };
+		C94996FF233BE15D00165AD6 /* Nillable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nillable.swift; sourceTree = "<group>"; };
+		C9499701233BE1EC00165AD6 /* MenuCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCase.swift; sourceTree = "<group>"; };
 		C949B7A22337F22C009E91FC /* FloatingPanel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FloatingPanel.framework; path = Carthage/Build/iOS/FloatingPanel.framework; sourceTree = "<group>"; };
 		C94A1A4F2335177700974431 /* MapUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUseCase.swift; sourceTree = "<group>"; };
 		C94A1A512335178400974431 /* MapTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTranslator.swift; sourceTree = "<group>"; };
@@ -536,6 +540,7 @@
 			children = (
 				C963AF6123376D74005E10F9 /* Constants.swift */,
 				C9FEEA652338AD6F00C5C84D /* PanelCase.swift */,
+				C9499701233BE1EC00165AD6 /* MenuCase.swift */,
 			);
 			path = Consts;
 			sourceTree = "<group>";
@@ -745,6 +750,7 @@
 				C96C72D323211FE1001C2FA6 /* VCInjectable.swift */,
 				C9EA2AE32323B3D60034BB1D /* Container.swift */,
 				C9EA2AE52323B3E90034BB1D /* ServiceFactory.swift */,
+				C94996FF233BE15D00165AD6 /* Nillable.swift */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -1039,6 +1045,7 @@
 				C9D6C5EC232109C20064AACD /* UI.swift in Sources */,
 				C9A0563A2322528F00EB9563 /* Array+Extension.swift in Sources */,
 				C9095113232240560080A25B /* Date+Extension.swift in Sources */,
+				C9499700233BE15D00165AD6 /* Nillable.swift in Sources */,
 				C9A0564C232263B000EB9563 /* CountService.swift in Sources */,
 				C9D6C5E12321086C0064AACD /* MainMapViewController.swift in Sources */,
 				C909510D2322380D0080A25B /* KeyboardNotifier.swift in Sources */,
@@ -1075,6 +1082,7 @@
 				C9EA2AE42323B3D60034BB1D /* Container.swift in Sources */,
 				C94996FE233BCD3E00165AD6 /* SideMenuUI.swift in Sources */,
 				C9D7C1B8233A25C500D933B5 /* NoteListUI.swift in Sources */,
+				C9499702233BE1EC00165AD6 /* MenuCase.swift in Sources */,
 				C963AF652337C241005E10F9 /* NoteListViewController.swift in Sources */,
 				C9A056492322537500EB9563 /* TableViewDataSource.swift in Sources */,
 				C963AF5F233721AC005E10F9 /* Annotation.swift in Sources */,

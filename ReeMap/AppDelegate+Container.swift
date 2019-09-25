@@ -8,6 +8,7 @@ extension AppDelegate {
         // MARK: UI
         .register(MainMapUIProtocol.self) { _ in MainMapUI() }
         .register(NoteListUIProtocol.self) { _ in NoteListUI() }
+        .register(SideMenuUIProtocol.self) { _ in SideMenuUI() }
     
         // MARK: Routing
         .register(MainMapRoutingProtocol.self) { _ in MainMapRouting() }
@@ -29,12 +30,17 @@ extension AppDelegate {
                 .with(disposeBag: $0.resolve(DisposeBag.self))
                 .build()
         }
-    
         .register(NoteListViewController.self) {
             AnyVCBuilder<NoteListViewController>()
                 .with(ui: $0.resolve(NoteListUIProtocol.self))
                 .with(routing: $0.resolve(NoteListRoutingProtocol.self))
                 .with(viewModel: $0.resolve(NoteListViewModel.self))
+                .with(disposeBag: $0.resolve(DisposeBag.self))
+                .build()
+        }
+        .register(SideMenuViewController.self) {
+            AnyVCBuilder<SideMenuViewController>()
+                .with(ui: $0.resolve(SideMenuUIProtocol.self))
                 .with(disposeBag: $0.resolve(DisposeBag.self))
                 .build()
         }
