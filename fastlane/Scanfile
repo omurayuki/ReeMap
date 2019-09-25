@@ -8,11 +8,11 @@
 
 scheme("RELEASE")
 
-devices(["iPhone X"])
+devices(["iPhone X", "iPhone 8"])
 
 open_report(true)
 
-clean(false)
+clean(true)
 
 output_types("html")
 

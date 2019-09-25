@@ -16,13 +16,6 @@ end
 
 platform :ios do
 
-	# lane :setup do
-	# 	cocoapods
-	# 	carthage(
-	# 		platform: "iOS"
-	# 	)
-	# end
-
 	lane :test do
 		scan(
 			workspace: "ReeMap.xcworkspace",
