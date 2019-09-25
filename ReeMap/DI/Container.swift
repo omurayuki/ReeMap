@@ -1,5 +1,5 @@
-import UIKit
 import RxSwift
+import UIKit
 
 struct Container: Resolver {
     
