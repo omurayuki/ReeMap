@@ -22,7 +22,7 @@ final class NoteListTableViewCell: UITableViewCell {
         return label
     }()
     
-    var didPlaceUpdated: Place? = nil {
+    var didPlaceUpdated: Place? {
         didSet {
             noteTitle.text = didPlaceUpdated?.title
         }

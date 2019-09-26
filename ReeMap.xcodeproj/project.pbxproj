@@ -99,6 +99,8 @@
 		C9A056492322537500EB9563 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A056482322537500EB9563 /* TableViewDataSource.swift */; };
 		C9A0564C232263B000EB9563 /* CountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A0564B232263B000EB9563 /* CountService.swift */; };
 		C9A64B16233CDC6800C00CC2 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A64B15233CDC6800C00CC2 /* Delegate.swift */; };
+		C9A64B1A233CF45A00C00CC2 /* Rswift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A64B19233CF45A00C00CC2 /* Rswift.framework */; };
+		C9A64B1B233CF45A00C00CC2 /* Rswift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9A64B19233CF45A00C00CC2 /* Rswift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C9A83800231E887700BC880C /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A837FF231E887700BC880C /* SnapshotHelper.swift */; };
 		C9B2F0F92317D37200F29B51 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9B2F0F82317D37200F29B51 /* GoogleService-Info.plist */; };
 		C9B9F44F231765C00013ED05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9F44E231765C00013ED05 /* AppDelegate.swift */; };
@@ -152,6 +154,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				C949B7A42337F22C009E91FC /* FloatingPanel.framework in Embed Frameworks */,
+				C9A64B1B233CF45A00C00CC2 /* Rswift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,6 +256,8 @@
 		C9A056482322537500EB9563 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		C9A0564B232263B000EB9563 /* CountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountService.swift; sourceTree = "<group>"; };
 		C9A64B15233CDC6800C00CC2 /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
+		C9A64B17233CF3A700C00CC2 /* Rswift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rswift.framework; path = Carthage/Build/iOS/Rswift.framework; sourceTree = "<group>"; };
+		C9A64B19233CF45A00C00CC2 /* Rswift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rswift.framework; path = Carthage/Build/iOS/Rswift.framework; sourceTree = "<group>"; };
 		C9A837FF231E887700BC880C /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		C9B2F0CE2317964600F29B51 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		C9B2F0D1231797C900F29B51 /* EAIntroView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EAIntroView.framework; path = Carthage/Build/iOS/EAIntroView.framework; sourceTree = "<group>"; };
@@ -330,6 +335,7 @@
 				C9908815233B72EB00A0994E /* FIRAnalyticsConnector.framework in Frameworks */,
 				C9908816233B72EB00A0994E /* leveldb-library.framework in Frameworks */,
 				C9908817233B72EB00A0994E /* FirebaseCore.framework in Frameworks */,
+				C9A64B1A233CF45A00C00CC2 /* Rswift.framework in Frameworks */,
 				C9908818233B72EB00A0994E /* FirebaseStorage.framework in Frameworks */,
 				C9908819233B72EB00A0994E /* GTMAppAuth.framework in Frameworks */,
 				C97CDE8A23281C8400E1BF75 /* Kingfisher.framework in Frameworks */,
@@ -367,6 +373,7 @@
 		AA67C0CD851106E09160443A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C9A64B17233CF3A700C00CC2 /* Rswift.framework */,
 				C9908820233B747100A0994E /* StoreKit.framework */,
 				C990881E233B746700A0994E /* libc++.tbd */,
 				C990881C233B745700A0994E /* libsqlite3.tbd */,
@@ -614,6 +621,7 @@
 		C9B9F442231765C00013ED05 = {
 			isa = PBXGroup;
 			children = (
+				C9A64B19233CF45A00C00CC2 /* Rswift.framework */,
 				C990881A233B73FC00A0994E /* gRPCCertificates-Cpp.bundle */,
 				C949B7A22337F22C009E91FC /* FloatingPanel.framework */,
 				C9E3F3AE2324A0EA00141BBC /* input.xcfilelist */,
@@ -807,7 +815,6 @@
 				C966EAB22317D89200005EE5 /* SwiftLint */,
 				C97CDE89232818AC00E1BF75 /* Carthage */,
 				C9855A752324C6A500AA7DC6 /* Embed Frameworks */,
-				2BB73E060F9EBB798F3A3E03 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -915,23 +922,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2BB73E060F9EBB798F3A3E03 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RELEASE/Pods-RELEASE-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RELEASE/Pods-RELEASE-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RELEASE/Pods-RELEASE-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		465255C5E05423F7CE4A921F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -989,7 +979,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/$PROJECT_NAME/R.generated.swift\"\n";
+			shellScript = "\"rswift\" generate \"$SRCROOT/$PROJECT_NAME/R.generated.swift\"\n";
 		};
 		C97CDE89232818AC00E1BF75 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;

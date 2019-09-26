@@ -15,14 +15,15 @@ extension UIImageView {
     }
     
     func setImage(url: URL?, completion: ((_ response: UIImage?) -> Void)? = nil) {
-        kf.setImage(with: url) { result in
-            switch result {
-            case .success(let value):
-                completion?(value.image)
-            case .failure(_):
-                completion?(nil)
-            }
-        }
+//        kf.setImage(with: url) { result in
+//            switch result {
+//            case .success(let value):
+//                completion?(value.image)
+//            case .failure(_):
+//                completion?(nil)
+//            }
+//        }
+        kf.setImage(with: url)
     }
     
     func cancelDownload() {
