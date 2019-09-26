@@ -24,7 +24,7 @@ platform :ios do
 
 	lane :test do
 		scan(
-			workspace: "ReeMap.xcworkspace",
+			workspace: "ReeMap.workspace",
 			clean: true # テスト前にclean実行
 		)
 		slack
@@ -40,7 +40,7 @@ platform :ios do
 			force: false
 		)
 		gym( # アプリビルド
-			workspace: "ReeMap.xcworkspace",
+			workspace: "ReeMap.workspace",
 			configuration: "Release",
 			scheme: "RELEASE",
 			silent: true,
@@ -71,7 +71,7 @@ platform :ios do
 			force: false
 		)
 		gym( # アプリビルド
-			workspace: "ReeMap.xcworkspace",
+			workspace: "ReeMap.workspace",
 			configuration: "Release",
 			scheme: "RELEASE",
 			silent: true,
