@@ -98,6 +98,7 @@
 		C9A056472322533E00EB9563 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A056462322533E00EB9563 /* PaddingTextField.swift */; };
 		C9A056492322537500EB9563 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A056482322537500EB9563 /* TableViewDataSource.swift */; };
 		C9A0564C232263B000EB9563 /* CountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A0564B232263B000EB9563 /* CountService.swift */; };
+		C9A64B16233CDC6800C00CC2 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A64B15233CDC6800C00CC2 /* Delegate.swift */; };
 		C9A83800231E887700BC880C /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A837FF231E887700BC880C /* SnapshotHelper.swift */; };
 		C9B2F0F92317D37200F29B51 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9B2F0F82317D37200F29B51 /* GoogleService-Info.plist */; };
 		C9B9F44F231765C00013ED05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9F44E231765C00013ED05 /* AppDelegate.swift */; };
@@ -251,6 +252,7 @@
 		C9A056462322533E00EB9563 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		C9A056482322537500EB9563 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		C9A0564B232263B000EB9563 /* CountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountService.swift; sourceTree = "<group>"; };
+		C9A64B15233CDC6800C00CC2 /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
 		C9A837FF231E887700BC880C /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		C9B2F0CE2317964600F29B51 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		C9B2F0D1231797C900F29B51 /* EAIntroView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EAIntroView.framework; path = Carthage/Build/iOS/EAIntroView.framework; sourceTree = "<group>"; };
@@ -593,6 +595,14 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		C9A64B14233CDC5C00C00CC2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C9A64B15233CDC6800C00CC2 /* Delegate.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		C9B379C72330662D00D1BF77 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -706,6 +716,7 @@
 		C9D6C5DF2321081C0064AACD /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				C9A64B14233CDC5C00C00CC2 /* Common */,
 				C963AF6023376D64005E10F9 /* Consts */,
 				C9A0564A2322639F00EB9563 /* Service */,
 				C9A056432322531000EB9563 /* Custom */,
@@ -1029,6 +1040,7 @@
 				C9FEEA622338AB9700C5C84D /* FloatingPanelDelegate.swift in Sources */,
 				C99513BF23257B5000931012 /* LocationService.swift in Sources */,
 				C9A0563E232252C500EB9563 /* UIPageController+Extension.swift in Sources */,
+				C9A64B16233CDC6800C00CC2 /* Delegate.swift in Sources */,
 				C96C72D423211FE1001C2FA6 /* VCInjectable.swift in Sources */,
 				C90595E62332B026008D113D /* PlaceEntity.swift in Sources */,
 				C9A056322322522C00EB9563 /* UIStackView+Extension.swift in Sources */,

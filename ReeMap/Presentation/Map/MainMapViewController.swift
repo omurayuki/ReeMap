@@ -13,9 +13,10 @@ extension MainMapViewController: VCInjectable {
     typealias PanelDelegate = FloatingPanelDelegate
     
     func setupConfig() {
-        ui.mapView.delegate = self
         ui.noteFloatingPanel.delegate = panelDelegate
+        ui.mapView.delegate = self
         noteListVC.delegate = self
+        sideMenuVC.delegate = self
     }
 }
 
@@ -41,8 +42,17 @@ final class MainMapViewController: UIViewController {
             self.noteListVC.ui.changeTableAlpha(progress)
         }, panelEndDraggingHandler:
         { [unowned self] _, _, targetPosition in
+            switch targetPosition {
+            case .tip:  self.ui.animateMemoBtnAlpha(1)
+            case .half: self.ui.animateMemoBtnAlpha(0)
+            case .full: self.ui.animateMemoBtnAlpha(0)
+            default: break
+            }
             UIView.Animator(duration: 0.25, options: .allowUserInteraction).animations { [unowned self] in
-                targetPosition == .tip ? (self.noteListVC.ui.changeTableAlpha(0.2)) : (self.noteListVC.ui.changeTableAlpha(1.0))
+                switch targetPosition {
+                case .tip: self.noteListVC.ui.changeTableAlpha(0.2)
+                default:   self.noteListVC.ui.changeTableAlpha(1.0)
+                }
             }.animate()
         })
     }()
@@ -53,37 +63,6 @@ final class MainMapViewController: UIViewController {
         setupConfig()
         setupUI()
         setupViewModel()
-        
-        ui.menuBtn.addTarget(self, action: #selector(sidemenuBarButtonTapped(sender:)), for: .touchUpInside)
-        
-        sideMenuVC.delegate = self
-    }
-    
-    @objc private func sidemenuBarButtonTapped(sender: Any) {
-        showSidemenu(animated: true)
-    }
-    
-    private func showSidemenu(contentAvailability: Bool = true, animated: Bool) {
-        if isShownSidemenu { return }
-        
-        addChild(sideMenuVC)
-        sideMenuVC.view.autoresizingMask = .flexibleHeight
-        sideMenuVC.view.frame = view.bounds
-        view.insertSubview(sideMenuVC.view, aboveSubview: view)
-        sideMenuVC.didMove(toParent: self)
-        if contentAvailability {
-            sideMenuVC.showContentView(animated: animated)
-        }
-    }
-    
-    private func hideSidemenu(animated: Bool) {
-        if !isShownSidemenu { return }
-        
-        sideMenuVC.hideContentView(animated: animated, completion: { (_) in
-            self.sideMenuVC.willMove(toParent: nil)
-            self.sideMenuVC.removeFromParent()
-            self.sideMenuVC.view.removeFromSuperview()
-        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -104,7 +83,9 @@ extension MainMapViewController {
         let output = viewModel?.transform(input: input)
         
         output?.places
-            .subscribe(onNext: { _ in }).disposed(by: disposeBag)
+            .subscribe(onNext: { [unowned self] places in
+                self.noteListVC.didAcceptPlaces = places
+            }).disposed(by: disposeBag)
         
         output?.error
             .subscribe(onNext: { [unowned self] _ in
@@ -127,8 +108,8 @@ extension MainMapViewController {
             }).disposed(by: disposeBag)
         
         ui.menuBtn.rx.tap.asDriver()
-            .drive(onNext: { _ in
-                print("hoge")
+            .drive(onNext: { [unowned self] _ in
+                self.showSidemenu(animated: true)
             }).disposed(by: disposeBag)
         
         NotificationCenter.default.rx.notification(.didUpdateLocation)
@@ -158,6 +139,27 @@ extension MainMapViewController {
         }) {
             ui.mapView.setCenter(location.coordinate, animated: true)
         }
+    }
+    
+    private func showSidemenu(contentAvailability: Bool = true, animated: Bool) {
+        if isShownSidemenu { return }
+        addChild(sideMenuVC)
+        sideMenuVC.view.autoresizingMask = .flexibleHeight
+        sideMenuVC.view.frame = view.bounds
+        view.insertSubview(sideMenuVC.view, aboveSubview: view)
+        sideMenuVC.didMove(toParent: self)
+        if contentAvailability {
+            sideMenuVC.showContentView(animated: animated)
+        }
+    }
+    
+    private func hideSidemenu(animated: Bool) {
+        if !isShownSidemenu { return }
+        sideMenuVC.hideContentView(animated: animated, completion: { (_) in
+            self.sideMenuVC.willMove(toParent: nil)
+            self.sideMenuVC.removeFromParent()
+            self.sideMenuVC.view.removeFromSuperview()
+        })
     }
 }
 

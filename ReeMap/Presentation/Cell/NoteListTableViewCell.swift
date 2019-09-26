@@ -22,6 +22,12 @@ final class NoteListTableViewCell: UITableViewCell {
         return label
     }()
     
+    var didPlaceUpdated: Place? = nil {
+        didSet {
+            noteTitle.text = didPlaceUpdated?.title
+        }
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
@@ -35,6 +41,7 @@ final class NoteListTableViewCell: UITableViewCell {
 extension NoteListTableViewCell {
     
     private func setup() {
+        backgroundColor = .clear
         [noteListImage, noteTitle, streetAddress].forEach { addSubview($0) }
         
         noteListImage.anchor()
