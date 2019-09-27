@@ -3,7 +3,8 @@ github "ealeksandrov/EAIntroView"
 github "ReactiveX/RxSwift" ~> 5.0
 github "ashleymills/Reachability.swift"
 github "scenee/FloatingPanel"
-github "onevcat/Kingfisher" ~> 5.0
+github "mac-cain13/R.swift.Library"
+github "onevcat/Kingfisher" ~> 4.0
 binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.json"
 binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseFirestoreBinary.json"
 binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAuthBinary.json"

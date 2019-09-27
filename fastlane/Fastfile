@@ -16,16 +16,15 @@ end
 
 platform :ios do
 
-	# lane :setup do
-	# 	cocoapods
-	# 	carthage(
-	# 		platform: "iOS"
-	# 	)
-	# end
+	lane :setup do
+		carthage(
+			platform: "iOS"
+		)
+	end
 
 	lane :test do
 		scan(
-			workspace: "ReeMap.xcworkspace",
+			project: "ReeMap.xcodeproj",
 			clean: true # テスト前にclean実行
 		)
 		slack
@@ -41,7 +40,7 @@ platform :ios do
 			force: false
 		)
 		gym( # アプリビルド
-			workspace: "ReeMap.xcworkspace",
+			project: "ReeMap.xcodeproj",
 			configuration: "Release",
 			scheme: "RELEASE",
 			silent: true,
@@ -72,7 +71,7 @@ platform :ios do
 			force: false
 		)
 		gym( # アプリビルド
-			workspace: "ReeMap.xcworkspace",
+			project: "ReeMap.xcodeproj",
 			configuration: "Release",
 			scheme: "RELEASE",
 			silent: true,

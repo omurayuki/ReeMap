@@ -14,7 +14,7 @@ extension NoteListViewController: VCInjectable {
     typealias UI = NoteListUIProtocol
     typealias Routing = NoteListRoutingProtocol
     typealias ViewModel = NoteListViewModel
-    typealias DataSource = TableViewDataSource<NoteListTableViewCell, String>
+    typealias DataSource = TableViewDataSource<NoteListTableViewCell, Place>
     
     func setupConfig() {
         ui.tableView.dataSource = dataSource
@@ -25,17 +25,24 @@ extension NoteListViewController: VCInjectable {
 class NoteListViewController: UIViewController {
     
     var ui: NoteListUIProtocol! { didSet { ui.viewController = self } }
-    var routing: NoteListRoutingProtocol! { didSet { routing.viewController = self } }
-    var viewModel: NoteListViewModel!
+    var routing: NoteListRoutingProtocol? { didSet { routing?.viewController = self } }
+    var viewModel: NoteListViewModel?
     var disposeBag: DisposeBag!
     weak var delegate: TappedSearchBarDelegate!
+    
+    var didAcceptPlaces: [Place]? {
+        didSet {
+            guard let places = didAcceptPlaces else { return }
+            dataSource.listItems = places
+            ui.tableView.reloadData()
+        }
+    }
     
     private(set) lazy var dataSource: DataSource = {
         DataSource(cellReuseIdentifier: String(describing: NoteListTableViewCell.self),
                    listItems: [],
                    cellConfigurationHandler: { cell, item, _ in
-            cell.noteTitle.text = item
-            cell.backgroundColor = .clear
+            cell.didPlaceUpdated = item
         })
     }()
     
@@ -43,7 +50,6 @@ class NoteListViewController: UIViewController {
         super.viewDidLoad()
         ui.setup()
         setupConfig()
-        dataSource.listItems = ["hoge", "fuga"]
     }
     
     override func viewDidLayoutSubviews() {
@@ -52,6 +58,7 @@ class NoteListViewController: UIViewController {
     }
 }
 
+// searchBar rxで描きたい
 extension NoteListViewController: UISearchBarDelegate {
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {

@@ -1,7 +1,9 @@
 import Foundation
 import MapKit
 
-struct Place {
+protocol Model {}
+
+struct Place: Model {
     
     var title: String
     var latitude: Double

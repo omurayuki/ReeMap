@@ -8,8 +8,8 @@ final class AnyVCBuilder<T>: VCBuildable where T: UIViewController, T: VCInjecta
     private var data: Any?
     
     private var ui: T.UI!
-    private var routing: T.Routing!
-    private var viewModel: T.ViewModel!
+    private var routing: T.Routing?
+    private var viewModel: T.ViewModel?
     private var disposeBag: DisposeBag!
     
     func with(ui: T.UI) -> Self {
@@ -17,12 +17,12 @@ final class AnyVCBuilder<T>: VCBuildable where T: UIViewController, T: VCInjecta
         return self
     }
     
-    func with(routing: T.Routing) -> Self {
+    func with(routing: T.Routing? = nil) -> Self {
         self.routing = routing
         return self
     }
     
-    func with(viewModel: T.ViewModel) -> Self {
+    func with(viewModel: T.ViewModel? = nil) -> Self {
         self.viewModel = viewModel
         return self
     }

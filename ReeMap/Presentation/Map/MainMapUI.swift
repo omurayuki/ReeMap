@@ -8,6 +8,7 @@ protocol MainMapUIProtocol: UI {
     var mapView: MKMapView { get }
     var currentLocationBtn: UIButton { get }
     var menuBtn: UIButton { get }
+    var memoAddingBtn: UIButton { get }
     var noteFloatingPanel: FloatingPanelController { get }
     
     func setRegion(location: CLLocationCoordinate2D)
@@ -15,6 +16,7 @@ protocol MainMapUIProtocol: UI {
     func addPanel()
     func removePanel()
     func fullScreen(completion: @escaping () -> Void)
+    func animateMemoBtnAlpha(_ value: CGFloat)
 }
 
 final class MainMapUI: MainMapUIProtocol {
@@ -45,6 +47,13 @@ final class MainMapUI: MainMapUIProtocol {
         return button
     }()
     
+    private(set) var memoAddingBtn: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .green
+        button.layer.cornerRadius = 25
+        return button
+    }()
+    
     private(set) var noteFloatingPanel: FloatingPanelController = {
         let fpc = FloatingPanelController()
         fpc.surfaceView.backgroundColor = .clear
@@ -63,7 +72,7 @@ extension MainMapUI {
     func setup() {
         guard let vc = viewController else { return }
         vc.view.backgroundColor = .white
-        [mapView, currentLocationBtn, menuBtn].forEach { vc.view.addSubview($0) }
+        [mapView, currentLocationBtn, menuBtn, memoAddingBtn].forEach { vc.view.addSubview($0) }
         
         mapView.anchor()
             .centerToSuperview()
@@ -82,6 +91,13 @@ extension MainMapUI {
             .left(to: mapView.leftAnchor, constant: 20)
             .width(constant: 35)
             .height(constant: 35)
+            .activate()
+        
+        memoAddingBtn.anchor()
+            .right(to: vc.view.rightAnchor, constant: -15)
+            .bottom(to: vc.view.bottomAnchor, constant: -85)
+            .width(constant: 50)
+            .height(constant: 50)
             .activate()
     }
     
@@ -109,5 +125,12 @@ extension MainMapUI {
             self.noteFloatingPanel.move(to: .full, animated: true)
             completion()
         }
+    }
+    
+    func animateMemoBtnAlpha(_ value: CGFloat) {
+        UIView.SpringAnimator(duration: 0.5, damping: 0.2, velocity: 1, options: .curveEaseOut)
+            .animations { [unowned self] in
+                self.memoAddingBtn.alpha = value
+            }.animate()
     }
 }
