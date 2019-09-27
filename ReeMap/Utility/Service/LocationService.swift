@@ -65,7 +65,7 @@ extension LocationService: CLLocationManagerDelegate {
             var locationAdded: Bool
             locationAdded = filterAndAddLocation(newLocation)
             if locationAdded {
-                current = newLocation
+                currentLocation = newLocation
                 notifiyDidUpdateLocation(newLocation: newLocation)
             }
         }

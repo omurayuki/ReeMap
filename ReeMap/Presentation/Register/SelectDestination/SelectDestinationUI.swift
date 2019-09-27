@@ -14,7 +14,7 @@ protocol SelectDestinationUIProtocol: UI {
 
 final class SelectDestinationUI: SelectDestinationUIProtocol {
     
-    var viewController: UIViewController?
+    weak var viewController: UIViewController?
     
     private(set) var mapView: MKMapView = {
         let mapView = MKMapView()

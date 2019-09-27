@@ -11,7 +11,7 @@ protocol SideMenuUIProtocol: UI {
 
 final class SideMenuUI: SideMenuUIProtocol {
     
-    var viewController: UIViewController?
+    weak var viewController: UIViewController?
     
     private(set) var contentView: UIView = {
         let view = UIView()

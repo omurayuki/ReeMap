@@ -34,10 +34,6 @@ final class SelectDestinationViewController: UIViewController {
         setupConfig()
         zoomTo(location: LocationService.sharedInstance.currentLocation)
     }
-    
-    deinit {
-        print("deinit!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-    }
 }
 
 extension SelectDestinationViewController {
@@ -51,13 +47,12 @@ extension SelectDestinationViewController {
         
         ui.settingsBtn.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
-                guard !(self.ui.streetAddressLabel.text?.isEmpty ?? Bool()) else { return }
                 self.routing?.showCreateMemoPage(address: self.streetAddress)
             }).disposed(by: disposeBag)
         
         ui.cancelBtn.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
-                self.dismiss(animated: true)
+                self.routing?.dismiss()
             }).disposed(by: disposeBag)
     }
 }
@@ -74,6 +69,19 @@ extension SelectDestinationViewController {
             isInitialZoom = false
         }
     }
+    
+    private func updateStreetAddress(placemark: CLPlacemark) {
+        guard
+            let administrativeArea = placemark.administrativeArea,
+            let locality = placemark.locality,
+            let thoroughfare = placemark.thoroughfare,
+            let subThoroughfare = placemark.subThoroughfare
+        else { return }
+        if self.isFirstInput { self.isFirstInput = false; return }
+        self.ui.streetAddressLabel.textColor = .black
+        self.ui.streetAddressLabel.text = "\(administrativeArea)\(locality)\(thoroughfare)\(subThoroughfare)"
+        self.streetAddress = "\(administrativeArea)\(locality)\(thoroughfare)\(subThoroughfare)"
+    }
 }
 
 extension SelectDestinationViewController: MKMapViewDelegate {
@@ -85,21 +93,7 @@ extension SelectDestinationViewController: MKMapViewDelegate {
             if let _ = error {
                 self.showAttentionAlert(message: R.string.localizable.attention_could_not_load_location())
             }
-            guard
-                let administrativeArea = placemark.administrativeArea,
-                let locality = placemark.locality,
-                let thoroughfare = placemark.thoroughfare,
-                let subThoroughfare = placemark.subThoroughfare
-            else { return }
-            
-            if self.isFirstInput {
-                self.isFirstInput = false
-                return
-            }
-            
-            self.ui.streetAddressLabel.textColor = .black
-            self.ui.streetAddressLabel.text = "\(administrativeArea)\(locality)\(thoroughfare)\(subThoroughfare)"
-            self.streetAddress = "\(administrativeArea)\(locality)\(thoroughfare)\(subThoroughfare)"
+            self.updateStreetAddress(placemark: placemark)
         }
     }
 }

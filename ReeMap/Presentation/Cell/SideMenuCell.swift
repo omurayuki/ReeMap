@@ -4,7 +4,7 @@ final class SideMenuCell: UITableViewCell {
     
     var title: UILabel = {
         let label = UILabel()
-        label.apply(.h4)
+        label.apply(.h5)
         return label
     }()
     
@@ -26,8 +26,8 @@ extension SideMenuCell {
         
         title.anchor()
             .left(to: leftAnchor, constant: 20)
-            .top(to: topAnchor, constant: 30)
-            .bottom(to: bottomAnchor, constant: -30)
+            .top(to: topAnchor, constant: 15)
+            .bottom(to: bottomAnchor, constant: -15)
             .activate()
     }
 }

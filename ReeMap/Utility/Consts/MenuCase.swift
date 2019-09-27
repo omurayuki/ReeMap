@@ -11,7 +11,7 @@ enum Menu: Int, CaseIterable {
     
     var description: String {
         switch self {
-        case .memo:           return "メモ作成"
+        case .memo:           return "メモ一覧"
         case .privacy:        return "プライバシー"
         case .termsOfService: return "利用規約"
         case .help:           return "ヘルプ"
