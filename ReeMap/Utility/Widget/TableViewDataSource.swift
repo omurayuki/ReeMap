@@ -19,6 +19,10 @@ class TableViewDataSource<CellType, EntityType>: NSObject, UITableViewDataSource
         self.listItems = listItems
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
@@ -37,6 +41,7 @@ extension TableViewDataSource {
     // swiftlint:enable:next force_cast 
     private func generateCell(_ tableView: UITableView, items: [E], indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
+        cell.selectionStyle = .none
         let listItem = items[indexPath.row]
         cellConfigurationHandler(cell as! C, listItem, indexPath)
         return cell

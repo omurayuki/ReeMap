@@ -18,6 +18,7 @@ extension NoteListViewController: VCInjectable {
     
     func setupConfig() {
         ui.tableView.dataSource = dataSource
+        ui.tableView.delegate = self
         ui.searchBar.delegate = self
     }
 }
@@ -55,6 +56,24 @@ class NoteListViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         ui.hideHeader()
+    }
+}
+
+extension NoteListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        ui.changeTableAlpha(0.9)
+        ui.showHeader()
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteButton = UITableViewRowAction(style: .normal, title: R.string.localizable.delete()) { [unowned self] _, _ in
+            self.dataSource.listItems.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        deleteButton.backgroundColor = .red
+        return [deleteButton]
     }
 }
 
