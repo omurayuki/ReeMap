@@ -7,11 +7,20 @@
 "attention_title" = "注意";
 "change_settings_title" = "位置情報を更新してください";
 "settings_title" = "設定";
+"frame_selected_action_sheet_save" = "保存";
 
 // message
 "error_message_network" = "ネットワークに接続出来ません";
 "attention_message" = "ReeMapを使用するためには、位置情報を常に許可する必要があります。設定から変更してください。";
+"attention_could_not_load_location" = "位置情報の読み込みに失敗しました。再度アプリを起動してください。";
+"attention_missing_info" = "情報が失われますが、宜しいでしょうか？";
 
 // content
 "no_title" = "no title";
 "title" = "Title";
+"create_memo" = "メモ作成";
+"do_settings" = "設定する";
+"select_destination" = "目的地選択";
+"write_memo" = "メモを書く";
+"trace_map" = "マップをなぞってください";
+"writing_memo" = "メモを記入";

@@ -26,8 +26,6 @@ final class MainMapUI: MainMapUIProtocol {
     private(set) var mapView: MKMapView = {
         let mapView = MKMapView()
         mapView.showsUserLocation = true
-        mapView.showsCompass = true
-        mapView.showsScale = true
         mapView.showsCompass = false
         mapView.showsScale = false
         return mapView

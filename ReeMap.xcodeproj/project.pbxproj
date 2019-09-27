@@ -23,6 +23,11 @@
 		C909512423224AD90080A25B /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C909512323224AD90080A25B /* UILabel+Extension.swift */; };
 		C909512623224D810080A25B /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C909512523224D810080A25B /* UITextField+Extension.swift */; };
 		C909512823224DA00080A25B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C909512723224DA00080A25B /* UIViewController+Extension.swift */; };
+		C9142707233DB87B00567B8E /* SelectDestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9142706233DB87B00567B8E /* SelectDestinationViewController.swift */; };
+		C914270B233DBA1900567B8E /* CreateMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C914270A233DBA1900567B8E /* CreateMemoViewController.swift */; };
+		C914270D233DE16B00567B8E /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C914270C233DE16B00567B8E /* PlaceHolderTextView.swift */; };
+		C914270F233DECAE00567B8E /* CreateMemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C914270E233DECAE00567B8E /* CreateMemoViewModel.swift */; };
+		C9142711233E0E2C00567B8E /* Reactive+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9142710233E0E2C00567B8E /* Reactive+Extension.swift */; };
 		C914952C2322089500FCF3AB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C914952B2322089500FCF3AB /* Localizable.strings */; };
 		C92C822A2323FC0B00983C36 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92C82292323FC0B00983C36 /* MapKit.framework */; };
 		C94996FA233B8F3500165AD6 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996F9233B8F3500165AD6 /* SideMenuViewController.swift */; };
@@ -177,6 +182,11 @@
 		C909512323224AD90080A25B /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		C909512523224D810080A25B /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		C909512723224DA00080A25B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		C9142706233DB87B00567B8E /* SelectDestinationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDestinationViewController.swift; sourceTree = "<group>"; };
+		C914270A233DBA1900567B8E /* CreateMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMemoViewController.swift; sourceTree = "<group>"; };
+		C914270C233DE16B00567B8E /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
+		C914270E233DECAE00567B8E /* CreateMemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMemoViewModel.swift; sourceTree = "<group>"; };
+		C9142710233E0E2C00567B8E /* Reactive+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Extension.swift"; sourceTree = "<group>"; };
 		C914952B2322089500FCF3AB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C92C82292323FC0B00983C36 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C94996F9233B8F3500165AD6 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
@@ -487,6 +497,7 @@
 				C9A05641232252FE00EB9563 /* Optional+Extension.swift */,
 				C963AF5C233716F2005E10F9 /* Observable+Extension.swift */,
 				C9D7C1BD233A2A5300D933B5 /* UISearchBar+Extension.swift */,
+				C9142710233E0E2C00567B8E /* Reactive+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -499,6 +510,31 @@
 				C9FEEA612338AB9700C5C84D /* FloatingPanelDelegate.swift */,
 			);
 			path = Widget;
+			sourceTree = "<group>";
+		};
+		C9142705233DB84100567B8E /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				C9142708233DB9F400567B8E /* SelectDestination */,
+				C9142709233DB9FE00567B8E /* CreateMemo */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		C9142708233DB9F400567B8E /* SelectDestination */ = {
+			isa = PBXGroup;
+			children = (
+				C9142706233DB87B00567B8E /* SelectDestinationViewController.swift */,
+			);
+			path = SelectDestination;
+			sourceTree = "<group>";
+		};
+		C9142709233DB9FE00567B8E /* CreateMemo */ = {
+			isa = PBXGroup;
+			children = (
+				C914270A233DBA1900567B8E /* CreateMemoViewController.swift */,
+			);
+			path = CreateMemo;
 			sourceTree = "<group>";
 		};
 		C914952D232237A300FCF3AB /* Util */ = {
@@ -573,6 +609,7 @@
 				C9A056442322532500EB9563 /* VerticalStackView.swift */,
 				C9A056462322533E00EB9563 /* PaddingTextField.swift */,
 				C9FEEA632338AD1B00C5C84D /* BasicPanelLayout.swift */,
+				C914270C233DE16B00567B8E /* PlaceHolderTextView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -671,6 +708,7 @@
 				C963AF632337C21C005E10F9 /* List */,
 				C9FEEA5E2338977D00C5C84D /* Note */,
 				C94996F8233B8E4F00165AD6 /* SideMenu */,
+				C9142705233DB84100567B8E /* Register */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -681,6 +719,7 @@
 				C96C72CD23211C36001C2FA6 /* ViewModel.swift */,
 				C9D6C5E72321089B0064AACD /* MainMapViewModel.swift */,
 				C9D7C1B9233A264100D933B5 /* NoteListViewModel.swift */,
+				C914270E233DECAE00567B8E /* CreateMemoViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1000,7 +1039,9 @@
 				C909511B23224A3B0080A25B /* UIButton+Extension.swift in Sources */,
 				C94A1A502335177700974431 /* MapUseCase.swift in Sources */,
 				C963AF5D233716F2005E10F9 /* Observable+Extension.swift in Sources */,
+				C9142711233E0E2C00567B8E /* Reactive+Extension.swift in Sources */,
 				C94A1A522335178400974431 /* MapTranslator.swift in Sources */,
+				C9142707233DB87B00567B8E /* SelectDestinationViewController.swift in Sources */,
 				C963AF6223376D74005E10F9 /* Constants.swift in Sources */,
 				C9A05640232252EC00EB9563 /* String+Extension.swift in Sources */,
 				C94A1A542335187D00974431 /* MapRepository.swift in Sources */,
@@ -1038,18 +1079,21 @@
 				C9D6C5E3232108770064AACD /* MainMapUI.swift in Sources */,
 				C909512623224D810080A25B /* UITextField+Extension.swift in Sources */,
 				C9D6C5E82321089B0064AACD /* MainMapViewModel.swift in Sources */,
+				C914270F233DECAE00567B8E /* CreateMemoViewModel.swift in Sources */,
 				C9A05642232252FE00EB9563 /* Optional+Extension.swift in Sources */,
 				C909511D23224A700080A25B /* UIColor+Extension.swift in Sources */,
 				C9D7C1BE233A2A5300D933B5 /* UISearchBar+Extension.swift in Sources */,
 				C9D7C1BA233A264100D933B5 /* NoteListViewModel.swift in Sources */,
 				C9EA2AE42323B3D60034BB1D /* Container.swift in Sources */,
 				C94996FE233BCD3E00165AD6 /* SideMenuUI.swift in Sources */,
+				C914270D233DE16B00567B8E /* PlaceHolderTextView.swift in Sources */,
 				C9D7C1B8233A25C500D933B5 /* NoteListUI.swift in Sources */,
 				C9499702233BE1EC00165AD6 /* MenuCase.swift in Sources */,
 				C963AF652337C241005E10F9 /* NoteListViewController.swift in Sources */,
 				C9A056492322537500EB9563 /* TableViewDataSource.swift in Sources */,
 				C963AF5F233721AC005E10F9 /* Annotation.swift in Sources */,
 				C9A0563C232252AE00EB9563 /* UITableView+Extension.swift in Sources */,
+				C914270B233DBA1900567B8E /* CreateMemoViewController.swift in Sources */,
 				C94996FC233BB30600165AD6 /* SideMenuCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

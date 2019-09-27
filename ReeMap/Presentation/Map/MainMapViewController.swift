@@ -62,7 +62,7 @@ final class MainMapViewController: UIViewController {
         super.viewDidLoad()
         setupConfig()
         setupUI()
-        setupViewModel()
+        bindUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -78,7 +78,7 @@ extension MainMapViewController {
         ui.setup()
     }
     
-    private func setupViewModel() {
+    private func bindUI() {
         let input = MainMapViewModel.Input(viewWillAppear: rx.sentMessage(#selector(viewWillAppear(_:))).asObservable())
         let output = viewModel?.transform(input: input)
         
