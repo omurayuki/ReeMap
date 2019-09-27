@@ -23,6 +23,8 @@ final class SideMenuUI: SideMenuUIProtocol {
     private(set) var tableView: UITableView = {
         let table = UITableView()
         table.separatorInset = .zero
+        table.backgroundColor = .groupTableViewBackground
+        table.tableFooterView = UIView(frame: .zero)
         table.register(SideMenuCell.self, forCellReuseIdentifier: String(describing: SideMenuCell.self))
         return table
     }()

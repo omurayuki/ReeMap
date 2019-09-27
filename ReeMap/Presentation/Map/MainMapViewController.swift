@@ -94,7 +94,7 @@ extension MainMapViewController {
         
         output?.didAnnotationFetched
             .subscribe(onNext: { [unowned self] annotations in
-                self.ui.mapView.addAnnotations(annotations)
+                self.ui.updateAnnotations(annotations)
             }).disposed(by: disposeBag)
         
         output?.didLocationUpdated
