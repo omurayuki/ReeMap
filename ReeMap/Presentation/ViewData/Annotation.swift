@@ -3,12 +3,12 @@ import MapKit
 
 @objc class Annotation: NSObject {
     
-    var title: String?
+    var content: String?
     var subtitle: String?
     var coordinate: CLLocationCoordinate2D
     
-    init(title: String?, subtitle: String?, coordinate: CLLocationCoordinate2D) {
-        self.title = title
+    init(content: String?, subtitle: String?, coordinate: CLLocationCoordinate2D) {
+        self.content = content
         self.subtitle = subtitle
         self.coordinate = coordinate
     }

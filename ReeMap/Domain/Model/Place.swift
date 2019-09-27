@@ -5,12 +5,12 @@ protocol Model {}
 
 struct Place: Model {
     
-    var title: String
+    var content: String
     var latitude: Double
     var longitude: Double
     
     init(entity: PlaceEntity) {
-        title = entity.title
+        content = entity.content
         latitude = entity.latitude
         longitude = entity.longitude
     }
