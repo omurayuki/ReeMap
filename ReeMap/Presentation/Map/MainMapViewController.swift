@@ -112,6 +112,11 @@ extension MainMapViewController {
                 self.showSidemenu(animated: true)
             }).disposed(by: disposeBag)
         
+        ui.memoAddingBtn.rx.tap.asDriver()
+            .drive(onNext: { _ in
+                self.routing?.showSelectDestinationPage()
+            }).disposed(by: disposeBag)
+        
         NotificationCenter.default.rx.notification(.didUpdateLocation)
             .subscribe(onNext: { [unowned self] notification in
                 if let newLocation = notification.userInfo?[Constants.DictKey.location] as? CLLocation {

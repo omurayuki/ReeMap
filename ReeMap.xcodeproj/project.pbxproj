@@ -28,6 +28,8 @@
 		C914270D233DE16B00567B8E /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C914270C233DE16B00567B8E /* PlaceHolderTextView.swift */; };
 		C914270F233DECAE00567B8E /* CreateMemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C914270E233DECAE00567B8E /* CreateMemoViewModel.swift */; };
 		C9142711233E0E2C00567B8E /* Reactive+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9142710233E0E2C00567B8E /* Reactive+Extension.swift */; };
+		C9142713233E32D900567B8E /* SelectDestinationUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9142712233E32D900567B8E /* SelectDestinationUI.swift */; };
+		C9142715233E344800567B8E /* SelectDestinationRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9142714233E344800567B8E /* SelectDestinationRouting.swift */; };
 		C914952C2322089500FCF3AB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C914952B2322089500FCF3AB /* Localizable.strings */; };
 		C92C822A2323FC0B00983C36 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92C82292323FC0B00983C36 /* MapKit.framework */; };
 		C94996FA233B8F3500165AD6 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996F9233B8F3500165AD6 /* SideMenuViewController.swift */; };
@@ -187,6 +189,8 @@
 		C914270C233DE16B00567B8E /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
 		C914270E233DECAE00567B8E /* CreateMemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMemoViewModel.swift; sourceTree = "<group>"; };
 		C9142710233E0E2C00567B8E /* Reactive+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Extension.swift"; sourceTree = "<group>"; };
+		C9142712233E32D900567B8E /* SelectDestinationUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDestinationUI.swift; sourceTree = "<group>"; };
+		C9142714233E344800567B8E /* SelectDestinationRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDestinationRouting.swift; sourceTree = "<group>"; };
 		C914952B2322089500FCF3AB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C92C82292323FC0B00983C36 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C94996F9233B8F3500165AD6 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
@@ -525,6 +529,8 @@
 			isa = PBXGroup;
 			children = (
 				C9142706233DB87B00567B8E /* SelectDestinationViewController.swift */,
+				C9142712233E32D900567B8E /* SelectDestinationUI.swift */,
+				C9142714233E344800567B8E /* SelectDestinationRouting.swift */,
 			);
 			path = SelectDestination;
 			sourceTree = "<group>";
@@ -1036,6 +1042,7 @@
 				C9A056322322522C00EB9563 /* UIStackView+Extension.swift in Sources */,
 				C9D7C1BC233A270500D933B5 /* NoteListRouting.swift in Sources */,
 				C9A056472322533E00EB9563 /* PaddingTextField.swift in Sources */,
+				C9142715233E344800567B8E /* SelectDestinationRouting.swift in Sources */,
 				C909511B23224A3B0080A25B /* UIButton+Extension.swift in Sources */,
 				C94A1A502335177700974431 /* MapUseCase.swift in Sources */,
 				C963AF5D233716F2005E10F9 /* Observable+Extension.swift in Sources */,
@@ -1057,6 +1064,7 @@
 				C9915635233999BE0065ABF2 /* NoteListTableViewCell.swift in Sources */,
 				C9A056382322527600EB9563 /* Animation+Extension.swift in Sources */,
 				C909512223224AC30080A25B /* UIFont+Extension.swift in Sources */,
+				C9142713233E32D900567B8E /* SelectDestinationUI.swift in Sources */,
 				C96C72D023211FA0001C2FA6 /* VCBuildable.swift in Sources */,
 				C90595F12332B3E2008D113D /* Place.swift in Sources */,
 				C9FEEA602338979600C5C84D /* NoteContentViewController.swift in Sources */,

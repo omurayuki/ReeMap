@@ -9,10 +9,12 @@ extension AppDelegate {
         .register(MainMapUIProtocol.self) { _ in MainMapUI() }
         .register(NoteListUIProtocol.self) { _ in NoteListUI() }
         .register(SideMenuUIProtocol.self) { _ in SideMenuUI() }
+        .register(SelectDestinationUIProtocol.self) { _ in SelectDestinationUI() }
     
         // MARK: Routing
         .register(MainMapRoutingProtocol.self) { _ in MainMapRouting() }
         .register(NoteListRoutingProtocol.self) { _ in NoteListRouting() }
+        .register(SelectDestinationRoutingProtocol.self) { _ in SelectDestinationRouting() }
     
         // MARK: ViewModel
         .register(MainMapViewModel.self) { _ in MainMapViewModel(useCase: MapUseCase(repository: MapRepository())) }
@@ -41,6 +43,13 @@ extension AppDelegate {
         .register(SideMenuViewController.self) {
             AnyVCBuilder<SideMenuViewController>()
                 .with(ui: $0.resolve(SideMenuUIProtocol.self))
+                .with(disposeBag: $0.resolve(DisposeBag.self))
+                .build()
+        }
+        .register(SelectDestinationViewController.self) {
+            AnyVCBuilder<SelectDestinationViewController>()
+                .with(ui: $0.resolve(SelectDestinationUIProtocol.self))
+                .with(routing: $0.resolve(SelectDestinationRoutingProtocol.self))
                 .with(disposeBag: $0.resolve(DisposeBag.self))
                 .build()
         }
