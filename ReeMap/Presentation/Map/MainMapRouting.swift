@@ -3,6 +3,7 @@ import UIKit
 protocol MainMapRoutingProtocol: Routing {
     
     func showSettingsAlert(completion: @escaping () -> Void)
+    func showSelectDestinationPage()
 }
 
 final class MainMapRouting: MainMapRoutingProtocol {
@@ -15,5 +16,10 @@ final class MainMapRouting: MainMapRoutingProtocol {
                                        actionTitle: R.string.localizable.settings_title()) {
             completion()
         }
+    }
+    
+    func showSelectDestinationPage() {
+        let vc = AppDelegate.container.resolve(SelectDestinationViewController.self)
+        viewController?.present(UINavigationController(rootViewController: vc), animated: true)
     }
 }

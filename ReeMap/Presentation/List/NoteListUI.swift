@@ -16,7 +16,7 @@ protocol NoteListUIProtocol: UI {
 
 final class NoteListUI: NoteListUIProtocol {
     
-    var viewController: UIViewController?
+    weak var viewController: UIViewController?
     
     private(set) var visualEffectView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: .light)

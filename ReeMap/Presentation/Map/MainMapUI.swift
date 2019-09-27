@@ -1,3 +1,4 @@
+import CoreLocation
 import FloatingPanel
 import Foundation
 import MapKit
@@ -17,6 +18,7 @@ protocol MainMapUIProtocol: UI {
     func removePanel()
     func fullScreen(completion: @escaping () -> Void)
     func animateMemoBtnAlpha(_ value: CGFloat)
+    func updateAnnotations(_ annotations: [MKAnnotation])
 }
 
 final class MainMapUI: MainMapUIProtocol {
@@ -26,8 +28,6 @@ final class MainMapUI: MainMapUIProtocol {
     private(set) var mapView: MKMapView = {
         let mapView = MKMapView()
         mapView.showsUserLocation = true
-        mapView.showsCompass = true
-        mapView.showsScale = true
         mapView.showsCompass = false
         mapView.showsScale = false
         return mapView
@@ -132,5 +132,10 @@ extension MainMapUI {
             .animations { [unowned self] in
                 self.memoAddingBtn.alpha = value
             }.animate()
+    }
+    
+    func updateAnnotations(_ annotations: [MKAnnotation]) {
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.addAnnotations(annotations)
     }
 }

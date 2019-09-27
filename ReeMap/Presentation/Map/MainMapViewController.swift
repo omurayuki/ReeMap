@@ -62,7 +62,7 @@ final class MainMapViewController: UIViewController {
         super.viewDidLoad()
         setupConfig()
         setupUI()
-        setupViewModel()
+        bindUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -78,7 +78,7 @@ extension MainMapViewController {
         ui.setup()
     }
     
-    private func setupViewModel() {
+    private func bindUI() {
         let input = MainMapViewModel.Input(viewWillAppear: rx.sentMessage(#selector(viewWillAppear(_:))).asObservable())
         let output = viewModel?.transform(input: input)
         
@@ -94,7 +94,7 @@ extension MainMapViewController {
         
         output?.didAnnotationFetched
             .subscribe(onNext: { [unowned self] annotations in
-                self.ui.mapView.addAnnotations(annotations)
+                self.ui.updateAnnotations(annotations)
             }).disposed(by: disposeBag)
         
         output?.didLocationUpdated
@@ -110,6 +110,11 @@ extension MainMapViewController {
         ui.menuBtn.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
                 self.showSidemenu(animated: true)
+            }).disposed(by: disposeBag)
+        
+        ui.memoAddingBtn.rx.tap.asDriver()
+            .drive(onNext: { _ in
+                self.routing?.showSelectDestinationPage()
             }).disposed(by: disposeBag)
         
         NotificationCenter.default.rx.notification(.didUpdateLocation)

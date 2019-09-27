@@ -6,6 +6,7 @@ final class LocationService: NSObject {
     static var sharedInstance = LocationService()
     let locationManager: CLLocationManager
     var locationDataArray: [CLLocation]
+    var currentLocation: CLLocation!
     
     override init() {
         locationManager = CLLocationManager()
@@ -64,6 +65,7 @@ extension LocationService: CLLocationManagerDelegate {
             var locationAdded: Bool
             locationAdded = filterAndAddLocation(newLocation)
             if locationAdded {
+                currentLocation = newLocation
                 notifiyDidUpdateLocation(newLocation: newLocation)
             }
         }
