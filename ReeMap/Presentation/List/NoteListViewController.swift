@@ -77,7 +77,6 @@ extension NoteListViewController: UITableViewDelegate {
     }
 }
 
-// searchBar rxで描きたい
 extension NoteListViewController: UISearchBarDelegate {
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
@@ -87,7 +86,7 @@ extension NoteListViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        ui.showHeader()
+        self.ui.showHeader()
     }
     
     func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {

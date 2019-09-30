@@ -3,10 +3,9 @@ import UIKit
 final class NoteListTableViewCell: UITableViewCell {
     
     var noteListImage: UIImageView = {
-        let image = UIImageView()
+        let image = UIImageView(image: #imageLiteral(resourceName: "location"))
         image.clipsToBounds = true
         image.layer.cornerRadius = 25
-        image.backgroundColor = .orange
         return image
     }()
     
@@ -61,7 +60,7 @@ extension NoteListTableViewCell {
         streetAddress.anchor()
             .top(to: noteContent.bottomAnchor, constant: 5)
             .left(to: noteListImage.rightAnchor, constant: 15)
-            .right(to: rightAnchor, constant: -20)
+            .width(constant: frame.width * 0.9 - 50)
             .activate()
     }
 }
