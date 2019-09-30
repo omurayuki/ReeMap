@@ -33,24 +33,58 @@ final class MainMapUI: MainMapUIProtocol {
         return mapView
     }()
     
+    private var currentLocationWrapView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 5
+        view.layer.shadowOpacity = 0.3
+        view.layer.shadowRadius = 12
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 5, height: 5)
+        return view
+    }()
+    
     private(set) var currentLocationBtn: UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "Icon-App-83.5x83.5-3"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "map"), for: .normal)
         button.clipsToBounds = true
         return button
+    }()
+    
+    private var menuWrapView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 5
+        view.layer.shadowOpacity = 0.3
+        view.layer.shadowRadius = 12
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 5, height: 5)
+        return view
     }()
     
     private(set) var menuBtn: UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "Icon-App-83.5x83.5-1"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "menu"), for: .normal)
         button.clipsToBounds = true
         return button
     }()
     
+    private var memoAddingWrapView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 5
+        view.layer.cornerRadius = 27.5
+        view.layer.shadowOpacity = 0.3
+        view.layer.shadowRadius = 12
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 5, height: 5)
+        return view
+    }()
+    
     private(set) var memoAddingBtn: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .green
-        button.layer.cornerRadius = 25
+        button.setImage(#imageLiteral(resourceName: "add"), for: .normal)
+        button.clipsToBounds = true
         return button
     }()
     
@@ -72,32 +106,53 @@ extension MainMapUI {
     func setup() {
         guard let vc = viewController else { return }
         vc.view.backgroundColor = .white
-        [mapView, currentLocationBtn, menuBtn, memoAddingBtn].forEach { vc.view.addSubview($0) }
+        [mapView, currentLocationWrapView, menuWrapView, memoAddingWrapView].forEach { vc.view.addSubview($0) }
+        currentLocationWrapView.addSubview(currentLocationBtn)
+        menuWrapView.addSubview(menuBtn)
+        memoAddingWrapView.addSubview(memoAddingBtn)
         
         mapView.anchor()
             .centerToSuperview()
             .edgesToSuperview()
             .activate()
         
-        currentLocationBtn.anchor()
+        currentLocationWrapView.anchor()
             .top(to: mapView.topAnchor, constant: 35)
             .right(to: mapView.rightAnchor, constant: -20)
-            .width(constant: 35)
-            .height(constant: 35)
+            .width(constant: 50)
+            .height(constant: 50)
+            .activate()
+        
+        currentLocationBtn.anchor()
+            .centerToSuperview()
+            .width(constant: 30)
+            .height(constant: 30)
+            .activate()
+        
+        menuWrapView.anchor()
+            .top(to: mapView.topAnchor, constant: 35)
+            .left(to: mapView.leftAnchor, constant: 20)
+            .width(constant: 50)
+            .height(constant: 50)
             .activate()
         
         menuBtn.anchor()
-            .top(to: mapView.topAnchor, constant: 35)
-            .left(to: mapView.leftAnchor, constant: 20)
-            .width(constant: 35)
-            .height(constant: 35)
+            .centerToSuperview()
+            .width(constant: 25)
+            .height(constant: 25)
+            .activate()
+        
+        memoAddingWrapView.anchor()
+            .right(to: vc.view.rightAnchor, constant: -15)
+            .bottom(to: vc.view.bottomAnchor, constant: -85)
+            .width(constant: 55)
+            .height(constant: 55)
             .activate()
         
         memoAddingBtn.anchor()
-            .right(to: vc.view.rightAnchor, constant: -15)
-            .bottom(to: vc.view.bottomAnchor, constant: -85)
-            .width(constant: 50)
-            .height(constant: 50)
+            .centerToSuperview()
+            .width(constant: 30)
+            .height(constant: 30)
             .activate()
     }
     

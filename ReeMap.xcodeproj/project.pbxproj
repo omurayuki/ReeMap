@@ -131,7 +131,6 @@
 		C9EA2AE62323B3E90034BB1D /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA2AE52323B3E90034BB1D /* ServiceFactory.swift */; };
 		C9EA2AE82323B63E0034BB1D /* AppDelegate+Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA2AE72323B63E0034BB1D /* AppDelegate+Container.swift */; };
 		C9FC93332335109E00B1EFA9 /* NotificationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FC93322335109E00B1EFA9 /* NotificationUtils.swift */; };
-		C9FEEA602338979600C5C84D /* NoteContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FEEA5F2338979600C5C84D /* NoteContentViewController.swift */; };
 		C9FEEA622338AB9700C5C84D /* FloatingPanelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FEEA612338AB9700C5C84D /* FloatingPanelDelegate.swift */; };
 		C9FEEA642338AD1B00C5C84D /* BasicPanelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FEEA632338AD1B00C5C84D /* BasicPanelLayout.swift */; };
 		C9FEEA662338AD6F00C5C84D /* PanelCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FEEA652338AD6F00C5C84D /* PanelCase.swift */; };
@@ -307,7 +306,6 @@
 		C9EA2AE52323B3E90034BB1D /* ServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
 		C9EA2AE72323B63E0034BB1D /* AppDelegate+Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Container.swift"; sourceTree = "<group>"; };
 		C9FC93322335109E00B1EFA9 /* NotificationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUtils.swift; sourceTree = "<group>"; };
-		C9FEEA5F2338979600C5C84D /* NoteContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteContentViewController.swift; sourceTree = "<group>"; };
 		C9FEEA612338AB9700C5C84D /* FloatingPanelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelDelegate.swift; sourceTree = "<group>"; };
 		C9FEEA632338AD1B00C5C84D /* BasicPanelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicPanelLayout.swift; sourceTree = "<group>"; };
 		C9FEEA652338AD6F00C5C84D /* PanelCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelCase.swift; sourceTree = "<group>"; };
@@ -718,7 +716,6 @@
 				C9D6C5EA232109850064AACD /* Routing */,
 				C9D6C5E6232108820064AACD /* Map */,
 				C963AF632337C21C005E10F9 /* List */,
-				C9FEEA5E2338977D00C5C84D /* Note */,
 				C94996F8233B8E4F00165AD6 /* SideMenu */,
 				C9142705233DB84100567B8E /* Register */,
 			);
@@ -807,14 +804,6 @@
 				C94996FF233BE15D00165AD6 /* Nillable.swift */,
 			);
 			path = DI;
-			sourceTree = "<group>";
-		};
-		C9FEEA5E2338977D00C5C84D /* Note */ = {
-			isa = PBXGroup;
-			children = (
-				C9FEEA5F2338979600C5C84D /* NoteContentViewController.swift */,
-			);
-			path = Note;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1075,7 +1064,6 @@
 				C9142713233E32D900567B8E /* SelectDestinationUI.swift in Sources */,
 				C96C72D023211FA0001C2FA6 /* VCBuildable.swift in Sources */,
 				C90595F12332B3E2008D113D /* Place.swift in Sources */,
-				C9FEEA602338979600C5C84D /* NoteContentViewController.swift in Sources */,
 				C94A1A562335189A00974431 /* MapRemoteDataStore.swift in Sources */,
 				C99156322338F0630065ABF2 /* NoteTableHeaderView.swift in Sources */,
 				C9A056362322526400EB9563 /* UIImageView+Extension.swift in Sources */,

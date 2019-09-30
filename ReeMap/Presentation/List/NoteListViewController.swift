@@ -18,6 +18,7 @@ extension NoteListViewController: VCInjectable {
     
     func setupConfig() {
         ui.tableView.dataSource = dataSource
+        ui.tableView.delegate = self
         ui.searchBar.delegate = self
     }
 }
@@ -58,7 +59,24 @@ class NoteListViewController: UIViewController {
     }
 }
 
-// searchBar rxで描きたい
+extension NoteListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        ui.changeTableAlpha(0.9)
+        ui.showHeader()
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteButton = UITableViewRowAction(style: .normal, title: R.string.localizable.delete()) { [unowned self] _, _ in
+            self.dataSource.listItems.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        deleteButton.backgroundColor = .red
+        return [deleteButton]
+    }
+}
+
 extension NoteListViewController: UISearchBarDelegate {
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
@@ -68,7 +86,7 @@ extension NoteListViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        ui.showHeader()
+        self.ui.showHeader()
     }
     
     func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {

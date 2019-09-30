@@ -25,8 +25,7 @@ final class SelectDestinationUI: SelectDestinationUIProtocol {
     }()
     
     private(set) var selectImage: UIImageView = {
-        let image = UIImageView()
-        image.backgroundColor = .green
+        let image = UIImageView(image: #imageLiteral(resourceName: "pinMark"))
         image.clipsToBounds = true
         image.layer.cornerRadius = 17.5
         return image
