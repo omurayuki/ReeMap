@@ -42,7 +42,6 @@ extension MainMapViewModel {
                 self.useCase.fetchMemos().do(onNext: { [unowned self] places in
                     self.annotations
                         .accept(places.compactMap { Annotation(content: $0.content,
-                                                               subtitle: nil,
                                                                coordinate: CLLocationCoordinate2D(latitude: $0.latitude,
                                                                                                   longitude: $0.longitude))
                         })

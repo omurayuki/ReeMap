@@ -9,8 +9,8 @@ protocol NoteListUIProtocol: UI {
     
     func changeTableAlpha(_ alpha: CGFloat)
     func setSearchText(fontSize: CGFloat)
-    func changeHeader(height: CGFloat, isFade: Bool)
-    func showHeader()
+    func changeHeader(height: CGFloat, isFade: Bool, content: String, address: String)
+    func showHeader(content: String, address: String)
     func hideHeader()
 }
 
@@ -35,6 +35,7 @@ final class NoteListUI: NoteListUIProtocol {
         bar.searchBarStyle = .minimal
         bar.contentMode = .redraw
         bar.showsCancelButton = false
+        bar.enablesReturnKeyAutomatically = false
         return bar
     }()
     
@@ -92,10 +93,12 @@ extension NoteListUI {
         searchBar.setSearchText(fontSize: 15)
     }
     
-    func changeHeader(height: CGFloat, isFade: Bool) {
+    func changeHeader(height: CGFloat, isFade: Bool, content: String, address: String) {
         tableView.beginUpdates()
-        if let headerView = tableView.tableHeaderView {
+        if let headerView = tableView.tableHeaderView as? NoteTableHeaderView {
             UIView.animate(withDuration: 0.25) { [unowned self] in
+                headerView.noteContent.text = content
+                headerView.streetAddressContent.text = address
                 var frame = headerView.frame
                 frame.size.height = height
                 self.tableView.tableHeaderView?.frame.size.height = frame.height
@@ -105,13 +108,15 @@ extension NoteListUI {
         tableView.endUpdates()
     }
     
-    func showHeader() {
-        if let headerView = tableView.tableHeaderView as? NoteTableHeaderView {
-            changeHeader(height: headerView.noteContent.frame.height + 150, isFade: false)
-        }
+    func showHeader(content: String, address: String) {
+        guard let headerView1 = tableView.tableHeaderView as? NoteTableHeaderView else { return }
+        headerView1.noteContent.text = content
+        headerView1.streetAddressContent.text = address
+        headerView1.layoutSubviews()
+        self.changeHeader(height: headerView1.noteContent.frame.height + 150, isFade: false, content: content, address: address)
     }
     
     func hideHeader() {
-        changeHeader(height: 0.0, isFade: true)
+        changeHeader(height: 0.0, isFade: true, content: "", address: "")
     }
 }

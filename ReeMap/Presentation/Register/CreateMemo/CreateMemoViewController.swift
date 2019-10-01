@@ -4,6 +4,8 @@ import MapKit
 import RxCocoa
 import RxSwift
 import UIKit
+import FirebaseFirestore
+import Firebase
 
 extension CreateMemoViewController: VCInjectable {
     
@@ -11,8 +13,7 @@ extension CreateMemoViewController: VCInjectable {
     typealias Routing = CreateMemoRoutingProtocol
     typealias ViewModel = CreateMemoViewModel
     
-    func setupConfig() {
-    }
+    func setupConfig() {}
 }
 
 final class CreateMemoViewController: UIViewController {
@@ -47,7 +48,24 @@ extension CreateMemoViewController {
         
         ui.saveBtn.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
-                self.routing?.dismiss()
+                var latitude: Double = 0.0
+                var longitude: Double = 0.0
+                CLGeocoder().geocodeAddressString(self.ui.streetAddressLabel.text ?? "", completionHandler: { placemark, error in
+                    if let error = error {
+                        print(error.localizedDescription)
+                        return
+                    }
+                    latitude = placemark?.first?.location?.coordinate.latitude ?? 0.0
+                    longitude = placemark?.first?.location?.coordinate.longitude ?? 0.0
+                    guard let uid = AppUserDefaultsUtils.getUIDToken() else { return }
+                    Firestore.firestore().collection("Users").document(uid).collection("Notes").document().setData(["uid": uid, "created_at": FieldValue.serverTimestamp(), "updated_at": FieldValue.serverTimestamp(), "content": self.ui.memoTextView.text ?? "", "notification": true, "geo_point": GeoPoint(latitude: latitude, longitude: longitude)], completion: { error in
+                        if let _ = error {
+                            print("保存できませんでした")
+                            return
+                        }
+                        self.routing?.dismiss()
+                    })
+                })
             }).disposed(by: disposeBag)
         
         ui.cancelBtn.rx.tap.asDriver()

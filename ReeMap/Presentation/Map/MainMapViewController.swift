@@ -4,6 +4,7 @@ import MapKit
 import RxCocoa
 import RxSwift
 import UIKit
+import FirebaseFirestore
 
 extension MainMapViewController: VCInjectable {
     
@@ -63,6 +64,24 @@ final class MainMapViewController: UIViewController {
         setupConfig()
         setupUI()
         bindUI()
+        
+        guard let uid = AppUserDefaultsUtils.getUIDToken() else { return }
+        Firestore.firestore().collection("Users").document(uid).collection("Notes").order(by: "updated_at", descending: true).addSnapshotListener { query, error in
+            if let _ = error {
+                print("取得できません")
+                return
+            }
+            guard let document = query?.documents else { return }
+            let places = document.compactMap { data -> Place in
+                let documentdata = data.data()
+                return Place(entity: PlaceEntity(document: documentdata))
+            }
+            self.noteListVC.didAcceptPlaces = places
+            let annotations = places.compactMap { Annotation(content: $0.content,
+                                                             coordinate: CLLocationCoordinate2D(latitude: $0.latitude,
+                                                                                                longitude: $0.longitude)) }
+            self.ui.updateAnnotations(annotations)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -82,20 +101,20 @@ extension MainMapViewController {
         let input = MainMapViewModel.Input(viewWillAppear: rx.sentMessage(#selector(viewWillAppear(_:))).asObservable())
         let output = viewModel?.transform(input: input)
         
-        output?.places
-            .subscribe(onNext: { [unowned self] places in
-                self.noteListVC.didAcceptPlaces = places
-            }).disposed(by: disposeBag)
+//        output?.places
+//            .subscribe(onNext: { [unowned self] places in
+//                self.noteListVC.didAcceptPlaces = places
+//            }).disposed(by: disposeBag)
         
         output?.error
             .subscribe(onNext: { [unowned self] _ in
                 self.showError(message: R.string.localizable.error_message_network())
             }).disposed(by: disposeBag)
         
-        output?.didAnnotationFetched
-            .subscribe(onNext: { [unowned self] annotations in
-                self.ui.updateAnnotations(annotations)
-            }).disposed(by: disposeBag)
+//        output?.didAnnotationFetched
+//            .subscribe(onNext: { [unowned self] annotations in
+//                self.ui.updateAnnotations(annotations)
+//            }).disposed(by: disposeBag)
         
         output?.didLocationUpdated
             .subscribe(onNext: { [unowned self] _ in
@@ -160,7 +179,7 @@ extension MainMapViewController {
     
     private func hideSidemenu(animated: Bool) {
         if !isShownSidemenu { return }
-        sideMenuVC.hideContentView(animated: animated, completion: { (_) in
+        sideMenuVC.hideContentView(animated: animated, completion: { [unowned self] (_) in
             self.sideMenuVC.willMove(toParent: nil)
             self.sideMenuVC.removeFromParent()
             self.sideMenuVC.view.removeFromSuperview()
@@ -188,7 +207,7 @@ extension MainMapViewController: MKMapViewDelegate {
         guard let annotation = view.annotation as? Annotation else { return }
         ui.noteFloatingPanel.move(to: .half, animated: true)
         noteListVC.ui.changeTableAlpha(0.9)
-        noteListVC.ui.showHeader()
+        noteListVC.ui.showHeader(content: annotation.content ?? "", address: "annotation.address")
     }
 }
 

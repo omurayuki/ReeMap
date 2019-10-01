@@ -63,8 +63,9 @@ extension NoteListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let place = dataSource.listItems[indexPath.row]
         ui.changeTableAlpha(0.9)
-        ui.showHeader()
+        ui.showHeader(content: place.content, address: "GeoCorder実装する")
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -86,22 +87,22 @@ extension NoteListViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.ui.showHeader()
+        self.ui.showHeader(content: "search bar でっせ", address: "")
     }
     
     func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
-        searchBar.resignFirstResponder()
+        searchBar.endEditing(true)
         return true
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         ui.hideHeader()
-        searchBar.resignFirstResponder()
+        searchBar.endEditing(true)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
-        searchBar.resignFirstResponder()
+        searchBar.endEditing(true)
     }
 }
