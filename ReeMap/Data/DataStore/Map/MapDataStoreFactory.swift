@@ -2,7 +2,7 @@ import Foundation
 
 struct MapDataStoreFactory {
     
-    static func createMapRemoteDataStore() -> MapRemoteDataStore {
+    static func createMapRemoteDataStore() -> MapRemoteDataStoreProtocol {
         return MapRemoteDataStore()
     }
 }

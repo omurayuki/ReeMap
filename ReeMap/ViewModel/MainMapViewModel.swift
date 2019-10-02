@@ -39,13 +39,14 @@ extension MainMapViewModel {
     func transform(input: Input) -> Output {
         let places = input.viewWillAppear
             .flatMap { [unowned self] _ -> Observable<Event<[Place]>> in
-                self.useCase.fetchMemos().do(onNext: { [unowned self] places in
-                    self.annotations
-                        .accept(places.compactMap { Annotation(content: $0.content,
-                                                               coordinate: CLLocationCoordinate2D(latitude: $0.latitude,
-                                                                                                  longitude: $0.longitude))
-                        })
-                }).materialize()
+                self.useCase.fetchMemos()
+                    .do(onNext: { [unowned self] places in
+                        self.annotations
+                            .accept(places.compactMap { Annotation(content: $0.content,
+                                                                   coordinate: CLLocationCoordinate2D(latitude: $0.latitude,
+                                                                                                      longitude: $0.longitude))
+                            })
+                    }).materialize()
             }.share(replay: 1)
         
         return Output(places: places.elements(),
@@ -56,6 +57,10 @@ extension MainMapViewModel {
 }
 
 extension MainMapViewModel {
+    
+    func AuthenticateAnonymous() -> Single<User> {
+        return useCase.AuthenticateAnonymous()
+    }
     
     func updateLocation(_ location: CLLocation) {
         currentLocation.accept(location)

@@ -1,8 +1,6 @@
 import Foundation
 import MapKit
 
-protocol Model {}
-
 struct Place: Model {
     
     var uid: String

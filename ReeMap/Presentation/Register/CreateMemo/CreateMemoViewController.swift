@@ -4,8 +4,8 @@ import MapKit
 import RxCocoa
 import RxSwift
 import UIKit
-import FirebaseFirestore
 import Firebase
+import FirebaseFirestore
 
 extension CreateMemoViewController: VCInjectable {
     

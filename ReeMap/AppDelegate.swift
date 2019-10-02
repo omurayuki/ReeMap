@@ -1,5 +1,4 @@
 import Firebase
-import FirebaseAuth
 import UIKit
 
 @UIApplicationMain
@@ -18,18 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
         LocationService.sharedInstance.requestAuthorization()
-        
-        guard AppUserDefaultsUtils.getUIDToken() != nil else {
-            Auth.auth().signInAnonymously { authResult, error in
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-                guard let uid = authResult?.user.uid else { return }
-                AppUserDefaultsUtils.setUIDToken(uid: uid)
-            }
-            return true
-        }
         
         return true
     }

@@ -4,7 +4,7 @@ import MapKit
 @objc class Annotation: NSObject {
     
     var content: String?
-    var subtitle: String? = nil
+    var subtitle: String?
     var coordinate: CLLocationCoordinate2D
     
     init(content: String?, coordinate: CLLocationCoordinate2D) {

@@ -3,6 +3,7 @@ import RxSwift
 
 protocol MapUseCaseProtocol {
     
+    func AuthenticateAnonymous() -> Single<User>
     func fetchMemos() -> Observable<[Place]>
 }
 
@@ -12,6 +13,10 @@ struct MapUseCase: MapUseCaseProtocol {
     
     init(repository: MapRepositoryProtocol) {
         self.repository = repository
+    }
+    
+    func AuthenticateAnonymous() -> Single<User> {
+        return repository.AuthenticateAnonymous().map { AuthTranslator().translate($0) }
     }
     
     func fetchMemos() -> Observable<[Place]> {
