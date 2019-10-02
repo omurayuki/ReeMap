@@ -1,3 +1,4 @@
+import CoreLocation
 import FloatingPanel
 import Foundation
 import RxCocoa
@@ -59,13 +60,36 @@ class NoteListViewController: UIViewController {
     }
 }
 
+extension NoteListViewController {
+    
+    private func getPlacemark(location: CLLocation, place: Place) {
+        viewModel?.getPlacemarks(location: location)
+            .subscribe(onSuccess: { [unowned self] placemark in
+                self.ui.changeTableAlpha(0.9)
+                self.ui.showHeader(content: place.content, address: self.getStreetAddress(placemark: placemark))
+            }, onError: { [unowned self] _ in
+                self.showError(message: R.string.localizable.attention_could_not_load_location())
+            }).disposed(by: disposeBag)
+    }
+    
+    private func getStreetAddress(placemark: CLPlacemark) -> String {
+        guard
+            let administrativeArea = placemark.administrativeArea,
+            let locality = placemark.locality,
+            let thoroughfare = placemark.thoroughfare,
+            let subThoroughfare = placemark.subThoroughfare
+        else { return R.string.localizable.could_not_get() }
+        return "\(administrativeArea)\(locality)\(thoroughfare)\(subThoroughfare)"
+    }
+}
+
 extension NoteListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let place = dataSource.listItems[indexPath.row]
-        ui.changeTableAlpha(0.9)
-        ui.showHeader(content: place.content, address: "GeoCorder実装する")
+        let location = CLLocation(latitude: place.latitude, longitude: place.longitude)
+        getPlacemark(location: location, place: place)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

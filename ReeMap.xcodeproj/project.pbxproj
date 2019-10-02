@@ -134,6 +134,8 @@
 		C9D50CED2324F1CC003466A8 /* ReeMapUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D50CEC2324F1CC003466A8 /* ReeMapUnitTests.swift */; };
 		C9D5A49B23447CFB00720A8A /* SelectDestinationLocalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D5A49A23447CFB00720A8A /* SelectDestinationLocalDataStore.swift */; };
 		C9D5A49D23447D0D00720A8A /* SelectDestinationDataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D5A49C23447D0D00720A8A /* SelectDestinationDataStoreFactory.swift */; };
+		C9D5A49F23448BF900720A8A /* NoteListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D5A49E23448BF900720A8A /* NoteListUseCase.swift */; };
+		C9D5A4A123448C2900720A8A /* NoteListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D5A4A023448C2900720A8A /* NoteListRepository.swift */; };
 		C9D6C5E12321086C0064AACD /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6C5E02321086C0064AACD /* MainMapViewController.swift */; };
 		C9D6C5E3232108770064AACD /* MainMapUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6C5E2232108770064AACD /* MainMapUI.swift */; };
 		C9D6C5E52321087F0064AACD /* MainMapRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6C5E42321087F0064AACD /* MainMapRouting.swift */; };
@@ -327,6 +329,8 @@
 		C9D50CEE2324F1CC003466A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9D5A49A23447CFB00720A8A /* SelectDestinationLocalDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDestinationLocalDataStore.swift; sourceTree = "<group>"; };
 		C9D5A49C23447D0D00720A8A /* SelectDestinationDataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDestinationDataStoreFactory.swift; sourceTree = "<group>"; };
+		C9D5A49E23448BF900720A8A /* NoteListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListUseCase.swift; sourceTree = "<group>"; };
+		C9D5A4A023448C2900720A8A /* NoteListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListRepository.swift; sourceTree = "<group>"; };
 		C9D6C5E02321086C0064AACD /* MainMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
 		C9D6C5E2232108770064AACD /* MainMapUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapUI.swift; sourceTree = "<group>"; };
 		C9D6C5E42321087F0064AACD /* MainMapRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapRouting.swift; sourceTree = "<group>"; };
@@ -473,6 +477,7 @@
 			isa = PBXGroup;
 			children = (
 				C94A1A532335187D00974431 /* MapRepository.swift */,
+				C9D5A4A023448C2900720A8A /* NoteListRepository.swift */,
 				C9C7716423447ADB00670809 /* SelectDestinationRepository.swift */,
 			);
 			path = Repository;
@@ -501,6 +506,7 @@
 			isa = PBXGroup;
 			children = (
 				C94A1A4F2335177700974431 /* MapUseCase.swift */,
+				C9D5A49E23448BF900720A8A /* NoteListUseCase.swift */,
 				C9C7716223447A6300670809 /* SelectDestinationUseCase.swift */,
 			);
 			path = UseCase;
@@ -1181,6 +1187,7 @@
 				C909512623224D810080A25B /* UITextField+Extension.swift in Sources */,
 				C9D6C5E82321089B0064AACD /* MainMapViewModel.swift in Sources */,
 				C914270F233DECAE00567B8E /* CreateMemoViewModel.swift in Sources */,
+				C9D5A49F23448BF900720A8A /* NoteListUseCase.swift in Sources */,
 				C9A05642232252FE00EB9563 /* Optional+Extension.swift in Sources */,
 				C909511D23224A700080A25B /* UIColor+Extension.swift in Sources */,
 				C9D7C1BE233A2A5300D933B5 /* UISearchBar+Extension.swift in Sources */,
@@ -1188,6 +1195,7 @@
 				C90140D823433622003AA3B2 /* AuthEntity.swift in Sources */,
 				C9D7C1BA233A264100D933B5 /* NoteListViewModel.swift in Sources */,
 				C9EA2AE42323B3D60034BB1D /* Container.swift in Sources */,
+				C9D5A4A123448C2900720A8A /* NoteListRepository.swift in Sources */,
 				C94996FE233BCD3E00165AD6 /* SideMenuUI.swift in Sources */,
 				C914270D233DE16B00567B8E /* PlaceHolderTextView.swift in Sources */,
 				C9D7C1B8233A25C500D933B5 /* NoteListUI.swift in Sources */,

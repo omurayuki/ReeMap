@@ -20,7 +20,7 @@ extension AppDelegate {
     
         // MARK: ViewModel
         .register(MainMapViewModel.self) { _ in MainMapViewModel(useCase: MapUseCase(repository: MapRepository())) }
-        .register(NoteListViewModel.self) { _ in NoteListViewModel() }
+        .register(NoteListViewModel.self) { _ in NoteListViewModel(useCase: NoteListUseCase(repository: NoteListRepository())) }
         .register(SelectDestinationViewModel.self) { _ in SelectDestinationViewModel(useCase: SelectDestinationUseCase(repository: SelectDestinationRepository())) }
         .register(CreateMemoViewModel.self) { _ in CreateMemoViewModel() }
     
