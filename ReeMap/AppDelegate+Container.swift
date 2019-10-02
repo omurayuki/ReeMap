@@ -21,6 +21,7 @@ extension AppDelegate {
         // MARK: ViewModel
         .register(MainMapViewModel.self) { _ in MainMapViewModel(useCase: MapUseCase(repository: MapRepository())) }
         .register(NoteListViewModel.self) { _ in NoteListViewModel() }
+        .register(SelectDestinationViewModel.self) { _ in SelectDestinationViewModel(useCase: SelectDestinationUseCase(repository: SelectDestinationRepository())) }
         .register(CreateMemoViewModel.self) { _ in CreateMemoViewModel() }
     
         // MARK: DisposeBag
@@ -53,6 +54,7 @@ extension AppDelegate {
             AnyVCBuilder<SelectDestinationViewController>()
                 .with(ui: $0.resolve(SelectDestinationUIProtocol.self))
                 .with(routing: $0.resolve(SelectDestinationRoutingProtocol.self))
+                .with(viewModel: $0.resolve(SelectDestinationViewModel.self))
                 .with(disposeBag: $0.resolve(DisposeBag.self))
                 .build()
         }

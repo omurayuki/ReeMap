@@ -3,6 +3,7 @@ import RxCocoa
 import RxSwift
 
 final class NoteListViewModel: ViewModel {
+    
 }
 
 extension NoteListViewModel {

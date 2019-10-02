@@ -128,8 +128,12 @@
 		C9B9F44F231765C00013ED05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9F44E231765C00013ED05 /* AppDelegate.swift */; };
 		C9B9F456231765C10013ED05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F455231765C10013ED05 /* Assets.xcassets */; };
 		C9B9F459231765C10013ED05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F457231765C10013ED05 /* LaunchScreen.storyboard */; };
-		C9C7715F234470EA00670809 /* CLGeocoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C7715E234470EA00670809 /* CLGeocoder+Extension.swift */; };
+		C9C7716123447A2700670809 /* SelectDestinationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C7716023447A2700670809 /* SelectDestinationViewModel.swift */; };
+		C9C7716323447A6300670809 /* SelectDestinationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C7716223447A6300670809 /* SelectDestinationUseCase.swift */; };
+		C9C7716523447ADB00670809 /* SelectDestinationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C7716423447ADB00670809 /* SelectDestinationRepository.swift */; };
 		C9D50CED2324F1CC003466A8 /* ReeMapUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D50CEC2324F1CC003466A8 /* ReeMapUnitTests.swift */; };
+		C9D5A49B23447CFB00720A8A /* SelectDestinationLocalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D5A49A23447CFB00720A8A /* SelectDestinationLocalDataStore.swift */; };
+		C9D5A49D23447D0D00720A8A /* SelectDestinationDataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D5A49C23447D0D00720A8A /* SelectDestinationDataStoreFactory.swift */; };
 		C9D6C5E12321086C0064AACD /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6C5E02321086C0064AACD /* MainMapViewController.swift */; };
 		C9D6C5E3232108770064AACD /* MainMapUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6C5E2232108770064AACD /* MainMapUI.swift */; };
 		C9D6C5E52321087F0064AACD /* MainMapRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6C5E42321087F0064AACD /* MainMapRouting.swift */; };
@@ -315,10 +319,14 @@
 		C9B9F455231765C10013ED05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9B9F458231765C10013ED05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9B9F45A231765C10013ED05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C9C7715E234470EA00670809 /* CLGeocoder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLGeocoder+Extension.swift"; sourceTree = "<group>"; };
+		C9C7716023447A2700670809 /* SelectDestinationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDestinationViewModel.swift; sourceTree = "<group>"; };
+		C9C7716223447A6300670809 /* SelectDestinationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDestinationUseCase.swift; sourceTree = "<group>"; };
+		C9C7716423447ADB00670809 /* SelectDestinationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDestinationRepository.swift; sourceTree = "<group>"; };
 		C9D50CEA2324F1CC003466A8 /* ReeMapUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReeMapUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9D50CEC2324F1CC003466A8 /* ReeMapUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReeMapUnitTests.swift; sourceTree = "<group>"; };
 		C9D50CEE2324F1CC003466A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9D5A49A23447CFB00720A8A /* SelectDestinationLocalDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDestinationLocalDataStore.swift; sourceTree = "<group>"; };
+		C9D5A49C23447D0D00720A8A /* SelectDestinationDataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDestinationDataStoreFactory.swift; sourceTree = "<group>"; };
 		C9D6C5E02321086C0064AACD /* MainMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
 		C9D6C5E2232108770064AACD /* MainMapUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapUI.swift; sourceTree = "<group>"; };
 		C9D6C5E42321087F0064AACD /* MainMapRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapRouting.swift; sourceTree = "<group>"; };
@@ -465,6 +473,7 @@
 			isa = PBXGroup;
 			children = (
 				C94A1A532335187D00974431 /* MapRepository.swift */,
+				C9C7716423447ADB00670809 /* SelectDestinationRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -472,6 +481,7 @@
 		C90595EB2332B2FD008D113D /* DataStore */ = {
 			isa = PBXGroup;
 			children = (
+				C9C7716623447AE000670809 /* SelectDestination */,
 				C9AED83F23431F8F00F82C4A /* Auth */,
 				C96483BD23352E240023BB7D /* Map */,
 			);
@@ -491,6 +501,7 @@
 			isa = PBXGroup;
 			children = (
 				C94A1A4F2335177700974431 /* MapUseCase.swift */,
+				C9C7716223447A6300670809 /* SelectDestinationUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -540,7 +551,6 @@
 				C9D7C1BD233A2A5300D933B5 /* UISearchBar+Extension.swift */,
 				C9142710233E0E2C00567B8E /* Reactive+Extension.swift */,
 				C90140DF234379A6003AA3B2 /* Firestore+Populate.swift */,
-				C9C7715E234470EA00670809 /* CLGeocoder+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -759,6 +769,15 @@
 			path = ReeMap;
 			sourceTree = "<group>";
 		};
+		C9C7716623447AE000670809 /* SelectDestination */ = {
+			isa = PBXGroup;
+			children = (
+				C9D5A49A23447CFB00720A8A /* SelectDestinationLocalDataStore.swift */,
+				C9D5A49C23447D0D00720A8A /* SelectDestinationDataStoreFactory.swift */,
+			);
+			path = SelectDestination;
+			sourceTree = "<group>";
+		};
 		C9D50CEB2324F1CC003466A8 /* ReeMapUnitTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -790,6 +809,7 @@
 				C96C72CD23211C36001C2FA6 /* ViewModel.swift */,
 				C9D6C5E72321089B0064AACD /* MainMapViewModel.swift */,
 				C9D7C1B9233A264100D933B5 /* NoteListViewModel.swift */,
+				C9C7716023447A2700670809 /* SelectDestinationViewModel.swift */,
 				C914270E233DECAE00567B8E /* CreateMemoViewModel.swift */,
 			);
 			path = ViewModel;
@@ -1080,6 +1100,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9C7716323447A6300670809 /* SelectDestinationUseCase.swift in Sources */,
 				C9FC93332335109E00B1EFA9 /* NotificationUtils.swift in Sources */,
 				C90140E0234379A6003AA3B2 /* Firestore+Populate.swift in Sources */,
 				C9D6C5EE232109E20064AACD /* Routing.swift in Sources */,
@@ -1109,6 +1130,7 @@
 				C90140DE234338CB003AA3B2 /* AuthTranslator.swift in Sources */,
 				C94A1A502335177700974431 /* MapUseCase.swift in Sources */,
 				C963AF5D233716F2005E10F9 /* Observable+Extension.swift in Sources */,
+				C9D5A49B23447CFB00720A8A /* SelectDestinationLocalDataStore.swift in Sources */,
 				C9142711233E0E2C00567B8E /* Reactive+Extension.swift in Sources */,
 				C94A1A522335178400974431 /* MapTranslator.swift in Sources */,
 				C9142707233DB87B00567B8E /* SelectDestinationViewController.swift in Sources */,
@@ -1117,6 +1139,7 @@
 				C94A1A542335187D00974431 /* MapRepository.swift in Sources */,
 				C9095115232242D60080A25B /* DateFormatter+Extension.swift in Sources */,
 				C9D6C5EC232109C20064AACD /* UI.swift in Sources */,
+				C9D5A49D23447D0D00720A8A /* SelectDestinationDataStoreFactory.swift in Sources */,
 				C9A0563A2322528F00EB9563 /* Array+Extension.swift in Sources */,
 				C9095113232240560080A25B /* Date+Extension.swift in Sources */,
 				C9499700233BE15D00165AD6 /* Nillable.swift in Sources */,
@@ -1130,9 +1153,9 @@
 				C909512223224AC30080A25B /* UIFont+Extension.swift in Sources */,
 				C9142713233E32D900567B8E /* SelectDestinationUI.swift in Sources */,
 				C96C72D023211FA0001C2FA6 /* VCBuildable.swift in Sources */,
+				C9C7716123447A2700670809 /* SelectDestinationViewModel.swift in Sources */,
 				C90595F12332B3E2008D113D /* Place.swift in Sources */,
 				C9AED84323431FAF00F82C4A /* AuthLocalDataStore.swift in Sources */,
-				C9C7715F234470EA00670809 /* CLGeocoder+Extension.swift in Sources */,
 				C94A1A562335189A00974431 /* MapRemoteDataStore.swift in Sources */,
 				C99156322338F0630065ABF2 /* NoteTableHeaderView.swift in Sources */,
 				C9A056362322526400EB9563 /* UIImageView+Extension.swift in Sources */,
@@ -1175,6 +1198,7 @@
 				C963AF5F233721AC005E10F9 /* Annotation.swift in Sources */,
 				C9A0563C232252AE00EB9563 /* UITableView+Extension.swift in Sources */,
 				C914270B233DBA1900567B8E /* CreateMemoViewController.swift in Sources */,
+				C9C7716523447ADB00670809 /* SelectDestinationRepository.swift in Sources */,
 				C94996FC233BB30600165AD6 /* SideMenuCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
