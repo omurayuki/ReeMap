@@ -68,6 +68,10 @@ extension MainMapViewModel {
             .elements()
     }
     
+    func getPlacemarks(location: CLLocation) -> Single<CLPlacemark> {
+        return useCase.getPlacemarks(location: location)
+    }
+    
     func setUIDToken(_ token: String) {
         useCase.setUIDToken(token)
     }

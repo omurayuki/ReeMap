@@ -159,6 +159,15 @@ extension MainMapViewController {
         nonExistHandler()
     }
     
+    private func getPlacemarks(location: CLLocation, complation: @escaping (CLPlacemark) -> Void) {
+        viewModel?.getPlacemarks(location: location)
+            .subscribe(onSuccess: { placemark in
+                complation(placemark)
+            }, onError: { [unowned self] _ in
+                self.showError(message: R.string.localizable.could_not_get())
+            }).disposed(by: disposeBag)
+    }
+    
     private func zoomTo(location: CLLocation) {
         viewModel?.zoomTo(location: location, left: {
             ui.setRegion(location: location.coordinate)
@@ -207,9 +216,12 @@ extension MainMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let annotation = view.annotation as? Annotation else { return }
-        ui.noteFloatingPanel.move(to: .half, animated: true)
-        noteListVC.ui.changeTableAlpha(0.9)
-        noteListVC.ui.showHeader(content: annotation.content ?? "", address: "annotation.address")
+        getPlacemarks(location: CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude))
+        { [unowned self] placemark in
+            self.ui.noteFloatingPanel.move(to: .half, animated: true)
+            self.noteListVC.ui.changeTableAlpha(0.9)
+            self.noteListVC.ui.showHeader(content: annotation.content ?? "", address: self.getStreetAddress(placemark: placemark))
+        }
     }
 }
 

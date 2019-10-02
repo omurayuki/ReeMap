@@ -12,7 +12,7 @@ struct SelectDestinationRepository: SelectDestinationRepositoryProtocol {
     static let shared = SelectDestinationRepository()
     
     func getPlacemarks(location: CLLocation) -> Single<CLPlacemark> {
-        let dataStore = SelectDestinationDataStoreFactory.createSelectDestinationLocalDataStore()
+        let dataStore = LocationDataStoreFactory.createLocationLocalDataStore()
         return dataStore.getPlacemarks(location: location)
     }
 }

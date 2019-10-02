@@ -1,3 +1,4 @@
+import CoreLocation
 import Foundation
 import RxSwift
 
@@ -5,6 +6,7 @@ protocol MapRepositoryProtocol {
     
     func AuthenticateAnonymous() -> Single<UserEntity>
     func fetchMemos() -> Observable<[PlaceEntity]>
+    func getPlacemarks(location: CLLocation) -> Single<CLPlacemark>
     func getUIDToken() -> Single<String>
     func setUIDToken(_ token: String)
 }
@@ -21,6 +23,11 @@ struct MapRepository: MapRepositoryProtocol {
     func fetchMemos() -> Observable<[PlaceEntity]> {
         let dataStore = MapDataStoreFactory.createMapRemoteDataStore()
         return dataStore.fetchMemos()
+    }
+    
+    func getPlacemarks(location: CLLocation) -> Single<CLPlacemark> {
+        let dataStore = LocationDataStoreFactory.createLocationLocalDataStore()
+        return dataStore.getPlacemarks(location: location)
     }
     
     func getUIDToken() -> Single<String> {

@@ -48,15 +48,7 @@ extension CreateMemoViewController {
         
         ui.saveBtn.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
-                var latitude: Double = 0.0
-                var longitude: Double = 0.0
-                CLGeocoder().geocodeAddressString(self.ui.streetAddressLabel.text ?? "", completionHandler: { placemark, error in
-                    if let error = error {
-                        print(error.localizedDescription)
-                        return
-                    }
-                    latitude = placemark?.first?.location?.coordinate.latitude ?? 0.0
-                    longitude = placemark?.first?.location?.coordinate.longitude ?? 0.0
+                self.getPlacemarks(streetAddress: self.ui.streetAddressLabel.text ?? "") { latitude, longitude in
                     guard let uid = AppUserDefaultsUtils.getUIDToken() else { return }
                     Firestore.firestore().collection("Users").document(uid).collection("Notes").document().setData(["uid": uid, "created_at": FieldValue.serverTimestamp(), "updated_at": FieldValue.serverTimestamp(), "content": self.ui.memoTextView.text ?? "", "notification": true, "geo_point": GeoPoint(latitude: latitude, longitude: longitude)], completion: { error in
                         if let _ = error {
@@ -65,7 +57,7 @@ extension CreateMemoViewController {
                         }
                         self.routing?.dismiss()
                     })
-                })
+                }
             }).disposed(by: disposeBag)
         
         ui.cancelBtn.rx.tap.asDriver()
@@ -74,6 +66,18 @@ extension CreateMemoViewController {
                                      message: R.string.localizable.attention_missing_info()) { [unowned self] in
                     self.routing?.dismiss()
                 }
+            }).disposed(by: disposeBag)
+    }
+}
+
+extension CreateMemoViewController {
+    
+    private func getPlacemarks(streetAddress: String, completion: @escaping (Double, Double) -> Void) {
+        viewModel?.getPlacemarks(streetAddress: streetAddress)
+            .subscribe(onSuccess: { placemark in
+                completion(placemark.location?.coordinate.latitude ?? 0.0, placemark.location?.coordinate.longitude ?? 0.0)
+            }, onError: { [unowned self] _ in
+                self.showError(message: R.string.localizable.could_not_get())
             }).disposed(by: disposeBag)
     }
 }

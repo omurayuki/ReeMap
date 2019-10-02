@@ -132,10 +132,12 @@
 		C9C7716323447A6300670809 /* SelectDestinationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C7716223447A6300670809 /* SelectDestinationUseCase.swift */; };
 		C9C7716523447ADB00670809 /* SelectDestinationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C7716423447ADB00670809 /* SelectDestinationRepository.swift */; };
 		C9D50CED2324F1CC003466A8 /* ReeMapUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D50CEC2324F1CC003466A8 /* ReeMapUnitTests.swift */; };
-		C9D5A49B23447CFB00720A8A /* SelectDestinationLocalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D5A49A23447CFB00720A8A /* SelectDestinationLocalDataStore.swift */; };
-		C9D5A49D23447D0D00720A8A /* SelectDestinationDataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D5A49C23447D0D00720A8A /* SelectDestinationDataStoreFactory.swift */; };
+		C9D5A49B23447CFB00720A8A /* LocationLocalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D5A49A23447CFB00720A8A /* LocationLocalDataStore.swift */; };
+		C9D5A49D23447D0D00720A8A /* LocationDataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D5A49C23447D0D00720A8A /* LocationDataStoreFactory.swift */; };
 		C9D5A49F23448BF900720A8A /* NoteListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D5A49E23448BF900720A8A /* NoteListUseCase.swift */; };
 		C9D5A4A123448C2900720A8A /* NoteListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D5A4A023448C2900720A8A /* NoteListRepository.swift */; };
+		C9D5A4A32344909400720A8A /* CreateMemoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D5A4A22344909400720A8A /* CreateMemoUseCase.swift */; };
+		C9D5A4A5234490A000720A8A /* CreateMemoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D5A4A4234490A000720A8A /* CreateMemoRepository.swift */; };
 		C9D6C5E12321086C0064AACD /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6C5E02321086C0064AACD /* MainMapViewController.swift */; };
 		C9D6C5E3232108770064AACD /* MainMapUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6C5E2232108770064AACD /* MainMapUI.swift */; };
 		C9D6C5E52321087F0064AACD /* MainMapRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6C5E42321087F0064AACD /* MainMapRouting.swift */; };
@@ -327,10 +329,12 @@
 		C9D50CEA2324F1CC003466A8 /* ReeMapUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReeMapUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9D50CEC2324F1CC003466A8 /* ReeMapUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReeMapUnitTests.swift; sourceTree = "<group>"; };
 		C9D50CEE2324F1CC003466A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C9D5A49A23447CFB00720A8A /* SelectDestinationLocalDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDestinationLocalDataStore.swift; sourceTree = "<group>"; };
-		C9D5A49C23447D0D00720A8A /* SelectDestinationDataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDestinationDataStoreFactory.swift; sourceTree = "<group>"; };
+		C9D5A49A23447CFB00720A8A /* LocationLocalDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLocalDataStore.swift; sourceTree = "<group>"; };
+		C9D5A49C23447D0D00720A8A /* LocationDataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDataStoreFactory.swift; sourceTree = "<group>"; };
 		C9D5A49E23448BF900720A8A /* NoteListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListUseCase.swift; sourceTree = "<group>"; };
 		C9D5A4A023448C2900720A8A /* NoteListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListRepository.swift; sourceTree = "<group>"; };
+		C9D5A4A22344909400720A8A /* CreateMemoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMemoUseCase.swift; sourceTree = "<group>"; };
+		C9D5A4A4234490A000720A8A /* CreateMemoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMemoRepository.swift; sourceTree = "<group>"; };
 		C9D6C5E02321086C0064AACD /* MainMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
 		C9D6C5E2232108770064AACD /* MainMapUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapUI.swift; sourceTree = "<group>"; };
 		C9D6C5E42321087F0064AACD /* MainMapRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapRouting.swift; sourceTree = "<group>"; };
@@ -479,6 +483,7 @@
 				C94A1A532335187D00974431 /* MapRepository.swift */,
 				C9D5A4A023448C2900720A8A /* NoteListRepository.swift */,
 				C9C7716423447ADB00670809 /* SelectDestinationRepository.swift */,
+				C9D5A4A4234490A000720A8A /* CreateMemoRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -486,7 +491,7 @@
 		C90595EB2332B2FD008D113D /* DataStore */ = {
 			isa = PBXGroup;
 			children = (
-				C9C7716623447AE000670809 /* SelectDestination */,
+				C9C7716623447AE000670809 /* Location */,
 				C9AED83F23431F8F00F82C4A /* Auth */,
 				C96483BD23352E240023BB7D /* Map */,
 			);
@@ -508,6 +513,7 @@
 				C94A1A4F2335177700974431 /* MapUseCase.swift */,
 				C9D5A49E23448BF900720A8A /* NoteListUseCase.swift */,
 				C9C7716223447A6300670809 /* SelectDestinationUseCase.swift */,
+				C9D5A4A22344909400720A8A /* CreateMemoUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -775,13 +781,13 @@
 			path = ReeMap;
 			sourceTree = "<group>";
 		};
-		C9C7716623447AE000670809 /* SelectDestination */ = {
+		C9C7716623447AE000670809 /* Location */ = {
 			isa = PBXGroup;
 			children = (
-				C9D5A49A23447CFB00720A8A /* SelectDestinationLocalDataStore.swift */,
-				C9D5A49C23447D0D00720A8A /* SelectDestinationDataStoreFactory.swift */,
+				C9D5A49A23447CFB00720A8A /* LocationLocalDataStore.swift */,
+				C9D5A49C23447D0D00720A8A /* LocationDataStoreFactory.swift */,
 			);
-			path = SelectDestination;
+			path = Location;
 			sourceTree = "<group>";
 		};
 		C9D50CEB2324F1CC003466A8 /* ReeMapUnitTests */ = {
@@ -1136,7 +1142,7 @@
 				C90140DE234338CB003AA3B2 /* AuthTranslator.swift in Sources */,
 				C94A1A502335177700974431 /* MapUseCase.swift in Sources */,
 				C963AF5D233716F2005E10F9 /* Observable+Extension.swift in Sources */,
-				C9D5A49B23447CFB00720A8A /* SelectDestinationLocalDataStore.swift in Sources */,
+				C9D5A49B23447CFB00720A8A /* LocationLocalDataStore.swift in Sources */,
 				C9142711233E0E2C00567B8E /* Reactive+Extension.swift in Sources */,
 				C94A1A522335178400974431 /* MapTranslator.swift in Sources */,
 				C9142707233DB87B00567B8E /* SelectDestinationViewController.swift in Sources */,
@@ -1145,8 +1151,9 @@
 				C94A1A542335187D00974431 /* MapRepository.swift in Sources */,
 				C9095115232242D60080A25B /* DateFormatter+Extension.swift in Sources */,
 				C9D6C5EC232109C20064AACD /* UI.swift in Sources */,
-				C9D5A49D23447D0D00720A8A /* SelectDestinationDataStoreFactory.swift in Sources */,
+				C9D5A49D23447D0D00720A8A /* LocationDataStoreFactory.swift in Sources */,
 				C9A0563A2322528F00EB9563 /* Array+Extension.swift in Sources */,
+				C9D5A4A32344909400720A8A /* CreateMemoUseCase.swift in Sources */,
 				C9095113232240560080A25B /* Date+Extension.swift in Sources */,
 				C9499700233BE15D00165AD6 /* Nillable.swift in Sources */,
 				C9A0564C232263B000EB9563 /* CountService.swift in Sources */,
@@ -1208,6 +1215,7 @@
 				C914270B233DBA1900567B8E /* CreateMemoViewController.swift in Sources */,
 				C9C7716523447ADB00670809 /* SelectDestinationRepository.swift in Sources */,
 				C94996FC233BB30600165AD6 /* SideMenuCell.swift in Sources */,
+				C9D5A4A5234490A000720A8A /* CreateMemoRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

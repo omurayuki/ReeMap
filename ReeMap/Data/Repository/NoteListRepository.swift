@@ -12,7 +12,7 @@ struct NoteListRepository: NoteListRepositoryProtocol {
     static let shared = NoteListRepository()
     
     func getPlacemarks(location: CLLocation) -> Single<CLPlacemark> {
-        let dataStore = SelectDestinationDataStoreFactory.createSelectDestinationLocalDataStore()
+        let dataStore = LocationDataStoreFactory.createLocationLocalDataStore()
         return dataStore.getPlacemarks(location: location)
     }
 }
