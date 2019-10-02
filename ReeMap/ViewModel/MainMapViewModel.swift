@@ -62,6 +62,16 @@ extension MainMapViewModel {
         return useCase.AuthenticateAnonymous()
     }
     
+    func getUIDToken() -> Observable<String> {
+        return useCase.getUIDToken().asObservable()
+            .materialize()
+            .elements()
+    }
+    
+    func setUIDToken(_ token: String) {
+        useCase.setUIDToken(token)
+    }
+    
     func updateLocation(_ location: CLLocation) {
         currentLocation.accept(location)
     }

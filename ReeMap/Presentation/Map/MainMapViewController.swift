@@ -43,9 +43,9 @@ final class MainMapViewController: UIViewController {
         }, panelEndDraggingHandler:
         { [unowned self] _, _, targetPosition in
             switch targetPosition {
-            case .tip:  self.ui.animateMemoBtnAlpha(1)
-            case .half: self.ui.animateMemoBtnAlpha(0)
-            case .full: self.ui.animateMemoBtnAlpha(0)
+            case .tip:  self.ui.animateMemoBtnAlpha(1.0)
+            case .half: self.ui.animateMemoBtnAlpha(0.0)
+            case .full: self.ui.animateMemoBtnAlpha(0.0)
             default: break
             }
             UIView.Animator(duration: 0.25, options: .allowUserInteraction).animations { [unowned self] in
@@ -62,17 +62,11 @@ final class MainMapViewController: UIViewController {
         super.viewDidLoad()
         setupConfig()
         setupUI()
-        guard AppUserDefaultsUtils.getUIDToken() != nil else {
-            viewModel?.AuthenticateAnonymous()
-                .subscribe(onSuccess: { [unowned self] auth in
-                    AppUserDefaultsUtils.setUIDToken(uid: auth.uid)
-                    self.bindUI()
-                    }, onError: { [unowned self] error in
-                    self.showError(message: error.localizedDescription)
-                }).disposed(by: disposeBag)
-            return
-        }
-        bindUI()
+        isExistUIDToken(existHandler: { [unowned self] in
+            self.prosessInInitialAccess()
+        }, nonExistHandler: { [unowned self] in
+            self.bindUI()
+        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -123,7 +117,7 @@ extension MainMapViewController {
             }).disposed(by: disposeBag)
         
         ui.memoAddingBtn.rx.tap.asDriver()
-            .drive(onNext: { _ in
+            .drive(onNext: { [unowned self] _ in
                 self.routing?.showSelectDestinationPage()
             }).disposed(by: disposeBag)
         
@@ -143,17 +137,34 @@ extension MainMapViewController {
                 }
             }).disposed(by: disposeBag)
     }
+    
+    private func prosessInInitialAccess() {
+        viewModel?.AuthenticateAnonymous()
+            .subscribe(onSuccess: { [unowned self] auth in
+                self.viewModel?.setUIDToken(auth.uid)
+                self.bindUI()
+                }, onError: { [unowned self] error in
+                    self.showError(message: R.string.localizable.error_message_network())
+            }).disposed(by: disposeBag)
+    }
 }
 
 extension MainMapViewController {
     
+    private func isExistUIDToken(existHandler: @escaping () -> Void, nonExistHandler: () -> Void) {
+        viewModel?.getUIDToken()
+            .subscribe(onNext: { token in
+                existHandler()
+            }).disposed(by: disposeBag)
+        nonExistHandler()
+    }
+    
     private func zoomTo(location: CLLocation) {
-        viewModel?.zoomTo(location: location,
-                         left: {
+        viewModel?.zoomTo(location: location, left: {
             ui.setRegion(location: location.coordinate)
-        }) {
+        }, right: {
             ui.mapView.setCenter(location.coordinate, animated: true)
-        }
+        })
     }
     
     private func showSidemenu(contentAvailability: Bool = true, animated: Bool) {
@@ -170,7 +181,7 @@ extension MainMapViewController {
     
     private func hideSidemenu(animated: Bool) {
         if !isShownSidemenu { return }
-        sideMenuVC.hideContentView(animated: animated, completion: { [unowned self] (_) in
+        sideMenuVC.hideContentView(animated: animated, completion: { [unowned self] _ in
             self.sideMenuVC.willMove(toParent: nil)
             self.sideMenuVC.removeFromParent()
             self.sideMenuVC.view.removeFromSuperview()
