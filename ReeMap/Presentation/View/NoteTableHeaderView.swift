@@ -4,19 +4,13 @@ class NoteTableHeaderView: UIView {
     
     var title: UILabel = {
         let label = UILabel()
-        label.apply(.title_Bold, title: "Title:")
-        return label
-    }()
-    
-    var titleContent: UILabel = {
-        let label = UILabel()
-        label.apply(.h5_Bold, title: "no title")
+        label.apply(.title_Bold, title: "Note:")
         return label
     }()
     
     var noteContent: UILabel = {
         let label = UILabel()
-        label.apply(.h5_Bold, title: "hogehogehogehogehogehogehogehogehogehogehogehogehogehoehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehoehogehogehogehogehogehogehogehoge")
+        label.apply(.h5_Bold)
         label.numberOfLines = 0
         return label
     }()
@@ -30,7 +24,7 @@ class NoteTableHeaderView: UIView {
     
     var streetAddressContent: UILabel = {
         let label = UILabel()
-        label.apply(.title_Bold, title: "京都市右京区西京極中沢町1-13")
+        label.apply(.title_Bold)
         return label
     }()
     
@@ -48,21 +42,15 @@ extension NoteTableHeaderView {
     
     private func setup() {
         backgroundColor = .white
-        [title, titleContent, noteContent,
-         streetAddress, streetAddressContent].forEach { addSubview($0) }
+        [title, noteContent, streetAddress, streetAddressContent].forEach { addSubview($0) }
         
         title.anchor()
             .top(to: topAnchor, constant: 20)
             .left(to: leftAnchor, constant: 20)
             .activate()
         
-        titleContent.anchor()
-            .top(to: title.bottomAnchor, constant: 5)
-            .left(to: leftAnchor, constant: 20)
-            .activate()
-        
         noteContent.anchor()
-            .top(to: titleContent.bottomAnchor, constant: 20)
+            .top(to: title.bottomAnchor, constant: 20)
             .left(to: leftAnchor, constant: 20)
             .right(to: rightAnchor, constant: -20)
             .activate()

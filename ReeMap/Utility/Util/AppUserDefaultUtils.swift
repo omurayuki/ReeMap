@@ -4,20 +4,29 @@ import Foundation
 class AppUserDefaultsUtils {
     
     // Email
-    class func getAccountEmail() -> String {
-        return getStringValue(keyName: "AccountEmail")
+    class func getAccountEmail() -> String? {
+        return getStringValue(keyName: "AccountEmail") ?? nil
     }
     
     class func setAccountEmail(email: String) {
         putStringValue(email, keyName: "AccountEmail")
     }
+    
+    // UIDToken
+    class func getUIDToken() -> String? {
+        return getStringValue(keyName: "AnonymousUserToken") ?? nil
+    }
+    
+    class func setUIDToken(uid: String) {
+        putStringValue(uid, keyName: "AnonymousUserToken")
+    }
 }
 
 extension AppUserDefaultsUtils {
     
-    private class func getStringValue(keyName: String) -> String {
+    private class func getStringValue(keyName: String) -> String? {
         let userDefaults = UserDefaults.standard
-        return userDefaults.string(forKey: keyName) ?? ""
+        return userDefaults.string(forKey: keyName)
     }
     
     private class func putStringValue(_ value: String, keyName: String) {

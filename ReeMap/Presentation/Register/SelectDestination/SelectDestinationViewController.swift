@@ -9,7 +9,7 @@ extension SelectDestinationViewController: VCInjectable {
     
     typealias UI = SelectDestinationUIProtocol
     typealias Routing = SelectDestinationRoutingProtocol
-    typealias ViewModel = Nillable
+    typealias ViewModel = SelectDestinationViewModel
     
     func setupConfig() {
         ui.mapView.delegate = self
@@ -20,7 +20,7 @@ final class SelectDestinationViewController: UIViewController {
     
     var ui: SelectDestinationUIProtocol! { didSet { ui.viewController = self } }
     var routing: SelectDestinationRoutingProtocol? { didSet { routing?.viewController = self } }
-    var viewModel: Nillable?
+    var viewModel: SelectDestinationViewModel?
     var disposeBag: DisposeBag!
     
     private var streetAddress = String()
@@ -88,12 +88,11 @@ extension SelectDestinationViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
         let location = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
-        CLGeocoder().reverseGeocodeLocation(location) { [unowned self] placemarks, error in
-            guard let placemark = placemarks?.first else { return }
-            if let _ = error {
+        viewModel?.getPlacemarks(location: location)
+            .subscribe(onSuccess: { [unowned self] placemark in
+                self.updateStreetAddress(placemark: placemark)
+            }, onError: { [unowned self] _ in
                 self.showAttentionAlert(message: R.string.localizable.attention_could_not_load_location())
-            }
-            self.updateStreetAddress(placemark: placemark)
-        }
+            }).disposed(by: disposeBag)
     }
 }

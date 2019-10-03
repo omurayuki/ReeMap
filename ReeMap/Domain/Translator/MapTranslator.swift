@@ -7,7 +7,7 @@ struct MapsTranslator {
     }
 }
 
-fileprivate struct MapTranslator {
+struct MapTranslator {
     
     func translate(_ entity: PlaceEntity) -> Place {
         return Place(entity: entity)

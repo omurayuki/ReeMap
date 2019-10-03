@@ -1,3 +1,4 @@
+import CoreLocation
 import FloatingPanel
 import Foundation
 import RxCocoa
@@ -59,12 +60,26 @@ class NoteListViewController: UIViewController {
     }
 }
 
+extension NoteListViewController {
+    
+    private func getPlacemark(location: CLLocation, place: Place) {
+        viewModel?.getPlacemarks(location: location)
+            .subscribe(onSuccess: { [unowned self] placemark in
+                self.ui.changeTableAlpha(0.9)
+                self.ui.showHeader(content: place.content, address: self.getStreetAddress(placemark: placemark))
+            }, onError: { [unowned self] _ in
+                self.showError(message: R.string.localizable.attention_could_not_load_location())
+            }).disposed(by: disposeBag)
+    }
+}
+
 extension NoteListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        ui.changeTableAlpha(0.9)
-        ui.showHeader()
+        let place = dataSource.listItems[indexPath.row]
+        let location = CLLocation(latitude: place.latitude, longitude: place.longitude)
+        getPlacemark(location: location, place: place)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -86,22 +101,22 @@ extension NoteListViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.ui.showHeader()
+        self.ui.showHeader(content: "search bar でっせ", address: "")
     }
     
     func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
-        searchBar.resignFirstResponder()
+        searchBar.endEditing(true)
         return true
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         ui.hideHeader()
-        searchBar.resignFirstResponder()
+        searchBar.endEditing(true)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
-        searchBar.resignFirstResponder()
+        searchBar.endEditing(true)
     }
 }

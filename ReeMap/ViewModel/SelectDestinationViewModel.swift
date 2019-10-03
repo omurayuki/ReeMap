@@ -3,16 +3,16 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-final class NoteListViewModel: ViewModel {
+final class SelectDestinationViewModel: ViewModel {
     
-    private let useCase: NoteListUseCaseProtocol
+    private let useCase: SelectDestinationUseCaseProtocol
     
-    init(useCase: NoteListUseCaseProtocol) {
+    init(useCase: SelectDestinationUseCaseProtocol) {
         self.useCase = useCase
     }
 }
 
-extension NoteListViewModel {
+extension SelectDestinationViewModel {
     
     struct Input {
     }
@@ -25,7 +25,7 @@ extension NoteListViewModel {
     }
 }
 
-extension NoteListViewModel {
+extension SelectDestinationViewModel {
     
     func getPlacemarks(location: CLLocation) -> Single<CLPlacemark> {
         return useCase.getPlacemarks(location: location)

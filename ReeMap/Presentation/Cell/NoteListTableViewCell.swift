@@ -1,4 +1,5 @@
 import UIKit
+import MapKit
 
 final class NoteListTableViewCell: UITableViewCell {
     
@@ -17,13 +18,24 @@ final class NoteListTableViewCell: UITableViewCell {
     
     var streetAddress: UILabel = {
         let label = UILabel()
-        label.apply(.body, title: "京都市右京区西京極中沢町1-13")
+        label.apply(.body)
         return label
     }()
     
     var didPlaceUpdated: Place? {
         didSet {
             noteContent.text = didPlaceUpdated?.content
+            let location = CLLocation(latitude: didPlaceUpdated?.latitude ?? 0.0, longitude: didPlaceUpdated?.longitude ?? 0.0)
+            CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
+                guard let placemark = placemarks?.first, error == nil else { return }
+                guard
+                    let administrativeArea = placemark.administrativeArea,
+                    let locality = placemark.locality,
+                    let thoroughfare = placemark.thoroughfare,
+                    let subThoroughfare = placemark.subThoroughfare
+                else { return }
+                self.streetAddress.text = "\(administrativeArea)\(locality)\(thoroughfare)\(subThoroughfare)"
+            }
         }
     }
     

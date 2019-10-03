@@ -41,6 +41,8 @@ final class MainMapUI: MainMapUIProtocol {
         view.layer.shadowRadius = 12
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 5, height: 5)
+        view.layer.borderWidth = 0.1
+        view.layer.borderColor = UIColor.lightGray.cgColor
         return view
     }()
     
@@ -59,6 +61,8 @@ final class MainMapUI: MainMapUIProtocol {
         view.layer.shadowRadius = 12
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 5, height: 5)
+        view.layer.borderWidth = 0.1
+        view.layer.borderColor = UIColor.lightGray.cgColor
         return view
     }()
     
@@ -78,6 +82,8 @@ final class MainMapUI: MainMapUIProtocol {
         view.layer.shadowRadius = 12
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 5, height: 5)
+        view.layer.borderWidth = 0.1
+        view.layer.borderColor = UIColor.lightGray.cgColor
         return view
     }()
     

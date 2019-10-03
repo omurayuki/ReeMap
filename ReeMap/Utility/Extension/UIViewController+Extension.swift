@@ -1,5 +1,6 @@
 // swiftlint:disable all
 import Accounts
+import CoreLocation
 import Foundation
 import Social
 import MBProgressHUD
@@ -97,5 +98,15 @@ extension UIViewController {
                                                             completion()
         })
         present(alert, animated: true)
+    }
+    
+    func getStreetAddress(placemark: CLPlacemark) -> String {
+        guard
+            let administrativeArea = placemark.administrativeArea,
+            let locality = placemark.locality,
+            let thoroughfare = placemark.thoroughfare,
+            let subThoroughfare = placemark.subThoroughfare
+            else { return R.string.localizable.could_not_get() }
+        return "\(administrativeArea)\(locality)\(thoroughfare)\(subThoroughfare)"
     }
 }

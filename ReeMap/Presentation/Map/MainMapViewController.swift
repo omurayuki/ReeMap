@@ -43,9 +43,9 @@ final class MainMapViewController: UIViewController {
         }, panelEndDraggingHandler:
         { [unowned self] _, _, targetPosition in
             switch targetPosition {
-            case .tip:  self.ui.animateMemoBtnAlpha(1)
-            case .half: self.ui.animateMemoBtnAlpha(0)
-            case .full: self.ui.animateMemoBtnAlpha(0)
+            case .tip:  self.ui.animateMemoBtnAlpha(1.0)
+            case .half: self.ui.animateMemoBtnAlpha(0.0)
+            case .full: self.ui.animateMemoBtnAlpha(0.0)
             default: break
             }
             UIView.Animator(duration: 0.25, options: .allowUserInteraction).animations { [unowned self] in
@@ -62,7 +62,7 @@ final class MainMapViewController: UIViewController {
         super.viewDidLoad()
         setupConfig()
         setupUI()
-        bindUI()
+        isExistUIDToken()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -113,7 +113,7 @@ extension MainMapViewController {
             }).disposed(by: disposeBag)
         
         ui.memoAddingBtn.rx.tap.asDriver()
-            .drive(onNext: { _ in
+            .drive(onNext: { [unowned self] _ in
                 self.routing?.showSelectDestinationPage()
             }).disposed(by: disposeBag)
         
@@ -133,17 +133,39 @@ extension MainMapViewController {
                 }
             }).disposed(by: disposeBag)
     }
+    
+    private func prosessInInitialAccess() {
+        viewModel?.AuthenticateAnonymous()
+            .subscribe(onSuccess: { [unowned self] auth in
+                self.viewModel?.setUIDToken(auth.uid)
+                self.bindUI()
+                }, onError: { [unowned self] error in
+                    self.showError(message: R.string.localizable.error_message_network())
+            }).disposed(by: disposeBag)
+    }
 }
 
 extension MainMapViewController {
     
+    private func isExistUIDToken() {
+        viewModel?.getUIDToken() == "" ? prosessInInitialAccess() : bindUI()
+    }
+    
+    private func getPlacemarks(location: CLLocation, complation: @escaping (CLPlacemark) -> Void) {
+        viewModel?.getPlacemarks(location: location)
+            .subscribe(onSuccess: { placemark in
+                complation(placemark)
+            }, onError: { [unowned self] _ in
+                self.showError(message: R.string.localizable.could_not_get())
+            }).disposed(by: disposeBag)
+    }
+    
     private func zoomTo(location: CLLocation) {
-        viewModel?.zoomTo(location: location,
-                         left: {
+        viewModel?.zoomTo(location: location, left: {
             ui.setRegion(location: location.coordinate)
-        }) {
+        }, right: {
             ui.mapView.setCenter(location.coordinate, animated: true)
-        }
+        })
     }
     
     private func showSidemenu(contentAvailability: Bool = true, animated: Bool) {
@@ -160,7 +182,7 @@ extension MainMapViewController {
     
     private func hideSidemenu(animated: Bool) {
         if !isShownSidemenu { return }
-        sideMenuVC.hideContentView(animated: animated, completion: { (_) in
+        sideMenuVC.hideContentView(animated: animated, completion: { [unowned self] _ in
             self.sideMenuVC.willMove(toParent: nil)
             self.sideMenuVC.removeFromParent()
             self.sideMenuVC.view.removeFromSuperview()
@@ -186,9 +208,12 @@ extension MainMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let annotation = view.annotation as? Annotation else { return }
-        ui.noteFloatingPanel.move(to: .half, animated: true)
-        noteListVC.ui.changeTableAlpha(0.9)
-        noteListVC.ui.showHeader()
+        getPlacemarks(location: CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude))
+        { [unowned self] placemark in
+            self.ui.noteFloatingPanel.move(to: .half, animated: true)
+            self.noteListVC.ui.changeTableAlpha(0.9)
+            self.noteListVC.ui.showHeader(content: annotation.content ?? "", address: self.getStreetAddress(placemark: placemark))
+        }
     }
 }
 
