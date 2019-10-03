@@ -1,11 +1,10 @@
 import CoreLocation
+import FirebaseFirestore
 import Foundation
 import MapKit
 import RxCocoa
 import RxSwift
 import UIKit
-import Firebase
-import FirebaseFirestore
 
 extension CreateMemoViewController: VCInjectable {
     
@@ -48,13 +47,8 @@ extension CreateMemoViewController {
         
         ui.saveBtn.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
-                self.getPlacemarks(streetAddress: self.ui.streetAddressLabel.text ?? "") { latitude, longitude in
-                    guard let uid = AppUserDefaultsUtils.getUIDToken() else { return }
-                    Firestore.firestore().collection("Users").document(uid).collection("Notes").document().setData(["uid": uid, "created_at": FieldValue.serverTimestamp(), "updated_at": FieldValue.serverTimestamp(), "content": self.ui.memoTextView.text ?? "", "notification": true, "geo_point": GeoPoint(latitude: latitude, longitude: longitude)], completion: { error in
-                        if let _ = error {
-                            print("保存できませんでした")
-                            return
-                        }
+                self.getPlacemarks(streetAddress: self.ui.streetAddressLabel.text ?? "") { [unowned self] latitude, longitude in
+                    self.setNote(self.createEntity(latitude: latitude, longitude: longitude), completion: { [unowned self] in
                         self.routing?.dismiss()
                     })
                 }
@@ -79,5 +73,24 @@ extension CreateMemoViewController {
             }, onError: { [unowned self] _ in
                 self.showError(message: R.string.localizable.could_not_get())
             }).disposed(by: disposeBag)
+    }
+    
+    private func setNote(_ note: EntityType, completion: @escaping () -> Void) {
+        viewModel?.setNote(note)
+            .subscribe(onSuccess: { _ in
+                completion()
+            }, onError: { [unowned self] _ in
+                self.showError(message: R.string.localizable.error_message_network())
+            }).disposed(by: disposeBag)
+    }
+    
+    private func createEntity(latitude: Double, longitude: Double) -> EntityType {
+        guard let uid = viewModel?.getUIDToken() else { return [:] }
+        return ["uid": uid,
+                "created_at": FieldValue.serverTimestamp(),
+                "updated_at": FieldValue.serverTimestamp(),
+                "content": self.ui.memoTextView.text ?? "",
+                "notification": true,
+                "geo_point": GeoPoint(latitude: latitude, longitude: longitude)]
     }
 }

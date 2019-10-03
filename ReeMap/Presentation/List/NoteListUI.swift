@@ -109,11 +109,12 @@ extension NoteListUI {
     }
     
     func showHeader(content: String, address: String) {
-        guard let headerView1 = tableView.tableHeaderView as? NoteTableHeaderView else { return }
-        headerView1.noteContent.text = content
-        headerView1.streetAddressContent.text = address
-        headerView1.layoutSubviews()
-        self.changeHeader(height: headerView1.noteContent.frame.height + 150, isFade: false, content: content, address: address)
+        guard let headerView = tableView.tableHeaderView as? NoteTableHeaderView else { return }
+        headerView.noteContent.text = content
+        headerView.streetAddressContent.text = address
+        headerView.layoutIfNeeded()
+        headerView.setNeedsLayout()
+        self.changeHeader(height: headerView.noteContent.frame.height + 150, isFade: false, content: content, address: address)
     }
     
     func hideHeader() {

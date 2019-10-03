@@ -3,9 +3,9 @@ import FirebaseFirestore
 import FirebaseStorage
 import RxSwift
 
+typealias EntityType = [String: Any]
+
 struct FirestoreProvider {
-    
-    typealias EntityType = [String: Any]
     
     func setData(documentRef: DocumentReference, fields: EntityType) -> Single<()> {
         return Single.create(subscribe: { single -> Disposable in

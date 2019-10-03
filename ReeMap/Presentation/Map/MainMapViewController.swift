@@ -62,11 +62,7 @@ final class MainMapViewController: UIViewController {
         super.viewDidLoad()
         setupConfig()
         setupUI()
-        isExistUIDToken(existHandler: { [unowned self] in
-            self.prosessInInitialAccess()
-        }, nonExistHandler: { [unowned self] in
-            self.bindUI()
-        })
+        isExistUIDToken()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -151,12 +147,8 @@ extension MainMapViewController {
 
 extension MainMapViewController {
     
-    private func isExistUIDToken(existHandler: @escaping () -> Void, nonExistHandler: () -> Void) {
-        viewModel?.getUIDToken()
-            .subscribe(onNext: { token in
-                existHandler()
-            }).disposed(by: disposeBag)
-        nonExistHandler()
+    private func isExistUIDToken() {
+        viewModel?.getUIDToken() == "" ? prosessInInitialAccess() : bindUI()
     }
     
     private func getPlacemarks(location: CLLocation, complation: @escaping (CLPlacemark) -> Void) {

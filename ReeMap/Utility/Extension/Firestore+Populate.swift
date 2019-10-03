@@ -16,7 +16,7 @@ extension Firestore {
     
     var note: DocumentReference {
         return collection("Users")
-            .document(String(describing: AppUserDefaultsUtils.getUIDToken()))
+            .document(AppUserDefaultsUtils.getUIDToken() ?? "")
             .collection("Notes")
             .document()
     }

@@ -33,4 +33,12 @@ extension CreateMemoViewModel {
     func getPlacemarks(streetAddress: String) -> Single<CLPlacemark> {
         return useCase.getPlacemarks(streetAddress: streetAddress)
     }
+    
+    func setNote(_ note: EntityType) -> Single<()> {
+        return useCase.setNote(note)
+    }
+    
+    func getUIDToken() -> String {
+        return useCase.getUIDToken()
+    }
 }

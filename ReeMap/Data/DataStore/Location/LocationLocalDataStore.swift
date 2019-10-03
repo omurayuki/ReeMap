@@ -16,6 +16,7 @@ struct LocationLocalDataStore: LocationLocalDataStoreProtocol {
                 guard let placemark = placemarks?.first else { return }
                 if let error = error {
                     single(.error(error))
+                    return
                 }
                 single(.success(placemark))
             }
@@ -29,6 +30,7 @@ struct LocationLocalDataStore: LocationLocalDataStoreProtocol {
                 guard let placemark = placemarks?.first else { return }
                 if let error = error {
                     single(.error(error))
+                    return
                 }
                 single(.success(placemark))
             }

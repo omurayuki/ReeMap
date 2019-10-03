@@ -5,9 +5,9 @@ import RxSwift
 protocol MapUseCaseProtocol {
     
     func AuthenticateAnonymous() -> Single<User>
-    func fetchMemos() -> Observable<[Place]>
+    func fetchNotes() -> Observable<[Place]>
     func getPlacemarks(location: CLLocation) -> Single<CLPlacemark>
-    func getUIDToken() -> Single<String>
+    func getUIDToken() -> String
     func setUIDToken(_ token: String)
 }
 
@@ -23,15 +23,15 @@ struct MapUseCase: MapUseCaseProtocol {
         return repository.AuthenticateAnonymous().map { AuthTranslator().translate($0) }
     }
     
-    func fetchMemos() -> Observable<[Place]> {
-        return repository.fetchMemos().map { MapsTranslator().translate($0) }
+    func fetchNotes() -> Observable<[Place]> {
+        return repository.fetchNotes().map { MapsTranslator().translate($0) }
     }
     
     func getPlacemarks(location: CLLocation) -> Single<CLPlacemark> {
         return repository.getPlacemarks(location: location)
     }
     
-    func getUIDToken() -> Single<String> {
+    func getUIDToken() -> String {
         return repository.getUIDToken()
     }
     

@@ -49,13 +49,13 @@
 		C94A1A502335177700974431 /* MapUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A4F2335177700974431 /* MapUseCase.swift */; };
 		C94A1A522335178400974431 /* MapTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A512335178400974431 /* MapTranslator.swift */; };
 		C94A1A542335187D00974431 /* MapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A532335187D00974431 /* MapRepository.swift */; };
-		C94A1A562335189A00974431 /* MapRemoteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A552335189A00974431 /* MapRemoteDataStore.swift */; };
+		C94A1A562335189A00974431 /* NoteRemoteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A552335189A00974431 /* NoteRemoteDataStore.swift */; };
 		C94CAD9123192DEA00BB1BB6 /* UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94CAD9023192DEA00BB1BB6 /* UITest.swift */; };
 		C963AF5D233716F2005E10F9 /* Observable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963AF5C233716F2005E10F9 /* Observable+Extension.swift */; };
 		C963AF5F233721AC005E10F9 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963AF5E233721AC005E10F9 /* Annotation.swift */; };
 		C963AF6223376D74005E10F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963AF6123376D74005E10F9 /* Constants.swift */; };
 		C963AF652337C241005E10F9 /* NoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963AF642337C241005E10F9 /* NoteListViewController.swift */; };
-		C96483BF23352E3D0023BB7D /* MapDataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96483BE23352E3D0023BB7D /* MapDataStoreFactory.swift */; };
+		C96483BF23352E3D0023BB7D /* NoteDataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96483BE23352E3D0023BB7D /* NoteDataStoreFactory.swift */; };
 		C96C72CE23211C36001C2FA6 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C72CD23211C36001C2FA6 /* ViewModel.swift */; };
 		C96C72D023211FA0001C2FA6 /* VCBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C72CF23211FA0001C2FA6 /* VCBuildable.swift */; };
 		C96C72D223211FC4001C2FA6 /* AnyVCBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C72D123211FC4001C2FA6 /* AnyVCBuilder.swift */; };
@@ -233,7 +233,7 @@
 		C94A1A4F2335177700974431 /* MapUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUseCase.swift; sourceTree = "<group>"; };
 		C94A1A512335178400974431 /* MapTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTranslator.swift; sourceTree = "<group>"; };
 		C94A1A532335187D00974431 /* MapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRepository.swift; sourceTree = "<group>"; };
-		C94A1A552335189A00974431 /* MapRemoteDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRemoteDataStore.swift; sourceTree = "<group>"; };
+		C94A1A552335189A00974431 /* NoteRemoteDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRemoteDataStore.swift; sourceTree = "<group>"; };
 		C94CAD8E23192DE900BB1BB6 /* UITest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94CAD9023192DEA00BB1BB6 /* UITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITest.swift; sourceTree = "<group>"; };
 		C94CAD9223192DEA00BB1BB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -241,7 +241,7 @@
 		C963AF5E233721AC005E10F9 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		C963AF6123376D74005E10F9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C963AF642337C241005E10F9 /* NoteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewController.swift; sourceTree = "<group>"; };
-		C96483BE23352E3D0023BB7D /* MapDataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDataStoreFactory.swift; sourceTree = "<group>"; };
+		C96483BE23352E3D0023BB7D /* NoteDataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDataStoreFactory.swift; sourceTree = "<group>"; };
 		C96C72CD23211C36001C2FA6 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		C96C72CF23211FA0001C2FA6 /* VCBuildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCBuildable.swift; sourceTree = "<group>"; };
 		C96C72D123211FC4001C2FA6 /* AnyVCBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyVCBuilder.swift; sourceTree = "<group>"; };
@@ -493,7 +493,7 @@
 			children = (
 				C9C7716623447AE000670809 /* Location */,
 				C9AED83F23431F8F00F82C4A /* Auth */,
-				C96483BD23352E240023BB7D /* Map */,
+				C96483BD23352E240023BB7D /* Note */,
 			);
 			path = DataStore;
 			sourceTree = "<group>";
@@ -654,13 +654,13 @@
 			path = List;
 			sourceTree = "<group>";
 		};
-		C96483BD23352E240023BB7D /* Map */ = {
+		C96483BD23352E240023BB7D /* Note */ = {
 			isa = PBXGroup;
 			children = (
-				C94A1A552335189A00974431 /* MapRemoteDataStore.swift */,
-				C96483BE23352E3D0023BB7D /* MapDataStoreFactory.swift */,
+				C94A1A552335189A00974431 /* NoteRemoteDataStore.swift */,
+				C96483BE23352E3D0023BB7D /* NoteDataStoreFactory.swift */,
 			);
-			path = Map;
+			path = Note;
 			sourceTree = "<group>";
 		};
 		C9915633233999AE0065ABF2 /* Cell */ = {
@@ -1169,11 +1169,11 @@
 				C9C7716123447A2700670809 /* SelectDestinationViewModel.swift in Sources */,
 				C90595F12332B3E2008D113D /* Place.swift in Sources */,
 				C9AED84323431FAF00F82C4A /* AuthLocalDataStore.swift in Sources */,
-				C94A1A562335189A00974431 /* MapRemoteDataStore.swift in Sources */,
+				C94A1A562335189A00974431 /* NoteRemoteDataStore.swift in Sources */,
 				C99156322338F0630065ABF2 /* NoteTableHeaderView.swift in Sources */,
 				C9A056362322526400EB9563 /* UIImageView+Extension.swift in Sources */,
 				C909512823224DA00080A25B /* UIViewController+Extension.swift in Sources */,
-				C96483BF23352E3D0023BB7D /* MapDataStoreFactory.swift in Sources */,
+				C96483BF23352E3D0023BB7D /* NoteDataStoreFactory.swift in Sources */,
 				C9AED83C234317F100F82C4A /* Errors.swift in Sources */,
 				C94996FA233B8F3500165AD6 /* SideMenuViewController.swift in Sources */,
 				C9EA2AE82323B63E0034BB1D /* AppDelegate+Container.swift in Sources */,

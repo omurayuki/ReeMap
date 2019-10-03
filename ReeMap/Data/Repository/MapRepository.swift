@@ -5,9 +5,9 @@ import RxSwift
 protocol MapRepositoryProtocol {
     
     func AuthenticateAnonymous() -> Single<UserEntity>
-    func fetchMemos() -> Observable<[PlaceEntity]>
+    func fetchNotes() -> Observable<[PlaceEntity]>
     func getPlacemarks(location: CLLocation) -> Single<CLPlacemark>
-    func getUIDToken() -> Single<String>
+    func getUIDToken() -> String
     func setUIDToken(_ token: String)
 }
 
@@ -20,9 +20,9 @@ struct MapRepository: MapRepositoryProtocol {
         return dataStore.AuthenticateAnonymous()
     }
     
-    func fetchMemos() -> Observable<[PlaceEntity]> {
-        let dataStore = MapDataStoreFactory.createMapRemoteDataStore()
-        return dataStore.fetchMemos()
+    func fetchNotes() -> Observable<[PlaceEntity]> {
+        let dataStore = NoteDataStoreFactory.createNoteRemoteDataStore()
+        return dataStore.fetchNotes()
     }
     
     func getPlacemarks(location: CLLocation) -> Single<CLPlacemark> {
@@ -30,7 +30,7 @@ struct MapRepository: MapRepositoryProtocol {
         return dataStore.getPlacemarks(location: location)
     }
     
-    func getUIDToken() -> Single<String> {
+    func getUIDToken() -> String {
         let dataStore = AuthDataStoreFactory.createAuthLocalDataStore()
         return dataStore.getUIDToken()
     }

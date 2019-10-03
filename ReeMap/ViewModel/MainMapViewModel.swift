@@ -39,7 +39,7 @@ extension MainMapViewModel {
     func transform(input: Input) -> Output {
         let places = input.viewWillAppear
             .flatMap { [unowned self] _ -> Observable<Event<[Place]>> in
-                self.useCase.fetchMemos()
+                self.useCase.fetchNotes()
                     .do(onNext: { [unowned self] places in
                         self.annotations
                             .accept(places.compactMap { Annotation(content: $0.content,
@@ -62,10 +62,8 @@ extension MainMapViewModel {
         return useCase.AuthenticateAnonymous()
     }
     
-    func getUIDToken() -> Observable<String> {
-        return useCase.getUIDToken().asObservable()
-            .materialize()
-            .elements()
+    func getUIDToken() -> String {
+        return useCase.getUIDToken()
     }
     
     func getPlacemarks(location: CLLocation) -> Single<CLPlacemark> {
