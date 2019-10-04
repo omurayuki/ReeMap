@@ -33,6 +33,19 @@ struct FirestoreProvider {
         })
     }
     
+    func delete(documentRef: DocumentRef) -> Single<()> {
+        return Single.create(subscribe: { single -> Disposable in
+            documentRef.destination
+                .delete(completion: { error in
+                if let error = error {
+                    single(.error(FirebaseError.resultError(error)))
+                    return
+                }
+            })
+            return Disposables.create()
+        })
+    }
+    
     func get(documentRef: DocumentReference) -> Single<DocumentSnapshot> {
         return Single.create { single in
             documentRef

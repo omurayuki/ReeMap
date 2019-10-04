@@ -3,6 +3,7 @@ import MapKit
 
 struct Place: Model {
     
+    var documentId: String
     var uid: String
     var content: String
     var notification: Bool
@@ -11,6 +12,7 @@ struct Place: Model {
     var createdAt: Date
     
     init(entity: PlaceEntity) {
+        documentId = entity.documentId
         uid = entity.uid
         content = entity.content
         notification = entity.notification

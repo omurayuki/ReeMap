@@ -7,6 +7,7 @@ protocol NoteRemoteDataStoreProtocol {
     
     func fetchNotes() -> Observable<[PlaceEntity]>
     func setNote(_ note: EntityType) -> Single<()>
+    func deleteNote(place: Place) -> Single<()>
 }
 
 struct NoteRemoteDataStore: NoteRemoteDataStoreProtocol {
@@ -16,11 +17,16 @@ struct NoteRemoteDataStore: NoteRemoteDataStoreProtocol {
     func fetchNotes() -> Observable<[PlaceEntity]> {
         return provider.observe(query: Firestore.firestore().user)
             .flatMapLatest({ entity -> Observable<[PlaceEntity]> in
-                Observable.of(entity.compactMap { PlaceEntity(document: $0.data()) })
+                Observable.of(entity.compactMap { PlaceEntity(document: $0.data(),
+                                                              documentId: $0.documentID) })
             }).share(replay: 1)
     }
     
     func setNote(_ note: EntityType) -> Single<()> {
         return provider.setData(documentRef: Firestore.firestore().note, fields: note)
+    }
+    
+    func deleteNote(place: Place) -> Single<()> {
+        return provider.delete(documentRef: .deleteNote(id: place.documentId))
     }
 }

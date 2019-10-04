@@ -5,6 +5,7 @@ import RxSwift
 protocol NoteListUseCaseProtocol {
     
     func getPlacemarks(location: CLLocation) -> Single<CLPlacemark>
+    func deleteNote(place: Place) -> Single<()>
 }
 
 struct NoteListUseCase: NoteListUseCaseProtocol {
@@ -17,5 +18,9 @@ struct NoteListUseCase: NoteListUseCaseProtocol {
     
     func getPlacemarks(location: CLLocation) -> Single<CLPlacemark> {
         return repository.getPlacemarks(location: location)
+    }
+    
+    func deleteNote(place: Place) -> Single<()> {
+        return repository.deleteNote(place: place)
     }
 }

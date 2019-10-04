@@ -20,4 +20,11 @@ extension Firestore {
             .collection("Notes")
             .document()
     }
+    
+    var deleteNote: DocumentReference {
+        return collection("Users")
+            .document(AppUserDefaultsUtils.getUIDToken() ?? "")
+            .collection("Notes")
+            .document()
+    }
 }

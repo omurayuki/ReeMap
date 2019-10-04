@@ -16,6 +16,7 @@
 "attention_could_not_load_location" = "位置情報の読み込みに失敗しました。再度アプリを起動してください。";
 "attention_missing_info" = "情報が失われますが、宜しいでしょうか？";
 "could_not_get" = "取得できませんでした。";
+"could_not_delete" = "削除に失敗しました";
 
 // content
 "no_title" = "no title";
