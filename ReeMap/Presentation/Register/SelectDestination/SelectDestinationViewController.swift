@@ -26,13 +26,23 @@ final class SelectDestinationViewController: UIViewController {
     private var streetAddress = String()
     private var isInitialZoom = true
     private var isFirstInput = true
+    private var currentLocation: CLLocation?
+    
+    init() {
+        currentLocation = LocationService.sharedInstance.currentLocation
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ui.setup()
         bindUI()
         setupConfig()
-        zoomTo(location: LocationService.sharedInstance.currentLocation)
+        zoomTo(location: currentLocation ?? CLLocation())
     }
 }
 
@@ -43,6 +53,12 @@ extension SelectDestinationViewController {
             .skip(1)
             .drive(onNext: { [unowned self] bool in
                 self.ui.changeSettingsBtnState(bool: bool)
+            }).disposed(by: disposeBag)
+        
+        ui.tapGesture.rx.event.asDriver()
+            .drive(onNext: { [unowned self] _ in
+                guard let location = self.currentLocation else { return }
+                self.routing?.showSearchStreetAddressPage(location: location)
             }).disposed(by: disposeBag)
         
         ui.settingsBtn.rx.tap.asDriver()
@@ -78,9 +94,15 @@ extension SelectDestinationViewController {
             let subThoroughfare = placemark.subThoroughfare
         else { return }
         if self.isFirstInput { self.isFirstInput = false; return }
-        self.ui.streetAddressLabel.textColor = .black
-        self.ui.streetAddressLabel.text = "\(administrativeArea)\(locality)\(thoroughfare)\(subThoroughfare)"
-        self.streetAddress = "\(administrativeArea)\(locality)\(thoroughfare)\(subThoroughfare)"
+        let streetAddress = "\(administrativeArea)\(locality)\(thoroughfare)\(subThoroughfare)"
+        self.streetAddress = streetAddress
+        ui.setStreetAddress(streetAddress)
+    }
+    
+    func recieveStreetAddress(_ address: String?) {
+        guard let streetAddress = address?.getStreetAddress() else { return }
+        self.streetAddress = streetAddress
+        ui.setStreetAddress(streetAddress)
     }
 }
 

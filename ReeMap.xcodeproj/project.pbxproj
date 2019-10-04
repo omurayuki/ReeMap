@@ -96,6 +96,9 @@
 		C9908821233B747100A0994E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9908820233B747100A0994E /* StoreKit.framework */; };
 		C99156322338F0630065ABF2 /* NoteTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99156312338F0630065ABF2 /* NoteTableHeaderView.swift */; };
 		C9915635233999BE0065ABF2 /* NoteListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9915634233999BE0065ABF2 /* NoteListTableViewCell.swift */; };
+		C994BEA42347A68200445ED3 /* SearchStreetAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C994BEA32347A68200445ED3 /* SearchStreetAddressViewModel.swift */; };
+		C994BEA62347AE5300445ED3 /* SearchStreetAddressRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C994BEA52347AE5300445ED3 /* SearchStreetAddressRepository.swift */; };
+		C994BEA82347AEDE00445ED3 /* SearchStreetAddressUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C994BEA72347AEDE00445ED3 /* SearchStreetAddressUseCase.swift */; };
 		C99513BF23257B5000931012 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99513BE23257B5000931012 /* LocationService.swift */; };
 		C9A056302322521900EB9563 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A0562F2322521900EB9563 /* UIView+Extension.swift */; };
 		C9A056322322522C00EB9563 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A056312322522C00EB9563 /* UIStackView+Extension.swift */; };
@@ -115,6 +118,10 @@
 		C9A64B1A233CF45A00C00CC2 /* Rswift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A64B19233CF45A00C00CC2 /* Rswift.framework */; };
 		C9A64B1B233CF45A00C00CC2 /* Rswift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9A64B19233CF45A00C00CC2 /* Rswift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C9A83800231E887700BC880C /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A837FF231E887700BC880C /* SnapshotHelper.swift */; };
+		C9AC338E2345C4D900A5AF7D /* SearchStreetAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AC338D2345C4D900A5AF7D /* SearchStreetAddressViewController.swift */; };
+		C9AC33902345C4E300A5AF7D /* SearchStreetAddressUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AC338F2345C4E300A5AF7D /* SearchStreetAddressUI.swift */; };
+		C9AC33922345C4EC00A5AF7D /* SearchStreetAddressRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AC33912345C4EC00A5AF7D /* SearchStreetAddressRouting.swift */; };
+		C9AC339423460D7900A5AF7D /* StreetAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AC339323460D7900A5AF7D /* StreetAddressCell.swift */; };
 		C9AED82C2343123500F82C4A /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AED82B2343123500F82C4A /* AuthProvider.swift */; };
 		C9AED82E2343123E00F82C4A /* FirestoreProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AED82D2343123E00F82C4A /* FirestoreProvider.swift */; };
 		C9AED8302343126700F82C4A /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AED82F2343126700F82C4A /* StorageProvider.swift */; };
@@ -280,6 +287,9 @@
 		C9908820233B747100A0994E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C99156312338F0630065ABF2 /* NoteTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableHeaderView.swift; sourceTree = "<group>"; };
 		C9915634233999BE0065ABF2 /* NoteListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListTableViewCell.swift; sourceTree = "<group>"; };
+		C994BEA32347A68200445ED3 /* SearchStreetAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStreetAddressViewModel.swift; sourceTree = "<group>"; };
+		C994BEA52347AE5300445ED3 /* SearchStreetAddressRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStreetAddressRepository.swift; sourceTree = "<group>"; };
+		C994BEA72347AEDE00445ED3 /* SearchStreetAddressUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStreetAddressUseCase.swift; sourceTree = "<group>"; };
 		C99513BE23257B5000931012 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		C9A0562C2322506A00EB9563 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		C9A0562F2322521900EB9563 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -300,6 +310,10 @@
 		C9A64B17233CF3A700C00CC2 /* Rswift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rswift.framework; path = Carthage/Build/iOS/Rswift.framework; sourceTree = "<group>"; };
 		C9A64B19233CF45A00C00CC2 /* Rswift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rswift.framework; path = Carthage/Build/iOS/Rswift.framework; sourceTree = "<group>"; };
 		C9A837FF231E887700BC880C /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		C9AC338D2345C4D900A5AF7D /* SearchStreetAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStreetAddressViewController.swift; sourceTree = "<group>"; };
+		C9AC338F2345C4E300A5AF7D /* SearchStreetAddressUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStreetAddressUI.swift; sourceTree = "<group>"; };
+		C9AC33912345C4EC00A5AF7D /* SearchStreetAddressRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStreetAddressRouting.swift; sourceTree = "<group>"; };
+		C9AC339323460D7900A5AF7D /* StreetAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetAddressCell.swift; sourceTree = "<group>"; };
 		C9AED82B2343123500F82C4A /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
 		C9AED82D2343123E00F82C4A /* FirestoreProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreProvider.swift; sourceTree = "<group>"; };
 		C9AED82F2343126700F82C4A /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
@@ -483,6 +497,7 @@
 				C94A1A532335187D00974431 /* MapRepository.swift */,
 				C9D5A4A023448C2900720A8A /* NoteListRepository.swift */,
 				C9C7716423447ADB00670809 /* SelectDestinationRepository.swift */,
+				C994BEA52347AE5300445ED3 /* SearchStreetAddressRepository.swift */,
 				C9D5A4A4234490A000720A8A /* CreateMemoRepository.swift */,
 			);
 			path = Repository;
@@ -513,6 +528,7 @@
 				C94A1A4F2335177700974431 /* MapUseCase.swift */,
 				C9D5A49E23448BF900720A8A /* NoteListUseCase.swift */,
 				C9C7716223447A6300670809 /* SelectDestinationUseCase.swift */,
+				C994BEA72347AEDE00445ED3 /* SearchStreetAddressUseCase.swift */,
 				C9D5A4A22344909400720A8A /* CreateMemoUseCase.swift */,
 			);
 			path = UseCase;
@@ -581,6 +597,7 @@
 			isa = PBXGroup;
 			children = (
 				C9142708233DB9F400567B8E /* SelectDestination */,
+				C9F742B92345C48100EFEBE9 /* SearchStreetAddress */,
 				C9142709233DB9FE00567B8E /* CreateMemo */,
 			);
 			path = Register;
@@ -667,6 +684,7 @@
 			isa = PBXGroup;
 			children = (
 				C9915634233999BE0065ABF2 /* NoteListTableViewCell.swift */,
+				C9AC339323460D7900A5AF7D /* StreetAddressCell.swift */,
 				C94996FB233BB30600165AD6 /* SideMenuCell.swift */,
 			);
 			path = Cell;
@@ -822,6 +840,7 @@
 				C9D6C5E72321089B0064AACD /* MainMapViewModel.swift */,
 				C9D7C1B9233A264100D933B5 /* NoteListViewModel.swift */,
 				C9C7716023447A2700670809 /* SelectDestinationViewModel.swift */,
+				C994BEA32347A68200445ED3 /* SearchStreetAddressViewModel.swift */,
 				C914270E233DECAE00567B8E /* CreateMemoViewModel.swift */,
 			);
 			path = ViewModel;
@@ -898,6 +917,16 @@
 				C94996FF233BE15D00165AD6 /* Nillable.swift */,
 			);
 			path = DI;
+			sourceTree = "<group>";
+		};
+		C9F742B92345C48100EFEBE9 /* SearchStreetAddress */ = {
+			isa = PBXGroup;
+			children = (
+				C9AC338D2345C4D900A5AF7D /* SearchStreetAddressViewController.swift */,
+				C9AC338F2345C4E300A5AF7D /* SearchStreetAddressUI.swift */,
+				C9AC33912345C4EC00A5AF7D /* SearchStreetAddressRouting.swift */,
+			);
+			path = SearchStreetAddress;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1117,12 +1146,15 @@
 				C90140E0234379A6003AA3B2 /* Firestore+Populate.swift in Sources */,
 				C9D6C5EE232109E20064AACD /* Routing.swift in Sources */,
 				C9FEEA662338AD6F00C5C84D /* PanelCase.swift in Sources */,
+				C9AC33902345C4E300A5AF7D /* SearchStreetAddressUI.swift in Sources */,
 				C9EA2AE62323B3E90034BB1D /* ServiceFactory.swift in Sources */,
 				C9D89F842331BFC60044FEE9 /* R.generated.swift in Sources */,
 				C9AED82E2343123E00F82C4A /* FirestoreProvider.swift in Sources */,
 				C9A056452322532500EB9563 /* VerticalStackView.swift in Sources */,
 				C96C72CE23211C36001C2FA6 /* ViewModel.swift in Sources */,
+				C994BEA42347A68200445ED3 /* SearchStreetAddressViewModel.swift in Sources */,
 				C9B9F44F231765C00013ED05 /* AppDelegate.swift in Sources */,
+				C994BEA62347AE5300445ED3 /* SearchStreetAddressRepository.swift in Sources */,
 				C909512423224AD90080A25B /* UILabel+Extension.swift in Sources */,
 				C90595E92332B178008D113D /* Entity.swift in Sources */,
 				C9FEEA622338AB9700C5C84D /* FloatingPanelDelegate.swift in Sources */,
@@ -1137,6 +1169,8 @@
 				C9AED83E2343188500F82C4A /* Response.swift in Sources */,
 				C9D7C1BC233A270500D933B5 /* NoteListRouting.swift in Sources */,
 				C9A056472322533E00EB9563 /* PaddingTextField.swift in Sources */,
+				C9AC33922345C4EC00A5AF7D /* SearchStreetAddressRouting.swift in Sources */,
+				C9AC338E2345C4D900A5AF7D /* SearchStreetAddressViewController.swift in Sources */,
 				C9142715233E344800567B8E /* SelectDestinationRouting.swift in Sources */,
 				C909511B23224A3B0080A25B /* UIButton+Extension.swift in Sources */,
 				C90140DE234338CB003AA3B2 /* AuthTranslator.swift in Sources */,
@@ -1192,6 +1226,7 @@
 				C9AED83A234317EA00F82C4A /* Typealias.swift in Sources */,
 				C9D6C5E3232108770064AACD /* MainMapUI.swift in Sources */,
 				C909512623224D810080A25B /* UITextField+Extension.swift in Sources */,
+				C994BEA82347AEDE00445ED3 /* SearchStreetAddressUseCase.swift in Sources */,
 				C9D6C5E82321089B0064AACD /* MainMapViewModel.swift in Sources */,
 				C914270F233DECAE00567B8E /* CreateMemoViewModel.swift in Sources */,
 				C9D5A49F23448BF900720A8A /* NoteListUseCase.swift in Sources */,
@@ -1212,6 +1247,7 @@
 				C9A056492322537500EB9563 /* TableViewDataSource.swift in Sources */,
 				C963AF5F233721AC005E10F9 /* Annotation.swift in Sources */,
 				C9A0563C232252AE00EB9563 /* UITableView+Extension.swift in Sources */,
+				C9AC339423460D7900A5AF7D /* StreetAddressCell.swift in Sources */,
 				C914270B233DBA1900567B8E /* CreateMemoViewController.swift in Sources */,
 				C9C7716523447ADB00670809 /* SelectDestinationRepository.swift in Sources */,
 				C94996FC233BB30600165AD6 /* SideMenuCell.swift in Sources */,

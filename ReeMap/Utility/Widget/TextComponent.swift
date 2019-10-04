@@ -67,6 +67,7 @@ enum TextComponent {
     case body_CoolGrey16
     case appSub
     case h4_bold_appMain
+    case h6_bold
     
     var font: UIFont {
         switch self {
@@ -96,7 +97,7 @@ enum TextComponent {
             return .fontBold(.fontSize17)
         case .h5_Bold, .h5_appSub_bold:
             return .fontBold(.fontSize16)
-        case .h6_appSub_bold:
+        case .h6_appSub_bold, .h6_bold:
             return .fontBold(.fontSize14)
         case .title_Bold, .appMain, .appSub:
             return .fontBold(.fontSize13)
@@ -109,7 +110,7 @@ enum TextComponent {
     
     var textColor: UIColor {
         switch self {
-        case .h1, .h2, .h3, .h4, .title, .body, .cap, .h1_Bold, .h2_Bold, .h3_Bold, .h4_Bold, .h5_Bold, .title_Bold, .body_Bold, .cap_Bold, .h5:
+        case .h1, .h2, .h3, .h4, .title, .body, .cap, .h1_Bold, .h2_Bold, .h3_Bold, .h4_Bold, .h5_Bold, .title_Bold, .body_Bold, .cap_Bold, .h5, .h6_bold:
             return .black
         case .h1_Bold_White, .h2_White, .h3_White, .h4_White, .title_White, .body_White, .body_Bold_White, .cap_White, .cap_Bold_White:
             return .white
