@@ -15,6 +15,7 @@ extension PlaceEntity: PlaceEntityProtocol {}
 
 struct PlaceEntity: Entity {
     
+    var documentId: String
     var uid: String
     var content: String
     var notification: Bool
@@ -22,7 +23,7 @@ struct PlaceEntity: Entity {
     var longitude: Double
     var createdAt: Timestamp
     
-    init(document: [String: Any]) {
+    init(document: [String: Any], documentId: String) {
         guard
             let uid = document["uid"] as? String,
             let title = document["content"] as? String,
@@ -30,6 +31,7 @@ struct PlaceEntity: Entity {
             let geoPoint = document["geo_point"] as? GeoPoint,
             let createdAt = document["created_at"] as? Timestamp
         else {
+            self.documentId = ""
             self.uid = ""
             self.content = ""
             self.notification = false
@@ -38,6 +40,7 @@ struct PlaceEntity: Entity {
             self.createdAt = Timestamp()
             return
         }
+        self.documentId = documentId
         self.uid = uid
         self.content = title
         self.notification = notification

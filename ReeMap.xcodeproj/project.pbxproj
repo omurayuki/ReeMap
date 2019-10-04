@@ -11,7 +11,6 @@
 		C90140DA23433745003AA3B2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90140D923433745003AA3B2 /* User.swift */; };
 		C90140DC2343376F003AA3B2 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90140DB2343376F003AA3B2 /* Model.swift */; };
 		C90140DE234338CB003AA3B2 /* AuthTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90140DD234338CB003AA3B2 /* AuthTranslator.swift */; };
-		C90140E0234379A6003AA3B2 /* Firestore+Populate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90140DF234379A6003AA3B2 /* Firestore+Populate.swift */; };
 		C90595E62332B026008D113D /* PlaceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90595E52332B026008D113D /* PlaceEntity.swift */; };
 		C90595E92332B178008D113D /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90595E82332B178008D113D /* Entity.swift */; };
 		C90595F12332B3E2008D113D /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90595F02332B3E2008D113D /* Place.swift */; };
@@ -203,7 +202,6 @@
 		C90140D923433745003AA3B2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C90140DB2343376F003AA3B2 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		C90140DD234338CB003AA3B2 /* AuthTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTranslator.swift; sourceTree = "<group>"; };
-		C90140DF234379A6003AA3B2 /* Firestore+Populate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firestore+Populate.swift"; sourceTree = "<group>"; };
 		C90595E52332B026008D113D /* PlaceEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceEntity.swift; sourceTree = "<group>"; };
 		C90595E82332B178008D113D /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		C90595F02332B3E2008D113D /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
@@ -578,7 +576,6 @@
 				C963AF5C233716F2005E10F9 /* Observable+Extension.swift */,
 				C9D7C1BD233A2A5300D933B5 /* UISearchBar+Extension.swift */,
 				C9142710233E0E2C00567B8E /* Reactive+Extension.swift */,
-				C90140DF234379A6003AA3B2 /* Firestore+Populate.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1143,7 +1140,6 @@
 			files = (
 				C9C7716323447A6300670809 /* SelectDestinationUseCase.swift in Sources */,
 				C9FC93332335109E00B1EFA9 /* NotificationUtils.swift in Sources */,
-				C90140E0234379A6003AA3B2 /* Firestore+Populate.swift in Sources */,
 				C9D6C5EE232109E20064AACD /* Routing.swift in Sources */,
 				C9FEEA662338AD6F00C5C84D /* PanelCase.swift in Sources */,
 				C9AC33902345C4E300A5AF7D /* SearchStreetAddressUI.swift in Sources */,

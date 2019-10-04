@@ -30,7 +30,9 @@ class NoteListViewController: UIViewController {
     var routing: NoteListRoutingProtocol? { didSet { routing?.viewController = self } }
     var viewModel: NoteListViewModel?
     var disposeBag: DisposeBag!
+    
     weak var delegate: TappedSearchBarDelegate!
+    private var placesForDeletion = [Place]()
     
     var didAcceptPlaces: [Place]? {
         didSet {
@@ -84,11 +86,21 @@ extension NoteListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteButton = UITableViewRowAction(style: .normal, title: R.string.localizable.delete()) { [unowned self] _, _ in
+            //// didEndEditingRowAtで使用するため、一旦コピー
+            self.placesForDeletion = self.dataSource.listItems
             self.dataSource.listItems.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         deleteButton.backgroundColor = .red
         return [deleteButton]
+    }
+    
+    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+        guard let index = indexPath?.row else { return }
+        viewModel?.deleteNote(place: placesForDeletion[index])
+            .subscribe(onError: { [unowned self] _ in
+                self.showError(message: R.string.localizable.could_not_delete())
+            }).disposed(by: disposeBag)
     }
 }
 
