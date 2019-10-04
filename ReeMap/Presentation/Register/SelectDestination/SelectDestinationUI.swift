@@ -53,7 +53,7 @@ final class SelectDestinationUI: SelectDestinationUIProtocol {
     
     private(set) var settingsBtn: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .blue
+        button.backgroundColor = .flatBlue
         button.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .medium)
         button.setTitle(R.string.localizable.write_memo(), for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -65,7 +65,7 @@ final class SelectDestinationUI: SelectDestinationUIProtocol {
     
     private(set) var cancelBtn: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .red
+        button.backgroundColor = .flatRed
         button.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .medium)
         button.setTitle(R.string.localizable.frame_selected_action_sheet_cancel(), for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -95,7 +95,7 @@ extension SelectDestinationUI {
             .top(to: vc.view.safeAreaLayoutGuide.topAnchor)
             .left(to: vc.view.leftAnchor)
             .right(to: vc.view.rightAnchor)
-            .height(constant: vc.view.frame.height * 0.5)
+            .bottom(to: streetAddressLabel.topAnchor, constant: -25)
             .activate()
         
         selectImage.anchor()
@@ -106,24 +106,24 @@ extension SelectDestinationUI {
         
         streetAddressLabel.anchor()
             .centerXToSuperview()
-            .top(to: mapView.bottomAnchor, constant: 30)
+            .bottom(to: stack.topAnchor, constant: -20)
             .width(constant: vc.view.frame.width * 0.9)
             .height(constant: 45)
             .activate()
         
         stack.anchor()
             .centerXToSuperview()
-            .top(to: streetAddressLabel.bottomAnchor, constant: 25)
+            .bottom(to: vc.view.safeAreaLayoutGuide.bottomAnchor, constant: -40)
             .activate()
         
         settingsBtn.anchor()
-            .top(to: streetAddressLabel.bottomAnchor, constant: 25)
+            .bottom(to: vc.view.safeAreaLayoutGuide.bottomAnchor, constant: -40)
             .width(constant: vc.view.frame.width / 2 * 0.9)
             .height(constant: 45)
             .activate()
         
         cancelBtn.anchor()
-            .top(to: streetAddressLabel.bottomAnchor, constant: 25)
+            .bottom(to: vc.view.safeAreaLayoutGuide.bottomAnchor, constant: -40)
             .width(constant: vc.view.frame.width / 2 * 0.9)
             .height(constant: 45)
             .activate()
