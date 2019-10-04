@@ -15,7 +15,7 @@ struct NoteRemoteDataStore: NoteRemoteDataStoreProtocol {
     private let provider = FirestoreProvider()
     
     func fetchNotes() -> Observable<[PlaceEntity]> {
-        return provider.observe(query: Firestore.firestore().user)
+        return provider.observe(query: .user)
             .flatMapLatest({ entity -> Observable<[PlaceEntity]> in
                 Observable.of(entity.compactMap { PlaceEntity(document: $0.data(),
                                                               documentId: $0.documentID) })
@@ -23,7 +23,7 @@ struct NoteRemoteDataStore: NoteRemoteDataStoreProtocol {
     }
     
     func setNote(_ note: EntityType) -> Single<()> {
-        return provider.setData(documentRef: Firestore.firestore().note, fields: note)
+        return provider.setData(documentRef: .setNote, fields: note)
     }
     
     func deleteNote(place: Place) -> Single<()> {

@@ -7,9 +7,10 @@ typealias EntityType = [String: Any]
 
 struct FirestoreProvider {
     
-    func setData(documentRef: DocumentReference, fields: EntityType) -> Single<()> {
+    func setData(documentRef: DocumentRef, fields: EntityType) -> Single<()> {
         return Single.create(subscribe: { single -> Disposable in
-            documentRef.setData(fields, merge: true, completion: { error in
+            documentRef.destination
+                .setData(fields, merge: true, completion: { error in
                 if let error = error {
                     single(.error(FirebaseError.resultError(error)))
                     return
@@ -20,9 +21,10 @@ struct FirestoreProvider {
         })
     }
     
-    func updateData(documentRef: DocumentReference, fields: EntityType) -> Single<()> {
+    func updateData(documentRef: DocumentRef, fields: EntityType) -> Single<()> {
         return Single.create(subscribe: { single -> Disposable in
-            documentRef.updateData(fields, completion: { error in
+            documentRef.destination
+                .updateData(fields, completion: { error in
                 if let error = error {
                     single(.error(FirebaseError.resultError(error)))
                     return
@@ -46,9 +48,9 @@ struct FirestoreProvider {
         })
     }
     
-    func get(documentRef: DocumentReference) -> Single<DocumentSnapshot> {
+    func get(documentRef: DocumentRef) -> Single<DocumentSnapshot> {
         return Single.create { single in
-            documentRef
+            documentRef.destination
                 .getDocument { snapshot, error in
                     if let error = error {
                         single(.error(error))
@@ -64,9 +66,9 @@ struct FirestoreProvider {
         }
     }
     
-    func gets(query: Query) -> Single<[QueryDocumentSnapshot]> {
+    func gets(query: QueryRef) -> Single<[QueryDocumentSnapshot]> {
         return Single.create { single in
-            query
+            query.destination
                 .getDocuments { snapshot, error in
                     if let error = error {
                         single(.error(error))
@@ -82,9 +84,9 @@ struct FirestoreProvider {
         }
     }
     
-    func observe(documentRef: DocumentReference) -> Observable<DocumentSnapshot> {
+    func observe(documentRef: DocumentRef) -> Observable<DocumentSnapshot> {
         return Observable.create { observer in
-            documentRef
+            documentRef.destination
                 .addSnapshotListener { snapshot, error in
                     if let error = error {
                         observer.on(.error(error))
@@ -100,9 +102,9 @@ struct FirestoreProvider {
         }
     }
     
-    func observe(query: Query) -> Observable<[QueryDocumentSnapshot]> {
+    func observe(query: QueryRef) -> Observable<[QueryDocumentSnapshot]> {
         return Observable.create { observer in
-            query
+            query.destination
                 .addSnapshotListener { snapshot, error in
                     if let error = error {
                         observer.on(.error(error))

@@ -34,3 +34,18 @@ enum DocumentRef {
 
 enum CollectionRef {
 }
+
+enum QueryRef {
+    case user
+    
+    var destination: Query {
+        switch self {
+        case .user:
+            return Firestore.firestore()
+                .collection("Users")
+                .document(AppUserDefaultsUtils.getUIDToken() ?? "")
+                .collection("Notes")
+                .order(by: "updated_at", descending: true)
+        }
+    }
+}
