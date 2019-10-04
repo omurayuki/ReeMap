@@ -5,6 +5,8 @@ import RxCocoa
 import RxSwift
 import UIKit
 
+extension MKMapItem: Model {}
+
 extension SearchStreetAddressViewController: VCInjectable {
     
     typealias UI = SearchStreetAddressUIProtocol
@@ -88,5 +90,3 @@ extension SearchStreetAddressViewController: UISearchBarDelegate {
         return true
     }
 }
-
-extension MKMapItem: Model {}

@@ -11,6 +11,7 @@ protocol SelectDestinationUIProtocol: UI {
     var cancelBtn: UIButton { get }
     
     func changeSettingsBtnState(bool: Bool)
+    func setStreetAddress(_ address: String)
 }
 
 final class SelectDestinationUI: SelectDestinationUIProtocol {
@@ -134,5 +135,10 @@ extension SelectDestinationUI {
     func changeSettingsBtnState(bool: Bool) {
         bool ? (settingsBtn.alpha = CGFloat(1.0)) : (settingsBtn.alpha = CGFloat(0.2))
         settingsBtn.isEnabled = bool
+    }
+    
+    func setStreetAddress(_ address: String) {
+        streetAddressLabel.textColor = .black
+        streetAddressLabel.text = address
     }
 }

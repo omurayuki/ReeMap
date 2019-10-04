@@ -17,4 +17,11 @@ extension String {
         return date
     }
     
+    func getStreetAddress() -> String {
+        var value = self.components(separatedBy: ", ")
+        if value[0].contains("〒") {
+            value.removeFirst()
+        }
+        return value.joined()
+    }
 }

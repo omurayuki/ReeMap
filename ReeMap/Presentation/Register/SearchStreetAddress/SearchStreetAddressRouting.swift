@@ -12,8 +12,9 @@ final class SearchStreetAddressRouting: SearchStreetAddressRoutingProtocol {
     
     func popViewController(streetAddress: String) {
         guard let vc = viewController else { return }
-        guard let prevVC = vc.navigationController?.viewControllers[(vc.navigationController?.viewControllers.count)! - 2] as? SelectDestinationViewController else { return }
-        prevVC.recieveStreetAddress(streetAddress)
+        guard let viewControllers = vc.navigationController?.viewControllers else { return }
+        weak var prevVC = viewControllers[viewControllers.count - 2] as? SelectDestinationViewController
+        prevVC?.recieveStreetAddress(streetAddress)
         vc.navigationController?.popViewController(animated: true)
     }
 }

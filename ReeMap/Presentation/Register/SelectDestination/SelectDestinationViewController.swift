@@ -88,26 +88,21 @@ extension SelectDestinationViewController {
     
     private func updateStreetAddress(placemark: CLPlacemark) {
         guard
-            let postcode = placemark.postalCode,
             let administrativeArea = placemark.administrativeArea,
             let locality = placemark.locality,
             let thoroughfare = placemark.thoroughfare,
             let subThoroughfare = placemark.subThoroughfare
         else { return }
         if self.isFirstInput { self.isFirstInput = false; return }
-        self.ui.streetAddressLabel.textColor = .black
-        self.ui.streetAddressLabel.text = "\(administrativeArea)\(locality)\(thoroughfare)\(subThoroughfare)"
-        self.streetAddress = "\(administrativeArea)\(locality)\(thoroughfare)\(subThoroughfare)"
+        let streetAddress = "\(administrativeArea)\(locality)\(thoroughfare)\(subThoroughfare)"
+        self.streetAddress = streetAddress
+        ui.setStreetAddress(streetAddress)
     }
     
     func recieveStreetAddress(_ address: String?) {
-        ui.streetAddressLabel.textColor = .black
-        var value = address!.components(separatedBy: ", ")
-        if value[0].contains("〒") {
-            value.removeFirst()
-        }
-        streetAddress = value.joined()
-        ui.streetAddressLabel.text = value.joined()
+        guard let streetAddress = address?.getStreetAddress() else { return }
+        self.streetAddress = streetAddress
+        ui.setStreetAddress(streetAddress)
     }
 }
 
