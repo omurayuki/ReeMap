@@ -11,18 +11,21 @@ extension AppDelegate {
         .register(SideMenuUIProtocol.self) { _ in SideMenuUI() }
         .register(SelectDestinationUIProtocol.self) { _ in SelectDestinationUI() }
         .register(CreateMemoUIProtocol.self) { _ in CreateMemoUI() }
+        .register(SearchStreetAddressUIProtocol.self) { _ in SearchStreetAddressUI() }
     
         // MARK: Routing
         .register(MainMapRoutingProtocol.self) { _ in MainMapRouting() }
         .register(NoteListRoutingProtocol.self) { _ in NoteListRouting() }
         .register(SelectDestinationRoutingProtocol.self) { _ in SelectDestinationRouting() }
         .register(CreateMemoRoutingProtocol.self) { _ in CreateMemoRouting() }
+        .register(SearchStreetAddressRoutingProtocol.self) { _ in SearchStreetAddressRouting() }
     
         // MARK: ViewModel
         .register(MainMapViewModel.self) { _ in MainMapViewModel(useCase: MapUseCase(repository: MapRepository())) }
         .register(NoteListViewModel.self) { _ in NoteListViewModel(useCase: NoteListUseCase(repository: NoteListRepository())) }
         .register(SelectDestinationViewModel.self) { _ in SelectDestinationViewModel(useCase: SelectDestinationUseCase(repository: SelectDestinationRepository())) }
         .register(CreateMemoViewModel.self) { _ in CreateMemoViewModel(useCase: CreateMemoUseCase(repository: CreateMemoRepository())) }
+        .register(SearchStreetAddressViewModel.self) { _ in SearchStreetAddressViewModel(useCase: SearchStreetAddressUseCase(repository: SearchStreetAddressRepository())) }
     
         // MARK: DisposeBag
         .register(DisposeBag.self) { _ in DisposeBag() }
@@ -63,6 +66,14 @@ extension AppDelegate {
                 .with(ui: $0.resolve(CreateMemoUIProtocol.self))
                 .with(routing: $0.resolve(CreateMemoRoutingProtocol.self))
                 .with(viewModel: $0.resolve(CreateMemoViewModel.self))
+                .with(disposeBag: $0.resolve(DisposeBag.self))
+                .build()
+        }
+        .register(SearchStreetAddressViewController.self) {
+            AnyVCBuilder<SearchStreetAddressViewController>()
+                .with(ui: $0.resolve(SearchStreetAddressUIProtocol.self))
+                .with(routing: $0.resolve(SearchStreetAddressRoutingProtocol.self))
+                .with(viewModel: $0.resolve(SearchStreetAddressViewModel.self))
                 .with(disposeBag: $0.resolve(DisposeBag.self))
                 .build()
         }

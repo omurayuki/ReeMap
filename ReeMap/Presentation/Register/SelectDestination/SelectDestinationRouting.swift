@@ -1,8 +1,10 @@
+import CoreLocation
 import UIKit
 
 protocol SelectDestinationRoutingProtocol: Routing {
     
     func showCreateMemoPage(address: String)
+    func showSearchStreetAddressPage(location: CLLocation)
     func dismiss()
 }
 
@@ -13,6 +15,12 @@ final class SelectDestinationRouting: SelectDestinationRoutingProtocol {
     func showCreateMemoPage(address: String) {
         let vc = AppDelegate.container.resolve(CreateMemoViewController.self)
         vc.didRecieveStreetAddress = address
+        viewController?.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func showSearchStreetAddressPage(location: CLLocation) {
+        let vc = AppDelegate.container.resolve(SearchStreetAddressViewController.self)
+        vc.didRecieveCurrentLocation(location)
         viewController?.navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -6,6 +6,7 @@ protocol SelectDestinationUIProtocol: UI {
     var mapView: MKMapView { get }
     var selectImage: UIImageView { get }
     var streetAddressLabel: UILabel { get }
+    var tapGesture: UITapGestureRecognizer { get }
     var settingsBtn: UIButton { get }
     var cancelBtn: UIButton { get }
     
@@ -31,6 +32,11 @@ final class SelectDestinationUI: SelectDestinationUIProtocol {
         return image
     }()
     
+    private(set) var tapGesture: UITapGestureRecognizer = {
+        let gesture = UITapGestureRecognizer()
+        return gesture
+    }()
+    
     private(set) var streetAddressLabel: UILabel = {
         let label = UILabel()
         label.apply(.h5)
@@ -39,6 +45,7 @@ final class SelectDestinationUI: SelectDestinationUIProtocol {
         label.layer.cornerRadius = 2
         label.textColor = .gray
         label.text = R.string.localizable.trace_map()
+        label.isUserInteractionEnabled = true
         label.clipsToBounds = true
         return label
     }()
@@ -80,6 +87,7 @@ extension SelectDestinationUI {
         stack.spacing = 20
         
         [mapView, streetAddressLabel, stack].forEach { vc.view.addSubview($0) }
+        streetAddressLabel.addGestureRecognizer(tapGesture)
         mapView.addSubview(selectImage)
         
         mapView.anchor()
