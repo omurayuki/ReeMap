@@ -1,10 +1,10 @@
-import UIKit
 import MapKit
+import UIKit
 
 final class NoteListTableViewCell: UITableViewCell {
     
     var noteListImage: UIImageView = {
-        let image = UIImageView(image: #imageLiteral(resourceName: "location"))
+        let image = UIImageView(image: #imageLiteral(resourceName: "pending_note"))
         image.clipsToBounds = true
         image.layer.cornerRadius = 25
         return image
@@ -24,6 +24,7 @@ final class NoteListTableViewCell: UITableViewCell {
     
     var didPlaceUpdated: Place? {
         didSet {
+            guard let notification = didPlaceUpdated?.notification else { return }
             noteContent.text = didPlaceUpdated?.content
             let location = CLLocation(latitude: didPlaceUpdated?.latitude ?? 0.0, longitude: didPlaceUpdated?.longitude ?? 0.0)
             CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
@@ -36,6 +37,7 @@ final class NoteListTableViewCell: UITableViewCell {
                 else { return }
                 self.streetAddress.text = "\(administrativeArea)\(locality)\(thoroughfare)\(subThoroughfare)"
             }
+            notification ? (noteListImage.image = #imageLiteral(resourceName: "pending_note")) : (noteListImage.image = #imageLiteral(resourceName: "checked_note"))
         }
     }
     
