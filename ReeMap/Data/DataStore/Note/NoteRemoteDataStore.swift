@@ -7,6 +7,7 @@ protocol NoteRemoteDataStoreProtocol {
     
     func fetchNotes() -> Observable<[PlaceEntity]>
     func setNote(_ note: EntityType) -> Single<()>
+    func updateNote(_ note: EntityType, noteId: String) -> Single<()>
     func deleteNote(place: Place) -> Single<()>
 }
 
@@ -24,6 +25,10 @@ struct NoteRemoteDataStore: NoteRemoteDataStoreProtocol {
     
     func setNote(_ note: EntityType) -> Single<()> {
         return provider.setData(documentRef: .setNote, fields: note)
+    }
+    
+    func updateNote(_ note: EntityType, noteId: String) -> Single<()> {
+        return provider.updateData(documentRef: .updateNote(id: noteId), fields: note)
     }
     
     func deleteNote(place: Place) -> Single<()> {

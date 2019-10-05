@@ -6,6 +6,7 @@ protocol CreateMemoRepositoryProtocol {
     
     func getPlacemarks(streetAddress: String) -> Single<CLPlacemark>
     func setNote(_ note: EntityType) -> Single<()>
+    func updateNote(_ note: EntityType, noteId: String) -> Single<()>
     func getUIDToken() -> String
 }
 
@@ -21,6 +22,11 @@ struct CreateMemoRepository: CreateMemoRepositoryProtocol {
     func setNote(_ note: EntityType) -> Single<()> {
         let dataStore = NoteDataStoreFactory.createNoteRemoteDataStore()
         return dataStore.setNote(note)
+    }
+    
+    func updateNote(_ note: EntityType, noteId: String) -> Single<()> {
+        let dataStore = NoteDataStoreFactory.createNoteRemoteDataStore()
+        return dataStore.updateNote(note, noteId: noteId)
     }
     
     func getUIDToken() -> String {

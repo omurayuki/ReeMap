@@ -13,6 +13,7 @@ struct Constants {
 enum DocumentRef {
     case setNote
     case deleteNote(id: String)
+    case updateNote(id: String)
     
     var destination: DocumentReference {
         switch self {
@@ -23,6 +24,12 @@ enum DocumentRef {
                 .collection("Notes")
                 .document()
         case .deleteNote(let id):
+            return Firestore.firestore()
+                .collection("Users")
+                .document(AppUserDefaultsUtils.getUIDToken() ?? "")
+                .collection("Notes")
+                .document(id)
+        case .updateNote(let id):
             return Firestore.firestore()
                 .collection("Users")
                 .document(AppUserDefaultsUtils.getUIDToken() ?? "")

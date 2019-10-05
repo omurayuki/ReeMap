@@ -86,11 +86,13 @@ extension CreateMemoViewController {
     
     private func createEntity(latitude: Double, longitude: Double) -> EntityType {
         guard let uid = viewModel?.getUIDToken() else { return [:] }
-        return ["uid": uid,
-                "created_at": FieldValue.serverTimestamp(),
-                "updated_at": FieldValue.serverTimestamp(),
-                "content": self.ui.memoTextView.text ?? "",
-                "notification": true,
-                "geo_point": GeoPoint(latitude: latitude, longitude: longitude)]
+        return [
+            "uid": uid,
+            "created_at": FieldValue.serverTimestamp(),
+            "updated_at": FieldValue.serverTimestamp(),
+            "content": self.ui.memoTextView.text ?? "",
+            "notification": true,
+            "geo_point": GeoPoint(latitude: latitude, longitude: longitude)
+        ]
     }
 }

@@ -15,6 +15,7 @@
 "attention_message" = "ReeMapを使用するためには、位置情報を常に許可する必要があります。設定から変更してください。";
 "attention_could_not_load_location" = "位置情報の読み込みに失敗しました。再度アプリを起動してください。";
 "attention_missing_info" = "情報が失われますが、宜しいでしょうか？";
+"attension_edit_message" = "編集内容が失われますが、宜しいでしょうか？";
 "could_not_get" = "取得できませんでした。";
 "could_not_delete" = "削除に失敗しました";
 

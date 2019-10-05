@@ -15,6 +15,14 @@ class NoteTableHeaderView: UIView {
         return label
     }()
     
+    var editBtn: UIButton = {
+        let button = UIButton()
+        button.setTitle("Edit", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 13)
+        return button
+    }()
+    
     var streetAddress: UILabel = {
         let label = UILabel()
         label.apply(.body_Bold, title: "Address:")
@@ -42,7 +50,7 @@ extension NoteTableHeaderView {
     
     private func setup() {
         backgroundColor = .white
-        [title, noteContent, streetAddress, streetAddressContent].forEach { addSubview($0) }
+        [title, noteContent, editBtn, streetAddress, streetAddressContent].forEach { addSubview($0) }
         
         title.anchor()
             .top(to: topAnchor, constant: 20)
@@ -50,8 +58,13 @@ extension NoteTableHeaderView {
             .activate()
         
         noteContent.anchor()
-            .top(to: title.bottomAnchor, constant: 20)
+            .top(to: title.bottomAnchor, constant: 5)
             .left(to: leftAnchor, constant: 20)
+            .right(to: rightAnchor, constant: -20)
+            .activate()
+        
+        editBtn.anchor()
+            .top(to: topAnchor, constant: 14)
             .right(to: rightAnchor, constant: -20)
             .activate()
         
