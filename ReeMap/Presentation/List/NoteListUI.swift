@@ -12,6 +12,7 @@ protocol NoteListUIProtocol: UI {
     func changeHeader(height: CGFloat, isFade: Bool, content: String, address: String)
     func showHeader(content: String, address: String)
     func hideHeader()
+    func animateReload()
 }
 
 final class NoteListUI: NoteListUIProtocol {
@@ -119,5 +120,12 @@ extension NoteListUI {
     
     func hideHeader() {
         changeHeader(height: 0.0, isFade: true, content: "", address: "")
+    }
+    
+    func animateReload() {
+        UIView.Animator(duration: 0.5)
+            .animations { [unowned self] in
+                self.tableView.reloadData()
+            }.animate()
     }
 }

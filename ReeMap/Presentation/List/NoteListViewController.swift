@@ -32,14 +32,17 @@ class NoteListViewController: UIViewController {
     var disposeBag: DisposeBag!
     
     weak var delegate: TappedSearchBarDelegate!
+    private var places: [Place]!
     private var placesForDeletion: [Place]!
+    private var searchResultPlaces: [Place]?
     private var placeForEditing: (note: String, address: String, noteId: String)!
     
     var didAcceptPlaces: [Place]? {
         didSet {
             guard let places = didAcceptPlaces else { return }
             dataSource.listItems = places
-            ui.tableView.reloadData()
+            self.places = places
+            ui.animateReload()
         }
     }
     
@@ -86,6 +89,17 @@ extension NoteListViewController {
                 self.showError(message: R.string.localizable.attention_could_not_load_location())
             }).disposed(by: disposeBag)
     }
+    
+    private func deleteRows(indexPath: IndexPath) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [unowned self] in
+            self.viewModel?.deleteNote(place: self.placesForDeletion[indexPath.row])
+                .subscribe(onSuccess: { [unowned self] _ in
+                    self.ui.hideHeader()
+                    }, onError: { [unowned self] _ in
+                        self.showError(message: R.string.localizable.could_not_delete())
+                }).disposed(by: self.disposeBag)
+        })
+    }
 }
 
 extension NoteListViewController: UITableViewDelegate {
@@ -103,12 +117,7 @@ extension NoteListViewController: UITableViewDelegate {
             self.placesForDeletion = self.dataSource.listItems
             self.dataSource.listItems.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [unowned self] in
-                self.viewModel?.deleteNote(place: self.placesForDeletion[indexPath.row])
-                    .subscribe(onError: { [unowned self] _ in
-                        self.showError(message: R.string.localizable.could_not_delete())
-                    }).disposed(by: self.disposeBag)
-            })
+            self.deleteRows(indexPath: indexPath)
         }
         deleteButton.backgroundColor = .red
         return [deleteButton]
@@ -124,17 +133,30 @@ extension NoteListViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.ui.showHeader(content: "search bar でっせ", address: "")
+        guard let text = searchBar.text else { return }
+        searchResultPlaces = places
+            .filter { $0.content.contains(text) }
+            .compactMap { $0 }
+        guard let places = searchResultPlaces else { return }
+        dataSource.listItems = places
+        ui.animateReload()
     }
     
     func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
         searchBar.endEditing(true)
+        guard let text = searchBar.text else { return false }
+        if text.isEmpty {
+            dataSource.listItems = places
+            ui.animateReload()
+        }
+        ui.hideHeader()
         return true
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
-        ui.hideHeader()
+        searchBar.text = ""
+        dataSource.listItems = places
         searchBar.endEditing(true)
     }
     
