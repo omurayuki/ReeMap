@@ -48,12 +48,12 @@ final class MainMapViewController: UIViewController {
             case .full: self.ui.animateMemoBtnAlpha(0.0)
             default: break
             }
-            UIView.Animator(duration: 0.25, options: .allowUserInteraction).animations { [unowned self] in
-                switch targetPosition {
-                case .tip: self.noteListVC.ui.changeTableAlpha(0.2)
-                default:   self.noteListVC.ui.changeTableAlpha(1.0)
-                }
-            }.animate()
+            self.ui.animatePanelPosition(targetPosition,
+               tipHandler: { [unowned self] in
+                self.noteListVC.ui.changeTableAlpha(0.2)
+            }, defaultHandler: { [unowned self] in
+                self.noteListVC.ui.changeTableAlpha(1.0)
+            })
         })
     }()
     // swiftlint:disable:previou
