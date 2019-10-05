@@ -6,26 +6,22 @@ import RxCocoa
 import RxSwift
 import UIKit
 
+extension EditNoteViewController: VCInjectable {
+    
+    typealias UI = EditNoteUIProtocol
+    typealias Routing = EditNoteRoutingProtocol
+    typealias ViewModel = EditNoteViewModel
+    
+    func setupConfig() {
+    }
+}
+
 final class EditNoteViewController: UIViewController {
     
-    lazy var ui: EditNoteUIProtocol = {
-        let ui = EditNoteUI()
-        ui.viewController = self
-        return ui
-    }()
-    
-    lazy var routing: EditNoteRoutingProtocol = {
-        let routing = EditNoteRouting()
-        routing.viewController = self
-        return routing
-    }()
-    
-    var viewModel: EditNoteViewModel = {
-        let viewModel = EditNoteViewModel(useCase: CreateMemoUseCase(repository: CreateMemoRepository()))
-        return viewModel
-    }()
-    
-    let disposeBag = DisposeBag()
+    var ui: EditNoteUIProtocol! { didSet { ui.viewController = self } }
+    var routing: EditNoteRoutingProtocol? { didSet { routing?.viewController = self } }
+    var viewModel: EditNoteViewModel?
+    var disposeBag: DisposeBag!
     
     var didRecieveStreetAddress: String? {
         didSet {
@@ -41,8 +37,13 @@ final class EditNoteViewController: UIViewController {
     
     var didRecieveNoteId: String!
     
+    deinit {
+        print("deinit")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupConfig()
         ui.setup()
         bindUI()
     }
@@ -56,12 +57,12 @@ extension EditNoteViewController {
                 self.showActionSheet(title: R.string.localizable.attention_title(),
                                      message: R.string.localizable.attension_edit_message(),
                                      completion: { [unowned self] in
-                    self.routing.dismiss()
+                    self.routing?.dismiss()
                 })
             }).disposed(by: disposeBag)
         
         ui.memoTextView.rx.text.asDriver()
-            .drive(onNext: { text in
+            .drive(onNext: { [unowned self] text in
                 guard let text = text else { return }
                 self.ui.saveBtn.isEnabled = !text.isEmpty
             }).disposed(by: disposeBag)
@@ -71,14 +72,17 @@ extension EditNoteViewController {
                 self.getPlacemarks(streetAddress: self.ui.streetAddressLabel.text ?? "",
                                    completion: { [unowned self] latitude, longitude in
                     self.updateNote(self.createEntity(latitude: latitude, longitude: longitude), completion: { [unowned self] in
-                        self.routing.dismiss()
+                        self.routing?.dismiss()
                     })
                 })
             }).disposed(by: disposeBag)
     }
+}
+
+extension EditNoteViewController {
     
     private func getPlacemarks(streetAddress: String, completion: @escaping (Double, Double) -> Void) {
-        viewModel.getPlacemarks(streetAddress: streetAddress)
+        viewModel?.getPlacemarks(streetAddress: streetAddress)
             .subscribe(onSuccess: { placemark in
                 completion(placemark.location?.coordinate.latitude ?? 0.0, placemark.location?.coordinate.longitude ?? 0.0)
             }, onError: { [unowned self] _ in
@@ -87,7 +91,7 @@ extension EditNoteViewController {
     }
     
     private func updateNote(_ note: EntityType, completion: @escaping () -> Void) {
-        viewModel.updateNote(note, noteId: didRecieveNoteId)
+        viewModel?.updateNote(note, noteId: didRecieveNoteId)
             .subscribe(onSuccess: { _ in
                 completion()
             }).disposed(by: self.disposeBag)
