@@ -152,7 +152,7 @@ extension MainMapUI {
             .activate()
         
         memoAddingWrapView.anchor()
-            .right(to: vc.view.rightAnchor, constant: -15)
+            .right(to: vc.view.rightAnchor, constant: -20)
             .bottom(to: vc.view.bottomAnchor, constant: -85)
             .width(constant: 55)
             .height(constant: 55)

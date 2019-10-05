@@ -82,7 +82,7 @@ extension EditNoteUI {
         
         streetAddressLabel.anchor()
             .centerXToSuperview()
-            .top(to: navBar.bottomAnchor)
+            .top(to: navBar.bottomAnchor, constant: 10)
             .width(constant: vc.view.frame.width * 0.9)
             .height(constant: 35)
             .activate()

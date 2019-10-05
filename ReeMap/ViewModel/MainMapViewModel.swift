@@ -106,13 +106,13 @@ extension MainMapViewModel {
         }
     }
     
-    func compareCoodinate() {
-        var value = CLLocationDistance()
-        var value2 = CLLocationDistance()
-        annotations.value.forEach { annotation in
-            value = currentLocation.value.coordinate.latitude.distance(to: annotation.coordinate.latitude)
-            value2 = annotation.coordinate.latitude - currentLocation.value.coordinate.latitude
-            print(value == value2)
-        }
-    }
+//    func compareCoodinate() {
+//        var value = CLLocationDistance()
+//        var value2 = CLLocationDistance()
+//        annotations.value.forEach { annotation in
+//            value = currentLocation.value.coordinate.latitude.distance(to: annotation.coordinate.latitude)
+//            value2 = annotation.coordinate.latitude - currentLocation.value.coordinate.latitude
+//            print(value == value2)
+//        }
+//    }
 }

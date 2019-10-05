@@ -16,6 +16,7 @@ final class LocationService: NSObject {
         
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.pausesLocationUpdatesAutomatically = false
+        locationManager.activityType = .fitness
         locationDataArray = [CLLocation]()
         
         super.init()
@@ -36,6 +37,10 @@ final class LocationService: NSObject {
         default:
             showTurnOnLocationServiceAlert()
         }
+    }
+    
+    func startMonitoring() {
+        locationManager.startMonitoringSignificantLocationChanges()
     }
     
     func filterAndAddLocation(_ location: CLLocation) -> Bool {

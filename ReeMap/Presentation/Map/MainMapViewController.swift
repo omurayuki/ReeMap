@@ -98,8 +98,15 @@ extension MainMapViewController {
             }).disposed(by: disposeBag)
         
         output?.didLocationUpdated
-            .subscribe(onNext: { [unowned self] _ in
-                self.viewModel?.compareCoodinate()
+            .subscribe(onNext: { [unowned self] location in
+                self.noteListVC.dataSource.listItems
+                    .filter { $0.notification }
+                    .forEach {
+                        // foregroundの時ここからpush
+                        let destination = CLLocation(latitude: $0.latitude, longitude: $0.longitude)
+                        print($0.content)
+                        print(destination.distance(from: location))
+                    }
             }).disposed(by: disposeBag)
         
         ui.currentLocationBtn.rx.tap.asDriver()
