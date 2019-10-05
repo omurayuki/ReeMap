@@ -103,17 +103,15 @@ extension NoteListViewController: UITableViewDelegate {
             self.placesForDeletion = self.dataSource.listItems
             self.dataSource.listItems.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [unowned self] in
+                self.viewModel?.deleteNote(place: self.placesForDeletion[indexPath.row])
+                    .subscribe(onError: { [unowned self] _ in
+                        self.showError(message: R.string.localizable.could_not_delete())
+                    }).disposed(by: self.disposeBag)
+            })
         }
         deleteButton.backgroundColor = .red
         return [deleteButton]
-    }
-    
-    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
-        guard let index = indexPath?.row else { return }
-        viewModel?.deleteNote(place: placesForDeletion[index])
-            .subscribe(onError: { [unowned self] _ in
-                self.showError(message: R.string.localizable.could_not_delete())
-            }).disposed(by: disposeBag)
     }
 }
 
