@@ -51,6 +51,14 @@ final class SelectDestinationUI: SelectDestinationUIProtocol {
         return label
     }()
     
+    private(set) var arrowIcon: UIImageView = {
+        let image = UIImageView()
+        image.image = #imageLiteral(resourceName: "arrow")
+        image.clipsToBounds = true
+        image.backgroundColor = .clear
+        return image
+    }()
+    
     private(set) var settingsBtn: UIButton = {
         let button = UIButton()
         button.backgroundColor = .flatBlue
@@ -84,12 +92,13 @@ extension SelectDestinationUI {
         let stack = UIStackView(arrangedSubviews: [
             settingsBtn,
             cancelBtn
-            ])
+        ])
         stack.spacing = 20
         
         [mapView, streetAddressLabel, stack].forEach { vc.view.addSubview($0) }
         streetAddressLabel.addGestureRecognizer(tapGesture)
         mapView.addSubview(selectImage)
+        streetAddressLabel.addSubview(arrowIcon)
         
         mapView.anchor()
             .top(to: vc.view.safeAreaLayoutGuide.topAnchor)
@@ -109,6 +118,13 @@ extension SelectDestinationUI {
             .bottom(to: stack.topAnchor, constant: -20)
             .width(constant: vc.view.frame.width * 0.9)
             .height(constant: 45)
+            .activate()
+        
+        arrowIcon.anchor()
+            .centerYToSuperview()
+            .right(to: streetAddressLabel.rightAnchor, constant: -5)
+            .width(constant: 35)
+            .height(constant: 35)
             .activate()
         
         stack.anchor()
