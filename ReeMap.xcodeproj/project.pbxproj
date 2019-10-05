@@ -66,6 +66,10 @@
 		C97CDE8E23281C8400E1BF75 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9855A692324C5E600AA7DC6 /* RxRelay.framework */; };
 		C97CDE8F23281C8400E1BF75 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0D62317A42900F29B51 /* RxSwift.framework */; };
 		C97CDE9023281C8400E1BF75 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0D92317A4B100F29B51 /* RxCocoa.framework */; };
+		C97D77DB2347DF140010EEA2 /* EditNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D77DA2347DF140010EEA2 /* EditNoteViewController.swift */; };
+		C97D77DD2347DF1C0010EEA2 /* EditNoteUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D77DC2347DF1C0010EEA2 /* EditNoteUI.swift */; };
+		C97D77DF2347DF280010EEA2 /* EditNoteRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D77DE2347DF280010EEA2 /* EditNoteRouting.swift */; };
+		C97D77E1234810520010EEA2 /* EditNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D77E0234810520010EEA2 /* EditNoteViewModel.swift */; };
 		C9908801233B72EB00A0994E /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99087E8233B72E900A0994E /* GoogleAppMeasurement.framework */; };
 		C9908802233B72EB00A0994E /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99087E9233B72E900A0994E /* nanopb.framework */; };
 		C9908803233B72EB00A0994E /* gRPC-C++.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99087EA233B72E900A0994E /* gRPC-C++.framework */; };
@@ -252,6 +256,10 @@
 		C96C72D123211FC4001C2FA6 /* AnyVCBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyVCBuilder.swift; sourceTree = "<group>"; };
 		C96C72D323211FE1001C2FA6 /* VCInjectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCInjectable.swift; sourceTree = "<group>"; };
 		C97CDE9123281C8400E1BF75 /* FloatingPanel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FloatingPanel.framework; path = Carthage/Build/iOS/FloatingPanel.framework; sourceTree = "<group>"; };
+		C97D77DA2347DF140010EEA2 /* EditNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteViewController.swift; sourceTree = "<group>"; };
+		C97D77DC2347DF1C0010EEA2 /* EditNoteUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteUI.swift; sourceTree = "<group>"; };
+		C97D77DE2347DF280010EEA2 /* EditNoteRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteRouting.swift; sourceTree = "<group>"; };
+		C97D77E0234810520010EEA2 /* EditNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteViewModel.swift; sourceTree = "<group>"; };
 		C9855A652324ADFA00AA7DC6 /* output.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = output.xcfilelist; sourceTree = "<group>"; };
 		C9855A692324C5E600AA7DC6 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		C99087E8233B72E900A0994E /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Carthage/Build/iOS/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
@@ -687,6 +695,16 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		C994BEA92347DED400445ED3 /* EditNote */ = {
+			isa = PBXGroup;
+			children = (
+				C97D77DA2347DF140010EEA2 /* EditNoteViewController.swift */,
+				C97D77DC2347DF1C0010EEA2 /* EditNoteUI.swift */,
+				C97D77DE2347DF280010EEA2 /* EditNoteRouting.swift */,
+			);
+			path = EditNote;
+			sourceTree = "<group>";
+		};
 		C9A056432322531000EB9563 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
@@ -825,6 +843,7 @@
 				C9D6C5E6232108820064AACD /* Map */,
 				C963AF632337C21C005E10F9 /* List */,
 				C94996F8233B8E4F00165AD6 /* SideMenu */,
+				C994BEA92347DED400445ED3 /* EditNote */,
 				C9142705233DB84100567B8E /* Register */,
 			);
 			path = Presentation;
@@ -839,6 +858,7 @@
 				C9C7716023447A2700670809 /* SelectDestinationViewModel.swift */,
 				C994BEA32347A68200445ED3 /* SearchStreetAddressViewModel.swift */,
 				C914270E233DECAE00567B8E /* CreateMemoViewModel.swift */,
+				C97D77E0234810520010EEA2 /* EditNoteViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1143,6 +1163,8 @@
 				C9D6C5EE232109E20064AACD /* Routing.swift in Sources */,
 				C9FEEA662338AD6F00C5C84D /* PanelCase.swift in Sources */,
 				C9AC33902345C4E300A5AF7D /* SearchStreetAddressUI.swift in Sources */,
+				C97D77DF2347DF280010EEA2 /* EditNoteRouting.swift in Sources */,
+				C97D77DD2347DF1C0010EEA2 /* EditNoteUI.swift in Sources */,
 				C9EA2AE62323B3E90034BB1D /* ServiceFactory.swift in Sources */,
 				C9D89F842331BFC60044FEE9 /* R.generated.swift in Sources */,
 				C9AED82E2343123E00F82C4A /* FirestoreProvider.swift in Sources */,
@@ -1178,6 +1200,7 @@
 				C9142707233DB87B00567B8E /* SelectDestinationViewController.swift in Sources */,
 				C963AF6223376D74005E10F9 /* Constants.swift in Sources */,
 				C9A05640232252EC00EB9563 /* String+Extension.swift in Sources */,
+				C97D77E1234810520010EEA2 /* EditNoteViewModel.swift in Sources */,
 				C94A1A542335187D00974431 /* MapRepository.swift in Sources */,
 				C9095115232242D60080A25B /* DateFormatter+Extension.swift in Sources */,
 				C9D6C5EC232109C20064AACD /* UI.swift in Sources */,
@@ -1202,6 +1225,7 @@
 				C94A1A562335189A00974431 /* NoteRemoteDataStore.swift in Sources */,
 				C99156322338F0630065ABF2 /* NoteTableHeaderView.swift in Sources */,
 				C9A056362322526400EB9563 /* UIImageView+Extension.swift in Sources */,
+				C97D77DB2347DF140010EEA2 /* EditNoteViewController.swift in Sources */,
 				C909512823224DA00080A25B /* UIViewController+Extension.swift in Sources */,
 				C96483BF23352E3D0023BB7D /* NoteDataStoreFactory.swift in Sources */,
 				C9AED83C234317F100F82C4A /* Errors.swift in Sources */,

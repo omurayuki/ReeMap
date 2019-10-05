@@ -12,6 +12,7 @@ extension AppDelegate {
         .register(SelectDestinationUIProtocol.self) { _ in SelectDestinationUI() }
         .register(CreateMemoUIProtocol.self) { _ in CreateMemoUI() }
         .register(SearchStreetAddressUIProtocol.self) { _ in SearchStreetAddressUI() }
+        .register(EditNoteUIProtocol.self) { _ in EditNoteUI() }
     
         // MARK: Routing
         .register(MainMapRoutingProtocol.self) { _ in MainMapRouting() }
@@ -19,6 +20,7 @@ extension AppDelegate {
         .register(SelectDestinationRoutingProtocol.self) { _ in SelectDestinationRouting() }
         .register(CreateMemoRoutingProtocol.self) { _ in CreateMemoRouting() }
         .register(SearchStreetAddressRoutingProtocol.self) { _ in SearchStreetAddressRouting() }
+        .register(EditNoteRoutingProtocol.self) { _ in EditNoteRouting() }
     
         // MARK: ViewModel
         .register(MainMapViewModel.self) { _ in MainMapViewModel(useCase: MapUseCase(repository: MapRepository())) }
@@ -26,6 +28,7 @@ extension AppDelegate {
         .register(SelectDestinationViewModel.self) { _ in SelectDestinationViewModel(useCase: SelectDestinationUseCase(repository: SelectDestinationRepository())) }
         .register(CreateMemoViewModel.self) { _ in CreateMemoViewModel(useCase: CreateMemoUseCase(repository: CreateMemoRepository())) }
         .register(SearchStreetAddressViewModel.self) { _ in SearchStreetAddressViewModel(useCase: SearchStreetAddressUseCase(repository: SearchStreetAddressRepository())) }
+        .register(EditNoteViewModel.self) { _ in EditNoteViewModel(useCase: CreateMemoUseCase(repository: CreateMemoRepository())) }
     
         // MARK: DisposeBag
         .register(DisposeBag.self) { _ in DisposeBag() }
@@ -74,6 +77,14 @@ extension AppDelegate {
                 .with(ui: $0.resolve(SearchStreetAddressUIProtocol.self))
                 .with(routing: $0.resolve(SearchStreetAddressRoutingProtocol.self))
                 .with(viewModel: $0.resolve(SearchStreetAddressViewModel.self))
+                .with(disposeBag: $0.resolve(DisposeBag.self))
+                .build()
+        }
+        .register(EditNoteViewController.self) {
+            AnyVCBuilder<EditNoteViewController>()
+                .with(ui: $0.resolve(EditNoteUIProtocol.self))
+                .with(routing: $0.resolve(EditNoteRoutingProtocol.self))
+                .with(viewModel: $0.resolve(EditNoteViewModel.self))
                 .with(disposeBag: $0.resolve(DisposeBag.self))
                 .build()
         }

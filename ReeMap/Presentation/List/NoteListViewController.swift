@@ -32,7 +32,8 @@ class NoteListViewController: UIViewController {
     var disposeBag: DisposeBag!
     
     weak var delegate: TappedSearchBarDelegate!
-    private var placesForDeletion = [Place]()
+    private var placesForDeletion: [Place]!
+    private var placeForEditing: (note: String, address: String, noteId: String)!
     
     var didAcceptPlaces: [Place]? {
         didSet {
@@ -53,6 +54,7 @@ class NoteListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ui.setup()
+        bindUI()
         setupConfig()
     }
     
@@ -64,10 +66,21 @@ class NoteListViewController: UIViewController {
 
 extension NoteListViewController {
     
+    private func bindUI() {
+        ui.header.editBtn.rx.tap.asDriver()
+            .drive(onNext: { [unowned self] _ in
+                self.routing?.showCreateMemoPage(note: self.placeForEditing.note,
+                                                 address: self.placeForEditing.address,
+                                                 noteId: self.placeForEditing.noteId)
+                self.ui.hideHeader()
+            }).disposed(by: disposeBag)
+    }
+    
     private func getPlacemark(location: CLLocation, place: Place) {
         viewModel?.getPlacemarks(location: location)
             .subscribe(onSuccess: { [unowned self] placemark in
                 self.ui.changeTableAlpha(0.9)
+                self.placeForEditing = (place.content, self.getStreetAddress(placemark: placemark), place.documentId)
                 self.ui.showHeader(content: place.content, address: self.getStreetAddress(placemark: placemark))
             }, onError: { [unowned self] _ in
                 self.showError(message: R.string.localizable.attention_could_not_load_location())
@@ -90,17 +103,15 @@ extension NoteListViewController: UITableViewDelegate {
             self.placesForDeletion = self.dataSource.listItems
             self.dataSource.listItems.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [unowned self] in
+                self.viewModel?.deleteNote(place: self.placesForDeletion[indexPath.row])
+                    .subscribe(onError: { [unowned self] _ in
+                        self.showError(message: R.string.localizable.could_not_delete())
+                    }).disposed(by: self.disposeBag)
+            })
         }
         deleteButton.backgroundColor = .red
         return [deleteButton]
-    }
-    
-    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
-        guard let index = indexPath?.row else { return }
-        viewModel?.deleteNote(place: placesForDeletion[index])
-            .subscribe(onError: { [unowned self] _ in
-                self.showError(message: R.string.localizable.could_not_delete())
-            }).disposed(by: disposeBag)
     }
 }
 

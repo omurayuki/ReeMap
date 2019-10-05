@@ -6,6 +6,7 @@ protocol CreateMemoUseCaseProtocol {
     
     func getPlacemarks(streetAddress: String) -> Single<CLPlacemark>
     func setNote(_ note: EntityType) -> Single<()>
+    func updateNote(_ note: EntityType, noteId: String) -> Single<()>
     func getUIDToken() -> String
 }
 
@@ -23,6 +24,10 @@ struct CreateMemoUseCase: CreateMemoUseCaseProtocol {
     
     func setNote(_ note: EntityType) -> Single<()> {
         return repository.setNote(note)
+    }
+    
+    func updateNote(_ note: EntityType, noteId: String) -> Single<()> {
+        return repository.updateNote(note, noteId: noteId)
     }
     
     func getUIDToken() -> String {
