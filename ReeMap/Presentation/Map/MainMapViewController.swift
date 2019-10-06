@@ -85,7 +85,6 @@ extension MainMapViewController {
         
         output?.places
             .subscribe(onNext: { [unowned self] places in
-                print(places)
                 self.noteListVC.didAcceptPlaces = places
             }).disposed(by: disposeBag)
         

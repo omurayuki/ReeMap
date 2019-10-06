@@ -93,7 +93,7 @@ extension NoteListViewController {
     
     private func deleteRows(indexPath: IndexPath) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [unowned self] in
-            guard let places =  self.placesForDeletion else { return }
+            guard let places = self.placesForDeletion else { return }
             self.viewModel?.deleteNote(place: places[indexPath.row])
                 .subscribe(onSuccess: { [unowned self] _ in
                     self.ui.hideHeader()
@@ -108,9 +108,15 @@ extension NoteListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        ui.tableView.visibleCells.forEach { $0.isUserInteractionEnabled = false }
         let place = dataSource.listItems[indexPath.row]
         let location = CLLocation(latitude: place.latitude, longitude: place.longitude)
         getPlacemark(location: location, place: place)
+        //// Cellのレンダリングが終わらない間に次のCellをタップすると、挙動がおかしくなる
+        //// 一旦DispatchQueueで制御している理由は、completionでも制御できるが処理が複雑になるので
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [unowned self] in
+            self.ui.tableView.visibleCells.forEach { $0.isUserInteractionEnabled = true }
+        }
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
