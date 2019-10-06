@@ -50,6 +50,7 @@
 		C94A1A542335187D00974431 /* MapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A532335187D00974431 /* MapRepository.swift */; };
 		C94A1A562335189A00974431 /* NoteRemoteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A552335189A00974431 /* NoteRemoteDataStore.swift */; };
 		C94CAD9123192DEA00BB1BB6 /* UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94CAD9023192DEA00BB1BB6 /* UITest.swift */; };
+		C95543B62349788700CE8E53 /* UNMutableNotification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95543B52349788700CE8E53 /* UNMutableNotification+Extension.swift */; };
 		C963AF5D233716F2005E10F9 /* Observable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963AF5C233716F2005E10F9 /* Observable+Extension.swift */; };
 		C963AF5F233721AC005E10F9 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963AF5E233721AC005E10F9 /* Annotation.swift */; };
 		C963AF6223376D74005E10F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963AF6123376D74005E10F9 /* Constants.swift */; };
@@ -248,6 +249,7 @@
 		C94CAD8E23192DE900BB1BB6 /* UITest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94CAD9023192DEA00BB1BB6 /* UITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITest.swift; sourceTree = "<group>"; };
 		C94CAD9223192DEA00BB1BB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C95543B52349788700CE8E53 /* UNMutableNotification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UNMutableNotification+Extension.swift"; sourceTree = "<group>"; };
 		C963AF5C233716F2005E10F9 /* Observable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Extension.swift"; sourceTree = "<group>"; };
 		C963AF5E233721AC005E10F9 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		C963AF6123376D74005E10F9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -588,6 +590,7 @@
 				C963AF5C233716F2005E10F9 /* Observable+Extension.swift */,
 				C9D7C1BD233A2A5300D933B5 /* UISearchBar+Extension.swift */,
 				C9142710233E0E2C00567B8E /* Reactive+Extension.swift */,
+				C95543B52349788700CE8E53 /* UNMutableNotification+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1245,6 +1248,7 @@
 				C9A056302322521900EB9563 /* UIView+Extension.swift in Sources */,
 				C9D6C5E52321087F0064AACD /* MainMapRouting.swift in Sources */,
 				C909512023224AA00080A25B /* TextComponent.swift in Sources */,
+				C95543B62349788700CE8E53 /* UNMutableNotification+Extension.swift in Sources */,
 				C9095117232242FE0080A25B /* NSLayoutAnchor+Extension.swift in Sources */,
 				C909510B232237C70080A25B /* AppUserDefaultUtils.swift in Sources */,
 				C96C72D223211FC4001C2FA6 /* AnyVCBuilder.swift in Sources */,

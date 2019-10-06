@@ -74,6 +74,10 @@ extension MainMapViewModel {
         useCase.setUIDToken(token)
     }
     
+    func updateNote(_ note: EntityType, noteId: String) -> Single<()> {
+        return useCase.updateNote(note, noteId: noteId)
+    }
+    
     func updateLocation(_ location: CLLocation) {
         currentLocation.accept(location)
     }
@@ -105,14 +109,4 @@ extension MainMapViewModel {
             }))
         }
     }
-    
-//    func compareCoodinate() {
-//        var value = CLLocationDistance()
-//        var value2 = CLLocationDistance()
-//        annotations.value.forEach { annotation in
-//            value = currentLocation.value.coordinate.latitude.distance(to: annotation.coordinate.latitude)
-//            value2 = annotation.coordinate.latitude - currentLocation.value.coordinate.latitude
-//            print(value == value2)
-//        }
-//    }
 }

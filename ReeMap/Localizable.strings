@@ -20,6 +20,7 @@
 "could_not_get" = "取得できませんでした。";
 "could_not_delete" = "削除に失敗しました";
 "attention_push_settings" = "プッシュ通知が拒否されています。設定から有効にしてください。";
+"could_not_update_note" = "Noteの更新に失敗しました。通信状況を確認してください。";
 
 // content
 "no_title" = "no title";
@@ -30,3 +31,4 @@
 "write_memo" = "メモを書く";
 "trace_map" = "マップをなぞってください";
 "writing_memo" = "メモを記入";
+"remind" = "リマインド";

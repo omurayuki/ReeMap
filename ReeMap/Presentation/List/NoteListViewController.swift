@@ -32,10 +32,10 @@ class NoteListViewController: UIViewController {
     var disposeBag: DisposeBag!
     
     weak var delegate: TappedSearchBarDelegate!
-    private var places: [Place]!
-    private var placesForDeletion: [Place]!
+    private var places: [Place]?
+    private var placesForDeletion: [Place]?
     private var searchResultPlaces: [Place]?
-    private var placeForEditing: (note: String, address: String, noteId: String)!
+    private var placeForEditing: (note: String, address: String, noteId: String)?
     
     var didAcceptPlaces: [Place]? {
         didSet {
@@ -72,9 +72,10 @@ extension NoteListViewController {
     private func bindUI() {
         ui.header.editBtn.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
-                self.routing?.showCreateMemoPage(note: self.placeForEditing.note,
-                                                 address: self.placeForEditing.address,
-                                                 noteId: self.placeForEditing.noteId)
+                guard let place = self.placeForEditing else { return }
+                self.routing?.showCreateMemoPage(note: place.note,
+                                                 address: place.address,
+                                                 noteId: place.noteId)
                 self.ui.hideHeader()
             }).disposed(by: disposeBag)
     }
@@ -92,7 +93,8 @@ extension NoteListViewController {
     
     private func deleteRows(indexPath: IndexPath) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [unowned self] in
-            self.viewModel?.deleteNote(place: self.placesForDeletion[indexPath.row])
+            guard let places =  self.placesForDeletion else { return }
+            self.viewModel?.deleteNote(place: places[indexPath.row])
                 .subscribe(onSuccess: { [unowned self] _ in
                     self.ui.hideHeader()
                     }, onError: { [unowned self] _ in
@@ -134,7 +136,7 @@ extension NoteListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let text = searchBar.text else { return }
-        searchResultPlaces = places
+        searchResultPlaces = places?
             .filter { $0.content.contains(text) }
             .compactMap { $0 }
         guard let places = searchResultPlaces else { return }
@@ -146,7 +148,7 @@ extension NoteListViewController: UISearchBarDelegate {
         searchBar.endEditing(true)
         guard let text = searchBar.text else { return false }
         if text.isEmpty {
-            dataSource.listItems = places
+            dataSource.listItems = places ?? []
             ui.animateReload()
         }
         ui.hideHeader()
@@ -156,7 +158,7 @@ extension NoteListViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         searchBar.text = ""
-        dataSource.listItems = places
+        dataSource.listItems = places ?? []
         searchBar.endEditing(true)
     }
     

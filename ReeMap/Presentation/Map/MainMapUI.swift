@@ -127,7 +127,7 @@ extension MainMapUI {
         
         currentLocationWrapView.anchor()
             .top(to: mapView.topAnchor, constant: 35)
-            .right(to: mapView.rightAnchor, constant: -20)
+            .right(to: mapView.rightAnchor, constant: -15)
             .width(constant: 50)
             .height(constant: 50)
             .activate()
@@ -140,7 +140,7 @@ extension MainMapUI {
         
         menuWrapView.anchor()
             .top(to: mapView.topAnchor, constant: 35)
-            .left(to: mapView.leftAnchor, constant: 20)
+            .left(to: mapView.leftAnchor, constant: 15)
             .width(constant: 50)
             .height(constant: 50)
             .activate()
@@ -152,7 +152,7 @@ extension MainMapUI {
             .activate()
         
         memoAddingWrapView.anchor()
-            .right(to: vc.view.rightAnchor, constant: -20)
+            .right(to: vc.view.rightAnchor, constant: -15)
             .bottom(to: vc.view.bottomAnchor, constant: -85)
             .width(constant: 55)
             .height(constant: 55)

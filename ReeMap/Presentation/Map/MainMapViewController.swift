@@ -105,23 +105,7 @@ extension MainMapViewController {
                     .filter { $0.notification }
                     .forEach {
                         let destination = CLLocation(latitude: $0.latitude, longitude: $0.longitude)
-                        if destination.distance(from: location) <= 200 {
-                            let content = UNMutableNotificationContent()
-                            content.title = "リマインド"
-                            content.body = $0.content
-                            content.sound = UNNotificationSound.default
-                            if let path = Bundle.main.path(forResource: "checked_note", ofType: "png") {
-                                content.attachments = [try! UNNotificationAttachment(identifier: "checked_note", url: URL(fileURLWithPath: path), options: nil)]
-                            }
-                            let request = UNNotificationRequest(identifier: "immediately", content: content, trigger: nil)
-                            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-                            FirestoreProvider().updateData(documentRef: .updateNote(id: $0.documentId), fields: ["notification": false])
-                                .subscribe(onSuccess: { _ in
-                                    print("update完了")
-                                }, onError: { _ in
-                                    print("error発生")
-                                }).disposed(by: self.disposeBag)
-                        }
+                        destination.distance(from: location) <= 200 ? self.createLocalNotification(place: $0) : ()
                     }
             }).disposed(by: disposeBag)
         
@@ -210,6 +194,22 @@ extension MainMapViewController {
             self.sideMenuVC.willMove(toParent: nil)
             self.sideMenuVC.removeFromParent()
             self.sideMenuVC.view.removeFromSuperview()
+        })
+    }
+    
+    func createLocalNotification(place: Place) {
+        let content = UNMutableNotificationContent()
+        content.createLocalNotification(title: R.string.localizable.remind(),
+                                        content: place.content,
+                                        sound: UNNotificationSound.default,
+                                        resource: (image: Constants.Resource.resource.image,
+                                                   type: Constants.Resource.resource.type),
+                                        requestIdentifier: Constants.Identifier.notification,
+                                        notificationHandler: { [unowned self] in
+            self.viewModel?.updateNote(["notification": false], noteId: place.documentId)
+                .subscribe(onError: { [unowned self] _ in
+                    self.showError(message: R.string.localizable.could_not_update_note())
+                }).disposed(by: self.disposeBag)
         })
     }
 }

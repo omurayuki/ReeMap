@@ -1,5 +1,5 @@
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 struct Constants {
     
@@ -7,6 +7,16 @@ struct Constants {
         
         static let clusteringIdentifier = "clusteringIdentifier"
         static let location = "location"
+    }
+    
+    struct Resource {
+        
+        static let resource = (image: "checked_note", type: "png")
+    }
+    
+    struct Identifier {
+        
+        static let notification = "immediately"
     }
 }
 
