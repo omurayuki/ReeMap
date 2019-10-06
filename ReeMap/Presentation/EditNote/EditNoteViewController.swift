@@ -23,6 +23,8 @@ final class EditNoteViewController: UIViewController {
     var viewModel: EditNoteViewModel?
     var disposeBag: DisposeBag!
     
+    var didRecieveNoteId: String!
+    
     var didRecieveStreetAddress: String? {
         didSet {
             ui.streetAddressLabel.text = didRecieveStreetAddress
@@ -33,12 +35,6 @@ final class EditNoteViewController: UIViewController {
         didSet {
             ui.memoTextView.insertText(didRecieveNote ?? "")
         }
-    }
-    
-    var didRecieveNoteId: String!
-    
-    deinit {
-        print("deinit")
     }
     
     override func viewDidLoad() {

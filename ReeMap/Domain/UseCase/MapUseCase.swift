@@ -6,6 +6,7 @@ protocol MapUseCaseProtocol {
     
     func AuthenticateAnonymous() -> Single<User>
     func fetchNotes() -> Observable<[Place]>
+    func updateNote(_ note: EntityType, noteId: String) -> Single<()>
     func getPlacemarks(location: CLLocation) -> Single<CLPlacemark>
     func getUIDToken() -> String
     func setUIDToken(_ token: String)
@@ -25,6 +26,10 @@ struct MapUseCase: MapUseCaseProtocol {
     
     func fetchNotes() -> Observable<[Place]> {
         return repository.fetchNotes().map { MapsTranslator().translate($0) }
+    }
+    
+    func updateNote(_ note: EntityType, noteId: String) -> Single<()> {
+        return repository.updateNote(note, noteId: noteId)
     }
     
     func getPlacemarks(location: CLLocation) -> Single<CLPlacemark> {

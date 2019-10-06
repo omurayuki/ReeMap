@@ -19,6 +19,9 @@ protocol MainMapUIProtocol: UI {
     func fullScreen(completion: @escaping () -> Void)
     func animateMemoBtnAlpha(_ value: CGFloat)
     func updateAnnotations(_ annotations: [MKAnnotation])
+    func animatePanelPosition(_ targetPosition: FloatingPanelPosition,
+                              tipHandler: @escaping () -> Void,
+                              defaultHandler: @escaping () -> Void)
 }
 
 final class MainMapUI: MainMapUIProtocol {
@@ -124,7 +127,7 @@ extension MainMapUI {
         
         currentLocationWrapView.anchor()
             .top(to: mapView.topAnchor, constant: 35)
-            .right(to: mapView.rightAnchor, constant: -20)
+            .right(to: mapView.rightAnchor, constant: -15)
             .width(constant: 50)
             .height(constant: 50)
             .activate()
@@ -137,7 +140,7 @@ extension MainMapUI {
         
         menuWrapView.anchor()
             .top(to: mapView.topAnchor, constant: 35)
-            .left(to: mapView.leftAnchor, constant: 20)
+            .left(to: mapView.leftAnchor, constant: 15)
             .width(constant: 50)
             .height(constant: 50)
             .activate()
@@ -198,5 +201,17 @@ extension MainMapUI {
     func updateAnnotations(_ annotations: [MKAnnotation]) {
         mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotations(annotations)
+    }
+    
+    func animatePanelPosition(_ targetPosition: FloatingPanelPosition,
+                              tipHandler: @escaping () -> Void,
+                              defaultHandler: @escaping () -> Void) {
+        UIView.Animator(duration: 0.25, options: .allowUserInteraction)
+            .animations {
+                switch targetPosition {
+                case .tip: tipHandler()
+                default:   defaultHandler()
+                }
+            }.animate()
     }
 }

@@ -25,7 +25,7 @@ extension MainMapViewModel {
     
     struct Input {
         
-        let viewWillAppear: Observable<[Any]>
+        let viewDidLayoutSubviews: Observable<[Any]>
     }
     
     struct Output {
@@ -37,7 +37,7 @@ extension MainMapViewModel {
     }
     
     func transform(input: Input) -> Output {
-        let places = input.viewWillAppear
+        let places = input.viewDidLayoutSubviews
             .flatMap { [unowned self] _ -> Observable<Event<[Place]>> in
                 self.useCase.fetchNotes()
                     .do(onNext: { [unowned self] places in
@@ -74,6 +74,10 @@ extension MainMapViewModel {
         useCase.setUIDToken(token)
     }
     
+    func updateNote(_ note: EntityType, noteId: String) -> Single<()> {
+        return useCase.updateNote(note, noteId: noteId)
+    }
+    
     func updateLocation(_ location: CLLocation) {
         currentLocation.accept(location)
     }
@@ -103,16 +107,6 @@ extension MainMapViewModel {
                 self.zoomBlockingTimer.accept(nil)
                 self.blockingAutoZoom.accept(false)
             }))
-        }
-    }
-    
-    func compareCoodinate() {
-        var value = CLLocationDistance()
-        var value2 = CLLocationDistance()
-        annotations.value.forEach { annotation in
-            value = currentLocation.value.coordinate.latitude.distance(to: annotation.coordinate.latitude)
-            value2 = annotation.coordinate.latitude - currentLocation.value.coordinate.latitude
-            print(value == value2)
         }
     }
 }

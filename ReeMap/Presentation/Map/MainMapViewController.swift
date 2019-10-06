@@ -4,6 +4,7 @@ import MapKit
 import RxCocoa
 import RxSwift
 import UIKit
+import UserNotifications
 
 extension MainMapViewController: VCInjectable {
     
@@ -48,12 +49,12 @@ final class MainMapViewController: UIViewController {
             case .full: self.ui.animateMemoBtnAlpha(0.0)
             default: break
             }
-            UIView.Animator(duration: 0.25, options: .allowUserInteraction).animations { [unowned self] in
-                switch targetPosition {
-                case .tip: self.noteListVC.ui.changeTableAlpha(0.2)
-                default:   self.noteListVC.ui.changeTableAlpha(1.0)
-                }
-            }.animate()
+            self.ui.animatePanelPosition(targetPosition,
+               tipHandler: { [unowned self] in
+                self.noteListVC.ui.changeTableAlpha(0.2)
+            }, defaultHandler: { [unowned self] in
+                self.noteListVC.ui.changeTableAlpha(1.0)
+            })
         })
     }()
     // swiftlint:disable:previou
@@ -79,7 +80,7 @@ extension MainMapViewController {
     }
     
     private func bindUI() {
-        let input = MainMapViewModel.Input(viewWillAppear: rx.sentMessage(#selector(viewWillAppear(_:))).asObservable())
+        let input = MainMapViewModel.Input(viewDidLayoutSubviews: rx.sentMessage(#selector(viewDidLayoutSubviews)).asObservable())
         let output = viewModel?.transform(input: input)
         
         output?.places
@@ -98,8 +99,13 @@ extension MainMapViewController {
             }).disposed(by: disposeBag)
         
         output?.didLocationUpdated
-            .subscribe(onNext: { [unowned self] _ in
-                self.viewModel?.compareCoodinate()
+            .subscribe(onNext: { [unowned self] location in
+                self.noteListVC.dataSource.listItems
+                    .filter { $0.notification }
+                    .forEach {
+                        let destination = CLLocation(latitude: $0.latitude, longitude: $0.longitude)
+                        destination.distance(from: location) <= 200 ? self.createLocalNotification(place: $0) : ()
+                    }
             }).disposed(by: disposeBag)
         
         ui.currentLocationBtn.rx.tap.asDriver()
@@ -139,8 +145,8 @@ extension MainMapViewController {
             .subscribe(onSuccess: { [unowned self] auth in
                 self.viewModel?.setUIDToken(auth.uid)
                 self.bindUI()
-                }, onError: { [unowned self] error in
-                    self.showError(message: R.string.localizable.error_message_network())
+            }, onError: { [unowned self] error in
+                self.showError(message: R.string.localizable.error_message_network())
             }).disposed(by: disposeBag)
     }
 }
@@ -148,7 +154,8 @@ extension MainMapViewController {
 extension MainMapViewController {
     
     private func isExistUIDToken() {
-        viewModel?.getUIDToken() == "" ? prosessInInitialAccess() : bindUI()
+        guard let uid = viewModel?.getUIDToken() else { return }
+        uid.isEmpty ? prosessInInitialAccess() : bindUI()
     }
     
     private func getPlacemarks(location: CLLocation, complation: @escaping (CLPlacemark) -> Void) {
@@ -186,6 +193,22 @@ extension MainMapViewController {
             self.sideMenuVC.willMove(toParent: nil)
             self.sideMenuVC.removeFromParent()
             self.sideMenuVC.view.removeFromSuperview()
+        })
+    }
+    
+    func createLocalNotification(place: Place) {
+        let content = UNMutableNotificationContent()
+        content.createLocalNotification(title: R.string.localizable.remind(),
+                                        content: place.content,
+                                        sound: UNNotificationSound.default,
+                                        resource: (image: Constants.Resource.resource.image,
+                                                   type: Constants.Resource.resource.type),
+                                        requestIdentifier: Constants.Identifier.notification,
+                                        notificationHandler: { [unowned self] in
+            self.viewModel?.updateNote(["notification": false], noteId: place.documentId)
+                .subscribe(onError: { [unowned self] _ in
+                    self.showError(message: R.string.localizable.could_not_update_note())
+                }).disposed(by: self.disposeBag)
         })
     }
 }

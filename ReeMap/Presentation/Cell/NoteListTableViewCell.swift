@@ -6,7 +6,6 @@ final class NoteListTableViewCell: UITableViewCell {
     var noteListImage: UIImageView = {
         let image = UIImageView(image: #imageLiteral(resourceName: "pending_note"))
         image.clipsToBounds = true
-        image.layer.cornerRadius = 25
         return image
     }()
     

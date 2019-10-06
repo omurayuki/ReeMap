@@ -6,6 +6,7 @@ protocol MapRepositoryProtocol {
     
     func AuthenticateAnonymous() -> Single<UserEntity>
     func fetchNotes() -> Observable<[PlaceEntity]>
+    func updateNote(_ note: EntityType, noteId: String) -> Single<()>
     func getPlacemarks(location: CLLocation) -> Single<CLPlacemark>
     func getUIDToken() -> String
     func setUIDToken(_ token: String)
@@ -23,6 +24,11 @@ struct MapRepository: MapRepositoryProtocol {
     func fetchNotes() -> Observable<[PlaceEntity]> {
         let dataStore = NoteDataStoreFactory.createNoteRemoteDataStore()
         return dataStore.fetchNotes()
+    }
+    
+    func updateNote(_ note: EntityType, noteId: String) -> Single<()> {
+        let dataStore = NoteDataStoreFactory.createNoteRemoteDataStore()
+        return dataStore.updateNote(note, noteId: noteId)
     }
     
     func getPlacemarks(location: CLLocation) -> Single<CLPlacemark> {
