@@ -4,6 +4,7 @@ import MapKit
 import RxCocoa
 import RxSwift
 import UIKit
+import UserNotifications
 
 extension MainMapViewController: VCInjectable {
     
@@ -79,11 +80,12 @@ extension MainMapViewController {
     }
     
     private func bindUI() {
-        let input = MainMapViewModel.Input(viewWillAppear: rx.sentMessage(#selector(viewWillAppear(_:))).asObservable())
+        let input = MainMapViewModel.Input(viewDidLayoutSubviews: rx.sentMessage(#selector(viewDidLayoutSubviews)).asObservable())
         let output = viewModel?.transform(input: input)
         
         output?.places
             .subscribe(onNext: { [unowned self] places in
+                print(places)
                 self.noteListVC.didAcceptPlaces = places
             }).disposed(by: disposeBag)
         
@@ -102,10 +104,24 @@ extension MainMapViewController {
                 self.noteListVC.dataSource.listItems
                     .filter { $0.notification }
                     .forEach {
-                        // foregroundの時ここからpush
                         let destination = CLLocation(latitude: $0.latitude, longitude: $0.longitude)
-                        print($0.content)
-                        print(destination.distance(from: location))
+                        if destination.distance(from: location) <= 200 {
+                            let content = UNMutableNotificationContent()
+                            content.title = "リマインド"
+                            content.body = $0.content
+                            content.sound = UNNotificationSound.default
+                            if let path = Bundle.main.path(forResource: "checked_note", ofType: "png") {
+                                content.attachments = [try! UNNotificationAttachment(identifier: "checked_note", url: URL(fileURLWithPath: path), options: nil)]
+                            }
+                            let request = UNNotificationRequest(identifier: "immediately", content: content, trigger: nil)
+                            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                            FirestoreProvider().updateData(documentRef: .updateNote(id: $0.documentId), fields: ["notification": false])
+                                .subscribe(onSuccess: { _ in
+                                    print("update完了")
+                                }, onError: { _ in
+                                    print("error発生")
+                                }).disposed(by: self.disposeBag)
+                        }
                     }
             }).disposed(by: disposeBag)
         
@@ -146,8 +162,8 @@ extension MainMapViewController {
             .subscribe(onSuccess: { [unowned self] auth in
                 self.viewModel?.setUIDToken(auth.uid)
                 self.bindUI()
-                }, onError: { [unowned self] error in
-                    self.showError(message: R.string.localizable.error_message_network())
+            }, onError: { [unowned self] error in
+                self.showError(message: R.string.localizable.error_message_network())
             }).disposed(by: disposeBag)
     }
 }
@@ -155,7 +171,8 @@ extension MainMapViewController {
 extension MainMapViewController {
     
     private func isExistUIDToken() {
-        viewModel?.getUIDToken() == "" ? prosessInInitialAccess() : bindUI()
+        guard let uid = viewModel?.getUIDToken() else { return }
+        uid.isEmpty ? prosessInInitialAccess() : bindUI()
     }
     
     private func getPlacemarks(location: CLLocation, complation: @escaping (CLPlacemark) -> Void) {

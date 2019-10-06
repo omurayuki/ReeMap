@@ -24,8 +24,9 @@ final class LocationService: NSObject {
         locationManager.delegate = self
     }
     
-    func requestAuthorization() {
+    func requestAuthorization(completion: () -> Void) {
         locationManager.requestAlwaysAuthorization()
+        completion()
     }
     
     func startUpdatingLocation() {

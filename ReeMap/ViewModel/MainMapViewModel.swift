@@ -25,7 +25,7 @@ extension MainMapViewModel {
     
     struct Input {
         
-        let viewWillAppear: Observable<[Any]>
+        let viewDidLayoutSubviews: Observable<[Any]>
     }
     
     struct Output {
@@ -37,7 +37,7 @@ extension MainMapViewModel {
     }
     
     func transform(input: Input) -> Output {
-        let places = input.viewWillAppear
+        let places = input.viewDidLayoutSubviews
             .flatMap { [unowned self] _ -> Observable<Event<[Place]>> in
                 self.useCase.fetchNotes()
                     .do(onNext: { [unowned self] places in

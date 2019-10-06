@@ -12,8 +12,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         super.init()
         FirebaseApp.configure()
     }
-    
-    let disposeBag = AppDelegate.container.resolve(DisposeBag.self)
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -21,12 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let vc = AppDelegate.container.resolve(MainMapViewController.self)
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
-        LocationService.sharedInstance.requestAuthorization()
-        
+        requestLocationAndNotification()
+        UNUserNotificationCenter.current().delegate = self
         if launchOptions?[UIApplication.LaunchOptionsKey.location] != nil {
             LocationService.sharedInstance.startMonitoring()
         }
-        
         return true
     }
 
@@ -46,4 +43,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {}
 
     func applicationWillTerminate(_ application: UIApplication) {}
+}
+
+extension AppDelegate {
+    
+    func requestLocationAndNotification() {
+        LocationService.sharedInstance.requestAuthorization(completion: {
+            UNUserNotificationCenter.current()
+                .requestAuthorization(options: [.badge, .sound, .alert],
+                                      completionHandler: { [unowned self] granted, _ in
+                    if !granted {
+                        let alert = UIAlertController(title: R.string.localizable.error_title(),
+                                                      message: R.string.localizable.attention_push_settings(),
+                                                      preferredStyle: .alert)
+                        let closeAction = UIAlertAction(title: R.string.localizable.close(), style: .default) { _ in
+                            guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+                            UIApplication.shared.open(url, options: [:])
+                        }
+                        alert.addAction(closeAction)
+                        self.window?.rootViewController?.present(alert, animated: true)
+                    }
+                })
+        })
+    }
 }

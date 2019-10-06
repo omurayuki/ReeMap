@@ -70,6 +70,8 @@
 		C97D77DD2347DF1C0010EEA2 /* EditNoteUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D77DC2347DF1C0010EEA2 /* EditNoteUI.swift */; };
 		C97D77DF2347DF280010EEA2 /* EditNoteRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D77DE2347DF280010EEA2 /* EditNoteRouting.swift */; };
 		C97D77E1234810520010EEA2 /* EditNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D77E0234810520010EEA2 /* EditNoteViewModel.swift */; };
+		C97D77E32348E53F0010EEA2 /* checked_note.png in Resources */ = {isa = PBXBuildFile; fileRef = C97D77E22348E53F0010EEA2 /* checked_note.png */; };
+		C97D77E52348E9AC0010EEA2 /* AppDelegate+UserNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D77E42348E9AC0010EEA2 /* AppDelegate+UserNotification.swift */; };
 		C9908801233B72EB00A0994E /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99087E8233B72E900A0994E /* GoogleAppMeasurement.framework */; };
 		C9908802233B72EB00A0994E /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99087E9233B72E900A0994E /* nanopb.framework */; };
 		C9908803233B72EB00A0994E /* gRPC-C++.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99087EA233B72E900A0994E /* gRPC-C++.framework */; };
@@ -260,6 +262,8 @@
 		C97D77DC2347DF1C0010EEA2 /* EditNoteUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteUI.swift; sourceTree = "<group>"; };
 		C97D77DE2347DF280010EEA2 /* EditNoteRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteRouting.swift; sourceTree = "<group>"; };
 		C97D77E0234810520010EEA2 /* EditNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteViewModel.swift; sourceTree = "<group>"; };
+		C97D77E22348E53F0010EEA2 /* checked_note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked_note.png; sourceTree = "<group>"; };
+		C97D77E42348E9AC0010EEA2 /* AppDelegate+UserNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+UserNotification.swift"; sourceTree = "<group>"; };
 		C9855A652324ADFA00AA7DC6 /* output.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = output.xcfilelist; sourceTree = "<group>"; };
 		C9855A692324C5E600AA7DC6 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		C99087E8233B72E900A0994E /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Carthage/Build/iOS/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
@@ -774,6 +778,7 @@
 				C949B7A22337F22C009E91FC /* FloatingPanel.framework */,
 				C9E3F3AE2324A0EA00141BBC /* input.xcfilelist */,
 				C9855A652324ADFA00AA7DC6 /* output.xcfilelist */,
+				C97D77E22348E53F0010EEA2 /* checked_note.png */,
 				C9B9F44D231765C00013ED05 /* ReeMap */,
 				C94CAD8F23192DEA00BB1BB6 /* UITest */,
 				C9D50CEB2324F1CC003466A8 /* ReeMapUnitTests */,
@@ -804,6 +809,7 @@
 				C9D6C5DB232107E20064AACD /* Presentation */,
 				C9B9F44E231765C00013ED05 /* AppDelegate.swift */,
 				C9EA2AE72323B63E0034BB1D /* AppDelegate+Container.swift */,
+				C97D77E42348E9AC0010EEA2 /* AppDelegate+UserNotification.swift */,
 				C9D89F832331BFC60044FEE9 /* R.generated.swift */,
 				C914952B2322089500FCF3AB /* Localizable.strings */,
 				C9B9F455231765C10013ED05 /* Assets.xcassets */,
@@ -1070,6 +1076,7 @@
 				C990881B233B73FC00A0994E /* gRPCCertificates-Cpp.bundle in Resources */,
 				C9B9F459231765C10013ED05 /* LaunchScreen.storyboard in Resources */,
 				C9B2F0F92317D37200F29B51 /* GoogleService-Info.plist in Resources */,
+				C97D77E32348E53F0010EEA2 /* checked_note.png in Resources */,
 				C9B9F456231765C10013ED05 /* Assets.xcassets in Resources */,
 				C914952C2322089500FCF3AB /* Localizable.strings in Resources */,
 			);
@@ -1159,6 +1166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9C7716323447A6300670809 /* SelectDestinationUseCase.swift in Sources */,
+				C97D77E52348E9AC0010EEA2 /* AppDelegate+UserNotification.swift in Sources */,
 				C9FC93332335109E00B1EFA9 /* NotificationUtils.swift in Sources */,
 				C9D6C5EE232109E20064AACD /* Routing.swift in Sources */,
 				C9FEEA662338AD6F00C5C84D /* PanelCase.swift in Sources */,
