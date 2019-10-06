@@ -17,7 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         let vc = AppDelegate.container.resolve(MainMapViewController.self)
-        window?.rootViewController = vc
+        let nav = UINavigationController(rootViewController: vc)
+        nav.setNavigationBarHidden(true, animated: false)
+        window?.rootViewController = nav
         window?.makeKeyAndVisible()
         requestLocationAndNotification()
         UNUserNotificationCenter.current().delegate = self

@@ -60,6 +60,7 @@
 		C96C72D023211FA0001C2FA6 /* VCBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C72CF23211FA0001C2FA6 /* VCBuildable.swift */; };
 		C96C72D223211FC4001C2FA6 /* AnyVCBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C72D123211FC4001C2FA6 /* AnyVCBuilder.swift */; };
 		C96C72D423211FE1001C2FA6 /* VCInjectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C72D323211FE1001C2FA6 /* VCInjectable.swift */; };
+		C96E99262349DA3D00EB037D /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96E99252349DA3D00EB037D /* WebViewController.swift */; };
 		C97CDE8A23281C8400E1BF75 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DFA0762322833200EDCBCE /* Kingfisher.framework */; };
 		C97CDE8B23281C8400E1BF75 /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0E12317A59200F29B51 /* Reachability.framework */; };
 		C97CDE8C23281C8400E1BF75 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A0562C2322506A00EB9563 /* MBProgressHUD.framework */; };
@@ -259,6 +260,7 @@
 		C96C72CF23211FA0001C2FA6 /* VCBuildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCBuildable.swift; sourceTree = "<group>"; };
 		C96C72D123211FC4001C2FA6 /* AnyVCBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyVCBuilder.swift; sourceTree = "<group>"; };
 		C96C72D323211FE1001C2FA6 /* VCInjectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCInjectable.swift; sourceTree = "<group>"; };
+		C96E99252349DA3D00EB037D /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		C97CDE9123281C8400E1BF75 /* FloatingPanel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FloatingPanel.framework; path = Carthage/Build/iOS/FloatingPanel.framework; sourceTree = "<group>"; };
 		C97D77DA2347DF140010EEA2 /* EditNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteViewController.swift; sourceTree = "<group>"; };
 		C97D77DC2347DF1C0010EEA2 /* EditNoteUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteUI.swift; sourceTree = "<group>"; };
@@ -692,6 +694,14 @@
 			path = Note;
 			sourceTree = "<group>";
 		};
+		C96E99242349D9E000EB037D /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				C96E99252349DA3D00EB037D /* WebViewController.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		C9915633233999AE0065ABF2 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -854,6 +864,7 @@
 				C94996F8233B8E4F00165AD6 /* SideMenu */,
 				C994BEA92347DED400445ED3 /* EditNote */,
 				C9142705233DB84100567B8E /* Register */,
+				C96E99242349D9E000EB037D /* Menu */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -1237,6 +1248,7 @@
 				C99156322338F0630065ABF2 /* NoteTableHeaderView.swift in Sources */,
 				C9A056362322526400EB9563 /* UIImageView+Extension.swift in Sources */,
 				C97D77DB2347DF140010EEA2 /* EditNoteViewController.swift in Sources */,
+				C96E99262349DA3D00EB037D /* WebViewController.swift in Sources */,
 				C909512823224DA00080A25B /* UIViewController+Extension.swift in Sources */,
 				C96483BF23352E3D0023BB7D /* NoteDataStoreFactory.swift in Sources */,
 				C9AED83C234317F100F82C4A /* Errors.swift in Sources */,

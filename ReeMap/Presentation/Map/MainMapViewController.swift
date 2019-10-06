@@ -66,6 +66,11 @@ final class MainMapViewController: UIViewController {
         isExistUIDToken()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         ui.addPanel()
@@ -253,5 +258,17 @@ extension MainMapViewController: SideMenuViewControllerDelegate {
     
     func sidemenuViewController(_ sidemenuViewController: SideMenuViewController, didSelectItemAt indexPath: IndexPath) {
         hideSidemenu(animated: true)
+        let menu = Menu.allCases[indexPath.row]
+        switch menu {
+        case .privacy:
+            routing?.showWebViewPage(url: Constants.RedirectURL.privacy)
+        case .termsOfService:
+            routing?.showWebViewPage(url: Constants.RedirectURL.termOfSearvice)
+        case .help:
+            break
+        case .contactUs:
+            routing?.showWebViewPage(url: Constants.RedirectURL.contactUs)
+        default: break
+        }
     }
 }

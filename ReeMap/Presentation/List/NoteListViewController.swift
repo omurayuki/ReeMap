@@ -114,7 +114,7 @@ extension NoteListViewController: UITableViewDelegate {
         getPlacemark(location: location, place: place)
         //// Cellのレンダリングが終わらない間に次のCellをタップすると、挙動がおかしくなる
         //// 一旦DispatchQueueで制御している理由は、completionでも制御できるが処理が複雑になるので
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [unowned self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) { [unowned self] in
             self.ui.tableView.visibleCells.forEach { $0.isUserInteractionEnabled = true }
         }
     }
