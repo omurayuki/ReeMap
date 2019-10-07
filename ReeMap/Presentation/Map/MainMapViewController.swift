@@ -260,15 +260,14 @@ extension MainMapViewController: SideMenuViewControllerDelegate {
         hideSidemenu(animated: true)
         let menu = Menu.allCases[indexPath.row]
         switch menu {
+        case .version:
+            routing?.showVersionPage()
         case .privacy:
             routing?.showWebViewPage(url: Constants.RedirectURL.privacy)
         case .termsOfService:
             routing?.showWebViewPage(url: Constants.RedirectURL.termOfSearvice)
-        case .help:
-            break
         case .contactUs:
             routing?.showWebViewPage(url: Constants.RedirectURL.contactUs)
-        default: break
         }
     }
 }

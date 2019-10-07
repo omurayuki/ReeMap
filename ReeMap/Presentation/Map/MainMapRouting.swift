@@ -5,6 +5,7 @@ protocol MainMapRoutingProtocol: Routing {
     func showSettingsAlert(completion: @escaping () -> Void)
     func showSelectDestinationPage()
     func showWebViewPage(url: String)
+    func showVersionPage()
 }
 
 final class MainMapRouting: MainMapRoutingProtocol {
@@ -26,5 +27,9 @@ final class MainMapRouting: MainMapRoutingProtocol {
     
     func showWebViewPage(url: String) {
         viewController?.navigationController?.pushViewController(WebViewController(url: url), animated: true)
+    }
+    
+    func showVersionPage() {
+        viewController?.navigationController?.pushViewController(VersionInfoViewController(), animated: true)
     }
 }
