@@ -6,6 +6,13 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    struct Const {
+        
+        static let launchScreen = "LaunchScreen"
+        static let splashIdentifiler = "splash"
+    }
+    
     var window: UIWindow?
     
     override init() {
@@ -15,14 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        let vc = AppDelegate.container.resolve(MainMapViewController.self)
-        let nav = UINavigationController(rootViewController: vc)
-        nav.setNavigationBarHidden(true, animated: false)
-        window?.rootViewController = nav
-        window?.makeKeyAndVisible()
-        requestLocationAndNotification()
-        UNUserNotificationCenter.current().delegate = self
+        launchScreen()
         if launchOptions?[UIApplication.LaunchOptionsKey.location] != nil {
             LocationService.sharedInstance.startMonitoring()
         }
@@ -67,5 +67,30 @@ extension AppDelegate {
                     }
                 })
         })
+    }
+    
+    func launchScreen() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        guard
+            let launchVC = UIStoryboard(name: Const.launchScreen,
+                                        bundle: nil)
+                .instantiateViewController(withIdentifier: Const.splashIdentifiler) as? SplashViewController
+        else { return }
+        launchVC.delegate = self
+        self.window?.rootViewController = launchVC
+        self.window?.makeKeyAndVisible()
+    }
+}
+
+extension AppDelegate: SplashDelegate {
+    
+    func didFinishSplashAnimation() {
+        requestLocationAndNotification()
+        UNUserNotificationCenter.current().delegate = self
+        let vc = AppDelegate.container.resolve(MainMapViewController.self)
+        let nav = UINavigationController(rootViewController: vc)
+        nav.setNavigationBarHidden(true, animated: false)
+        window?.rootViewController = nav
+        window?.makeKeyAndVisible()
     }
 }

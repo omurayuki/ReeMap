@@ -74,6 +74,10 @@
 		C97D77E1234810520010EEA2 /* EditNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D77E0234810520010EEA2 /* EditNoteViewModel.swift */; };
 		C97D77E32348E53F0010EEA2 /* checked_note.png in Resources */ = {isa = PBXBuildFile; fileRef = C97D77E22348E53F0010EEA2 /* checked_note.png */; };
 		C97D77E52348E9AC0010EEA2 /* AppDelegate+UserNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D77E42348E9AC0010EEA2 /* AppDelegate+UserNotification.swift */; };
+		C98F789E234AF98400802678 /* location_map_pin.json in Resources */ = {isa = PBXBuildFile; fileRef = C98F789D234AF98400802678 /* location_map_pin.json */; };
+		C98F78A2234AFFC100802678 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98F78A1234AFFC100802678 /* SplashViewController.swift */; };
+		C98F78A4234B01B200802678 /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98F78A3234B01B200802678 /* Lottie.framework */; };
+		C98F78A5234B01B200802678 /* Lottie.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C98F78A3234B01B200802678 /* Lottie.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C9908801233B72EB00A0994E /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99087E8233B72E900A0994E /* GoogleAppMeasurement.framework */; };
 		C9908802233B72EB00A0994E /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99087E9233B72E900A0994E /* nanopb.framework */; };
 		C9908803233B72EB00A0994E /* gRPC-C++.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99087EA233B72E900A0994E /* gRPC-C++.framework */; };
@@ -199,6 +203,7 @@
 			files = (
 				C949B7A42337F22C009E91FC /* FloatingPanel.framework in Embed Frameworks */,
 				C9A64B1B233CF45A00C00CC2 /* Rswift.framework in Embed Frameworks */,
+				C98F78A5234B01B200802678 /* Lottie.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +275,10 @@
 		C97D77E42348E9AC0010EEA2 /* AppDelegate+UserNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+UserNotification.swift"; sourceTree = "<group>"; };
 		C9855A652324ADFA00AA7DC6 /* output.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = output.xcfilelist; sourceTree = "<group>"; };
 		C9855A692324C5E600AA7DC6 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
+		C98F789D234AF98400802678 /* location_map_pin.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = location_map_pin.json; sourceTree = "<group>"; };
+		C98F789F234AFEFC00802678 /* Lottie.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lottie.framework; path = Carthage/Build/iOS/Lottie.framework; sourceTree = "<group>"; };
+		C98F78A1234AFFC100802678 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		C98F78A3234B01B200802678 /* Lottie.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lottie.framework; path = Carthage/Build/iOS/Lottie.framework; sourceTree = "<group>"; };
 		C99087E8233B72E900A0994E /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Carthage/Build/iOS/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
 		C99087E9233B72E900A0994E /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Carthage/Build/iOS/nanopb.framework; sourceTree = "<group>"; };
 		C99087EA233B72E900A0994E /* gRPC-C++.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "gRPC-C++.framework"; path = "Carthage/Build/iOS/gRPC-C++.framework"; sourceTree = "<group>"; };
@@ -417,6 +426,7 @@
 				C9908810233B72EB00A0994E /* FirebaseFunctions.framework in Frameworks */,
 				C9908811233B72EB00A0994E /* AppAuth.framework in Frameworks */,
 				C9908812233B72EB00A0994E /* BoringSSL-GRPC.framework in Frameworks */,
+				C98F78A4234B01B200802678 /* Lottie.framework in Frameworks */,
 				C9908814233B72EB00A0994E /* FirebaseFirestore.framework in Frameworks */,
 				C9908815233B72EB00A0994E /* FIRAnalyticsConnector.framework in Frameworks */,
 				C9908816233B72EB00A0994E /* leveldb-library.framework in Frameworks */,
@@ -449,6 +459,7 @@
 		AA67C0CD851106E09160443A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C98F789F234AFEFC00802678 /* Lottie.framework */,
 				C9A64B17233CF3A700C00CC2 /* Rswift.framework */,
 				C9908820233B747100A0994E /* StoreKit.framework */,
 				C990881E233B746700A0994E /* libc++.tbd */,
@@ -786,12 +797,14 @@
 		C9B9F442231765C00013ED05 = {
 			isa = PBXGroup;
 			children = (
+				C98F78A3234B01B200802678 /* Lottie.framework */,
 				C9A64B19233CF45A00C00CC2 /* Rswift.framework */,
 				C990881A233B73FC00A0994E /* gRPCCertificates-Cpp.bundle */,
 				C949B7A22337F22C009E91FC /* FloatingPanel.framework */,
 				C9E3F3AE2324A0EA00141BBC /* input.xcfilelist */,
 				C9855A652324ADFA00AA7DC6 /* output.xcfilelist */,
 				C97D77E22348E53F0010EEA2 /* checked_note.png */,
+				C98F789D234AF98400802678 /* location_map_pin.json */,
 				C9B9F44D231765C00013ED05 /* ReeMap */,
 				C94CAD8F23192DEA00BB1BB6 /* UITest */,
 				C9D50CEB2324F1CC003466A8 /* ReeMapUnitTests */,
@@ -827,6 +840,7 @@
 				C914952B2322089500FCF3AB /* Localizable.strings */,
 				C9B9F455231765C10013ED05 /* Assets.xcassets */,
 				C9B9F457231765C10013ED05 /* LaunchScreen.storyboard */,
+				C98F78A1234AFFC100802678 /* SplashViewController.swift */,
 				C9B2F0F82317D37200F29B51 /* GoogleService-Info.plist */,
 				C9B9F45A231765C10013ED05 /* Info.plist */,
 			);
@@ -1093,6 +1107,7 @@
 				C97D77E32348E53F0010EEA2 /* checked_note.png in Resources */,
 				C9B9F456231765C10013ED05 /* Assets.xcassets in Resources */,
 				C914952C2322089500FCF3AB /* Localizable.strings in Resources */,
+				C98F789E234AF98400802678 /* location_map_pin.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1244,6 +1259,7 @@
 				C9C7716123447A2700670809 /* SelectDestinationViewModel.swift in Sources */,
 				C90595F12332B3E2008D113D /* Place.swift in Sources */,
 				C9AED84323431FAF00F82C4A /* AuthLocalDataStore.swift in Sources */,
+				C98F78A2234AFFC100802678 /* SplashViewController.swift in Sources */,
 				C94A1A562335189A00974431 /* NoteRemoteDataStore.swift in Sources */,
 				C99156322338F0630065ABF2 /* NoteTableHeaderView.swift in Sources */,
 				C9A056362322526400EB9563 /* UIImageView+Extension.swift in Sources */,
