@@ -2,19 +2,31 @@ import Foundation
 
 enum Menu: Int, CaseIterable {
     
+    case version
     case privacy
     case termsOfService
-    case help
-    case announce
     case contactUs
     
     var description: String {
         switch self {
-        case .privacy:        return "プライバシー"
+        case .version:        return "バージョン情報"
+        case .privacy:        return "プライバシーポリシー"
         case .termsOfService: return "利用規約"
-        case .help:           return "ヘルプ"
-        case .announce:       return "お知らせ"
         case .contactUs:      return "お問い合わせ"
+        }
+    }
+}
+
+typealias VersionConstitution = (title: String, content: String)
+
+enum Version: Int, CaseIterable {
+    
+    case version
+    
+    var description: VersionConstitution {
+        switch self {
+        case .version:
+            return (title: "バージョン", content: "1.0.0(1)")
         }
     }
 }

@@ -4,6 +4,8 @@ protocol MainMapRoutingProtocol: Routing {
     
     func showSettingsAlert(completion: @escaping () -> Void)
     func showSelectDestinationPage()
+    func showWebViewPage(url: String)
+    func showVersionPage()
 }
 
 final class MainMapRouting: MainMapRoutingProtocol {
@@ -21,5 +23,13 @@ final class MainMapRouting: MainMapRoutingProtocol {
     func showSelectDestinationPage() {
         let vc = AppDelegate.container.resolve(SelectDestinationViewController.self)
         viewController?.present(UINavigationController(rootViewController: vc), animated: true)
+    }
+    
+    func showWebViewPage(url: String) {
+        viewController?.navigationController?.pushViewController(WebViewController(url: url), animated: true)
+    }
+    
+    func showVersionPage() {
+        viewController?.navigationController?.pushViewController(VersionInfoViewController(), animated: true)
     }
 }

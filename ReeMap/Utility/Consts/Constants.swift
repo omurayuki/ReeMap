@@ -18,6 +18,13 @@ struct Constants {
         
         static let notification = "immediately"
     }
+    
+    struct RedirectURL {
+        
+        static let privacy = "https://github.com/omurayuki/ReeMap_Document/blob/master/privacy_policy.md"
+        static let termOfSearvice = "https://github.com/omurayuki/ReeMap_Document/blob/master/terms_service.md"
+        static let contactUs = "https://docs.google.com/forms/d/e/1FAIpQLSeMP09_emQt08kKojaD8xoBJpWrAnbbPU3ReSem-JTiWCCGgw/viewform"
+    }
 }
 
 enum DocumentRef {
