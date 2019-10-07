@@ -7,6 +7,7 @@ struct Constants {
         
         static let clusteringIdentifier = "clusteringIdentifier"
         static let location = "location"
+        static let notification = "notification"
     }
     
     struct Resource {

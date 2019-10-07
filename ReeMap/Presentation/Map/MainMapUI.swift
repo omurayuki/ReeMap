@@ -11,12 +11,17 @@ protocol MainMapUIProtocol: UI {
     var menuBtn: UIButton { get }
     var memoAddingBtn: UIButton { get }
     var noteFloatingPanel: FloatingPanelController { get }
+    var noteDetailFloatingPanel: FloatingPanelController { get }
     
     func setRegion(location: CLLocationCoordinate2D)
-    func setupFloating(contentVC: UIViewController, scrollView: UIScrollView)
-    func addPanel()
-    func removePanel()
-    func fullScreen(completion: @escaping () -> Void)
+    func setupNoteListFloating(contentVC: UIViewController, scrollView: UIScrollView)
+    func setupNoteDetailFloating(contentVC: UIViewController, scrollView: UIScrollView)
+    func addNoteListPanel()
+    func addNoteDetailPanel()
+    func removeNoteListPanel()
+    func removeNoteDetailPanel()
+    func fullScreenNoteList(completion: @escaping () -> Void)
+    func halfScreenNoteDetail(completion: @escaping () -> Void)
     func animateMemoBtnAlpha(_ value: CGFloat)
     func updateAnnotations(_ annotations: [MKAnnotation])
     func animatePanelPosition(_ targetPosition: FloatingPanelPosition,
@@ -108,6 +113,18 @@ final class MainMapUI: MainMapUIProtocol {
         fpc.surfaceView.shadowHidden = false
         return fpc
     }()
+    
+    private(set) var noteDetailFloatingPanel: FloatingPanelController = {
+        let fpc = FloatingPanelController()
+        fpc.surfaceView.backgroundColor = .clear
+        if #available(iOS 11, *) {
+            fpc.surfaceView.cornerRadius = 13.0
+        } else {
+            fpc.surfaceView.cornerRadius = 0.0
+        }
+        fpc.surfaceView.shadowHidden = false
+        return fpc
+    }()
 }
 
 extension MainMapUI {
@@ -170,23 +187,44 @@ extension MainMapUI {
         mapView.setRegion(region, animated: true)
     }
     
-    func setupFloating(contentVC: UIViewController, scrollView: UIScrollView) {
+    func setupNoteListFloating(contentVC: UIViewController, scrollView: UIScrollView) {
         noteFloatingPanel.set(contentViewController: contentVC)
         noteFloatingPanel.track(scrollView: scrollView)
     }
     
-    func addPanel() {
+    func setupNoteDetailFloating(contentVC: UIViewController, scrollView: UIScrollView) {
+        noteDetailFloatingPanel.set(contentViewController: contentVC)
+        noteDetailFloatingPanel.track(scrollView: scrollView)
+    }
+    
+    func addNoteListPanel() {
         guard let vc = viewController else { return }
         noteFloatingPanel.addPanel(toParent: vc, animated: true)
     }
     
-    func removePanel() {
+    func addNoteDetailPanel() {
+        guard let vc = viewController else { return }
+        noteDetailFloatingPanel.addPanel(toParent: vc, animated: true)
+    }
+    
+    func removeNoteListPanel() {
         noteFloatingPanel.removePanelFromParent(animated: true)
     }
     
-    func fullScreen(completion: @escaping () -> Void) {
+    func removeNoteDetailPanel() {
+        noteDetailFloatingPanel.removePanelFromParent(animated: true)
+    }
+    
+    func fullScreenNoteList(completion: @escaping () -> Void) {
         UIView.animate(withDuration: 0.1) { [unowned self] in
             self.noteFloatingPanel.move(to: .full, animated: true)
+            completion()
+        }
+    }
+    
+    func halfScreenNoteDetail(completion: @escaping () -> Void) {
+        UIView.animate(withDuration: 0.1) { [unowned self] in
+            self.noteDetailFloatingPanel.move(to: .half, animated: true)
             completion()
         }
     }

@@ -27,10 +27,6 @@ extension NoteListViewModel {
 
 extension NoteListViewModel {
     
-    func getPlacemarks(location: CLLocation) -> Single<CLPlacemark> {
-        return useCase.getPlacemarks(location: location)
-    }
-    
     func deleteNote(place: Place) -> Single<()> {
         return useCase.deleteNote(place: place)
     }

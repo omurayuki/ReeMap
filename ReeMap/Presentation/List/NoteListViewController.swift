@@ -10,6 +10,11 @@ protocol TappedSearchBarDelegate: NSObject {
     func tappedSearchBar()
 }
 
+protocol TappedCellDelegate: NSObject {
+    
+    func didselectCell(place: Place)
+}
+
 extension NoteListViewController: VCInjectable {
     
     typealias UI = NoteListUIProtocol
@@ -31,7 +36,8 @@ class NoteListViewController: UIViewController {
     var viewModel: NoteListViewModel?
     var disposeBag: DisposeBag!
     
-    weak var delegate: TappedSearchBarDelegate!
+    weak var tappedSearchBarDelegate: TappedSearchBarDelegate!
+    weak var tappedCellDelegate: TappedCellDelegate!
     private var places: [Place]?
     private var placesForDeletion: [Place]?
     private var searchResultPlaces: [Place]?
@@ -42,7 +48,7 @@ class NoteListViewController: UIViewController {
             guard let places = didAcceptPlaces else { return }
             dataSource.listItems = places
             self.places = places
-            ui.animateReload()
+            ui.tableView.reloadData()
         }
     }
     
@@ -57,47 +63,17 @@ class NoteListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ui.setup()
-        bindUI()
         setupConfig()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        ui.hideHeader()
     }
 }
 
 extension NoteListViewController {
     
-    private func bindUI() {
-        ui.header.editBtn.rx.tap.asDriver()
-            .drive(onNext: { [unowned self] _ in
-                guard let place = self.placeForEditing else { return }
-                self.routing?.showCreateMemoPage(note: place.note,
-                                                 address: place.address,
-                                                 noteId: place.noteId)
-                self.ui.hideHeader()
-            }).disposed(by: disposeBag)
-    }
-    
-    private func getPlacemark(location: CLLocation, place: Place) {
-        viewModel?.getPlacemarks(location: location)
-            .subscribe(onSuccess: { [unowned self] placemark in
-                self.ui.changeTableAlpha(0.9)
-                self.placeForEditing = (place.content, self.getStreetAddress(placemark: placemark), place.documentId)
-                self.ui.showHeader(content: place.content, address: self.getStreetAddress(placemark: placemark))
-            }, onError: { [unowned self] _ in
-                self.showError(message: R.string.localizable.attention_could_not_load_location())
-            }).disposed(by: disposeBag)
-    }
-    
     private func deleteRows(indexPath: IndexPath) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [unowned self] in
             guard let places = self.placesForDeletion else { return }
             self.viewModel?.deleteNote(place: places[indexPath.row])
-                .subscribe(onSuccess: { [unowned self] _ in
-                    self.ui.hideHeader()
-                    }, onError: { [unowned self] _ in
+                .subscribe(onError: { [unowned self] _ in
                         self.showError(message: R.string.localizable.could_not_delete())
                 }).disposed(by: self.disposeBag)
         })
@@ -108,15 +84,7 @@ extension NoteListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        ui.tableView.visibleCells.forEach { $0.isUserInteractionEnabled = false }
-        let place = dataSource.listItems[indexPath.row]
-        let location = CLLocation(latitude: place.latitude, longitude: place.longitude)
-        getPlacemark(location: location, place: place)
-        //// Cellのレンダリングが終わらない間に次のCellをタップすると、挙動がおかしくなる
-        //// 一旦DispatchQueueで制御している理由は、completionでも制御できるが処理が複雑になるので
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) { [unowned self] in
-            self.ui.tableView.visibleCells.forEach { $0.isUserInteractionEnabled = true }
-        }
+        tappedCellDelegate.didselectCell(place: dataSource.listItems[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -135,7 +103,7 @@ extension NoteListViewController: UITableViewDelegate {
 extension NoteListViewController: UISearchBarDelegate {
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        delegate.tappedSearchBar()
+        tappedSearchBarDelegate.tappedSearchBar()
         searchBar.showsCancelButton = true
         return true
     }
@@ -157,7 +125,6 @@ extension NoteListViewController: UISearchBarDelegate {
             dataSource.listItems = places ?? []
             ui.animateReload()
         }
-        ui.hideHeader()
         return true
     }
     

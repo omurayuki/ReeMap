@@ -14,9 +14,11 @@ extension MainMapViewController: VCInjectable {
     typealias PanelDelegate = FloatingPanelDelegate
     
     func setupConfig() {
-        ui.noteFloatingPanel.delegate = panelDelegate
+        ui.noteFloatingPanel.delegate = listPanelDelegate
+        ui.noteDetailFloatingPanel.delegate = detailPanelDelegate
         ui.mapView.delegate = self
-        noteListVC.delegate = self
+        noteListVC.tappedSearchBarDelegate = self
+        noteListVC.tappedCellDelegate = self
         sideMenuVC.delegate = self
     }
 }
@@ -29,12 +31,13 @@ final class MainMapViewController: UIViewController {
     var disposeBag: DisposeBag!
     
     let noteListVC = AppDelegate.container.resolve(NoteListViewController.self)
+    let noteDetailVC = NoteDetailViewController()
     let sideMenuVC = AppDelegate.container.resolve(SideMenuViewController.self)
     private var isShownSidemenu: Bool { return sideMenuVC.parent == self }
     
     // swiftlint:disable all
-    private lazy var panelDelegate: PanelDelegate = {
-        FloatingPanelDelegate(panel: .tipPanel,
+    private lazy var listPanelDelegate: PanelDelegate = {
+        FloatingPanelDelegate(panel: BasicPanelLayout(panel: .tipPanel),
            panelLayoutforHandler:
         { [unowned self] _, _ in
             self.noteListVC.ui.changeTableAlpha(0.2)
@@ -57,6 +60,31 @@ final class MainMapViewController: UIViewController {
             })
         })
     }()
+    
+    private lazy var detailPanelDelegate: PanelDelegate = {
+        FloatingPanelDelegate(panel: HiddenPanelLayout(panel: .hiddenPanel),
+               panelLayoutforHandler:
+            { [unowned self] _, _ in
+                self.noteListVC.ui.changeTableAlpha(0.2)
+            }, panelaDidMoveHandler:
+            { [unowned self] progress in
+                self.noteListVC.ui.changeTableAlpha(progress)
+            }, panelEndDraggingHandler:
+            { [unowned self] _, _, targetPosition in
+                switch targetPosition {
+                case .tip:  self.ui.animateMemoBtnAlpha(1.0)
+                case .half: self.ui.animateMemoBtnAlpha(0.0)
+                case .full: self.ui.animateMemoBtnAlpha(0.0)
+                default: break
+                }
+                self.ui.animatePanelPosition(targetPosition,
+                   tipHandler: { [unowned self] in
+                    self.noteDetailVC.changeTableAlpha(0.2)
+                }, defaultHandler: { [unowned self] in
+                    self.noteDetailVC.changeTableAlpha(1.0)
+                })
+        })
+    }()
     // swiftlint:disable:previou
     
     override func viewDidLoad() {
@@ -71,16 +99,21 @@ final class MainMapViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        ui.addPanel()
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        ui.addNoteListPanel()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.ui.addNoteDetailPanel()
+        }
     }
 }
 
 extension MainMapViewController {
     
     private func setupUI() {
-        ui.setupFloating(contentVC: noteListVC, scrollView: noteListVC.ui.tableView)
+        ui.setupNoteListFloating(contentVC: noteListVC, scrollView: noteListVC.ui.tableView)
+        ui.setupNoteDetailFloating(contentVC: noteDetailVC, scrollView: noteDetailVC.tableView)
+        
         ui.setup()
     }
     
@@ -163,15 +196,6 @@ extension MainMapViewController {
         uid.isEmpty ? prosessInInitialAccess() : bindUI()
     }
     
-    private func getPlacemarks(location: CLLocation, complation: @escaping (CLPlacemark) -> Void) {
-        viewModel?.getPlacemarks(location: location)
-            .subscribe(onSuccess: { placemark in
-                complation(placemark)
-            }, onError: { [unowned self] _ in
-                self.showError(message: R.string.localizable.could_not_get())
-            }).disposed(by: disposeBag)
-    }
-    
     private func zoomTo(location: CLLocation) {
         viewModel?.zoomTo(location: location, left: {
             ui.setRegion(location: location.coordinate)
@@ -210,7 +234,7 @@ extension MainMapViewController {
                                                    type: Constants.Resource.resource.type),
                                         requestIdentifier: Constants.Identifier.notification,
                                         notificationHandler: { [unowned self] in
-            self.viewModel?.updateNote(["notification": false], noteId: place.documentId)
+            self.viewModel?.updateNote([Constants.DictKey.notification: false], noteId: place.documentId)
                 .subscribe(onError: { [unowned self] _ in
                     self.showError(message: R.string.localizable.could_not_update_note())
                 }).disposed(by: self.disposeBag)
@@ -231,26 +255,37 @@ extension MainMapViewController: MKMapViewDelegate {
                                                                        for: annotation) as? MKMarkerAnnotationView
         else { return MKMarkerAnnotationView() }
         annotationView.clusteringIdentifier = Constants.DictKey.clusteringIdentifier
+        annotationView.canShowCallout = true
         return annotationView
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let annotation = view.annotation as? Annotation else { return }
-        getPlacemarks(location: CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude))
-        { [unowned self] placemark in
-            self.ui.noteFloatingPanel.move(to: .half, animated: true)
-            self.noteListVC.ui.changeTableAlpha(0.9)
-            self.noteListVC.ui.showHeader(content: annotation.content ?? "", address: self.getStreetAddress(placemark: placemark))
-        }
+        noteDetailVC.recieveData = (annotation.uid ?? "", annotation.content ?? "", annotation.streetAddress ?? "")
+        showHalfScreenNoteDetail()
     }
 }
 
 extension MainMapViewController: TappedSearchBarDelegate {
     
     func tappedSearchBar() {
-        ui.fullScreen() {
+        ui.fullScreenNoteList() { [unowned self] in
             self.noteListVC.ui.changeTableAlpha(1.0)
         }
+    }
+    
+    func showHalfScreenNoteDetail() {
+        ui.halfScreenNoteDetail { [unowned self] in
+            self.noteDetailVC.changeTableAlpha(1.0)
+        }
+    }
+}
+
+extension MainMapViewController: TappedCellDelegate {
+    
+    func didselectCell(place: Place) {
+        noteDetailVC.recieveData = (place.uid, place.content, place.streetAddress)
+        showHalfScreenNoteDetail()
     }
 }
 

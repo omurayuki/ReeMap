@@ -5,13 +5,9 @@ protocol NoteListUIProtocol: UI {
     var visualEffectView: UIVisualEffectView { get }
     var searchBar: UISearchBar { get }
     var tableView: UITableView { get }
-    var header: NoteTableHeaderView { get }
     
     func changeTableAlpha(_ alpha: CGFloat)
     func setSearchText(fontSize: CGFloat)
-    func changeHeader(height: CGFloat, isFade: Bool, content: String, address: String)
-    func showHeader(content: String, address: String)
-    func hideHeader()
     func animateReload()
 }
 
@@ -46,12 +42,6 @@ final class NoteListUI: NoteListUIProtocol {
         table.register(NoteListTableViewCell.self, forCellReuseIdentifier: String(describing: NoteListTableViewCell.self))
         return table
     }()
-    
-    private(set) var header: NoteTableHeaderView = {
-        let view = NoteTableHeaderView()
-        view.backgroundColor = .clear
-        return view
-    }()
 }
 
 extension NoteListUI {
@@ -61,7 +51,6 @@ extension NoteListUI {
         vc.view.addSubview(visualEffectView)
         visualEffectView.contentView.addSubview(tableView)
         visualEffectView.contentView.addSubview(searchBar)
-        tableView.tableHeaderView = header
         
         visualEffectView.anchor()
             .top(to: vc.view.topAnchor)
@@ -92,34 +81,6 @@ extension NoteListUI {
     
     func setSearchText(fontSize: CGFloat) {
         searchBar.setSearchText(fontSize: 15)
-    }
-    
-    func changeHeader(height: CGFloat, isFade: Bool, content: String, address: String) {
-        tableView.beginUpdates()
-        if let headerView = tableView.tableHeaderView as? NoteTableHeaderView {
-            UIView.animate(withDuration: 0.25) { [unowned self] in
-                headerView.noteContent.text = content
-                headerView.streetAddressContent.text = address
-                var frame = headerView.frame
-                frame.size.height = height
-                self.tableView.tableHeaderView?.frame.size.height = frame.height
-                isFade ? (self.tableView.tableHeaderView?.fadeOut(type: .slow)) : (self.tableView.tableHeaderView?.fadeIn(type: .slow))
-            }
-        }
-        tableView.endUpdates()
-    }
-    
-    func showHeader(content: String, address: String) {
-        guard let headerView = tableView.tableHeaderView as? NoteTableHeaderView else { return }
-        headerView.noteContent.text = content
-        headerView.streetAddressContent.text = address
-        headerView.layoutIfNeeded()
-        headerView.setNeedsLayout()
-        self.changeHeader(height: headerView.noteContent.frame.height + 150, isFade: false, content: content, address: address)
-    }
-    
-    func hideHeader() {
-        changeHeader(height: 0.0, isFade: true, content: "", address: "")
     }
     
     func animateReload() {

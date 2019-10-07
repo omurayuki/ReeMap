@@ -107,7 +107,7 @@
 		C990881D233B745700A0994E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C990881C233B745700A0994E /* libsqlite3.tbd */; };
 		C990881F233B746700A0994E /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C990881E233B746700A0994E /* libc++.tbd */; };
 		C9908821233B747100A0994E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9908820233B747100A0994E /* StoreKit.framework */; };
-		C99156322338F0630065ABF2 /* NoteTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99156312338F0630065ABF2 /* NoteTableHeaderView.swift */; };
+		C99156322338F0630065ABF2 /* NoteDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99156312338F0630065ABF2 /* NoteDetailCell.swift */; };
 		C9915635233999BE0065ABF2 /* NoteListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9915634233999BE0065ABF2 /* NoteListTableViewCell.swift */; };
 		C994BEA42347A68200445ED3 /* SearchStreetAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C994BEA32347A68200445ED3 /* SearchStreetAddressViewModel.swift */; };
 		C994BEA62347AE5300445ED3 /* SearchStreetAddressRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C994BEA52347AE5300445ED3 /* SearchStreetAddressRepository.swift */; };
@@ -168,6 +168,9 @@
 		C9D7C1BA233A264100D933B5 /* NoteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D7C1B9233A264100D933B5 /* NoteListViewModel.swift */; };
 		C9D7C1BC233A270500D933B5 /* NoteListRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D7C1BB233A270500D933B5 /* NoteListRouting.swift */; };
 		C9D7C1BE233A2A5300D933B5 /* UISearchBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D7C1BD233A2A5300D933B5 /* UISearchBar+Extension.swift */; };
+		C9D8384D234B4724006738EF /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D8384C234B4724006738EF /* NoteDetailViewController.swift */; };
+		C9D8384F234B472F006738EF /* NoteDetailUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D8384E234B472F006738EF /* NoteDetailUI.swift */; };
+		C9D83851234B4758006738EF /* NoteDetailRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D83850234B4758006738EF /* NoteDetailRouting.swift */; };
 		C9D89F842331BFC60044FEE9 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D89F832331BFC60044FEE9 /* R.generated.swift */; };
 		C9E3F3AF2324A0EA00141BBC /* input.xcfilelist in Sources */ = {isa = PBXBuildFile; fileRef = C9E3F3AE2324A0EA00141BBC /* input.xcfilelist */; };
 		C9EA2AE42323B3D60034BB1D /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA2AE32323B3D60034BB1D /* Container.swift */; };
@@ -312,7 +315,7 @@
 		C990881C233B745700A0994E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		C990881E233B746700A0994E /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		C9908820233B747100A0994E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		C99156312338F0630065ABF2 /* NoteTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableHeaderView.swift; sourceTree = "<group>"; };
+		C99156312338F0630065ABF2 /* NoteDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailCell.swift; sourceTree = "<group>"; };
 		C9915634233999BE0065ABF2 /* NoteListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListTableViewCell.swift; sourceTree = "<group>"; };
 		C994BEA32347A68200445ED3 /* SearchStreetAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStreetAddressViewModel.swift; sourceTree = "<group>"; };
 		C994BEA52347AE5300445ED3 /* SearchStreetAddressRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStreetAddressRepository.swift; sourceTree = "<group>"; };
@@ -386,6 +389,9 @@
 		C9D7C1B9233A264100D933B5 /* NoteListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewModel.swift; sourceTree = "<group>"; };
 		C9D7C1BB233A270500D933B5 /* NoteListRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListRouting.swift; sourceTree = "<group>"; };
 		C9D7C1BD233A2A5300D933B5 /* UISearchBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Extension.swift"; sourceTree = "<group>"; };
+		C9D8384C234B4724006738EF /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
+		C9D8384E234B472F006738EF /* NoteDetailUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailUI.swift; sourceTree = "<group>"; };
+		C9D83850234B4758006738EF /* NoteDetailRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailRouting.swift; sourceTree = "<group>"; };
 		C9D89F832331BFC60044FEE9 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		C9DFA0762322833200EDCBCE /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		C9E3F3AE2324A0EA00141BBC /* input.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = input.xcfilelist; sourceTree = "<group>"; };
@@ -718,6 +724,16 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
+		C98F78AC234B46E200802678 /* NoteDetail */ = {
+			isa = PBXGroup;
+			children = (
+				C9D8384C234B4724006738EF /* NoteDetailViewController.swift */,
+				C9D8384E234B472F006738EF /* NoteDetailUI.swift */,
+				C9D83850234B4758006738EF /* NoteDetailRouting.swift */,
+			);
+			path = NoteDetail;
+			sourceTree = "<group>";
+		};
 		C9915633233999AE0065ABF2 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -725,6 +741,7 @@
 				C9AC339323460D7900A5AF7D /* StreetAddressCell.swift */,
 				C94996FB233BB30600165AD6 /* SideMenuCell.swift */,
 				C98F78AA234B25BA00802678 /* MenuDetailCell.swift */,
+				C99156312338F0630065ABF2 /* NoteDetailCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -790,14 +807,6 @@
 				C9AED84423431FBA00F82C4A /* AuthDataStoreFactory.swift */,
 			);
 			path = Auth;
-			sourceTree = "<group>";
-		};
-		C9B379C72330662D00D1BF77 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				C99156312338F0630065ABF2 /* NoteTableHeaderView.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		C9B9F442231765C00013ED05 = {
@@ -876,11 +885,11 @@
 			children = (
 				C9915633233999AE0065ABF2 /* Cell */,
 				C90595EF2332B3B5008D113D /* ViewData */,
-				C9B379C72330662D00D1BF77 /* View */,
 				C9D6C5E9232109810064AACD /* UI */,
 				C9D6C5EA232109850064AACD /* Routing */,
 				C9D6C5E6232108820064AACD /* Map */,
 				C963AF632337C21C005E10F9 /* List */,
+				C98F78AC234B46E200802678 /* NoteDetail */,
 				C94996F8233B8E4F00165AD6 /* SideMenu */,
 				C994BEA92347DED400445ED3 /* EditNote */,
 				C9142705233DB84100567B8E /* Register */,
@@ -1203,6 +1212,7 @@
 				C9C7716323447A6300670809 /* SelectDestinationUseCase.swift in Sources */,
 				C97D77E52348E9AC0010EEA2 /* AppDelegate+UserNotification.swift in Sources */,
 				C9FC93332335109E00B1EFA9 /* NotificationUtils.swift in Sources */,
+				C9D83851234B4758006738EF /* NoteDetailRouting.swift in Sources */,
 				C9D6C5EE232109E20064AACD /* Routing.swift in Sources */,
 				C9FEEA662338AD6F00C5C84D /* PanelCase.swift in Sources */,
 				C9AC33902345C4E300A5AF7D /* SearchStreetAddressUI.swift in Sources */,
@@ -1250,6 +1260,7 @@
 				C9D6C5EC232109C20064AACD /* UI.swift in Sources */,
 				C9D5A49D23447D0D00720A8A /* LocationDataStoreFactory.swift in Sources */,
 				C9A0563A2322528F00EB9563 /* Array+Extension.swift in Sources */,
+				C9D8384D234B4724006738EF /* NoteDetailViewController.swift in Sources */,
 				C9D5A4A32344909400720A8A /* CreateMemoUseCase.swift in Sources */,
 				C9095113232240560080A25B /* Date+Extension.swift in Sources */,
 				C9499700233BE15D00165AD6 /* Nillable.swift in Sources */,
@@ -1259,6 +1270,7 @@
 				C909510D2322380D0080A25B /* KeyboardNotifier.swift in Sources */,
 				C9FEEA642338AD1B00C5C84D /* BasicPanelLayout.swift in Sources */,
 				C9915635233999BE0065ABF2 /* NoteListTableViewCell.swift in Sources */,
+				C9D8384F234B472F006738EF /* NoteDetailUI.swift in Sources */,
 				C9A056382322527600EB9563 /* Animation+Extension.swift in Sources */,
 				C909512223224AC30080A25B /* UIFont+Extension.swift in Sources */,
 				C9142713233E32D900567B8E /* SelectDestinationUI.swift in Sources */,
@@ -1268,7 +1280,7 @@
 				C9AED84323431FAF00F82C4A /* AuthLocalDataStore.swift in Sources */,
 				C98F78A2234AFFC100802678 /* SplashViewController.swift in Sources */,
 				C94A1A562335189A00974431 /* NoteRemoteDataStore.swift in Sources */,
-				C99156322338F0630065ABF2 /* NoteTableHeaderView.swift in Sources */,
+				C99156322338F0630065ABF2 /* NoteDetailCell.swift in Sources */,
 				C9A056362322526400EB9563 /* UIImageView+Extension.swift in Sources */,
 				C97D77DB2347DF140010EEA2 /* EditNoteViewController.swift in Sources */,
 				C96E99262349DA3D00EB037D /* WebViewController.swift in Sources */,

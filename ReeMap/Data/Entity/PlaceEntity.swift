@@ -19,6 +19,7 @@ struct PlaceEntity: Entity {
     var uid: String
     var content: String
     var notification: Bool
+    var streetAddress: String
     var latitude: Double
     var longitude: Double
     var createdAt: Timestamp
@@ -28,6 +29,7 @@ struct PlaceEntity: Entity {
             let uid = document["uid"] as? String,
             let title = document["content"] as? String,
             let notification = document["notification"] as? Bool,
+            let streetAddress = document["street_addresss"] as? String,
             let geoPoint = document["geo_point"] as? GeoPoint,
             let createdAt = document["created_at"] as? Timestamp
         else {
@@ -35,6 +37,7 @@ struct PlaceEntity: Entity {
             self.uid = ""
             self.content = ""
             self.notification = false
+            self.streetAddress = ""
             self.latitude = 0.0
             self.longitude = 0.0
             self.createdAt = Timestamp()
@@ -44,6 +47,7 @@ struct PlaceEntity: Entity {
         self.uid = uid
         self.content = title
         self.notification = notification
+        self.streetAddress = streetAddress
         self.latitude = geoPoint.latitude
         self.longitude = geoPoint.longitude
         self.createdAt = createdAt
