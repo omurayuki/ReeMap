@@ -11,7 +11,8 @@ final class NoteDetailViewController: UIViewController {
     private(set) lazy var dataSource: DataSource = {
         DataSource(cellReuseIdentifier: String(describing: NoteDetailCell.self),
                    listItems: [],
-                   cellConfigurationHandler: { cell, item, _ in
+                   cellConfigurationHandler: { [unowned self] cell, item, _ in
+            self.bindCell(cell)
             cell.didRecieveDetail = item
         })
     }()
@@ -28,6 +29,7 @@ final class NoteDetailViewController: UIViewController {
         let table = UITableView()
         table.backgroundColor = .clear
         table.separatorStyle = .none
+        table.allowsSelection = false
         table.register(NoteDetailCell.self, forCellReuseIdentifier: String(describing: NoteDetailCell.self))
         return table
     }()
@@ -38,6 +40,8 @@ final class NoteDetailViewController: UIViewController {
             tableView.reloadData()
         }
     }
+    
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +66,19 @@ extension NoteDetailViewController {
         tableView.anchor()
             .edgesToSuperview()
             .activate()
+    }
+    
+    private func bindCell(_ cell: UITableViewCell) {
+        guard let cell = cell as? NoteDetailCell else { return }
+        
+        cell.editBtn.rx.tap.asDriver()
+            .drive(onNext: { [unowned self] _ in
+                let vc = AppDelegate.container.resolve(EditNoteViewController.self)
+                vc.didRecieveStreetAddress = self.dataSource.listItems[0].streetAddress
+                vc.didRecieveNote = self.dataSource.listItems[0].content
+                vc.didRecieveNoteId = self.dataSource.listItems[0].uid
+                self.present(vc, animated: true)
+            }).disposed(by: disposeBag)
     }
     
     func changeTableAlpha(_ alpha: CGFloat) {
