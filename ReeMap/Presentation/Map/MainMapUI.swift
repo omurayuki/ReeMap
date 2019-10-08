@@ -12,21 +12,24 @@ protocol MainMapUIProtocol: UI {
     var memoAddingBtn: UIButton { get }
     var noteFloatingPanel: FloatingPanelController { get }
     var noteDetailFloatingPanel: FloatingPanelController { get }
+    var noteListVC: NoteListViewController { get }
+    var noteDetailVC: NoteDetailViewController { get }
+    var sideMenuVC: SideMenuViewController { get }
     
     func setRegion(location: CLLocationCoordinate2D)
     func setupNoteListFloating(contentVC: UIViewController, scrollView: UIScrollView)
     func setupNoteDetailFloating(contentVC: UIViewController, scrollView: UIScrollView)
-    func addNoteListPanel()
-    func addNoteDetailPanel()
-    func removeNoteListPanel()
-    func removeNoteDetailPanel()
-    func fullScreenNoteList(completion: @escaping () -> Void)
-    func halfScreenNoteDetail(completion: @escaping () -> Void)
+    func addPanel(panel: FloatingPanelController)
+    func removeNoteListPanel(panel: FloatingPanelController)
+    func showPanel(panel: FloatingPanelController, type: FloatingPanelPosition, completion: @escaping () -> Void)
     func animateMemoBtnAlpha(_ value: CGFloat)
     func updateAnnotations(_ annotations: [MKAnnotation])
     func animatePanelPosition(_ targetPosition: FloatingPanelPosition,
                               tipHandler: @escaping () -> Void,
                               defaultHandler: @escaping () -> Void)
+    func showSidemenu(isShownSidemenu: Bool, contentAvailability: Bool, animated: Bool)
+    func hideSidemenu(isShownSidemenu: Bool, animated: Bool)
+    func changePanelState(targetPosition: FloatingPanelPosition)
 }
 
 final class MainMapUI: MainMapUIProtocol {
@@ -125,11 +128,28 @@ final class MainMapUI: MainMapUIProtocol {
         fpc.surfaceView.shadowHidden = false
         return fpc
     }()
+    
+    private(set) var noteListVC: NoteListViewController = {
+        let noteListVC = AppDelegate.container.resolve(NoteListViewController.self)
+        return noteListVC
+    }()
+    
+    private(set) var noteDetailVC: NoteDetailViewController = {
+        let noteDetailVC = NoteDetailViewController()
+        return noteDetailVC
+    }()
+    
+    private(set) var sideMenuVC: SideMenuViewController = {
+        let sideMenuVC = AppDelegate.container.resolve(SideMenuViewController.self)
+        return sideMenuVC
+    }()
 }
 
 extension MainMapUI {
     
     func setup() {
+        setupNoteListFloating(contentVC: noteListVC, scrollView: noteListVC.ui.tableView)
+        setupNoteDetailFloating(contentVC: noteDetailVC, scrollView: noteDetailVC.tableView)
         guard let vc = viewController else { return }
         vc.view.backgroundColor = .white
         [mapView, currentLocationWrapView, menuWrapView, memoAddingWrapView].forEach { vc.view.addSubview($0) }
@@ -197,34 +217,22 @@ extension MainMapUI {
         noteDetailFloatingPanel.track(scrollView: scrollView)
     }
     
-    func addNoteListPanel() {
+    func addPanel(panel: FloatingPanelController) {
         guard let vc = viewController else { return }
-        noteFloatingPanel.addPanel(toParent: vc, animated: true)
+        panel.addPanel(toParent: vc, animated: true)
     }
     
-    func addNoteDetailPanel() {
-        guard let vc = viewController else { return }
-        noteDetailFloatingPanel.addPanel(toParent: vc, animated: true)
-    }
-    
-    func removeNoteListPanel() {
-        noteFloatingPanel.removePanelFromParent(animated: true)
+    func removeNoteListPanel(panel: FloatingPanelController) {
+        panel.removePanelFromParent(animated: true)
     }
     
     func removeNoteDetailPanel() {
         noteDetailFloatingPanel.removePanelFromParent(animated: true)
     }
     
-    func fullScreenNoteList(completion: @escaping () -> Void) {
-        UIView.animate(withDuration: 0.1) { [unowned self] in
-            self.noteFloatingPanel.move(to: .full, animated: true)
-            completion()
-        }
-    }
-    
-    func halfScreenNoteDetail(completion: @escaping () -> Void) {
-        UIView.animate(withDuration: 0.1) { [unowned self] in
-            self.noteDetailFloatingPanel.move(to: .half, animated: true)
+    func showPanel(panel: FloatingPanelController, type: FloatingPanelPosition, completion: @escaping () -> Void) {
+        UIView.animate(withDuration: 0.1) {
+            panel.move(to: type, animated: true)
             completion()
         }
     }
@@ -251,5 +259,36 @@ extension MainMapUI {
                 default:   defaultHandler()
                 }
             }.animate()
+    }
+    
+    func showSidemenu(isShownSidemenu: Bool, contentAvailability: Bool, animated: Bool) {
+        guard let vc = viewController else { return }
+        if isShownSidemenu { return }
+        vc.addChild(sideMenuVC)
+        sideMenuVC.view.autoresizingMask = .flexibleHeight
+        sideMenuVC.view.frame = vc.view.bounds
+        vc.view.insertSubview(sideMenuVC.view, aboveSubview: vc.view)
+        sideMenuVC.didMove(toParent: vc)
+        if contentAvailability {
+            sideMenuVC.showContentView(animated: animated)
+        }
+    }
+    
+    func hideSidemenu(isShownSidemenu: Bool, animated: Bool) {
+        if !isShownSidemenu { return }
+        sideMenuVC.hideContentView(animated: animated, completion: { [unowned self] _ in
+            self.sideMenuVC.willMove(toParent: nil)
+            self.sideMenuVC.removeFromParent()
+            self.sideMenuVC.view.removeFromSuperview()
+        })
+    }
+    
+    func changePanelState(targetPosition: FloatingPanelPosition) {
+        switch targetPosition {
+        case .tip:  animateMemoBtnAlpha(1.0)
+        case .half: animateMemoBtnAlpha(0.0)
+        case .full: animateMemoBtnAlpha(0.0)
+        default: break
+        }
     }
 }

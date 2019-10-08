@@ -2,6 +2,7 @@ import Foundation
 import FloatingPanel
 
 enum PanelCase {
+    
     case hiddenPanel
     case tipPanel
     case halfPanel

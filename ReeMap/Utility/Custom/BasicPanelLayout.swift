@@ -1,5 +1,7 @@
 import FloatingPanel
 
+// -TODO: factory method
+
 class BasicPanelLayout: FloatingPanelLayout {
     
     var panelType: PanelCase!
