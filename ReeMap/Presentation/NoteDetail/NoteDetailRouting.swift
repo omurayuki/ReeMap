@@ -1,9 +1,10 @@
-//
-//  NoteDetailRouting.swift
-//  RELEASE
-//
-//  Created by オムラユウキ on 2019/10/07.
-//  Copyright © 2019 Swifter. All rights reserved.
-//
+import UIKit
 
-import Foundation
+protocol NoteDetailRoutingProtocol: Routing {
+    
+}
+
+final class NoteDetailRouting: NoteDetailRoutingProtocol {
+    
+    weak var viewController: UIViewController?
+}

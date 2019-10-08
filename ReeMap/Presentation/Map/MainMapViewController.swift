@@ -73,10 +73,14 @@ final class MainMapViewController: UIViewController {
     }()
     // swiftlint:disable:previou
     
+    override func loadView() {
+        super.loadView()
+        ui.setup()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConfig()
-        ui.setup()
         isExistUIDToken()
     }
     
@@ -217,7 +221,7 @@ extension MainMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let annotation = view.annotation as? Annotation else { return }
-        ui.noteDetailVC.recieveData = (annotation.uid ?? "", annotation.content ?? "", annotation.streetAddress ?? "")
+        ui.noteDetailVC.recieveData = (annotation.documentId ?? "", annotation.content ?? "", annotation.streetAddress ?? "")
         showHalfScreenNoteDetail()
     }
 }
@@ -240,7 +244,7 @@ extension MainMapViewController: TappedSearchBarDelegate {
 extension MainMapViewController: TappedCellDelegate {
     
     func didselectCell(place: Place) {
-        ui.noteDetailVC.recieveData = (place.uid, place.content, place.streetAddress)
+        ui.noteDetailVC.recieveData = (place.documentId, place.content, place.streetAddress)
         showHalfScreenNoteDetail()
     }
 }

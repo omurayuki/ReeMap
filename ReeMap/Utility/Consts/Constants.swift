@@ -8,6 +8,9 @@ struct Constants {
         static let clusteringIdentifier = "clusteringIdentifier"
         static let location = "location"
         static let notification = "notification"
+        static let updatedAt = "updated_at"
+        static let content = "content"
+        static let geoPoint = "geo_point"
     }
     
     struct Resource {

@@ -28,9 +28,13 @@ final class CreateMemoViewController: UIViewController {
         }
     }
     
+    override func loadView() {
+        super.loadView()
+        ui.setup()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        ui.setup()
         bindUI()
         setupConfig()
     }

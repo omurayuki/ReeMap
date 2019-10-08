@@ -60,9 +60,13 @@ class NoteListViewController: UIViewController {
         })
     }()
     
+    override func loadView() {
+        super.loadView()
+        ui.setup()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        ui.setup()
         setupConfig()
     }
 }

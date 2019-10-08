@@ -135,7 +135,7 @@ final class MainMapUI: MainMapUIProtocol {
     }()
     
     private(set) var noteDetailVC: NoteDetailViewController = {
-        let noteDetailVC = NoteDetailViewController()
+        let noteDetailVC = AppDelegate.container.resolve(NoteDetailViewController.self)
         return noteDetailVC
     }()
     
@@ -149,7 +149,7 @@ extension MainMapUI {
     
     func setup() {
         setupNoteListFloating(contentVC: noteListVC, scrollView: noteListVC.ui.tableView)
-        setupNoteDetailFloating(contentVC: noteDetailVC, scrollView: noteDetailVC.tableView)
+        setupNoteDetailFloating(contentVC: noteDetailVC, scrollView: noteDetailVC.ui.tableView)
         guard let vc = viewController else { return }
         vc.view.backgroundColor = .white
         [mapView, currentLocationWrapView, menuWrapView, memoAddingWrapView].forEach { vc.view.addSubview($0) }

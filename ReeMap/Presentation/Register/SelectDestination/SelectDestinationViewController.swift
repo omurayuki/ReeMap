@@ -37,9 +37,13 @@ final class SelectDestinationViewController: UIViewController {
         fatalError()
     }
     
+    override func loadView() {
+        super.loadView()
+        ui.setup()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        ui.setup()
         bindUI()
         setupConfig()
         zoomTo(location: currentLocation ?? CLLocation())
