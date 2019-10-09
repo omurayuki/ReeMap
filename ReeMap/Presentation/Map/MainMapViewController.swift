@@ -139,7 +139,7 @@ extension MainMapViewController {
         
         ui.memoAddingBtn.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
-                self.routing?.showSelectDestinationPage()
+                self.routing?.showSelectDestinationPage(annotations: self.viewModel?.getAnnotations())
             }).disposed(by: disposeBag)
         
         NotificationCenter.default.rx.notification(.didUpdateLocation)
@@ -212,8 +212,10 @@ extension MainMapViewController: MKMapViewDelegate {
         if annotation is MKUserLocation { return nil }
         guard
             let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier,
-                                                                       for: annotation) as? MKMarkerAnnotationView
+                                                                       for: annotation) as? MKMarkerAnnotationView,
+            let customAnnotation = annotation as? Annotation
         else { return MKMarkerAnnotationView() }
+        annotationView.markerTintColor = customAnnotation.color
         annotationView.clusteringIdentifier = Constants.DictKey.clusteringIdentifier
         annotationView.canShowCallout = true
         return annotationView
