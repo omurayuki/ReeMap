@@ -17,8 +17,6 @@ enum Menu: Int, CaseIterable {
     }
 }
 
-typealias VersionConstitution = (title: String, content: String)
-
 enum Version: Int, CaseIterable {
     
     case version

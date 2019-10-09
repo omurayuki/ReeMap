@@ -21,10 +21,14 @@ final class VersionInfoViewController: UIViewController {
         })
     }()
     
+    override func loadView() {
+        super.loadView()
+        setup()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = dataSource
-        setup()
         setupTable()
     }
 }

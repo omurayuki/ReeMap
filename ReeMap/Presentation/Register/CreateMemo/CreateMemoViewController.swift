@@ -28,9 +28,13 @@ final class CreateMemoViewController: UIViewController {
         }
     }
     
+    override func loadView() {
+        super.loadView()
+        ui.setup()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        ui.setup()
         bindUI()
         setupConfig()
     }
@@ -90,8 +94,9 @@ extension CreateMemoViewController {
             "uid": uid,
             "created_at": FieldValue.serverTimestamp(),
             "updated_at": FieldValue.serverTimestamp(),
-            "content": self.ui.memoTextView.text ?? "",
+            "content": ui.memoTextView.text ?? "",
             "notification": true,
+            "street_addresss": ui.streetAddressLabel.text ?? "",
             "geo_point": GeoPoint(latitude: latitude, longitude: longitude)
         ]
     }

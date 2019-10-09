@@ -37,10 +37,14 @@ final class EditNoteViewController: UIViewController {
         }
     }
     
+    override func loadView() {
+        super.loadView()
+        ui.setup()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConfig()
-        ui.setup()
         bindUI()
     }
 }
@@ -87,19 +91,22 @@ extension EditNoteViewController {
     }
     
     private func updateNote(_ note: EntityType, completion: @escaping () -> Void) {
-        viewModel?.updateNote(note, noteId: didRecieveNoteId)
+        guard let docId = didRecieveNoteId else { return }
+        viewModel?.updateNote(note, noteId: docId)
             .subscribe(onSuccess: { _ in
                 completion()
+            }, onError: { error in
+                self.showError(message: R.string.localizable.error_message_network())
             }).disposed(by: self.disposeBag)
     }
     
     private func createEntity(latitude: Double, longitude: Double) -> EntityType {
         return [
-            "updated_at": FieldValue.serverTimestamp(),
-            "content": self.ui.memoTextView.text ?? "",
-            "notification": true,
-            "geo_point": GeoPoint(latitude: latitude,
-                                  longitude: longitude)
+            Constants.DictKey.updatedAt: FieldValue.serverTimestamp(),
+            Constants.DictKey.content: self.ui.memoTextView.text ?? "",
+            Constants.DictKey.notification: true,
+            Constants.DictKey.geoPoint: GeoPoint(latitude: latitude,
+                                                 longitude: longitude)
         ]
     }
 }

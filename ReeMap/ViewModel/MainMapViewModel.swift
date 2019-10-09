@@ -42,7 +42,7 @@ extension MainMapViewModel {
                 self.useCase.fetchNotes()
                     .do(onNext: { [unowned self] places in
                         self.annotations
-                            .accept(places.compactMap { Annotation(content: $0.content,
+                            .accept(places.compactMap { Annotation(place: $0,
                                                                    coordinate: CLLocationCoordinate2D(latitude: $0.latitude,
                                                                                                       longitude: $0.longitude))
                             })
@@ -64,10 +64,6 @@ extension MainMapViewModel {
     
     func getUIDToken() -> String {
         return useCase.getUIDToken()
-    }
-    
-    func getPlacemarks(location: CLLocation) -> Single<CLPlacemark> {
-        return useCase.getPlacemarks(location: location)
     }
     
     func setUIDToken(_ token: String) {

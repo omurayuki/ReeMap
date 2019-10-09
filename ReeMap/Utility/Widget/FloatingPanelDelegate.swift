@@ -3,7 +3,7 @@ import FloatingPanel
 
 class FloatingPanelDelegate: NSObject, FloatingPanelControllerDelegate {
     
-    var panelType: PanelCase!
+    var panelLayout: FloatingPanelLayout!
     
     private let panelLayoutforHandler: (FloatingPanelController, UITraitCollection) -> Void
     
@@ -13,12 +13,12 @@ class FloatingPanelDelegate: NSObject, FloatingPanelControllerDelegate {
     
     private let panelEndDraggingHandler: (FloatingPanelController, CGPoint, FloatingPanelPosition) -> Void
     
-    init(panel type: PanelCase,
+    init(panel panelLayout: FloatingPanelLayout,
          panelLayoutforHandler: @escaping (FloatingPanelController, UITraitCollection) -> Void,
          panelaDidMoveHandler: @escaping (CGFloat) -> Void,
          panelBeginDraggingHandler: ((FloatingPanelController) -> Void)? = nil,
          panelEndDraggingHandler: @escaping (FloatingPanelController, CGPoint, FloatingPanelPosition) -> Void) {
-        self.panelType = type
+        self.panelLayout = panelLayout
         self.panelLayoutforHandler = panelLayoutforHandler
         self.panelaDidMoveHandler = panelaDidMoveHandler
         self.panelBeginDraggingHandler = panelBeginDraggingHandler
@@ -27,7 +27,7 @@ class FloatingPanelDelegate: NSObject, FloatingPanelControllerDelegate {
     
     func floatingPanel(_ vc: FloatingPanelController, layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout? {
         panelLayoutforHandler(vc, newCollection)
-        return BasicPanelLayout(panel: panelType)
+        return panelLayout
     }
     
     func floatingPanelDidMove(_ vc: FloatingPanelController) {

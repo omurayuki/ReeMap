@@ -51,9 +51,13 @@ class SideMenuViewController: UIViewController {
         }
     }
     
+    override func loadView() {
+        super.loadView()
+        ui.setup()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        ui.setup()
         setupViewModel()
         setupConfig()
         dataSource.listItems = Menu.allCases.compactMap { $0.description }

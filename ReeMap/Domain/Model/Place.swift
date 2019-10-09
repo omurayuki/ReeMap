@@ -7,6 +7,7 @@ struct Place: Model {
     var uid: String
     var content: String
     var notification: Bool
+    var streetAddress: String
     var latitude: Double
     var longitude: Double
     var createdAt: Date
@@ -16,6 +17,7 @@ struct Place: Model {
         uid = entity.uid
         content = entity.content
         notification = entity.notification
+        streetAddress = entity.streetAddress
         latitude = entity.latitude
         longitude = entity.longitude
         createdAt = entity.createdAt.dateValue()

@@ -25,17 +25,18 @@ final class NoteListTableViewCell: UITableViewCell {
         didSet {
             guard let notification = didPlaceUpdated?.notification else { return }
             noteContent.text = didPlaceUpdated?.content
-            let location = CLLocation(latitude: didPlaceUpdated?.latitude ?? 0.0, longitude: didPlaceUpdated?.longitude ?? 0.0)
-            CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
-                guard let placemark = placemarks?.first, error == nil else { return }
-                guard
-                    let administrativeArea = placemark.administrativeArea,
-                    let locality = placemark.locality,
-                    let thoroughfare = placemark.thoroughfare,
-                    let subThoroughfare = placemark.subThoroughfare
-                else { return }
-                self.streetAddress.text = "\(administrativeArea)\(locality)\(thoroughfare)\(subThoroughfare)"
-            }
+//            let location = CLLocation(latitude: didPlaceUpdated?.latitude ?? 0.0, longitude: didPlaceUpdated?.longitude ?? 0.0)
+//            CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
+//                guard let placemark = placemarks?.first, error == nil else { return }
+//                guard
+//                    let administrativeArea = placemark.administrativeArea,
+//                    let locality = placemark.locality,
+//                    let thoroughfare = placemark.thoroughfare,
+//                    let subThoroughfare = placemark.subThoroughfare
+//                else { return }
+//                self.streetAddress.text = "\(administrativeArea)\(locality)\(thoroughfare)\(subThoroughfare)"
+//            }
+            streetAddress.text = didPlaceUpdated?.streetAddress
             notification ? (noteListImage.image = #imageLiteral(resourceName: "pending_note")) : (noteListImage.image = #imageLiteral(resourceName: "checked_note"))
         }
     }

@@ -13,6 +13,7 @@ extension AppDelegate {
         .register(CreateMemoUIProtocol.self) { _ in CreateMemoUI() }
         .register(SearchStreetAddressUIProtocol.self) { _ in SearchStreetAddressUI() }
         .register(EditNoteUIProtocol.self) { _ in EditNoteUI() }
+        .register(NoteDetailUIProtocol.self) { _ in NoteDetailUI() }
     
         // MARK: Routing
         .register(MainMapRoutingProtocol.self) { _ in MainMapRouting() }
@@ -21,6 +22,7 @@ extension AppDelegate {
         .register(CreateMemoRoutingProtocol.self) { _ in CreateMemoRouting() }
         .register(SearchStreetAddressRoutingProtocol.self) { _ in SearchStreetAddressRouting() }
         .register(EditNoteRoutingProtocol.self) { _ in EditNoteRouting() }
+        .register(NoteDetailRoutingProtocol.self) { _ in NoteDetailRouting() }
     
         // MARK: ViewModel
         .register(MainMapViewModel.self) { _ in MainMapViewModel(useCase: MapUseCase(repository: MapRepository())) }
@@ -88,4 +90,12 @@ extension AppDelegate {
                 .with(disposeBag: $0.resolve(DisposeBag.self))
                 .build()
         }
+        .register(NoteDetailViewController.self) {
+            AnyVCBuilder<NoteDetailViewController>()
+                .with(ui: $0.resolve(NoteDetailUIProtocol.self))
+                .with(routing: $0.resolve(NoteDetailRoutingProtocol.self))
+                .with(disposeBag: $0.resolve(DisposeBag.self))
+                .build()
+        }
+    
 }

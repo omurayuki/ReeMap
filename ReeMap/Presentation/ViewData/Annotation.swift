@@ -3,12 +3,16 @@ import MapKit
 
 @objc class Annotation: NSObject {
     
+    var documentId: String?
     var content: String?
+    var streetAddress: String?
     var subtitle: String?
     var coordinate: CLLocationCoordinate2D
     
-    init(content: String?, coordinate: CLLocationCoordinate2D) {
-        self.content = content
+    init(place: Place?, coordinate: CLLocationCoordinate2D) {
+        self.documentId = place?.documentId
+        self.content = place?.content
+        self.streetAddress = place?.streetAddress
         self.coordinate = coordinate
     }
 }

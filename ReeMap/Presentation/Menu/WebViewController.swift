@@ -19,8 +19,8 @@ class WebViewController: UIViewController {
         fatalError()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func loadView() {
+        super.loadView()
         let myBlog = urlString
         guard let url = NSURL(string: myBlog) as? URL else { return }
         guard let request = NSURLRequest(url: url) as? URLRequest else { return }
@@ -29,6 +29,10 @@ class WebViewController: UIViewController {
         self.view.addSubview(webView)
         self.view.sendSubviewToBack(webView)
         navigationController?.isNavigationBarHidden = false
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
 }
 
