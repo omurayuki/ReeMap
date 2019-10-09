@@ -125,7 +125,7 @@ extension SelectDestinationViewController {
     func validatePinsDistant(completion: (() -> Void)) {
         didRecieveAnnotations?.forEach { [unowned self] in
             let coodinate = CLLocation(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude)
-            if coodinate.distance(from: self.currentCoodinate ?? CLLocation()) <= 50 {
+            if coodinate.distance(from: self.currentCoodinate ?? CLLocation()) <= 70 {
                 self.showAutomaticallyDisappearAlert(title: R.string.localizable.attention_title(),
                                                      message: R.string.localizable.attention_close_pin(),
                                                      deadline: .now() + 1)

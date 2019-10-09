@@ -43,6 +43,14 @@ final class CreateMemoViewController: UIViewController {
 extension CreateMemoViewController {
     
     func bindUI() {
+        let input = ViewModel.Input()
+        let output = viewModel?.transform(input: input)
+        
+        output?.isLoading
+            .drive(onNext: { [unowned self] bool in
+                self.setIndicator(show: bool)
+            }).disposed(by: disposeBag)
+        
         ui.memoTextView.rx.text.asDriver()
             .drive(onNext: { [unowned self] text in
                 guard let text = text else { return }
@@ -80,10 +88,13 @@ extension CreateMemoViewController {
     }
     
     private func setNote(_ note: EntityType, completion: @escaping () -> Void) {
+        viewModel?.updateLoading(true)
         viewModel?.setNote(note)
             .subscribe(onSuccess: { _ in
+                self.viewModel?.updateLoading(false)
                 completion()
             }, onError: { [unowned self] _ in
+                self.viewModel?.updateLoading(false)
                 self.showError(message: R.string.localizable.error_message_network())
             }).disposed(by: disposeBag)
     }

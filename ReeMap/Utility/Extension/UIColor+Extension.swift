@@ -98,7 +98,7 @@ extension UIColor {
     }
     
     class var flatBlue: UIColor {
-        return UIColor(hex: "1E5EDD")
+        return UIColor(hex: "0096E6")
     }
     
     class var annotationDefaultColor: UIColor {

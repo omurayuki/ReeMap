@@ -43,10 +43,10 @@ extension WebViewController: WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        print("Strat to load")
+        self.setIndicator(show: true)
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        print("finish to load")
+        self.setIndicator(show: false)
     }
 }
