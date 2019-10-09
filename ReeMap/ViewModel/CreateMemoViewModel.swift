@@ -6,6 +6,7 @@ import RxSwift
 final class CreateMemoViewModel: ViewModel {
     
     private let useCase: CreateMemoUseCaseProtocol
+    private var isLoading = BehaviorRelay<Bool>(value: false)
 
     init(useCase: CreateMemoUseCaseProtocol) {
         self.useCase = useCase
@@ -20,11 +21,12 @@ extension CreateMemoViewModel {
     
     struct Output {
         
+        var isLoading: Driver<Bool>
     }
     
     func transform(input: Input) -> Output {
         
-        return Output()
+        return Output(isLoading: isLoading.asDriver())
     }
 }
 
@@ -40,5 +42,9 @@ extension CreateMemoViewModel {
     
     func getUIDToken() -> String {
         return useCase.getUIDToken()
+    }
+    
+    func updateLoading(_ loading: Bool) {
+        isLoading.accept(loading)
     }
 }

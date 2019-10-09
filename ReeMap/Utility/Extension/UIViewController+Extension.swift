@@ -69,8 +69,11 @@ extension UIViewController {
     }
     
     func setIndicator(show: Bool) {
+        var hud = MBProgressHUD()
         if show {
-            MBProgressHUD.showAdded(to: view, animated: true)
+            hud = MBProgressHUD.showAdded(to: view, animated: true)
+            hud.bezelView.style = .solidColor
+            hud.bezelView.backgroundColor = .clear
         } else {
             MBProgressHUD.hide(for: view, animated: true)
         }
