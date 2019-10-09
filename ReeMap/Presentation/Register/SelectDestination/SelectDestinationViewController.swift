@@ -27,6 +27,17 @@ final class SelectDestinationViewController: UIViewController {
     private var isInitialZoom = true
     private var isFirstInput = true
     private var currentLocation: CLLocation?
+    private var currentCoodinate: CLLocation?
+    
+    var didRecieveAnnotations: [Annotation]? {
+        didSet {
+            guard let annotations = didRecieveAnnotations else { return }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [unowned self] in
+                self.ui.mapView.removeAnnotations(self.ui.mapView.annotations)
+                self.ui.mapView.addAnnotations(annotations)
+            }
+        }
+    }
     
     init() {
         currentLocation = LocationService.sharedInstance.currentLocation
@@ -67,7 +78,9 @@ extension SelectDestinationViewController {
         
         ui.settingsBtn.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
-                self.routing?.showCreateMemoPage(address: self.streetAddress)
+                self.validatePinsDistant { [unowned self] in
+                    self.routing?.showCreateMemoPage(address: self.streetAddress)
+                }
             }).disposed(by: disposeBag)
         
         ui.cancelBtn.rx.tap.asDriver()
@@ -85,7 +98,7 @@ extension SelectDestinationViewController {
                                                                            longitude: location.coordinate.longitude),
                                             latitudinalMeters: 300,
                                             longitudinalMeters: 300)
-            ui.mapView.setRegion(region, animated: false)
+            ui.mapView.setRegion(region, animated: true)
             isInitialZoom = false
         }
     }
@@ -108,17 +121,43 @@ extension SelectDestinationViewController {
         self.streetAddress = streetAddress
         ui.setStreetAddress(streetAddress)
     }
+    
+    func validatePinsDistant(completion: (() -> Void)) {
+        didRecieveAnnotations?.forEach { [unowned self] in
+            let coodinate = CLLocation(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude)
+            if coodinate.distance(from: self.currentCoodinate ?? CLLocation()) <= 50 {
+                self.showAutomaticallyDisappearAlert(title: R.string.localizable.attention_title(),
+                                                     message: R.string.localizable.attention_close_pin(),
+                                                     deadline: .now() + 1)
+                return
+            }
+        }
+        completion()
+    }
 }
 
 extension SelectDestinationViewController: MKMapViewDelegate {
     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation { return nil }
+        guard
+            let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier,
+                                                                       for: annotation) as? MKMarkerAnnotationView,
+            let customAnnotation = annotation as? Annotation
+        else { return MKMarkerAnnotationView() }
+        annotationView.markerTintColor = customAnnotation.color
+        annotationView.clusteringIdentifier = Constants.DictKey.clusteringIdentifier
+        annotationView.canShowCallout = true
+        return annotationView
+    }
+    
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        let location = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
-        viewModel?.getPlacemarks(location: location)
+        currentCoodinate = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+        viewModel?.getPlacemarks(location: currentCoodinate ?? CLLocation())
             .subscribe(onSuccess: { [unowned self] placemark in
                 self.updateStreetAddress(placemark: placemark)
-            }, onError: { [unowned self] _ in
-                self.showAttentionAlert(message: R.string.localizable.attention_could_not_load_location())
+                }, onError: { [unowned self] _ in
+                    self.showAttentionAlert(message: R.string.localizable.attention_could_not_load_location())
             }).disposed(by: disposeBag)
     }
 }

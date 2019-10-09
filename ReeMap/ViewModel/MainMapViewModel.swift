@@ -44,7 +44,8 @@ extension MainMapViewModel {
                         self.annotations
                             .accept(places.compactMap { Annotation(place: $0,
                                                                    coordinate: CLLocationCoordinate2D(latitude: $0.latitude,
-                                                                                                      longitude: $0.longitude))
+                                                                                                      longitude: $0.longitude),
+                                                                   notification: $0.notification)
                             })
                     }).materialize()
             }.share(replay: 1)
@@ -68,6 +69,10 @@ extension MainMapViewModel {
     
     func setUIDToken(_ token: String) {
         useCase.setUIDToken(token)
+    }
+    
+    func getAnnotations() -> [Annotation] {
+        return annotations.value
     }
     
     func updateNote(_ note: EntityType, noteId: String) -> Single<()> {

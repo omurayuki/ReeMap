@@ -109,4 +109,13 @@ extension UIViewController {
             else { return R.string.localizable.could_not_get() }
         return "\(administrativeArea)\(locality)\(thoroughfare)\(subThoroughfare)"
     }
+    
+    func showAutomaticallyDisappearAlert(title: String, message: String, deadline: DispatchTime) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        self.present(alert, animated: true, completion: {
+            DispatchQueue.main.asyncAfter(deadline: deadline, execute: {
+                alert.dismiss(animated: true, completion: nil)
+            })
+        })
+    }
 }
