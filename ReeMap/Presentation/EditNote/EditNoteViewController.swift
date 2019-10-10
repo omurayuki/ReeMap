@@ -60,6 +60,11 @@ extension EditNoteViewController {
                 self.setIndicator(show: bool)
             }).disposed(by: disposeBag)
         
+        output?.isSaveBtnEnable
+            .drive(onNext: { bool in
+                self.ui.saveBtn.isEnabled = bool
+            }).disposed(by: disposeBag)
+        
         ui.cancelBtn.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
                 self.showActionSheet(title: R.string.localizable.attention_title(),
@@ -100,13 +105,16 @@ extension EditNoteViewController {
     
     private func updateNote(_ note: EntityType, completion: @escaping () -> Void) {
         viewModel?.updateLoading(true)
+        viewModel?.setSaveBtnEnable(false)
         guard let docId = didRecieveNoteId else { return }
         viewModel?.updateNote(note, noteId: docId)
             .subscribe(onSuccess: { _ in
                 completion()
                 self.viewModel?.updateLoading(false)
+                self.viewModel?.setSaveBtnEnable(true)
             }, onError: { _ in
                 self.viewModel?.updateLoading(false)
+                self.viewModel?.setSaveBtnEnable(true)
                 self.showError(message: R.string.localizable.error_message_network())
             }).disposed(by: self.disposeBag)
     }

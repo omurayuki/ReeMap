@@ -7,6 +7,7 @@ final class CreateMemoViewModel: ViewModel {
     
     private let useCase: CreateMemoUseCaseProtocol
     private var isLoading = BehaviorRelay<Bool>(value: false)
+    private var isSaveBtnEnable = BehaviorRelay<Bool>(value: false)
 
     init(useCase: CreateMemoUseCaseProtocol) {
         self.useCase = useCase
@@ -22,11 +23,12 @@ extension CreateMemoViewModel {
     struct Output {
         
         var isLoading: Driver<Bool>
+        var isSaveBtnEnable: Driver<Bool>
     }
     
     func transform(input: Input) -> Output {
         
-        return Output(isLoading: isLoading.asDriver())
+        return Output(isLoading: isLoading.asDriver(), isSaveBtnEnable: isSaveBtnEnable.asDriver())
     }
 }
 
@@ -46,5 +48,9 @@ extension CreateMemoViewModel {
     
     func updateLoading(_ loading: Bool) {
         isLoading.accept(loading)
+    }
+    
+    func setSaveBtnEnable(_ bool: Bool) {
+        isSaveBtnEnable.accept(bool)
     }
 }
