@@ -4,6 +4,11 @@ import RxCocoa
 import RxSwift
 import UIKit
 
+protocol NoteDetailDelegate: NSObject {
+    
+    func tappedEditBtn()
+}
+
 extension NoteDetailViewController: VCInjectable {
     
     typealias UI = NoteDetailUIProtocol
@@ -22,6 +27,8 @@ final class NoteDetailViewController: UIViewController {
     var routing: NoteDetailRoutingProtocol? { didSet { routing?.viewController = self } }
     var viewModel: Nillable?
     var disposeBag: DisposeBag!
+    
+    weak var delegate: NoteDetailDelegate!
     
     private(set) lazy var dataSource: DataSource = {
         DataSource(cellReuseIdentifier: String(describing: NoteDetailCell.self),
@@ -62,6 +69,7 @@ extension NoteDetailViewController {
                 vc.didRecieveNote = self.recieveData.content
                 vc.didRecieveNoteId = self.recieveData.documentId
                 self.present(vc, animated: true)
+                self.delegate.tappedEditBtn()
             }).disposed(by: disposeBag)
     }
     

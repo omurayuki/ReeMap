@@ -20,6 +20,7 @@ extension MainMapViewController: VCInjectable {
         ui.mapView.delegate = self
         ui.noteListVC.tappedSearchBarDelegate = self
         ui.noteListVC.tappedCellDelegate = self
+        ui.noteDetailVC.delegate = self
         ui.sideMenuVC.delegate = self
     }
 }
@@ -273,6 +274,15 @@ extension MainMapViewController: SideMenuViewControllerDelegate {
             routing?.showWebViewPage(url: Constants.RedirectURL.termOfSearvice)
         case .contactUs:
             routing?.showWebViewPage(url: Constants.RedirectURL.contactUs)
+        }
+    }
+}
+
+extension MainMapViewController: NoteDetailDelegate {
+    
+    func tappedEditBtn() {
+        ui.showPanel(panel: ui.noteDetailFloatingPanel, type: .hidden) { [unowned self] in
+            self.ui.noteDetailVC.changeTableAlpha(0.2)
         }
     }
 }
