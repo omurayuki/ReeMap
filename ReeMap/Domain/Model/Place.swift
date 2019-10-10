@@ -10,6 +10,7 @@ struct Place: Model {
     var streetAddress: String
     var latitude: Double
     var longitude: Double
+    var updatedAt: Date
     var createdAt: Date
     
     init(entity: PlaceEntity) {
@@ -20,6 +21,7 @@ struct Place: Model {
         streetAddress = entity.streetAddress
         latitude = entity.latitude
         longitude = entity.longitude
+        updatedAt = entity.updatedAt.dateValue()
         createdAt = entity.createdAt.dateValue()
     }
 }
