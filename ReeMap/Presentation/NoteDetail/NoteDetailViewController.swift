@@ -58,9 +58,9 @@ extension NoteDetailViewController {
         cell.editBtn.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
                 let vc = AppDelegate.container.resolve(EditNoteViewController.self)
-                vc.didRecieveStreetAddress = self.dataSource.listItems[0].streetAddress
-                vc.didRecieveNote = self.dataSource.listItems[0].content
-                vc.didRecieveNoteId = self.dataSource.listItems[0].documentId
+                vc.didRecieveStreetAddress = self.recieveData.streetAddress
+                vc.didRecieveNote = self.recieveData.content
+                vc.didRecieveNoteId = self.recieveData.documentId
                 self.present(vc, animated: true)
             }).disposed(by: disposeBag)
     }
