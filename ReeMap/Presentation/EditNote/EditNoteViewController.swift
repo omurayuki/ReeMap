@@ -105,7 +105,7 @@ extension EditNoteViewController {
             .subscribe(onSuccess: { _ in
                 completion()
                 self.viewModel?.updateLoading(false)
-            }, onError: { error in
+            }, onError: { _ in
                 self.viewModel?.updateLoading(false)
                 self.showError(message: R.string.localizable.error_message_network())
             }).disposed(by: self.disposeBag)

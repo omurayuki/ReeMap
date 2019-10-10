@@ -27,6 +27,10 @@ extension NoteListViewModel {
 
 extension NoteListViewModel {
     
+    func updateNote(_ note: EntityType, noteId: String) -> Single<()> {
+        return useCase.updateNote(note, noteId: noteId)
+    }
+    
     func deleteNote(place: Place) -> Single<()> {
         return useCase.deleteNote(place: place)
     }

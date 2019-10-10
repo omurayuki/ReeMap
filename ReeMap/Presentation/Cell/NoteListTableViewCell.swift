@@ -1,7 +1,20 @@
 import MapKit
+import RxCocoa
+import RxSwift
 import UIKit
 
+protocol NoteListDelegate: NSObject {
+    
+    func switchNotification(_ isOn: Bool, docId: String)
+}
+
 final class NoteListTableViewCell: UITableViewCell {
+    
+    weak var delegate: NoteListDelegate!
+    
+    private let disposeBag = DisposeBag()
+    
+    var docId: String!
     
     var noteListImage: UIImageView = {
         let image = UIImageView(image: #imageLiteral(resourceName: "pending_note"))
@@ -13,6 +26,11 @@ final class NoteListTableViewCell: UITableViewCell {
         let label = UILabel()
         label.apply(.body)
         return label
+    }()
+    
+    var notificationSwitchBtn: UISwitch = {
+        let button = UISwitch()
+        return button
     }()
     
     var noteContent: UILabel = {
@@ -31,6 +49,7 @@ final class NoteListTableViewCell: UITableViewCell {
         didSet {
             guard let notification = didPlaceUpdated?.notification else { return }
             notePostedTime.text = didPlaceUpdated?.updatedAt.offsetFrom()
+            notificationSwitchBtn.setOn(didPlaceUpdated?.notification ?? false, animated: true)
             noteContent.text = didPlaceUpdated?.content
             streetAddress.text = didPlaceUpdated?.streetAddress
             notification ? (noteListImage.image = #imageLiteral(resourceName: "pending_note")) : (noteListImage.image = #imageLiteral(resourceName: "checked_note"))
@@ -41,13 +60,22 @@ final class NoteListTableViewCell: UITableViewCell {
         super.layoutSubviews()
         setup()
     }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        bindUI()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError()
+    }
 }
 
 extension NoteListTableViewCell {
     
     private func setup() {
         backgroundColor = .clear
-        [noteListImage, notePostedTime, noteContent, streetAddress].forEach { addSubview($0) }
+        [noteListImage, notePostedTime, notificationSwitchBtn, noteContent, streetAddress].forEach { addSubview($0) }
         
         noteListImage.anchor()
             .centerYToSuperview()
@@ -61,6 +89,12 @@ extension NoteListTableViewCell {
             .right(to: rightAnchor, constant: -20)
             .activate()
         
+        notificationSwitchBtn.anchor()
+            .top(to: notePostedTime.bottomAnchor, constant: 10)
+            .right(to: rightAnchor, constant: -20)
+            .bottom(to: bottomAnchor, constant: -10)
+            .activate()
+        
         noteContent.anchor()
             .top(to: topAnchor, constant: 10)
             .left(to: noteListImage.rightAnchor, constant: 15)
@@ -70,8 +104,19 @@ extension NoteListTableViewCell {
         streetAddress.anchor()
             .top(to: noteContent.bottomAnchor, constant: 10)
             .left(to: noteListImage.rightAnchor, constant: 15)
-            .bottom(to: bottomAnchor, constant: -10)
             .width(constant: frame.width * 0.9 - 50)
             .activate()
+    }
+}
+
+extension NoteListTableViewCell {
+    
+    private func bindUI() {
+        notificationSwitchBtn.rx
+            .controlEvent(.valueChanged)
+            .withLatestFrom(notificationSwitchBtn.rx.value)
+            .subscribe(onNext: { [unowned self] isOn in
+                self.delegate.switchNotification(isOn, docId: self.docId)
+            }).disposed(by: disposeBag)
     }
 }

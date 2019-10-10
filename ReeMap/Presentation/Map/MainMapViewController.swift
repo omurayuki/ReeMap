@@ -223,8 +223,13 @@ extension MainMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let annotation = view.annotation as? Annotation else { return }
-        ui.noteDetailVC.recieveData = (annotation.documentId ?? "", annotation.content ?? "", annotation.streetAddress ?? "")
+        ui.noteDetailVC.recieveData = (annotation.documentId ?? "",
+                                       annotation.content ?? "",
+                                       annotation.streetAddress ?? "",
+                                       annotation.notification ?? Bool())
         showHalfScreenNoteDetail()
+        view.layoutSubviews()
+        view.layoutIfNeeded()
     }
 }
 
@@ -246,7 +251,10 @@ extension MainMapViewController: TappedSearchBarDelegate {
 extension MainMapViewController: TappedCellDelegate {
     
     func didselectCell(place: Place) {
-        ui.noteDetailVC.recieveData = (place.documentId, place.content, place.streetAddress)
+        ui.noteDetailVC.recieveData = (place.documentId,
+                                       place.content,
+                                       place.streetAddress,
+                                       place.notification)
         showHalfScreenNoteDetail()
     }
 }

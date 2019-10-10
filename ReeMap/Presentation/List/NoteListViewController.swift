@@ -56,6 +56,8 @@ class NoteListViewController: UIViewController {
         DataSource(cellReuseIdentifier: String(describing: NoteListTableViewCell.self),
                    listItems: [],
                    cellConfigurationHandler: { cell, item, _ in
+            cell.docId = item.documentId
+            cell.delegate = self
             cell.didPlaceUpdated = item
         })
     }()
@@ -142,5 +144,15 @@ extension NoteListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         searchBar.endEditing(true)
+    }
+}
+
+extension NoteListViewController: NoteListDelegate {
+    
+    func switchNotification(_ isOn: Bool, docId: String) {
+        viewModel?.updateNote([Constants.DictKey.notification: isOn], noteId: docId)
+            .subscribe(onError: { [unowned self] _ in
+                self.showError(message: R.string.localizable.error_message_network())
+            }).disposed(by: disposeBag)
     }
 }
