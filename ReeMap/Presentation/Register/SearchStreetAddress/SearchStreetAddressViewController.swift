@@ -47,6 +47,8 @@ final class SearchStreetAddressViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConfig()
+        
+        FirebaseAnalyticsUtil.setScreenName(.searchDestination, screenClass: String(describing: type(of: self)))
     }
 }
 
