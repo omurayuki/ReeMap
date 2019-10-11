@@ -130,11 +130,15 @@ extension MainMapViewController {
         
         ui.currentLocationBtn.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
+                FirebaseAnalyticsUtil.setScreenName(.currentLocationBtn, screenClass: String(describing: type(of: self)))
+                
                 self.ui.setRegion(location: self.ui.mapView.userLocation.coordinate)
             }).disposed(by: disposeBag)
         
         ui.menuBtn.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
+                FirebaseAnalyticsUtil.setScreenName(.menuBtn, screenClass: String(describing: type(of: self)))
+                
                 self.ui.showSidemenu(isShownSidemenu: self.isShownSidemenu, contentAvailability: true, animated: true)
             }).disposed(by: disposeBag)
         

@@ -1,4 +1,5 @@
 import CoreLocation
+import Crashlytics
 import Fabric
 import Firebase
 import RxCocoa

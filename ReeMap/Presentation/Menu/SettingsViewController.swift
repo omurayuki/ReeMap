@@ -28,6 +28,8 @@ final class SettingsViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        
+        FirebaseAnalyticsUtil.setScreenName(.setting, screenClass: String(describing: type(of: self)))
     }
 }
 
