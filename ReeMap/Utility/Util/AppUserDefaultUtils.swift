@@ -20,6 +20,15 @@ class AppUserDefaultsUtils {
     class func setUIDToken(uid: String) {
         putStringValue(uid, keyName: "AnonymousUserToken")
     }
+    
+    // Remind Meter
+    class func getRemindMeter() -> Double {
+        return getDoubleValue(keyName: "remindRangeMeter")
+    }
+    
+    class func setRangeMeter(_ meter: Double) {
+        putDoubleValue(meter, keyName: "remindRangeMeter")
+    }
 }
 
 extension AppUserDefaultsUtils {
@@ -40,6 +49,16 @@ extension AppUserDefaultsUtils {
     }
     
     private class func putIntValue(_ value: Int, keyName: String) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(value, forKey: keyName)
+    }
+    
+    private class func getDoubleValue(keyName: String) -> Double {
+        let userDefaults = UserDefaults.standard
+        return userDefaults.double(forKey: keyName)
+    }
+    
+    private class func putDoubleValue(_ value: Double, keyName: String) {
         let userDefaults = UserDefaults.standard
         userDefaults.set(value, forKey: keyName)
     }
