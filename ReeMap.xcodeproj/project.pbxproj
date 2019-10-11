@@ -136,6 +136,8 @@
 		C9AC33922345C4EC00A5AF7D /* SearchStreetAddressRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AC33912345C4EC00A5AF7D /* SearchStreetAddressRouting.swift */; };
 		C9AC339423460D7900A5AF7D /* StreetAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AC339323460D7900A5AF7D /* StreetAddressCell.swift */; };
 		C9AD9DE6234FF4FC0001C42A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AD9DE5234FF4FC0001C42A /* SettingsViewController.swift */; };
+		C9AD9E04235057060001C42A /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AD9E02235057060001C42A /* Crashlytics.framework */; };
+		C9AD9E05235057060001C42A /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AD9E03235057060001C42A /* Fabric.framework */; };
 		C9AED82C2343123500F82C4A /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AED82B2343123500F82C4A /* AuthProvider.swift */; };
 		C9AED82E2343123E00F82C4A /* FirestoreProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AED82D2343123E00F82C4A /* FirestoreProvider.swift */; };
 		C9AED8302343126700F82C4A /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AED82F2343126700F82C4A /* StorageProvider.swift */; };
@@ -346,6 +348,10 @@
 		C9AC33912345C4EC00A5AF7D /* SearchStreetAddressRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStreetAddressRouting.swift; sourceTree = "<group>"; };
 		C9AC339323460D7900A5AF7D /* StreetAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetAddressCell.swift; sourceTree = "<group>"; };
 		C9AD9DE5234FF4FC0001C42A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		C9AD9DFD2350558B0001C42A /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = "../Downloads/com.crashlytics.ios-manual/Crashlytics.framework"; sourceTree = "<group>"; };
+		C9AD9DFE2350558B0001C42A /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = "../Downloads/com.crashlytics.ios-manual/Fabric.framework"; sourceTree = "<group>"; };
+		C9AD9E02235057060001C42A /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		C9AD9E03235057060001C42A /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		C9AED82B2343123500F82C4A /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
 		C9AED82D2343123E00F82C4A /* FirestoreProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreProvider.swift; sourceTree = "<group>"; };
 		C9AED82F2343126700F82C4A /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
@@ -420,11 +426,13 @@
 			files = (
 				C9908821233B747100A0994E /* StoreKit.framework in Frameworks */,
 				C990881F233B746700A0994E /* libc++.tbd in Frameworks */,
+				C9AD9E04235057060001C42A /* Crashlytics.framework in Frameworks */,
 				C990881D233B745700A0994E /* libsqlite3.tbd in Frameworks */,
 				C9908801233B72EB00A0994E /* GoogleAppMeasurement.framework in Frameworks */,
 				C9908802233B72EB00A0994E /* nanopb.framework in Frameworks */,
 				C9908803233B72EB00A0994E /* gRPC-C++.framework in Frameworks */,
 				C9908804233B72EB00A0994E /* FirebaseMessaging.framework in Frameworks */,
+				C9AD9E05235057060001C42A /* Fabric.framework in Frameworks */,
 				C9908805233B72EB00A0994E /* gRPC-Core.framework in Frameworks */,
 				C9908806233B72EB00A0994E /* FirebaseInstanceID.framework in Frameworks */,
 				C9908808233B72EB00A0994E /* FirebaseAuth.framework in Frameworks */,
@@ -471,6 +479,8 @@
 		AA67C0CD851106E09160443A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C9AD9DFD2350558B0001C42A /* Crashlytics.framework */,
+				C9AD9DFE2350558B0001C42A /* Fabric.framework */,
 				C98F789F234AFEFC00802678 /* Lottie.framework */,
 				C9A64B17233CF3A700C00CC2 /* Rswift.framework */,
 				C9908820233B747100A0994E /* StoreKit.framework */,
@@ -815,6 +825,8 @@
 		C9B9F442231765C00013ED05 = {
 			isa = PBXGroup;
 			children = (
+				C9AD9E02235057060001C42A /* Crashlytics.framework */,
+				C9AD9E03235057060001C42A /* Fabric.framework */,
 				C98F78A3234B01B200802678 /* Lottie.framework */,
 				C9A64B19233CF45A00C00CC2 /* Rswift.framework */,
 				C990881A233B73FC00A0994E /* gRPCCertificates-Cpp.bundle */,
@@ -1030,6 +1042,7 @@
 				C966EAB22317D89200005EE5 /* SwiftLint */,
 				C97CDE89232818AC00E1BF75 /* Carthage */,
 				C9855A752324C6A500AA7DC6 /* Embed Frameworks */,
+				C9AD9E01235055BB0001C42A /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -1195,6 +1208,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		C9AD9E01235055BB0001C42A /* Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = Crashlytics;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Fabric.framework/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1448,7 +1480,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1543,6 +1575,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ReeMap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1576,6 +1609,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ReeMap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
