@@ -38,12 +38,12 @@ extension MenuDetailCell {
         
         title.anchor()
             .centerYToSuperview()
-            .left(to: leftAnchor, constant: 20)
+            .left(to: leftAnchor, constant: 10)
             .activate()
         
         content.anchor()
             .centerYToSuperview()
-            .right(to: rightAnchor, constant: -20)
+            .right(to: rightAnchor, constant: -10)
             .activate()
     }
 }

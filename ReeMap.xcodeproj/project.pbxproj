@@ -135,6 +135,7 @@
 		C9AC33902345C4E300A5AF7D /* SearchStreetAddressUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AC338F2345C4E300A5AF7D /* SearchStreetAddressUI.swift */; };
 		C9AC33922345C4EC00A5AF7D /* SearchStreetAddressRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AC33912345C4EC00A5AF7D /* SearchStreetAddressRouting.swift */; };
 		C9AC339423460D7900A5AF7D /* StreetAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AC339323460D7900A5AF7D /* StreetAddressCell.swift */; };
+		C9AD9DE6234FF4FC0001C42A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AD9DE5234FF4FC0001C42A /* SettingsViewController.swift */; };
 		C9AED82C2343123500F82C4A /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AED82B2343123500F82C4A /* AuthProvider.swift */; };
 		C9AED82E2343123E00F82C4A /* FirestoreProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AED82D2343123E00F82C4A /* FirestoreProvider.swift */; };
 		C9AED8302343126700F82C4A /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AED82F2343126700F82C4A /* StorageProvider.swift */; };
@@ -344,6 +345,7 @@
 		C9AC338F2345C4E300A5AF7D /* SearchStreetAddressUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStreetAddressUI.swift; sourceTree = "<group>"; };
 		C9AC33912345C4EC00A5AF7D /* SearchStreetAddressRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStreetAddressRouting.swift; sourceTree = "<group>"; };
 		C9AC339323460D7900A5AF7D /* StreetAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetAddressCell.swift; sourceTree = "<group>"; };
+		C9AD9DE5234FF4FC0001C42A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C9AED82B2343123500F82C4A /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
 		C9AED82D2343123E00F82C4A /* FirestoreProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreProvider.swift; sourceTree = "<group>"; };
 		C9AED82F2343126700F82C4A /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
@@ -718,6 +720,7 @@
 		C96E99242349D9E000EB037D /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				C9AD9DE5234FF4FC0001C42A /* SettingsViewController.swift */,
 				C96E99252349DA3D00EB037D /* WebViewController.swift */,
 				C98F78A8234B24F700802678 /* VersionInfoViewController.swift */,
 			);
@@ -1260,6 +1263,7 @@
 				C9D6C5EC232109C20064AACD /* UI.swift in Sources */,
 				C9D5A49D23447D0D00720A8A /* LocationDataStoreFactory.swift in Sources */,
 				C9A0563A2322528F00EB9563 /* Array+Extension.swift in Sources */,
+				C9AD9DE6234FF4FC0001C42A /* SettingsViewController.swift in Sources */,
 				C9D8384D234B4724006738EF /* NoteDetailViewController.swift in Sources */,
 				C9D5A4A32344909400720A8A /* CreateMemoUseCase.swift in Sources */,
 				C9095113232240560080A25B /* Date+Extension.swift in Sources */,

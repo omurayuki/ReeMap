@@ -8,7 +8,7 @@ final class LocationService: NSObject {
     var locationDataArray: [CLLocation]
     var currentLocation: CLLocation!
     
-    override init() {
+    private override init() {
         locationManager = CLLocationManager()
         
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation

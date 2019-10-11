@@ -124,7 +124,7 @@ extension MainMapViewController {
                     .filter { $0.notification }
                     .forEach {
                         let destination = CLLocation(latitude: $0.latitude, longitude: $0.longitude)
-                        destination.distance(from: location) <= 200 ? self.createLocalNotification(place: $0) : ()
+                        destination.distance(from: location) <= AppUserDefaultsUtils.getRemindMeter() ?? 0.0 ? self.createLocalNotification(place: $0) : ()
                     }
             }).disposed(by: disposeBag)
         
@@ -266,6 +266,8 @@ extension MainMapViewController: SideMenuViewControllerDelegate {
         ui.hideSidemenu(isShownSidemenu: isShownSidemenu, animated: true)
         let menu = Menu.allCases[indexPath.row]
         switch menu {
+        case .settings:
+            navigationController?.pushViewController(SettingsViewController(), animated: true)
         case .version:
             routing?.showVersionPage()
         case .privacy:

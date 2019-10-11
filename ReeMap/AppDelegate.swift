@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        initUserDefault()
         launchScreen()
         if launchOptions?[UIApplication.LaunchOptionsKey.location] != nil {
             LocationService.sharedInstance.startMonitoring()
@@ -92,5 +93,12 @@ extension AppDelegate: SplashDelegate {
         nav.setNavigationBarHidden(true, animated: false)
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
+    }
+}
+
+extension AppDelegate {
+    
+    private func initUserDefault() {
+        AppUserDefaultsUtils.getRemindMeter() == 0.0 ? AppUserDefaultsUtils.setRangeMeter(200) : ()
     }
 }

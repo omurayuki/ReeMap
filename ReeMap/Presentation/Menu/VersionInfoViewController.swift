@@ -7,6 +7,7 @@ final class VersionInfoViewController: UIViewController {
     
     private var tableView: UITableView = {
         let table = UITableView()
+        table.separatorInset = .zero
         table.backgroundColor = .groupTableViewBackground
         table.tableFooterView = UIView(frame: .zero)
         table.register(MenuDetailCell.self, forCellReuseIdentifier: String(describing: MenuDetailCell.self))

@@ -93,6 +93,10 @@ extension UIColor {
         return UIColor(red: 247.0 / 255.0, green: 247.0 / 255.0, blue: 247.0 / 255.0, alpha: 1)
     }
     
+    class var systemGrayColor: UIColor {
+        return UIColor(red: 239 / 255, green: 239 / 255, blue: 244 / 255, alpha: 1)
+    }
+
     class var flatRed: UIColor {
         return UIColor(hex: "e74c3c")
     }
