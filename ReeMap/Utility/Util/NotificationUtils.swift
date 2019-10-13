@@ -13,9 +13,11 @@ extension Notification.Name {
     enum Name: String {
         
         case showTurnOnLocationServiceAlert
+        case attensionLocationServiceAlert
         case didUpdateLocation
     }
     
     static let showTurnOnLocationServiceAlert = Notification.Name(rawValue: Name.showTurnOnLocationServiceAlert.rawValue)
+    static let attensionLocationServiceAlert = Notification.Name(rawValue: Name.attensionLocationServiceAlert.rawValue)
     static let didUpdateLocation = Notification.Name(rawValue: Name.didUpdateLocation.rawValue)
 }

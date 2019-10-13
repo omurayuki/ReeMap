@@ -162,6 +162,14 @@ extension MainMapViewController {
                     UIApplication.shared.open(url, options: [:])
                 }
             }).disposed(by: disposeBag)
+        
+        NotificationCenter.default.rx.notification(.attensionLocationServiceAlert)
+            .subscribe(onNext: { [unowned self] _ in
+                self.routing?.showSettingsAlert {
+                    guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+                    UIApplication.shared.open(url, options: [:])
+                }
+            }).disposed(by: disposeBag)
     }
 }
 
