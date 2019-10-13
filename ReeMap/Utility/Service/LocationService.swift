@@ -33,10 +33,12 @@ final class LocationService: NSObject {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedAlways:
             locationManager.startUpdatingLocation()
+        case .authorizedWhenInUse:
+            showTurnOnLocationServiceAlert(.attensionLocationServiceAlert)
         case .notDetermined:
             break
         default:
-            showTurnOnLocationServiceAlert()
+            showTurnOnLocationServiceAlert(.showTurnOnLocationServiceAlert)
         }
     }
     
@@ -54,8 +56,8 @@ final class LocationService: NSObject {
         return true
     }
     
-    func showTurnOnLocationServiceAlert() {
-        NotificationUtils.didUpdate(notification: .showTurnOnLocationServiceAlert)
+    func showTurnOnLocationServiceAlert(_ notify: Notification.Name) {
+        NotificationUtils.didUpdate(notification: notify)
     }
     
     func notifiyDidUpdateLocation(newLocation: CLLocation) {
@@ -80,7 +82,7 @@ extension LocationService: CLLocationManagerDelegate {
     public func locationManager(_ manager: CLLocationManager,
                                 didFailWithError error: Error) {
         if (error as NSError).domain == kCLErrorDomain && (error as NSError).code == CLError.Code.denied.rawValue {
-            showTurnOnLocationServiceAlert()
+            showTurnOnLocationServiceAlert(.showTurnOnLocationServiceAlert)
         }
     }
     

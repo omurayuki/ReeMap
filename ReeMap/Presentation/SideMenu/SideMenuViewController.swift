@@ -105,16 +105,6 @@ extension SideMenuViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         delegate?.sidemenuViewController(self, didSelectItemAt: indexPath)
     }
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteButton = UITableViewRowAction(style: .normal, title: R.string.localizable.delete()) { [unowned self] _, _ in
-            //// didEndEditingRowAtで使用するため、一旦コピー
-            self.dataSource.listItems.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
-        deleteButton.backgroundColor = .red
-        return [deleteButton]
-    }
 }
 
 extension SideMenuViewController: UIGestureRecognizerDelegate {
