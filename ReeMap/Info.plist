@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -21,11 +23,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>"ReeMap"を使用するためには位置情報を常に取得する必要があります</string>
+	<string>&quot;ReeMap&quot;を使用するためには位置情報を常に取得する必要があります</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>"ReeMap"の使用中に位置情報の利用を許可しますか？</string>
+	<string>&quot;ReeMap&quot;の使用中に位置情報の利用を許可しますか？</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>"ReeMap"を使用するためには位置情報を常に取得する必要があります</string>
+	<string>&quot;ReeMap&quot;を使用するためには位置情報を常に取得する必要があります</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

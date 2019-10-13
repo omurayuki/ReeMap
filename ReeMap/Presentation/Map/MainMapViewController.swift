@@ -100,7 +100,7 @@ final class MainMapViewController: UIViewController {
 extension MainMapViewController {
     
     private func bindUI() {
-        let input = MainMapViewModel.Input(viewDidLayoutSubviews: rx.sentMessage(#selector(viewDidLayoutSubviews)).asObservable())
+        let input = MainMapViewModel.Input(viewWillAppear: rx.sentMessage(#selector(viewWillAppear(_:))).asObservable())
         let output = viewModel?.transform(input: input)
         
         output?.places
@@ -124,7 +124,7 @@ extension MainMapViewController {
                     .filter { $0.notification }
                     .forEach {
                         let destination = CLLocation(latitude: $0.latitude, longitude: $0.longitude)
-                        destination.distance(from: location) <= AppUserDefaultsUtils.getRemindMeter() ?? 0.0 ? self.createLocalNotification(place: $0) : ()
+                        destination.distance(from: location) <= AppUserDefaultsUtils.getRemindMeter() ? self.createLocalNotification(place: $0) : ()
                     }
             }).disposed(by: disposeBag)
         
@@ -216,12 +216,13 @@ extension MainMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation { return nil }
         guard
-            let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier,
-                                                                       for: annotation) as? MKMarkerAnnotationView,
+            let annotationView = mapView
+                .dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier,
+                                               for: annotation) as? MKMarkerAnnotationView,
             let customAnnotation = annotation as? Annotation
         else { return MKMarkerAnnotationView() }
         annotationView.markerTintColor = customAnnotation.color
-        annotationView.clusteringIdentifier = Constants.DictKey.clusteringIdentifier
+        annotationView.clusteringIdentifier = customAnnotation.clusteringIdentifier
         annotationView.canShowCallout = true
         return annotationView
     }
@@ -233,8 +234,6 @@ extension MainMapViewController: MKMapViewDelegate {
                                        annotation.streetAddress ?? "",
                                        annotation.notification ?? Bool())
         showHalfScreenNoteDetail()
-        view.layoutSubviews()
-        view.layoutIfNeeded()
     }
 }
 

@@ -3,6 +3,8 @@ import MapKit
 
 @objc class Annotation: NSObject {
     
+    let clusteringIdentifier = Constants.DictKey.clusteringIdentifier
+    
     var documentId: String?
     var content: String?
     var streetAddress: String?

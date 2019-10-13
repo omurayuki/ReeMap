@@ -12,7 +12,7 @@ final class NoteListTableViewCell: UITableViewCell {
     
     weak var delegate: NoteListDelegate!
     
-    private let disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     
     var docId: String!
     
@@ -49,20 +49,21 @@ final class NoteListTableViewCell: UITableViewCell {
         didSet {
             guard let notification = didPlaceUpdated?.notification else { return }
             notePostedTime.text = didPlaceUpdated?.updatedAt.offsetFrom()
-            notificationSwitchBtn.setOn(didPlaceUpdated?.notification ?? false, animated: true)
+            notificationSwitchBtn.setOn(notification, animated: true)
             noteContent.text = didPlaceUpdated?.content
             streetAddress.text = didPlaceUpdated?.streetAddress
             notification ? (noteListImage.image = #imageLiteral(resourceName: "pending_note")) : (noteListImage.image = #imageLiteral(resourceName: "checked_note"))
         }
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setup()
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+        bindUI()
     }
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setup()
         bindUI()
     }
     

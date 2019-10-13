@@ -22,7 +22,9 @@ final class MainMapRouting: MainMapRoutingProtocol {
     
     func showSelectDestinationPage(annotations: [Annotation]?) {
         let vc = AppDelegate.container.resolve(SelectDestinationViewController.self)
-        viewController?.present(UINavigationController(rootViewController: vc), animated: true)
+        let navVC = UINavigationController(rootViewController: vc)
+        navVC.modalPresentationStyle = .fullScreen
+        viewController?.present(navVC, animated: true)
         vc.didRecieveAnnotations = annotations
     }
     

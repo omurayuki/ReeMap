@@ -1,6 +1,5 @@
 import CoreLocation
 import Crashlytics
-import Fabric
 import Firebase
 import RxCocoa
 import RxSwift
@@ -20,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     override init() {
         super.init()
         FirebaseApp.configure()
-        Fabric.sharedSDK().debug = true
     }
 
     func application(_ application: UIApplication,

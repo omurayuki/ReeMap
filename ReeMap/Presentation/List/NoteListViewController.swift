@@ -93,6 +93,10 @@ extension NoteListViewController: UITableViewDelegate {
         tappedCellDelegate.didselectCell(place: dataSource.listItems[indexPath.row])
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteButton = UITableViewRowAction(style: .normal, title: R.string.localizable.delete()) { [unowned self] _, _ in
             //// didEndEditingRowAtで使用するため、一旦コピー

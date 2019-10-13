@@ -21,11 +21,7 @@ class WebViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        let myBlog = urlString
-        guard let url = NSURL(string: myBlog) as? URL else { return }
-        guard let request = NSURLRequest(url: url) as? URLRequest else { return }
         webView.navigationDelegate = self
-        webView.load(request)
         self.view.addSubview(webView)
         self.view.sendSubviewToBack(webView)
         navigationController?.isNavigationBarHidden = false
@@ -33,12 +29,22 @@ class WebViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let myBlog = urlString
+        guard let url = NSURL(string: myBlog) as? URL else { return }
+        guard let request = NSURLRequest(url: url) as? URLRequest else { return }
+        webView.load(request)
     }
 }
 
 extension WebViewController: WKNavigationDelegate {
     
-    private func webView(webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: NSError) {
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        print(error.localizedDescription)
+        showError(message: R.string.localizable.error_message_network())
+    }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        print(error.localizedDescription)
         showError(message: R.string.localizable.error_message_network())
     }
     
@@ -48,5 +54,10 @@ extension WebViewController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.setIndicator(show: false)
+    }
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        guard let url = navigationAction.request.url?.absoluteString else { return }
+        url.hasPrefix("http") ? decisionHandler(.allow) : decisionHandler(.cancel)
     }
 }

@@ -38,6 +38,7 @@
 		C9142719233E4C2900567B8E /* CreateMemoRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9142718233E4C2900567B8E /* CreateMemoRouting.swift */; };
 		C914952C2322089500FCF3AB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C914952B2322089500FCF3AB /* Localizable.strings */; };
 		C92C822A2323FC0B00983C36 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92C82292323FC0B00983C36 /* MapKit.framework */; };
+		C946E0B62351869D00576A72 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C946E0B52351869D00576A72 /* WebKit.framework */; };
 		C94996FA233B8F3500165AD6 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996F9233B8F3500165AD6 /* SideMenuViewController.swift */; };
 		C94996FC233BB30600165AD6 /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996FB233BB30600165AD6 /* SideMenuCell.swift */; };
 		C94996FE233BCD3E00165AD6 /* SideMenuUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996FD233BCD3E00165AD6 /* SideMenuUI.swift */; };
@@ -252,6 +253,7 @@
 		C9142718233E4C2900567B8E /* CreateMemoRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMemoRouting.swift; sourceTree = "<group>"; };
 		C914952B2322089500FCF3AB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C92C82292323FC0B00983C36 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C946E0B52351869D00576A72 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		C94996F9233B8F3500165AD6 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		C94996FB233BB30600165AD6 /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
 		C94996FD233BCD3E00165AD6 /* SideMenuUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuUI.swift; sourceTree = "<group>"; };
@@ -438,6 +440,7 @@
 				C9908804233B72EB00A0994E /* FirebaseMessaging.framework in Frameworks */,
 				C9AD9E05235057060001C42A /* Fabric.framework in Frameworks */,
 				C9908805233B72EB00A0994E /* gRPC-Core.framework in Frameworks */,
+				C946E0B62351869D00576A72 /* WebKit.framework in Frameworks */,
 				C9908806233B72EB00A0994E /* FirebaseInstanceID.framework in Frameworks */,
 				C9908808233B72EB00A0994E /* FirebaseAuth.framework in Frameworks */,
 				C9908809233B72EB00A0994E /* Protobuf.framework in Frameworks */,
@@ -483,6 +486,7 @@
 		AA67C0CD851106E09160443A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C946E0B52351869D00576A72 /* WebKit.framework */,
 				C9AD9DFD2350558B0001C42A /* Crashlytics.framework */,
 				C9AD9DFE2350558B0001C42A /* Fabric.framework */,
 				C98F789F234AFEFC00802678 /* Lottie.framework */,
