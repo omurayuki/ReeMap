@@ -45,7 +45,6 @@
 		C9499700233BE15D00165AD6 /* Nillable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996FF233BE15D00165AD6 /* Nillable.swift */; };
 		C9499702233BE1EC00165AD6 /* MenuCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9499701233BE1EC00165AD6 /* MenuCase.swift */; };
 		C949B7A32337F22C009E91FC /* FloatingPanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C949B7A22337F22C009E91FC /* FloatingPanel.framework */; };
-		C949B7A42337F22C009E91FC /* FloatingPanel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C949B7A22337F22C009E91FC /* FloatingPanel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C94A1A502335177700974431 /* MapUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A4F2335177700974431 /* MapUseCase.swift */; };
 		C94A1A522335178400974431 /* MapTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A512335178400974431 /* MapTranslator.swift */; };
 		C94A1A542335187D00974431 /* MapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A532335187D00974431 /* MapRepository.swift */; };
@@ -80,7 +79,6 @@
 		C98F789E234AF98400802678 /* location_map_pin.json in Resources */ = {isa = PBXBuildFile; fileRef = C98F789D234AF98400802678 /* location_map_pin.json */; };
 		C98F78A2234AFFC100802678 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98F78A1234AFFC100802678 /* SplashViewController.swift */; };
 		C98F78A4234B01B200802678 /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98F78A3234B01B200802678 /* Lottie.framework */; };
-		C98F78A5234B01B200802678 /* Lottie.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C98F78A3234B01B200802678 /* Lottie.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C98F78A9234B24F700802678 /* VersionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98F78A8234B24F700802678 /* VersionInfoViewController.swift */; };
 		C98F78AB234B25BA00802678 /* MenuDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98F78AA234B25BA00802678 /* MenuDetailCell.swift */; };
 		C9908801233B72EB00A0994E /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99087E8233B72E900A0994E /* GoogleAppMeasurement.framework */; };
@@ -132,7 +130,6 @@
 		C9A0564C232263B000EB9563 /* CountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A0564B232263B000EB9563 /* CountService.swift */; };
 		C9A64B16233CDC6800C00CC2 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A64B15233CDC6800C00CC2 /* Delegate.swift */; };
 		C9A64B1A233CF45A00C00CC2 /* Rswift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A64B19233CF45A00C00CC2 /* Rswift.framework */; };
-		C9A64B1B233CF45A00C00CC2 /* Rswift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9A64B19233CF45A00C00CC2 /* Rswift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C9A83800231E887700BC880C /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A837FF231E887700BC880C /* SnapshotHelper.swift */; };
 		C9AC338E2345C4D900A5AF7D /* SearchStreetAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AC338D2345C4D900A5AF7D /* SearchStreetAddressViewController.swift */; };
 		C9AC33902345C4E300A5AF7D /* SearchStreetAddressUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AC338F2345C4E300A5AF7D /* SearchStreetAddressUI.swift */; };
@@ -212,9 +209,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C949B7A42337F22C009E91FC /* FloatingPanel.framework in Embed Frameworks */,
-				C9A64B1B233CF45A00C00CC2 /* Rswift.framework in Embed Frameworks */,
-				C98F78A5234B01B200802678 /* Lottie.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1580,8 +1574,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 5WF5Y5M59G;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1603,9 +1597,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.g1221438.ReeMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "ReeMap-AppStore";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1614,8 +1608,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 5WF5Y5M59G;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1637,9 +1631,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.g1221438.ReeMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "ReeMap-AppStore";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

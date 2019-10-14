@@ -17,6 +17,6 @@ extension Reactive where Base: UILabel {
             .map { text in
                 guard let text = text else { return "" }
                 return text
-        }
+            }
     }
 }
