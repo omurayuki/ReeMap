@@ -44,7 +44,6 @@
 		C94996FE233BCD3E00165AD6 /* SideMenuUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996FD233BCD3E00165AD6 /* SideMenuUI.swift */; };
 		C9499700233BE15D00165AD6 /* Nillable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996FF233BE15D00165AD6 /* Nillable.swift */; };
 		C9499702233BE1EC00165AD6 /* MenuCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9499701233BE1EC00165AD6 /* MenuCase.swift */; };
-		C949B7A32337F22C009E91FC /* FloatingPanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C949B7A22337F22C009E91FC /* FloatingPanel.framework */; };
 		C94A1A502335177700974431 /* MapUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A4F2335177700974431 /* MapUseCase.swift */; };
 		C94A1A522335178400974431 /* MapTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A512335178400974431 /* MapTranslator.swift */; };
 		C94A1A542335187D00974431 /* MapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A532335187D00974431 /* MapRepository.swift */; };
@@ -63,6 +62,9 @@
 		C96C72D223211FC4001C2FA6 /* AnyVCBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C72D123211FC4001C2FA6 /* AnyVCBuilder.swift */; };
 		C96C72D423211FE1001C2FA6 /* VCInjectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C72D323211FE1001C2FA6 /* VCInjectable.swift */; };
 		C96E99262349DA3D00EB037D /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96E99252349DA3D00EB037D /* WebViewController.swift */; };
+		C9771F1F235568B70038A186 /* Rswift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A64B17233CF3A700C00CC2 /* Rswift.framework */; };
+		C9771F21235568B70038A186 /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98F789F234AFEFC00802678 /* Lottie.framework */; };
+		C9771F23235568B70038A186 /* FloatingPanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97CDE9123281C8400E1BF75 /* FloatingPanel.framework */; };
 		C97CDE8A23281C8400E1BF75 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DFA0762322833200EDCBCE /* Kingfisher.framework */; };
 		C97CDE8B23281C8400E1BF75 /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2F0E12317A59200F29B51 /* Reachability.framework */; };
 		C97CDE8C23281C8400E1BF75 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A0562C2322506A00EB9563 /* MBProgressHUD.framework */; };
@@ -78,7 +80,6 @@
 		C97D77E52348E9AC0010EEA2 /* AppDelegate+UserNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D77E42348E9AC0010EEA2 /* AppDelegate+UserNotification.swift */; };
 		C98F789E234AF98400802678 /* location_map_pin.json in Resources */ = {isa = PBXBuildFile; fileRef = C98F789D234AF98400802678 /* location_map_pin.json */; };
 		C98F78A2234AFFC100802678 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98F78A1234AFFC100802678 /* SplashViewController.swift */; };
-		C98F78A4234B01B200802678 /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98F78A3234B01B200802678 /* Lottie.framework */; };
 		C98F78A9234B24F700802678 /* VersionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98F78A8234B24F700802678 /* VersionInfoViewController.swift */; };
 		C98F78AB234B25BA00802678 /* MenuDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98F78AA234B25BA00802678 /* MenuDetailCell.swift */; };
 		C9908801233B72EB00A0994E /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99087E8233B72E900A0994E /* GoogleAppMeasurement.framework */; };
@@ -129,7 +130,6 @@
 		C9A056492322537500EB9563 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A056482322537500EB9563 /* TableViewDataSource.swift */; };
 		C9A0564C232263B000EB9563 /* CountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A0564B232263B000EB9563 /* CountService.swift */; };
 		C9A64B16233CDC6800C00CC2 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A64B15233CDC6800C00CC2 /* Delegate.swift */; };
-		C9A64B1A233CF45A00C00CC2 /* Rswift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A64B19233CF45A00C00CC2 /* Rswift.framework */; };
 		C9A83800231E887700BC880C /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A837FF231E887700BC880C /* SnapshotHelper.swift */; };
 		C9AC338E2345C4D900A5AF7D /* SearchStreetAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AC338D2345C4D900A5AF7D /* SearchStreetAddressViewController.swift */; };
 		C9AC33902345C4E300A5AF7D /* SearchStreetAddressUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AC338F2345C4E300A5AF7D /* SearchStreetAddressUI.swift */; };
@@ -253,7 +253,6 @@
 		C94996FD233BCD3E00165AD6 /* SideMenuUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuUI.swift; sourceTree = "<group>"; };
 		C94996FF233BE15D00165AD6 /* Nillable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nillable.swift; sourceTree = "<group>"; };
 		C9499701233BE1EC00165AD6 /* MenuCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCase.swift; sourceTree = "<group>"; };
-		C949B7A22337F22C009E91FC /* FloatingPanel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FloatingPanel.framework; path = Carthage/Build/iOS/FloatingPanel.framework; sourceTree = "<group>"; };
 		C94A1A4F2335177700974431 /* MapUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUseCase.swift; sourceTree = "<group>"; };
 		C94A1A512335178400974431 /* MapTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTranslator.swift; sourceTree = "<group>"; };
 		C94A1A532335187D00974431 /* MapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRepository.swift; sourceTree = "<group>"; };
@@ -273,6 +272,9 @@
 		C96C72CF23211FA0001C2FA6 /* VCBuildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCBuildable.swift; sourceTree = "<group>"; };
 		C96C72D123211FC4001C2FA6 /* AnyVCBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyVCBuilder.swift; sourceTree = "<group>"; };
 		C96C72D323211FE1001C2FA6 /* VCInjectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCInjectable.swift; sourceTree = "<group>"; };
+		C96C9C282355746F00C6FE4F /* Rswift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rswift.framework; path = Carthage/Build/iOS/Rswift.framework; sourceTree = "<group>"; };
+		C96C9C2A2355749F00C6FE4F /* Lottie.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lottie.framework; path = Carthage/Build/iOS/Lottie.framework; sourceTree = "<group>"; };
+		C96C9C2C235574BA00C6FE4F /* FloatingPanel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FloatingPanel.framework; path = Carthage/Build/iOS/FloatingPanel.framework; sourceTree = "<group>"; };
 		C96E99252349DA3D00EB037D /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		C97CDE9123281C8400E1BF75 /* FloatingPanel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FloatingPanel.framework; path = Carthage/Build/iOS/FloatingPanel.framework; sourceTree = "<group>"; };
 		C97D77DA2347DF140010EEA2 /* EditNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteViewController.swift; sourceTree = "<group>"; };
@@ -286,7 +288,6 @@
 		C98F789D234AF98400802678 /* location_map_pin.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = location_map_pin.json; sourceTree = "<group>"; };
 		C98F789F234AFEFC00802678 /* Lottie.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lottie.framework; path = Carthage/Build/iOS/Lottie.framework; sourceTree = "<group>"; };
 		C98F78A1234AFFC100802678 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
-		C98F78A3234B01B200802678 /* Lottie.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lottie.framework; path = Carthage/Build/iOS/Lottie.framework; sourceTree = "<group>"; };
 		C98F78A8234B24F700802678 /* VersionInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionInfoViewController.swift; sourceTree = "<group>"; };
 		C98F78AA234B25BA00802678 /* MenuDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailCell.swift; sourceTree = "<group>"; };
 		C99087E8233B72E900A0994E /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Carthage/Build/iOS/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
@@ -341,7 +342,6 @@
 		C9A0564B232263B000EB9563 /* CountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountService.swift; sourceTree = "<group>"; };
 		C9A64B15233CDC6800C00CC2 /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
 		C9A64B17233CF3A700C00CC2 /* Rswift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rswift.framework; path = Carthage/Build/iOS/Rswift.framework; sourceTree = "<group>"; };
-		C9A64B19233CF45A00C00CC2 /* Rswift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rswift.framework; path = Carthage/Build/iOS/Rswift.framework; sourceTree = "<group>"; };
 		C9A837FF231E887700BC880C /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		C9AC338D2345C4D900A5AF7D /* SearchStreetAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStreetAddressViewController.swift; sourceTree = "<group>"; };
 		C9AC338F2345C4E300A5AF7D /* SearchStreetAddressUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStreetAddressUI.swift; sourceTree = "<group>"; };
@@ -429,6 +429,7 @@
 				C9AD9E04235057060001C42A /* Crashlytics.framework in Frameworks */,
 				C990881D233B745700A0994E /* libsqlite3.tbd in Frameworks */,
 				C9908801233B72EB00A0994E /* GoogleAppMeasurement.framework in Frameworks */,
+				C9771F21235568B70038A186 /* Lottie.framework in Frameworks */,
 				C9908802233B72EB00A0994E /* nanopb.framework in Frameworks */,
 				C9908803233B72EB00A0994E /* gRPC-C++.framework in Frameworks */,
 				C9908804233B72EB00A0994E /* FirebaseMessaging.framework in Frameworks */,
@@ -446,19 +447,18 @@
 				C990880F233B72EB00A0994E /* FirebaseAnalytics.framework in Frameworks */,
 				C9908810233B72EB00A0994E /* FirebaseFunctions.framework in Frameworks */,
 				C9908811233B72EB00A0994E /* AppAuth.framework in Frameworks */,
+				C9771F23235568B70038A186 /* FloatingPanel.framework in Frameworks */,
 				C9908812233B72EB00A0994E /* BoringSSL-GRPC.framework in Frameworks */,
-				C98F78A4234B01B200802678 /* Lottie.framework in Frameworks */,
 				C9908814233B72EB00A0994E /* FirebaseFirestore.framework in Frameworks */,
 				C9908815233B72EB00A0994E /* FIRAnalyticsConnector.framework in Frameworks */,
+				C9771F1F235568B70038A186 /* Rswift.framework in Frameworks */,
 				C9908816233B72EB00A0994E /* leveldb-library.framework in Frameworks */,
 				C9908817233B72EB00A0994E /* FirebaseCore.framework in Frameworks */,
-				C9A64B1A233CF45A00C00CC2 /* Rswift.framework in Frameworks */,
 				C9908818233B72EB00A0994E /* FirebaseStorage.framework in Frameworks */,
 				C9908819233B72EB00A0994E /* GTMAppAuth.framework in Frameworks */,
 				C97CDE8A23281C8400E1BF75 /* Kingfisher.framework in Frameworks */,
 				C97CDE8B23281C8400E1BF75 /* Reachability.framework in Frameworks */,
 				C97CDE8C23281C8400E1BF75 /* MBProgressHUD.framework in Frameworks */,
-				C949B7A32337F22C009E91FC /* FloatingPanel.framework in Frameworks */,
 				C97CDE8D23281C8400E1BF75 /* EAIntroView.framework in Frameworks */,
 				C97CDE8E23281C8400E1BF75 /* RxRelay.framework in Frameworks */,
 				C97CDE8F23281C8400E1BF75 /* RxSwift.framework in Frameworks */,
@@ -829,12 +829,12 @@
 		C9B9F442231765C00013ED05 = {
 			isa = PBXGroup;
 			children = (
+				C96C9C2C235574BA00C6FE4F /* FloatingPanel.framework */,
+				C96C9C2A2355749F00C6FE4F /* Lottie.framework */,
+				C96C9C282355746F00C6FE4F /* Rswift.framework */,
 				C9AD9E02235057060001C42A /* Crashlytics.framework */,
 				C9AD9E03235057060001C42A /* Fabric.framework */,
-				C98F78A3234B01B200802678 /* Lottie.framework */,
-				C9A64B19233CF45A00C00CC2 /* Rswift.framework */,
 				C990881A233B73FC00A0994E /* gRPCCertificates-Cpp.bundle */,
-				C949B7A22337F22C009E91FC /* FloatingPanel.framework */,
 				C9E3F3AE2324A0EA00141BBC /* input.xcfilelist */,
 				C9855A652324ADFA00AA7DC6 /* output.xcfilelist */,
 				C97D77E22348E53F0010EEA2 /* checked_note.png */,
@@ -1574,9 +1574,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 19;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEVELOPMENT_TEAM = 5WF5Y5M59G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1589,6 +1589,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
@@ -1597,7 +1598,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.g1221438.ReeMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "ReeMap-AppStore";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1608,9 +1609,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 19;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEVELOPMENT_TEAM = 5WF5Y5M59G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1623,6 +1624,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
@@ -1631,7 +1633,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.g1221438.ReeMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "ReeMap-AppStore";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
