@@ -100,7 +100,8 @@ final class MainMapViewController: UIViewController {
 extension MainMapViewController {
     
     private func bindUI() {
-        let input = MainMapViewModel.Input(viewWillAppear: rx.sentMessage(#selector(viewWillAppear(_:))).asObservable())
+        let input = MainMapViewModel.Input(viewWillAppear: rx.sentMessage(#selector(viewWillAppear(_:))).asObservable(),
+                                           didUpdateLocation: NotificationCenter.default.rx.notification(.didUpdateLocation))
         let output = viewModel?.transform(input: input)
         
         output?.places
@@ -127,32 +128,28 @@ extension MainMapViewController {
                         destination.distance(from: location) <= AppUserDefaultsUtils.getRemindMeter() ? self.createLocalNotification(place: $0) : ()
                     }
             }).disposed(by: disposeBag)
+            
+        output?.newLocation
+            .subscribe(onNext: { [unowned self] location in
+                self.zoomTo(location: location)
+                self.viewModel?.updateLocation(location)
+            }).disposed(by: disposeBag)
         
         ui.currentLocationBtn.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
                 FirebaseAnalyticsUtil.setScreenName(.currentLocationBtn, screenClass: String(describing: type(of: self)))
-                
                 self.ui.setRegion(location: self.ui.mapView.userLocation.coordinate)
             }).disposed(by: disposeBag)
         
         ui.menuBtn.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
                 FirebaseAnalyticsUtil.setScreenName(.menuBtn, screenClass: String(describing: type(of: self)))
-                
                 self.ui.showSidemenu(isShownSidemenu: self.isShownSidemenu, contentAvailability: true, animated: true)
             }).disposed(by: disposeBag)
         
         ui.memoAddingBtn.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
                 self.routing?.showSelectDestinationPage(annotations: self.viewModel?.getAnnotations())
-            }).disposed(by: disposeBag)
-        
-        NotificationCenter.default.rx.notification(.didUpdateLocation)
-            .subscribe(onNext: { [unowned self] notification in
-                if let newLocation = notification.userInfo?[Constants.DictKey.location] as? CLLocation {
-                    self.zoomTo(location: newLocation)
-                    self.viewModel?.updateLocation(newLocation)
-                }
             }).disposed(by: disposeBag)
         
         NotificationCenter.default.rx.notification(.showTurnOnLocationServiceAlert)
