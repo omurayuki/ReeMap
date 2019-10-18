@@ -1,5 +1,5 @@
-import Foundation
 import FirebaseAuth
+import Foundation
 import RxSwift
 
 struct AuthProvider {

@@ -5,16 +5,6 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-protocol TappedSearchBarDelegate: NSObject {
-    
-    func tappedSearchBar()
-}
-
-protocol TappedCellDelegate: NSObject {
-    
-    func didselectCell(place: Place)
-}
-
 extension NoteListViewController: VCInjectable {
     
     typealias UI = NoteListUIProtocol
@@ -70,10 +60,21 @@ class NoteListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConfig()
+        bindUI()
     }
 }
 
 extension NoteListViewController {
+    
+    private func bindUI() {
+        let input = ViewModel.Input(switchNotification: rx.sentMessage(#selector(switchNotification(_:docId:))).asObservable())
+        let output = viewModel?.transform(input: input)
+        
+        output?.notificationError
+            .subscribe(onNext: { [unowned self] _ in
+                self.showError(message: R.string.localizable.error_message_network())
+            }).disposed(by: disposeBag)
+    }
     
     private func deleteRows(indexPath: IndexPath) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [unowned self] in
@@ -152,11 +153,6 @@ extension NoteListViewController: UISearchBarDelegate {
 }
 
 extension NoteListViewController: NoteListDelegate {
-    
-    func switchNotification(_ isOn: Bool, docId: String) {
-        viewModel?.updateNote([Constants.DictKey.notification: isOn], noteId: docId)
-            .subscribe(onError: { [unowned self] _ in
-                self.showError(message: R.string.localizable.error_message_network())
-            }).disposed(by: disposeBag)
-    }
+
+    @objc func switchNotification(_ isOn: Bool, docId: String) {}
 }
