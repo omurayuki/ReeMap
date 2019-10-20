@@ -14,3 +14,8 @@ protocol TappedCellDelegate: NSObject {
     
     func didselectCell(place: Place)
 }
+
+protocol NoteDetailDelegate: NSObject {
+    
+    func tappedEditBtn()
+}

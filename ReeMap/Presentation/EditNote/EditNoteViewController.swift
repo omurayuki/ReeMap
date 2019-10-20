@@ -1,5 +1,4 @@
 import CoreLocation
-import FirebaseFirestore
 import Foundation
 import MapKit
 import RxCocoa
@@ -12,8 +11,7 @@ extension EditNoteViewController: VCInjectable {
     typealias Routing = EditNoteRoutingProtocol
     typealias ViewModel = EditNoteViewModel
     
-    func setupConfig() {
-    }
+    func setupConfig() {}
 }
 
 final class EditNoteViewController: UIViewController {
@@ -22,20 +20,6 @@ final class EditNoteViewController: UIViewController {
     var routing: EditNoteRoutingProtocol? { didSet { routing?.viewController = self } }
     var viewModel: EditNoteViewModel?
     var disposeBag: DisposeBag!
-    
-    var didRecieveNoteId: String!
-    
-    var didRecieveStreetAddress: String? {
-        didSet {
-            ui.streetAddressLabel.text = didRecieveStreetAddress
-        }
-    }
-    
-    var didRecieveNote: String? {
-        didSet {
-            ui.memoTextView.insertText(didRecieveNote ?? "")
-        }
-    }
     
     override func loadView() {
         super.loadView()
@@ -46,13 +30,14 @@ final class EditNoteViewController: UIViewController {
         super.viewDidLoad()
         setupConfig()
         bindUI()
+        setUIData()
     }
 }
 
 extension EditNoteViewController {
     
     private func bindUI() {
-        let input = ViewModel.Input()
+        let input = ViewModel.Input(saveBtnTapped: ui.saveBtn.rx.tap.asObservable())
         let output = viewModel?.transform(input: input)
         
         output?.isLoading
@@ -63,6 +48,20 @@ extension EditNoteViewController {
         output?.isSaveBtnEnable
             .drive(onNext: { bool in
                 self.ui.saveBtn.isEnabled = bool
+            }).disposed(by: disposeBag)
+        
+        output?.noteSaveSuccess
+            .subscribe(onNext: { [unowned self] _ in
+                self.routing?.dismiss()
+                self.viewModel?.updateLoading(false)
+                self.viewModel?.setSaveBtnEnable(true)
+            }).disposed(by: disposeBag)
+        
+        output?.noteSaveError
+            .subscribe(onNext: { [unowned self] _ in
+                self.viewModel?.updateLoading(false)
+                self.viewModel?.setSaveBtnEnable(true)
+                self.showError(message: R.string.localizable.error_message_network())
             }).disposed(by: disposeBag)
         
         ui.cancelBtn.rx.tap.asDriver()
@@ -78,54 +77,20 @@ extension EditNoteViewController {
             .drive(onNext: { [unowned self] text in
                 guard let text = text else { return }
                 self.ui.saveBtn.isEnabled = !text.isEmpty
-            }).disposed(by: disposeBag)
-        
-        ui.saveBtn.rx.tap.asDriver()
-            .drive(onNext: { [unowned self] _ in
-                self.getPlacemarks(streetAddress: self.ui.streetAddressLabel.text ?? "",
-                                   completion: { [unowned self] latitude, longitude in
-                    self.updateNote(self.createEntity(latitude: latitude, longitude: longitude), completion: { [unowned self] in
-                        self.routing?.dismiss()
-                    })
-                })
+                self.viewModel?.setTextData(text)
             }).disposed(by: disposeBag)
     }
 }
 
 extension EditNoteViewController {
     
-    private func getPlacemarks(streetAddress: String, completion: @escaping (Double, Double) -> Void) {
-        viewModel?.getPlacemarks(streetAddress: streetAddress)
-            .subscribe(onSuccess: { placemark in
-                completion(placemark.location?.coordinate.latitude ?? 0.0, placemark.location?.coordinate.longitude ?? 0.0)
-            }, onError: { [unowned self] _ in
-                self.showError(message: R.string.localizable.could_not_get())
-            }).disposed(by: disposeBag)
-    }
-    
-    private func updateNote(_ note: EntityType, completion: @escaping () -> Void) {
-        viewModel?.updateLoading(true)
-        viewModel?.setSaveBtnEnable(false)
-        guard let docId = didRecieveNoteId else { return }
-        viewModel?.updateNote(note, noteId: docId)
-            .subscribe(onSuccess: { _ in
-                completion()
-                self.viewModel?.updateLoading(false)
-                self.viewModel?.setSaveBtnEnable(true)
-            }, onError: { _ in
-                self.viewModel?.updateLoading(false)
-                self.viewModel?.setSaveBtnEnable(true)
-                self.showError(message: R.string.localizable.error_message_network())
-            }).disposed(by: self.disposeBag)
-    }
-    
-    private func createEntity(latitude: Double, longitude: Double) -> EntityType {
-        return [
-            Constants.DictKey.updatedAt: FieldValue.serverTimestamp(),
-            Constants.DictKey.content: self.ui.memoTextView.text ?? "",
-            Constants.DictKey.notification: true,
-            Constants.DictKey.geoPoint: GeoPoint(latitude: latitude,
-                                                 longitude: longitude)
-        ]
+    private func setUIData() {
+        viewModel?.streetAddressRecieveHandler = { [unowned self] streetAddress in
+            self.ui.streetAddressLabel.text = streetAddress
+        }
+        
+        viewModel?.noteRecieveHandler = { [unowned self] note in
+            self.ui.memoTextView.insertText(note)
+        }
     }
 }

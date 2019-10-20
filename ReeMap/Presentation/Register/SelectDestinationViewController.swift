@@ -69,7 +69,7 @@ extension SelectDestinationViewController {
         let stack = UIStackView(arrangedSubviews: [
             settingsBtn,
             cancelBtn
-            ])
+        ])
         stack.spacing = 20
         [mapView, streetAddressLabel, stack].forEach { view.addSubview($0) }
         mapView.addSubview(selectImage)

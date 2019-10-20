@@ -58,7 +58,6 @@ final class SelectDestinationViewController: UIViewController {
         bindUI()
         setupConfig()
         zoomTo(location: currentLocation ?? CLLocation())
-        
         FirebaseAnalyticsUtil.setScreenName(.selectDestination, screenClass: String(describing: type(of: self)))
     }
 }
@@ -137,6 +136,8 @@ extension SelectDestinationViewController {
         completion()
     }
 }
+
+// MARK: MKMapViewDelegate
 
 extension SelectDestinationViewController: MKMapViewDelegate {
     

@@ -39,6 +39,7 @@
 		C914952C2322089500FCF3AB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C914952B2322089500FCF3AB /* Localizable.strings */; };
 		C920A45F235971AA00A93B66 /* MainMapViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C920A45E235971AA00A93B66 /* MainMapViewController+Extension.swift */; };
 		C92C822A2323FC0B00983C36 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92C82292323FC0B00983C36 /* MapKit.framework */; };
+		C92CD5C8235C4C7B00DFF50E /* MKMapItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92CD5C7235C4C7B00DFF50E /* MKMapItem+Extension.swift */; };
 		C946E0B62351869D00576A72 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C946E0B52351869D00576A72 /* WebKit.framework */; };
 		C94996FA233B8F3500165AD6 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996F9233B8F3500165AD6 /* SideMenuViewController.swift */; };
 		C94996FC233BB30600165AD6 /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996FB233BB30600165AD6 /* SideMenuCell.swift */; };
@@ -249,6 +250,7 @@
 		C914952B2322089500FCF3AB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C920A45E235971AA00A93B66 /* MainMapViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainMapViewController+Extension.swift"; sourceTree = "<group>"; };
 		C92C82292323FC0B00983C36 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C92CD5C7235C4C7B00DFF50E /* MKMapItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapItem+Extension.swift"; sourceTree = "<group>"; };
 		C946E0B52351869D00576A72 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		C94996F9233B8F3500165AD6 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		C94996FB233BB30600165AD6 /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
@@ -631,6 +633,7 @@
 				C9142710233E0E2C00567B8E /* Reactive+Extension.swift */,
 				C95543B52349788700CE8E53 /* UNMutableNotification+Extension.swift */,
 				C920A45E235971AA00A93B66 /* MainMapViewController+Extension.swift */,
+				C92CD5C7235C4C7B00DFF50E /* MKMapItem+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1284,6 +1287,7 @@
 				C9D7C1BC233A270500D933B5 /* NoteListRouting.swift in Sources */,
 				C9A056472322533E00EB9563 /* PaddingTextField.swift in Sources */,
 				C9AC33922345C4EC00A5AF7D /* SearchStreetAddressRouting.swift in Sources */,
+				C92CD5C8235C4C7B00DFF50E /* MKMapItem+Extension.swift in Sources */,
 				C9AC338E2345C4D900A5AF7D /* SearchStreetAddressViewController.swift in Sources */,
 				C9142715233E344800567B8E /* SelectDestinationRouting.swift in Sources */,
 				C9549C002350A119009AF6B4 /* FirebaseAnalyticsUtils.swift in Sources */,

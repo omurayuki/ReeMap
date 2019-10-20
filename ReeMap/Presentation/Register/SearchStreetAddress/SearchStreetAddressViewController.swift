@@ -5,8 +5,6 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-extension MKMapItem: Model {}
-
 extension SearchStreetAddressViewController: VCInjectable {
     
     typealias UI = SearchStreetAddressUIProtocol
@@ -31,6 +29,8 @@ final class SearchStreetAddressViewController: UIViewController {
     
     private var location: CLLocation!
     
+    // MARK: UITableViewDataSource
+    
     private(set) lazy var dataSource: DataSource = {
         DataSource(cellReuseIdentifier: String(describing: StreetAddressCell.self),
                    listItems: [],
@@ -47,7 +47,6 @@ final class SearchStreetAddressViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConfig()
-        
         FirebaseAnalyticsUtil.setScreenName(.searchDestination, screenClass: String(describing: type(of: self)))
     }
 }
@@ -59,6 +58,8 @@ extension SearchStreetAddressViewController {
     }
 }
 
+// MARK: UITableViewDelegate
+
 extension SearchStreetAddressViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -67,6 +68,8 @@ extension SearchStreetAddressViewController: UITableViewDelegate {
         routing?.popViewController(streetAddress: streetAddress)
     }
 }
+
+// MARK: UISearchResultsUpdating
 
 extension SearchStreetAddressViewController: UISearchResultsUpdating {
     
@@ -84,6 +87,8 @@ extension SearchStreetAddressViewController: UISearchResultsUpdating {
         }
     }
 }
+
+// MARK: UISearchBarDelegate
 
 extension SearchStreetAddressViewController: UISearchBarDelegate {
     

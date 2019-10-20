@@ -1,6 +1,6 @@
 import FloatingPanel
 
-// -TODO: factory method
+// TODO: factory method
 
 class BasicPanelLayout: FloatingPanelLayout {
     

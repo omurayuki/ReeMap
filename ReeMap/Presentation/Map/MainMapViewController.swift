@@ -34,6 +34,8 @@ final class MainMapViewController: UIViewController {
     
     private var isShownSidemenu: Bool { return ui.sideMenuVC.parent == self }
     
+    // MARK: PanelDelegate
+    
     // swiftlint:disable all
     private lazy var listPanelDelegate: PanelDelegate = {
         FloatingPanelDelegate(panel: BasicPanelLayout(panel: .tipPanel),
@@ -106,7 +108,7 @@ extension MainMapViewController {
         
         output?.places
             .subscribe(onNext: { [unowned self] places in
-                self.ui.noteListVC.didAcceptPlaces = places
+                self.ui.noteListVC.viewModel?.didAcceptPlaces = places
             }).disposed(by: disposeBag)
         
         output?.error
@@ -196,6 +198,8 @@ extension MainMapViewController {
     }
 }
 
+// MARK: MKMapViewDelegate
+
 extension MainMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
@@ -226,6 +230,8 @@ extension MainMapViewController: MKMapViewDelegate {
     }
 }
 
+// MARK: TappedSearchBarDelegate
+
 extension MainMapViewController: TappedSearchBarDelegate {
     
     func tappedSearchBar() {
@@ -241,6 +247,8 @@ extension MainMapViewController: TappedSearchBarDelegate {
     }
 }
 
+// MARK: TappedCellDelegate
+
 extension MainMapViewController: TappedCellDelegate {
     
     func didselectCell(place: Place) {
@@ -252,6 +260,8 @@ extension MainMapViewController: TappedCellDelegate {
     }
 }
 
+// MARK: SideMenuViewControllerDelegate
+
 extension MainMapViewController: SideMenuViewControllerDelegate {
     
     func sidemenuViewController(_ sidemenuViewController: SideMenuViewController, didSelectItemAt indexPath: IndexPath) {
@@ -259,7 +269,7 @@ extension MainMapViewController: SideMenuViewControllerDelegate {
         let menu = Menu.allCases[indexPath.row]
         switch menu {
         case .settings:
-            navigationController?.pushViewController(SettingsViewController(), animated: true)
+            routing?.showSettingsPage()
         case .version:
             routing?.showVersionPage()
         case .privacy:
@@ -271,6 +281,8 @@ extension MainMapViewController: SideMenuViewControllerDelegate {
         }
     }
 }
+
+// MARK: NoteDetailDelegate
 
 extension MainMapViewController: NoteDetailDelegate {
     
