@@ -46,7 +46,7 @@ extension EditNoteViewController {
             }).disposed(by: disposeBag)
         
         output?.isSaveBtnEnable
-            .drive(onNext: { bool in
+            .drive(onNext: { [unowned self] bool in
                 self.ui.saveBtn.isEnabled = bool
             }).disposed(by: disposeBag)
         

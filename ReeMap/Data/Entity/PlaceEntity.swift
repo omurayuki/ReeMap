@@ -27,13 +27,13 @@ struct PlaceEntity: Entity {
     
     init(document: [String: Any], documentId: String) {
         guard
-            let uid = document["uid"] as? String,
-            let title = document["content"] as? String,
-            let notification = document["notification"] as? Bool,
-            let streetAddress = document["street_addresss"] as? String,
-            let geoPoint = document["geo_point"] as? GeoPoint,
-            let updatedAt = document["updated_at"] as? Timestamp,
-            let createdAt = document["created_at"] as? Timestamp
+            let uid = document[Constants.DictKey.uid] as? String,
+            let title = document[Constants.DictKey.content] as? String,
+            let notification = document[Constants.DictKey.notification] as? Bool,
+            let streetAddress = document[Constants.DictKey.streetAddress] as? String,
+            let geoPoint = document[Constants.DictKey.geoPoint] as? GeoPoint,
+            let updatedAt = document[Constants.DictKey.updatedAt] as? Timestamp,
+            let createdAt = document[Constants.DictKey.createdAt] as? Timestamp
         else {
             self.documentId = ""
             self.uid = ""

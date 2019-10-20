@@ -14,8 +14,9 @@ final class SelectDestinationRouting: SelectDestinationRoutingProtocol {
     
     func showCreateMemoPage(address: String) {
         let vc = AppDelegate.container.resolve(CreateMemoViewController.self)
-        vc.didRecieveStreetAddress = address
+        vc.didRecieve = address
         viewController?.navigationController?.pushViewController(vc, animated: true)
+        vc.viewModel?.didRecieveStreetAddress = address
     }
     
     func showSearchStreetAddressPage(location: CLLocation) {
