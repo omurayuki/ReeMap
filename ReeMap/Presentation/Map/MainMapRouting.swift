@@ -31,7 +31,7 @@ final class MainMapRouting: MainMapRoutingProtocol {
         let navVC = UINavigationController(rootViewController: vc)
         navVC.modalPresentationStyle = .fullScreen
         viewController?.present(navVC, animated: true)
-        vc.didRecieveAnnotations = annotations
+        vc.viewModel?.didRecieveAnnotations = annotations
     }
     
     func showWebViewPage(url: String) {
