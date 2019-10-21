@@ -50,11 +50,7 @@ class NoteListViewController: UIViewController {
         super.viewDidLoad()
         setupConfig()
         bindUI()
-        viewModel?.placeAcceptHandler = { [unowned self] places in
-            self.dataSource.listItems = places
-            self.viewModel?.places = places
-            self.ui.tableView.reloadData()
-        }
+        setUIData()
     }
 }
 
@@ -80,6 +76,14 @@ extension NoteListViewController {
 extension NoteListViewController {
     
     @objc private func deleteRows(indexPath: IndexPath) {}
+    
+    private func setUIData() {
+        viewModel?.placeAcceptHandler = { [unowned self] places in
+            self.dataSource.listItems = places
+            self.viewModel?.places = places
+            self.ui.tableView.reloadData()
+        }
+    }
 }
 
 // MARK: UITableViewDelegate
