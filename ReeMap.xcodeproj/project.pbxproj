@@ -37,7 +37,9 @@
 		C9142717233E4C1A00567B8E /* CreateMemoUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9142716233E4C1A00567B8E /* CreateMemoUI.swift */; };
 		C9142719233E4C2900567B8E /* CreateMemoRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9142718233E4C2900567B8E /* CreateMemoRouting.swift */; };
 		C914952C2322089500FCF3AB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C914952B2322089500FCF3AB /* Localizable.strings */; };
+		C920A45F235971AA00A93B66 /* MainMapViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C920A45E235971AA00A93B66 /* MainMapViewController+Extension.swift */; };
 		C92C822A2323FC0B00983C36 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92C82292323FC0B00983C36 /* MapKit.framework */; };
+		C92CD5C8235C4C7B00DFF50E /* MKMapItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92CD5C7235C4C7B00DFF50E /* MKMapItem+Extension.swift */; };
 		C946E0B62351869D00576A72 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C946E0B52351869D00576A72 /* WebKit.framework */; };
 		C94996FA233B8F3500165AD6 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996F9233B8F3500165AD6 /* SideMenuViewController.swift */; };
 		C94996FC233BB30600165AD6 /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996FB233BB30600165AD6 /* SideMenuCell.swift */; };
@@ -246,7 +248,9 @@
 		C9142716233E4C1A00567B8E /* CreateMemoUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMemoUI.swift; sourceTree = "<group>"; };
 		C9142718233E4C2900567B8E /* CreateMemoRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMemoRouting.swift; sourceTree = "<group>"; };
 		C914952B2322089500FCF3AB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		C920A45E235971AA00A93B66 /* MainMapViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainMapViewController+Extension.swift"; sourceTree = "<group>"; };
 		C92C82292323FC0B00983C36 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C92CD5C7235C4C7B00DFF50E /* MKMapItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapItem+Extension.swift"; sourceTree = "<group>"; };
 		C946E0B52351869D00576A72 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		C94996F9233B8F3500165AD6 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		C94996FB233BB30600165AD6 /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
@@ -628,6 +632,8 @@
 				C9D7C1BD233A2A5300D933B5 /* UISearchBar+Extension.swift */,
 				C9142710233E0E2C00567B8E /* Reactive+Extension.swift */,
 				C95543B52349788700CE8E53 /* UNMutableNotification+Extension.swift */,
+				C920A45E235971AA00A93B66 /* MainMapViewController+Extension.swift */,
+				C92CD5C7235C4C7B00DFF50E /* MKMapItem+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1281,6 +1287,7 @@
 				C9D7C1BC233A270500D933B5 /* NoteListRouting.swift in Sources */,
 				C9A056472322533E00EB9563 /* PaddingTextField.swift in Sources */,
 				C9AC33922345C4EC00A5AF7D /* SearchStreetAddressRouting.swift in Sources */,
+				C92CD5C8235C4C7B00DFF50E /* MKMapItem+Extension.swift in Sources */,
 				C9AC338E2345C4D900A5AF7D /* SearchStreetAddressViewController.swift in Sources */,
 				C9142715233E344800567B8E /* SelectDestinationRouting.swift in Sources */,
 				C9549C002350A119009AF6B4 /* FirebaseAnalyticsUtils.swift in Sources */,
@@ -1298,6 +1305,7 @@
 				C94A1A542335187D00974431 /* MapRepository.swift in Sources */,
 				C9095115232242D60080A25B /* DateFormatter+Extension.swift in Sources */,
 				C9D6C5EC232109C20064AACD /* UI.swift in Sources */,
+				C920A45F235971AA00A93B66 /* MainMapViewController+Extension.swift in Sources */,
 				C9D5A49D23447D0D00720A8A /* LocationDataStoreFactory.swift in Sources */,
 				C9A0563A2322528F00EB9563 /* Array+Extension.swift in Sources */,
 				C9AD9DE6234FF4FC0001C42A /* SettingsViewController.swift in Sources */,
@@ -1503,7 +1511,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1559,7 +1567,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1576,7 +1584,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.2;
+				CURRENT_PROJECT_VERSION = 1.3;
 				DEVELOPMENT_TEAM = 5WF5Y5M59G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1589,7 +1597,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
@@ -1611,7 +1619,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.2;
+				CURRENT_PROJECT_VERSION = 1.3;
 				DEVELOPMENT_TEAM = 5WF5Y5M59G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1624,7 +1632,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",

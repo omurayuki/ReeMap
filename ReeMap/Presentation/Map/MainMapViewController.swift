@@ -34,9 +34,11 @@ final class MainMapViewController: UIViewController {
     
     private var isShownSidemenu: Bool { return ui.sideMenuVC.parent == self }
     
+    // MARK: FloatingPanelDelegate
+    
     // swiftlint:disable all
     private lazy var listPanelDelegate: PanelDelegate = {
-        FloatingPanelDelegate(panel: BasicPanelLayout(panel: .tipPanel),
+        FloatingPanelDelegate(panel: PanelFactory.createBasicPanelLayout(),
            panelLayoutforHandler:
         { [unowned self] _, _ in
             self.ui.noteListVC.ui.changeTableAlpha(0.2)
@@ -55,7 +57,7 @@ final class MainMapViewController: UIViewController {
     }()
     
     private lazy var detailPanelDelegate: PanelDelegate = {
-        FloatingPanelDelegate(panel: HiddenPanelLayout(panel: .hiddenPanel),
+        FloatingPanelDelegate(panel: PanelFactory.createHiddenPanelLayout(),
            panelLayoutforHandler:
         { [unowned self] _, _ in
             self.ui.noteDetailVC.changeTableAlpha(0.2)
@@ -100,12 +102,13 @@ final class MainMapViewController: UIViewController {
 extension MainMapViewController {
     
     private func bindUI() {
-        let input = MainMapViewModel.Input(viewWillAppear: rx.sentMessage(#selector(viewWillAppear(_:))).asObservable())
+        let input = MainMapViewModel.Input(viewWillAppear: rx.sentMessage(#selector(viewWillAppear(_:))).asObservable(),
+                                           didUpdateLocation: NotificationCenter.default.rx.notification(.didUpdateLocation))
         let output = viewModel?.transform(input: input)
         
         output?.places
             .subscribe(onNext: { [unowned self] places in
-                self.ui.noteListVC.didAcceptPlaces = places
+                self.ui.noteListVC.viewModel?.didAcceptPlaces = places
             }).disposed(by: disposeBag)
         
         output?.error
@@ -127,32 +130,28 @@ extension MainMapViewController {
                         destination.distance(from: location) <= AppUserDefaultsUtils.getRemindMeter() ? self.createLocalNotification(place: $0) : ()
                     }
             }).disposed(by: disposeBag)
+            
+        output?.newLocation
+            .subscribe(onNext: { [unowned self] location in
+                self.zoomTo(location: location)
+                self.viewModel?.updateLocation(location)
+            }).disposed(by: disposeBag)
         
         ui.currentLocationBtn.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
                 FirebaseAnalyticsUtil.setScreenName(.currentLocationBtn, screenClass: String(describing: type(of: self)))
-                
                 self.ui.setRegion(location: self.ui.mapView.userLocation.coordinate)
             }).disposed(by: disposeBag)
         
         ui.menuBtn.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
                 FirebaseAnalyticsUtil.setScreenName(.menuBtn, screenClass: String(describing: type(of: self)))
-                
                 self.ui.showSidemenu(isShownSidemenu: self.isShownSidemenu, contentAvailability: true, animated: true)
             }).disposed(by: disposeBag)
         
         ui.memoAddingBtn.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
                 self.routing?.showSelectDestinationPage(annotations: self.viewModel?.getAnnotations())
-            }).disposed(by: disposeBag)
-        
-        NotificationCenter.default.rx.notification(.didUpdateLocation)
-            .subscribe(onNext: { [unowned self] notification in
-                if let newLocation = notification.userInfo?[Constants.DictKey.location] as? CLLocation {
-                    self.zoomTo(location: newLocation)
-                    self.viewModel?.updateLocation(newLocation)
-                }
             }).disposed(by: disposeBag)
         
         NotificationCenter.default.rx.notification(.showTurnOnLocationServiceAlert)
@@ -197,23 +196,9 @@ extension MainMapViewController {
             ui.mapView.setCenter(location.coordinate, animated: true)
         })
     }
-    
-    func createLocalNotification(place: Place) {
-        let content = UNMutableNotificationContent()
-        content.createLocalNotification(title: R.string.localizable.remind(),
-                                        content: place.content,
-                                        sound: UNNotificationSound.default,
-                                        resource: (image: Constants.Resource.resource.image,
-                                                   type: Constants.Resource.resource.type),
-                                        requestIdentifier: Constants.Identifier.notification,
-                                        notificationHandler: { [unowned self] in
-            self.viewModel?.updateNote([Constants.DictKey.notification: false], noteId: place.documentId)
-                .subscribe(onError: { [unowned self] _ in
-                    self.showError(message: R.string.localizable.could_not_update_note())
-                }).disposed(by: self.disposeBag)
-        })
-    }
 }
+
+// MARK: MKMapViewDelegate
 
 extension MainMapViewController: MKMapViewDelegate {
     
@@ -223,12 +208,8 @@ extension MainMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation { return nil }
-        guard
-            let annotationView = mapView
-                .dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier,
-                                               for: annotation) as? MKMarkerAnnotationView,
-            let customAnnotation = annotation as? Annotation
-        else { return MKMarkerAnnotationView() }
+        guard let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation) as? MKMarkerAnnotationView,
+            let customAnnotation = annotation as? Annotation else { return MKMarkerAnnotationView() }
         annotationView.markerTintColor = customAnnotation.color
         annotationView.clusteringIdentifier = customAnnotation.clusteringIdentifier
         annotationView.canShowCallout = true
@@ -245,6 +226,8 @@ extension MainMapViewController: MKMapViewDelegate {
     }
 }
 
+// MARK: TappedSearchBarDelegate
+
 extension MainMapViewController: TappedSearchBarDelegate {
     
     func tappedSearchBar() {
@@ -260,6 +243,8 @@ extension MainMapViewController: TappedSearchBarDelegate {
     }
 }
 
+// MARK: TappedCellDelegate
+
 extension MainMapViewController: TappedCellDelegate {
     
     func didselectCell(place: Place) {
@@ -271,6 +256,8 @@ extension MainMapViewController: TappedCellDelegate {
     }
 }
 
+// MARK: SideMenuViewControllerDelegate
+
 extension MainMapViewController: SideMenuViewControllerDelegate {
     
     func sidemenuViewController(_ sidemenuViewController: SideMenuViewController, didSelectItemAt indexPath: IndexPath) {
@@ -278,7 +265,7 @@ extension MainMapViewController: SideMenuViewControllerDelegate {
         let menu = Menu.allCases[indexPath.row]
         switch menu {
         case .settings:
-            navigationController?.pushViewController(SettingsViewController(), animated: true)
+            routing?.showSettingsPage()
         case .version:
             routing?.showVersionPage()
         case .privacy:
@@ -290,6 +277,8 @@ extension MainMapViewController: SideMenuViewControllerDelegate {
         }
     }
 }
+
+// MARK: NoteDetailDelegate
 
 extension MainMapViewController: NoteDetailDelegate {
     

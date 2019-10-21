@@ -5,8 +5,6 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-extension MKMapItem: Model {}
-
 extension SearchStreetAddressViewController: VCInjectable {
     
     typealias UI = SearchStreetAddressUIProtocol
@@ -17,8 +15,6 @@ extension SearchStreetAddressViewController: VCInjectable {
     func setupConfig() {
         ui.tableView.dataSource = dataSource
         ui.tableView.delegate = self
-        ui.searchController.searchResultsUpdater = self
-        ui.searchController.searchBar.delegate = self
     }
 }
 
@@ -29,7 +25,7 @@ final class SearchStreetAddressViewController: UIViewController {
     var viewModel: SearchStreetAddressViewModel?
     var disposeBag: DisposeBag!
     
-    private var location: CLLocation!
+    // MARK: UITableViewDataSource
     
     private(set) lazy var dataSource: DataSource = {
         DataSource(cellReuseIdentifier: String(describing: StreetAddressCell.self),
@@ -47,17 +43,47 @@ final class SearchStreetAddressViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConfig()
-        
+        bindUI()
         FirebaseAnalyticsUtil.setScreenName(.searchDestination, screenClass: String(describing: type(of: self)))
     }
 }
 
 extension SearchStreetAddressViewController {
     
-    func didRecieveCurrentLocation(_ location: CLLocation) {
-        self.location = location
+    private func bindUI() {
+        let input = ViewModel.Input(updateText: ui.searchController.searchBar.rx.text.orEmpty.asObservable())
+        let output = viewModel?.transform(input: input)
+        
+        output?.searchResultSuccess
+            .subscribe(onNext: { [unowned self] mapItems in
+                self.ui.generateTableView()
+                self.dataSource.listItems = mapItems
+                self.ui.tableView.reloadData()
+            }).disposed(by: disposeBag)
+        
+        output?.searchResultError
+            .subscribe(onNext: { [unowned self] _ in
+                self.showError(message: R.string.localizable.could_not_get())
+            }).disposed(by: disposeBag)
+        
+        output?.isSearchFieldEmpty
+            .subscribe(onNext: { [unowned self] isEmpty in
+                if isEmpty {
+                    self.dataSource.listItems = []
+                    self.ui.hideTable()
+                }
+            }).disposed(by: disposeBag)
     }
 }
+
+extension SearchStreetAddressViewController {
+    
+    func didRecieveCurrentLocation(_ location: CLLocation) {
+        self.viewModel?.setLocation(location)
+    }
+}
+
+// MARK: UITableViewDelegate
 
 extension SearchStreetAddressViewController: UITableViewDelegate {
     
@@ -65,34 +91,5 @@ extension SearchStreetAddressViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let streetAddress = dataSource.listItems[indexPath.row].placemark.title else { return }
         routing?.popViewController(streetAddress: streetAddress)
-    }
-}
-
-extension SearchStreetAddressViewController: UISearchResultsUpdating {
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text else { return }
-        if !text.isEmpty {
-            viewModel?.acquisitionSearchedResult(query: text, location: location)
-                .subscribe(onSuccess: { [unowned self] mapItems in
-                    self.ui.generateTableView()
-                    self.dataSource.listItems = mapItems
-                    self.ui.tableView.reloadData()
-                    }, onError: { [unowned self] _ in
-                        self.showError(message: R.string.localizable.could_not_get())
-                }).disposed(by: disposeBag)
-        }
-    }
-}
-
-extension SearchStreetAddressViewController: UISearchBarDelegate {
-    
-    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
-        guard let bool = searchBar.text?.isEmpty else { return false }
-        if bool {
-            dataSource.listItems = []
-            ui.hideTable()
-        }
-        return true
     }
 }

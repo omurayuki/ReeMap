@@ -3,6 +3,7 @@ import UIKit
 protocol MainMapRoutingProtocol: Routing {
     
     func showSettingsAlert(completion: @escaping () -> Void)
+    func showSettingsPage()
     func showSelectDestinationPage(annotations: [Annotation]?)
     func showWebViewPage(url: String)
     func showVersionPage()
@@ -20,12 +21,17 @@ final class MainMapRouting: MainMapRoutingProtocol {
         }
     }
     
+    func showSettingsPage() {
+        guard let vc = viewController else { return }
+        vc.navigationController?.pushViewController(SettingsViewController(), animated: true)
+    }
+    
     func showSelectDestinationPage(annotations: [Annotation]?) {
         let vc = AppDelegate.container.resolve(SelectDestinationViewController.self)
         let navVC = UINavigationController(rootViewController: vc)
         navVC.modalPresentationStyle = .fullScreen
         viewController?.present(navVC, animated: true)
-        vc.didRecieveAnnotations = annotations
+        vc.viewModel?.didRecieveAnnotations = annotations
     }
     
     func showWebViewPage(url: String) {

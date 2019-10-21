@@ -26,6 +26,7 @@ extension MainMapViewModel {
     struct Input {
         
         let viewWillAppear: Observable<[Any]>
+        let didUpdateLocation: Observable<Notification>
     }
     
     struct Output {
@@ -34,6 +35,7 @@ extension MainMapViewModel {
         let error: Observable<Error>
         var didAnnotationFetched: Observable<[Annotation]>
         var didLocationUpdated: Observable<CLLocation>
+        var newLocation: Observable<CLLocation>
     }
     
     func transform(input: Input) -> Output {
@@ -50,10 +52,17 @@ extension MainMapViewModel {
                     }).materialize()
             }.share(replay: 1)
         
+        let newLocation = input.didUpdateLocation
+            .flatMap { notification -> Observable<CLLocation> in
+                guard let newLocation = notification.userInfo?[Constants.DictKey.location] as? CLLocation else { return .empty() }
+                return Observable.of(newLocation)
+            }.share(replay: 1)
+        
         return Output(places: places.elements(),
                       error: places.errors(),
                       didAnnotationFetched: annotations.compactMap { $0 },
-                      didLocationUpdated: currentLocation.asObservable())
+                      didLocationUpdated: currentLocation.asObservable(),
+                      newLocation: newLocation)
     }
 }
 

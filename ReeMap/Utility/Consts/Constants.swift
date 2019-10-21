@@ -5,12 +5,15 @@ struct Constants {
     
     struct DictKey {
         
+        static let uid = "uid"
         static let clusteringIdentifier = "clusteringIdentifier"
         static let location = "location"
         static let notification = "notification"
         static let updatedAt = "updated_at"
+        static let createdAt = "created_at"
         static let content = "content"
         static let geoPoint = "geo_point"
+        static let streetAddress = "street_address"
     }
     
     struct Resource {

@@ -5,16 +5,6 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-protocol TappedSearchBarDelegate: NSObject {
-    
-    func tappedSearchBar()
-}
-
-protocol TappedCellDelegate: NSObject {
-    
-    func didselectCell(place: Place)
-}
-
 extension NoteListViewController: VCInjectable {
     
     typealias UI = NoteListUIProtocol
@@ -38,19 +28,8 @@ class NoteListViewController: UIViewController {
     
     weak var tappedSearchBarDelegate: TappedSearchBarDelegate!
     weak var tappedCellDelegate: TappedCellDelegate!
-    private var places: [Place]?
-    private var placesForDeletion: [Place]?
-    private var searchResultPlaces: [Place]?
-    private var placeForEditing: (note: String, address: String, noteId: String)?
     
-    var didAcceptPlaces: [Place]? {
-        didSet {
-            guard let places = didAcceptPlaces else { return }
-            dataSource.listItems = places
-            self.places = places
-            ui.tableView.reloadData()
-        }
-    }
+    // MARK: UITableViewDataSource
     
     private(set) lazy var dataSource: DataSource = {
         DataSource(cellReuseIdentifier: String(describing: NoteListTableViewCell.self),
@@ -70,21 +49,44 @@ class NoteListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConfig()
+        bindUI()
+        setUIData()
     }
 }
 
 extension NoteListViewController {
     
-    private func deleteRows(indexPath: IndexPath) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [unowned self] in
-            guard let places = self.placesForDeletion else { return }
-            self.viewModel?.deleteNote(place: places[indexPath.row])
-                .subscribe(onError: { [unowned self] _ in
-                        self.showError(message: R.string.localizable.could_not_delete())
-                }).disposed(by: self.disposeBag)
-        })
+    private func bindUI() {
+        let input = ViewModel.Input(switchNotification: rx.sentMessage(#selector(switchNotification(_:docId:))).asObservable(),
+                                    deleteRows: rx.sentMessage(#selector(deleteRows(indexPath:))).asObservable())
+        let output = viewModel?.transform(input: input)
+        
+        output?.notificationError
+            .subscribe(onNext: { [unowned self] _ in
+                self.showError(message: R.string.localizable.error_message_network())
+            }).disposed(by: disposeBag)
+        
+        output?.deleteError
+            .subscribe(onNext: { [unowned self] _ in
+                self.showError(message: R.string.localizable.could_not_delete())
+            }).disposed(by: disposeBag)
     }
 }
+
+extension NoteListViewController {
+    
+    @objc private func deleteRows(indexPath: IndexPath) {}
+    
+    private func setUIData() {
+        viewModel?.placeAcceptHandler = { [unowned self] places in
+            self.dataSource.listItems = places
+            self.viewModel?.places = places
+            self.ui.tableView.reloadData()
+        }
+    }
+}
+
+// MARK: UITableViewDelegate
 
 extension NoteListViewController: UITableViewDelegate {
     
@@ -100,7 +102,7 @@ extension NoteListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteButton = UITableViewRowAction(style: .normal, title: R.string.localizable.delete()) { [unowned self] _, _ in
             //// didEndEditingRowAtで使用するため、一旦コピー
-            self.placesForDeletion = self.dataSource.listItems
+            self.viewModel?.placesForDeletion = self.dataSource.listItems
             self.dataSource.listItems.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             self.deleteRows(indexPath: indexPath)
@@ -109,6 +111,8 @@ extension NoteListViewController: UITableViewDelegate {
         return [deleteButton]
     }
 }
+
+// MARK: UISearchBarDelegate
 
 extension NoteListViewController: UISearchBarDelegate {
     
@@ -120,10 +124,10 @@ extension NoteListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let text = searchBar.text else { return }
-        searchResultPlaces = places?
+        viewModel?.searchResultPlaces = viewModel?.places?
             .filter { $0.content.contains(text) }
             .compactMap { $0 }
-        guard let places = searchResultPlaces else { return }
+        guard let places = viewModel?.searchResultPlaces else { return }
         dataSource.listItems = places
         ui.animateReload()
     }
@@ -132,7 +136,7 @@ extension NoteListViewController: UISearchBarDelegate {
         searchBar.endEditing(true)
         guard let text = searchBar.text else { return false }
         if text.isEmpty {
-            dataSource.listItems = places ?? []
+            dataSource.listItems = viewModel?.places ?? []
             ui.animateReload()
         }
         return true
@@ -141,7 +145,7 @@ extension NoteListViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         searchBar.text = ""
-        dataSource.listItems = places ?? []
+        dataSource.listItems = viewModel?.places ?? []
         searchBar.endEditing(true)
     }
     
@@ -151,12 +155,9 @@ extension NoteListViewController: UISearchBarDelegate {
     }
 }
 
+// MARK: NoteListDelegate
+
 extension NoteListViewController: NoteListDelegate {
-    
-    func switchNotification(_ isOn: Bool, docId: String) {
-        viewModel?.updateNote([Constants.DictKey.notification: isOn], noteId: docId)
-            .subscribe(onError: { [unowned self] _ in
-                self.showError(message: R.string.localizable.error_message_network())
-            }).disposed(by: disposeBag)
-    }
+
+    @objc func switchNotification(_ isOn: Bool, docId: String) {}
 }

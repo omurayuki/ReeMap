@@ -4,11 +4,6 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-protocol NoteDetailDelegate: NSObject {
-    
-    func tappedEditBtn()
-}
-
 extension NoteDetailViewController: VCInjectable {
     
     typealias UI = NoteDetailUIProtocol
@@ -30,6 +25,15 @@ final class NoteDetailViewController: UIViewController {
     
     weak var delegate: NoteDetailDelegate!
     
+    var recieveData: NoteDetailConstitution! {
+        didSet {
+            dataSource.listItems = [recieveData]
+            ui.tableView.reloadData()
+        }
+    }
+    
+    // MARK: UITableViewDataSource
+    
     private(set) lazy var dataSource: DataSource = {
         DataSource(cellReuseIdentifier: String(describing: NoteDetailCell.self),
                    listItems: [],
@@ -38,13 +42,6 @@ final class NoteDetailViewController: UIViewController {
             cell.didRecieveDetail = item
         })
     }()
-    
-    var recieveData: NoteDetailConstitution! {
-        didSet {
-            dataSource.listItems = [recieveData]
-            ui.tableView.reloadData()
-        }
-    }
     
     override func loadView() {
         super.loadView()
@@ -64,11 +61,9 @@ extension NoteDetailViewController {
         
         cell.editBtn.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
-                let vc = AppDelegate.container.resolve(EditNoteViewController.self)
-                vc.didRecieveStreetAddress = self.recieveData.streetAddress
-                vc.didRecieveNote = self.recieveData.content
-                vc.didRecieveNoteId = self.recieveData.documentId
-                self.present(vc, animated: true)
+                self.routing?.showEditPage(streetAddress: self.recieveData.streetAddress,
+                                           content: self.recieveData.content,
+                                           documentId: self.recieveData.documentId)
                 self.delegate.tappedEditBtn()
             }).disposed(by: disposeBag)
     }

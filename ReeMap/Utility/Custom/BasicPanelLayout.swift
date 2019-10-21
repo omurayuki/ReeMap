@@ -1,8 +1,28 @@
 import FloatingPanel
 
-// -TODO: factory method
+protocol PanelLayout where Self: FloatingPanelLayout {
+    
+    var panelType: PanelCase! { get set }
+}
 
-class BasicPanelLayout: FloatingPanelLayout {
+protocol PanelFactoryProtocol {
+    
+    static func createBasicPanelLayout() -> PanelLayout
+    static func createHiddenPanelLayout() -> PanelLayout
+}
+
+final class PanelFactory: PanelFactoryProtocol {
+    
+    static func createBasicPanelLayout() -> PanelLayout {
+        return BasicPanelLayout(panel: .tipPanel)
+    }
+    
+    static func createHiddenPanelLayout() -> PanelLayout {
+        return HiddenPanelLayout(panel: .hiddenPanel)
+    }
+}
+
+class BasicPanelLayout: FloatingPanelLayout, PanelLayout {
     
     var panelType: PanelCase!
     
@@ -28,7 +48,7 @@ class BasicPanelLayout: FloatingPanelLayout {
     }
 }
 
-class HiddenPanelLayout: FloatingPanelLayout {
+class HiddenPanelLayout: FloatingPanelLayout, PanelLayout {
     
     var panelType: PanelCase!
     
