@@ -34,11 +34,11 @@ final class MainMapViewController: UIViewController {
     
     private var isShownSidemenu: Bool { return ui.sideMenuVC.parent == self }
     
-    // MARK: PanelDelegate
+    // MARK: FloatingPanelDelegate
     
     // swiftlint:disable all
     private lazy var listPanelDelegate: PanelDelegate = {
-        FloatingPanelDelegate(panel: BasicPanelLayout(panel: .tipPanel),
+        FloatingPanelDelegate(panel: PanelFactory.createBasicPanelLayout(),
            panelLayoutforHandler:
         { [unowned self] _, _ in
             self.ui.noteListVC.ui.changeTableAlpha(0.2)
@@ -57,7 +57,7 @@ final class MainMapViewController: UIViewController {
     }()
     
     private lazy var detailPanelDelegate: PanelDelegate = {
-        FloatingPanelDelegate(panel: HiddenPanelLayout(panel: .hiddenPanel),
+        FloatingPanelDelegate(panel: PanelFactory.createHiddenPanelLayout(),
            panelLayoutforHandler:
         { [unowned self] _, _ in
             self.ui.noteDetailVC.changeTableAlpha(0.2)
@@ -208,12 +208,8 @@ extension MainMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation { return nil }
-        guard
-            let annotationView = mapView
-                .dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier,
-                                               for: annotation) as? MKMarkerAnnotationView,
-            let customAnnotation = annotation as? Annotation
-        else { return MKMarkerAnnotationView() }
+        guard let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation) as? MKMarkerAnnotationView,
+            let customAnnotation = annotation as? Annotation else { return MKMarkerAnnotationView() }
         annotationView.markerTintColor = customAnnotation.color
         annotationView.clusteringIdentifier = customAnnotation.clusteringIdentifier
         annotationView.canShowCallout = true

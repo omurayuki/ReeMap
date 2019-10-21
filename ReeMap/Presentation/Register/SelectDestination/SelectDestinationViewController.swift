@@ -116,11 +116,8 @@ extension SelectDestinationViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation { return nil }
-        guard
-            let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier,
-                                                                       for: annotation) as? MKMarkerAnnotationView,
-            let customAnnotation = annotation as? Annotation
-        else { return MKMarkerAnnotationView() }
+        guard let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation) as? MKMarkerAnnotationView,
+            let customAnnotation = annotation as? Annotation else { return MKMarkerAnnotationView() }
         annotationView.markerTintColor = customAnnotation.color
         annotationView.clusteringIdentifier = Constants.DictKey.clusteringIdentifier
         annotationView.canShowCallout = true
