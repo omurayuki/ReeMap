@@ -65,7 +65,9 @@ extension AppDelegate {
                             UIApplication.shared.open(url, options: [:])
                         }
                         alert.addAction(closeAction)
-                        self.window?.rootViewController?.present(alert, animated: true)
+                        DispatchQueue.main.async { [unowned self] in
+                            self.window?.rootViewController?.present(alert, animated: true)
+                        }
                     }
                 })
         })
