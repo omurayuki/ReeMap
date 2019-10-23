@@ -3,47 +3,28 @@ import FirebaseFirestore
 import FirebaseStorage
 import RxSwift
 
-typealias EntityType = [String: Any]
-
 struct FirestoreProvider {
     
     func setData(documentRef: DocumentRef, fields: EntityType) -> Single<()> {
         return Single.create(subscribe: { single -> Disposable in
-            documentRef.destination
-                .setData(fields, merge: true, completion: { error in
-                if let error = error {
-                    single(.error(FirebaseError.resultError(error)))
-                    return
-                }
-                single(.success(()))
-            })
+            documentRef.destination.setData(fields, merge: true)
+            single(.success(()))
             return Disposables.create()
         })
     }
     
     func updateData(documentRef: DocumentRef, fields: EntityType) -> Single<()> {
         return Single.create(subscribe: { single -> Disposable in
-            documentRef.destination
-                .updateData(fields, completion: { error in
-                if let error = error {
-                    single(.error(FirebaseError.resultError(error)))
-                    return
-                }
-                single(.success(()))
-            })
+            documentRef.destination.updateData(fields)
+            single(.success(()))
             return Disposables.create()
         })
     }
     
     func delete(documentRef: DocumentRef) -> Single<()> {
         return Single.create(subscribe: { single -> Disposable in
-            documentRef.destination
-                .delete(completion: { error in
-                if let error = error {
-                    single(.error(FirebaseError.resultError(error)))
-                    return
-                }
-            })
+            documentRef.destination.delete()
+            single(.success(()))
             return Disposables.create()
         })
     }
@@ -87,7 +68,7 @@ struct FirestoreProvider {
     func observe(documentRef: DocumentRef) -> Observable<DocumentSnapshot> {
         return Observable.create { observer in
             documentRef.destination
-                .addSnapshotListener { snapshot, error in
+                .addSnapshotListener(includeMetadataChanges: true) { snapshot, error in
                     if let error = error {
                         observer.on(.error(error))
                         return
@@ -105,7 +86,7 @@ struct FirestoreProvider {
     func observe(query: QueryRef) -> Observable<[QueryDocumentSnapshot]> {
         return Observable.create { observer in
             query.destination
-                .addSnapshotListener { snapshot, error in
+                .addSnapshotListener(includeMetadataChanges: true) { snapshot, error in
                     if let error = error {
                         observer.on(.error(error))
                         return

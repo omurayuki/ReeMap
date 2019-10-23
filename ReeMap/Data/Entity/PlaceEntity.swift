@@ -31,9 +31,7 @@ struct PlaceEntity: Entity {
             let title = document[Constants.DictKey.content] as? String,
             let notification = document[Constants.DictKey.notification] as? Bool,
             let streetAddress = document[Constants.DictKey.streetAddress] as? String,
-            let geoPoint = document[Constants.DictKey.geoPoint] as? GeoPoint,
-            let updatedAt = document[Constants.DictKey.updatedAt] as? Timestamp,
-            let createdAt = document[Constants.DictKey.createdAt] as? Timestamp
+            let geoPoint = document[Constants.DictKey.geoPoint] as? GeoPoint
         else {
             self.documentId = ""
             self.uid = ""
@@ -46,6 +44,13 @@ struct PlaceEntity: Entity {
             self.createdAt = Timestamp()
             return
         }
+        // MARK: Attension
+        // Timestamp.servertimeで現在時刻取得を取得しているが、おそらくネットワーク介しての取得なので、オフラインの時に取得できずNullになる
+        // なのでオフライン時にキャッシュからデータを取得しようとすると、created_at and updated_atがnullなので、guard letで弾かれてからのデータが入ってしまう
+        // それを回避したいので、一旦下記のように設定
+        let updatedAt = document[Constants.DictKey.updatedAt] as? Timestamp ?? Timestamp()
+        let createdAt = document[Constants.DictKey.createdAt] as? Timestamp ?? Timestamp()
+        
         self.documentId = documentId
         self.uid = uid
         self.content = title

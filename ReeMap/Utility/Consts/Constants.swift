@@ -13,7 +13,8 @@ struct Constants {
         static let createdAt = "created_at"
         static let content = "content"
         static let geoPoint = "geo_point"
-        static let streetAddress = "street_address"
+        // MARK: Firestore Migrationする
+        static let streetAddress = "street_addresss"
     }
     
     struct Resource {
@@ -34,7 +35,10 @@ struct Constants {
     }
 }
 
+let firebaseFirestore = Firestore.firestore()
+
 enum DocumentRef {
+    
     case setNote
     case deleteNote(id: String)
     case updateNote(id: String)
@@ -42,19 +46,19 @@ enum DocumentRef {
     var destination: DocumentReference {
         switch self {
         case .setNote:
-            return Firestore.firestore()
+            return firebaseFirestore
                 .collection("Users")
                 .document(AppUserDefaultsUtils.getUIDToken() ?? "")
                 .collection("Notes")
                 .document()
         case .deleteNote(let id):
-            return Firestore.firestore()
+            return firebaseFirestore
                 .collection("Users")
                 .document(AppUserDefaultsUtils.getUIDToken() ?? "")
                 .collection("Notes")
                 .document(id)
         case .updateNote(let id):
-            return Firestore.firestore()
+            return firebaseFirestore
                 .collection("Users")
                 .document(AppUserDefaultsUtils.getUIDToken() ?? "")
                 .collection("Notes")
@@ -64,6 +68,7 @@ enum DocumentRef {
 }
 
 enum CollectionRef {
+    
 }
 
 enum QueryRef {
@@ -72,7 +77,7 @@ enum QueryRef {
     var destination: Query {
         switch self {
         case .user:
-            return Firestore.firestore()
+            return firebaseFirestore
                 .collection("Users")
                 .document(AppUserDefaultsUtils.getUIDToken() ?? "")
                 .collection("Notes")
