@@ -50,6 +50,7 @@
 		C94A1A522335178400974431 /* MapTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A512335178400974431 /* MapTranslator.swift */; };
 		C94A1A542335187D00974431 /* MapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A532335187D00974431 /* MapRepository.swift */; };
 		C94A1A562335189A00974431 /* NoteRemoteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A1A552335189A00974431 /* NoteRemoteDataStore.swift */; };
+		C94C3C46236039B0006F0323 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C3C45236039B0006F0323 /* NetworkService.swift */; };
 		C94CAD9123192DEA00BB1BB6 /* UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94CAD9023192DEA00BB1BB6 /* UITest.swift */; };
 		C9549C002350A119009AF6B4 /* FirebaseAnalyticsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9549BFF2350A119009AF6B4 /* FirebaseAnalyticsUtils.swift */; };
 		C9549C022350A13C009AF6B4 /* ScreenName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9549C012350A13C009AF6B4 /* ScreenName.swift */; };
@@ -261,6 +262,7 @@
 		C94A1A512335178400974431 /* MapTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTranslator.swift; sourceTree = "<group>"; };
 		C94A1A532335187D00974431 /* MapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRepository.swift; sourceTree = "<group>"; };
 		C94A1A552335189A00974431 /* NoteRemoteDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRemoteDataStore.swift; sourceTree = "<group>"; };
+		C94C3C45236039B0006F0323 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		C94CAD8E23192DE900BB1BB6 /* UITest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94CAD9023192DEA00BB1BB6 /* UITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITest.swift; sourceTree = "<group>"; };
 		C94CAD9223192DEA00BB1BB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -796,6 +798,7 @@
 				C9A0564B232263B000EB9563 /* CountService.swift */,
 				C909510C2322380D0080A25B /* KeyboardNotifier.swift */,
 				C99513BE23257B5000931012 /* LocationService.swift */,
+				C94C3C45236039B0006F0323 /* NetworkService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1258,6 +1261,7 @@
 				C97D77E52348E9AC0010EEA2 /* AppDelegate+UserNotification.swift in Sources */,
 				C9FC93332335109E00B1EFA9 /* NotificationUtils.swift in Sources */,
 				C9D83851234B4758006738EF /* NoteDetailRouting.swift in Sources */,
+				C94C3C46236039B0006F0323 /* NetworkService.swift in Sources */,
 				C9D6C5EE232109E20064AACD /* Routing.swift in Sources */,
 				C9FEEA662338AD6F00C5C84D /* PanelCase.swift in Sources */,
 				C9AC33902345C4E300A5AF7D /* SearchStreetAddressUI.swift in Sources */,
