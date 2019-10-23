@@ -207,7 +207,12 @@ extension MainMapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MKUserLocation { return nil }
+        if annotation is MKUserLocation {
+            let annotationView = MKMarkerAnnotationView()
+            annotationView.glyphImage = #imageLiteral(resourceName: "standingMan")
+            annotationView.markerTintColor = .green
+            return annotationView
+        }
         guard let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation) as? MKMarkerAnnotationView,
             let customAnnotation = annotation as? Annotation else { return MKMarkerAnnotationView() }
         annotationView.markerTintColor = customAnnotation.color
