@@ -41,8 +41,14 @@ final class SelectDestinationViewController: UIViewController {
 extension SelectDestinationViewController {
     
     private func bindUI() {
-        let input = ViewModel.Input(regionWillChangeAnimated: rx.sentMessage(#selector(mapView(_:regionWillChangeAnimated:))).asObservable())
+        let input = ViewModel.Input(viewWillAppear: rx.sentMessage(#selector(viewWillAppear(_:))).asObservable(),
+                                    regionWillChangeAnimated: rx.sentMessage(#selector(mapView(_:regionWillChangeAnimated:))).asObservable())
         let output = viewModel?.transform(input: input)
+        
+        output?.isUnreachable
+            .subscribe(onNext: { isUnreachable in
+                isUnreachable ? self.showError(message: R.string.localizable.error_message_network()) : ()
+            }).disposed(by: disposeBag)
         
         output?.coodinatorConvertingSuccess
             .subscribe(onNext: { [unowned self] placemark in

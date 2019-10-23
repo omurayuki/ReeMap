@@ -33,16 +33,23 @@ extension SelectDestinationViewModel {
     
     struct Input {
         
+        var viewWillAppear: Observable<[Any]>
         var regionWillChangeAnimated: Observable<[Any]>
     }
     
     struct Output {
         
+        var isUnreachable: Observable<Bool>
         var coodinatorConvertingSuccess: Observable<CLPlacemark>
         var coodinatorConvertingError: Observable<Error>
     }
     
     func transform(input: Input) -> Output {
+        let isUnreachable = input.viewWillAppear
+            .flatMap { _ -> Observable<Bool> in
+                return Observable.of(NetworkService.isUnreachable())
+            }.share(replay: 1)
+        
         let coodinatorConverting = input.regionWillChangeAnimated
             .flatMap { value -> Observable<Event<CLPlacemark>> in
                 guard let mapView = value[0] as? MKMapView else { return .empty() }
@@ -53,7 +60,8 @@ extension SelectDestinationViewModel {
                     .materialize()
             }.share(replay: 1)
         
-        return Output(coodinatorConvertingSuccess: coodinatorConverting.elements(),
+        return Output(isUnreachable: isUnreachable,
+                      coodinatorConvertingSuccess: coodinatorConverting.elements(),
                       coodinatorConvertingError: coodinatorConverting.errors())
     }
 }
