@@ -182,6 +182,9 @@
 		C9EA2AE42323B3D60034BB1D /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA2AE32323B3D60034BB1D /* Container.swift */; };
 		C9EA2AE62323B3E90034BB1D /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA2AE52323B3E90034BB1D /* ServiceFactory.swift */; };
 		C9EA2AE82323B63E0034BB1D /* AppDelegate+Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA2AE72323B63E0034BB1D /* AppDelegate+Container.swift */; };
+		C9EAAE3A2361786C004245AA /* ImagePickerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EAAE392361786C004245AA /* ImagePickerService.swift */; };
+		C9EAAE3F23619C9B004245AA /* NoteItemsBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EAAE3E23619C9B004245AA /* NoteItemsBottomView.swift */; };
+		C9EAAE412361AE65004245AA /* NoteItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EAAE402361AE65004245AA /* NoteItemsView.swift */; };
 		C9FC93332335109E00B1EFA9 /* NotificationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FC93322335109E00B1EFA9 /* NotificationUtils.swift */; };
 		C9FEEA622338AB9700C5C84D /* FloatingPanelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FEEA612338AB9700C5C84D /* FloatingPanelDelegate.swift */; };
 		C9FEEA642338AD1B00C5C84D /* BasicPanelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FEEA632338AD1B00C5C84D /* BasicPanelLayout.swift */; };
@@ -412,6 +415,9 @@
 		C9EA2AE32323B3D60034BB1D /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		C9EA2AE52323B3E90034BB1D /* ServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
 		C9EA2AE72323B63E0034BB1D /* AppDelegate+Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Container.swift"; sourceTree = "<group>"; };
+		C9EAAE392361786C004245AA /* ImagePickerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerService.swift; sourceTree = "<group>"; };
+		C9EAAE3E23619C9B004245AA /* NoteItemsBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteItemsBottomView.swift; sourceTree = "<group>"; };
+		C9EAAE402361AE65004245AA /* NoteItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteItemsView.swift; sourceTree = "<group>"; };
 		C9FC93322335109E00B1EFA9 /* NotificationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUtils.swift; sourceTree = "<group>"; };
 		C9FEEA612338AB9700C5C84D /* FloatingPanelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelDelegate.swift; sourceTree = "<group>"; };
 		C9FEEA632338AD1B00C5C84D /* BasicPanelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicPanelLayout.swift; sourceTree = "<group>"; };
@@ -799,6 +805,7 @@
 				C909510C2322380D0080A25B /* KeyboardNotifier.swift */,
 				C99513BE23257B5000931012 /* LocationService.swift */,
 				C94C3C45236039B0006F0323 /* NetworkService.swift */,
+				C9EAAE392361786C004245AA /* ImagePickerService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -911,6 +918,7 @@
 		C9D6C5DB232107E20064AACD /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				C9EAAE3D23619C6D004245AA /* View */,
 				C9915633233999AE0065ABF2 /* Cell */,
 				C90595EF2332B3B5008D113D /* ViewData */,
 				C9D6C5E9232109810064AACD /* UI */,
@@ -1011,6 +1019,15 @@
 				C94996FF233BE15D00165AD6 /* Nillable.swift */,
 			);
 			path = DI;
+			sourceTree = "<group>";
+		};
+		C9EAAE3D23619C6D004245AA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C9EAAE3E23619C9B004245AA /* NoteItemsBottomView.swift */,
+				C9EAAE402361AE65004245AA /* NoteItemsView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		C9F742B92345C48100EFEBE9 /* SearchStreetAddress */ = {
@@ -1279,6 +1296,7 @@
 				C98F78A9234B24F700802678 /* VersionInfoViewController.swift in Sources */,
 				C90595E92332B178008D113D /* Entity.swift in Sources */,
 				C9FEEA622338AB9700C5C84D /* FloatingPanelDelegate.swift in Sources */,
+				C9EAAE3F23619C9B004245AA /* NoteItemsBottomView.swift in Sources */,
 				C99513BF23257B5000931012 /* LocationService.swift in Sources */,
 				C9A0563E232252C500EB9563 /* UIPageController+Extension.swift in Sources */,
 				C9A64B16233CDC6800C00CC2 /* Delegate.swift in Sources */,
@@ -1325,6 +1343,7 @@
 				C9915635233999BE0065ABF2 /* NoteListTableViewCell.swift in Sources */,
 				C9D8384F234B472F006738EF /* NoteDetailUI.swift in Sources */,
 				C9A056382322527600EB9563 /* Animation+Extension.swift in Sources */,
+				C9EAAE412361AE65004245AA /* NoteItemsView.swift in Sources */,
 				C909512223224AC30080A25B /* UIFont+Extension.swift in Sources */,
 				C9142713233E32D900567B8E /* SelectDestinationUI.swift in Sources */,
 				C96C72D023211FA0001C2FA6 /* VCBuildable.swift in Sources */,
@@ -1372,6 +1391,7 @@
 				C9D7C1BA233A264100D933B5 /* NoteListViewModel.swift in Sources */,
 				C9EA2AE42323B3D60034BB1D /* Container.swift in Sources */,
 				C9D5A4A123448C2900720A8A /* NoteListRepository.swift in Sources */,
+				C9EAAE3A2361786C004245AA /* ImagePickerService.swift in Sources */,
 				C94996FE233BCD3E00165AD6 /* SideMenuUI.swift in Sources */,
 				C914270D233DE16B00567B8E /* PlaceHolderTextView.swift in Sources */,
 				C9D7C1B8233A25C500D933B5 /* NoteListUI.swift in Sources */,

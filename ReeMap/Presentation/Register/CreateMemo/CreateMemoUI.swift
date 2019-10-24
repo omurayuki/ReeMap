@@ -7,6 +7,7 @@ protocol CreateMemoUIProtocol: UI {
     var streetAddressLabel: UILabel { get }
     var saveBtn: UIBarButtonItem { get }
     var cancelBtn: UIBarButtonItem { get }
+    var noteItemsBottomView: NoteItemsBottomView { get }
 }
 
 final class CreateMemoUI: CreateMemoUIProtocol {
@@ -37,6 +38,11 @@ final class CreateMemoUI: CreateMemoUIProtocol {
         let button = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: nil)
         return button
     }()
+    
+    private(set) var noteItemsBottomView: NoteItemsBottomView = {
+        let view = NoteItemsView()
+        return view
+    }()
 }
 
 extension CreateMemoUI {
@@ -46,20 +52,26 @@ extension CreateMemoUI {
         vc.view.backgroundColor = .white
         vc.navigationItem.rightBarButtonItems = [saveBtn, cancelBtn]
         
-        [streetAddressLabel, memoTextView].forEach { vc.view.addSubview($0) }
+        [streetAddressLabel, memoTextView, noteItemsBottomView].forEach { vc.view.addSubview($0) }
         
         streetAddressLabel.anchor()
             .centerXToSuperview()
             .top(to: vc.view.safeAreaLayoutGuide.topAnchor, constant: 10)
             .width(constant: vc.view.frame.width * 0.9)
-            .height(constant: 35)
             .activate()
         
         memoTextView.anchor()
             .top(to: streetAddressLabel.bottomAnchor, constant: 10)
             .left(to: vc.view.leftAnchor)
             .right(to: vc.view.rightAnchor)
-            .bottom(to: vc.view.bottomAnchor)
+            .activate()
+        
+        noteItemsBottomView.anchor()
+            .top(to: memoTextView.bottomAnchor)
+            .left(to: vc.view.leftAnchor)
+            .right(to: vc.view.rightAnchor)
+            .bottom(to: vc.view.safeAreaLayoutGuide.bottomAnchor)
+            .height(constant: 40)
             .activate()
     }
 }
