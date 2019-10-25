@@ -10,7 +10,6 @@ protocol CreateMemoUIProtocol: UI {
     var noteItemsBottomView: NoteItemsBottomView { get }
     var noteItemsView: NoteItemsView { get }
     var noteItemsBtn: UIButton { get }
-    var noteItemBottomConstraint: NSLayoutConstraint { get set }
     var keyboardHeight: CGFloat { get set }
     
     func changeViewWithKeyboardY(_ bool: Bool, height: CGFloat)
@@ -53,21 +52,28 @@ final class CreateMemoUI: CreateMemoUIProtocol {
     
     private(set) var noteItemsBottomView: NoteItemsBottomView = {
         let view = NoteItemsBottomView()
+        view.layer.shadowColor = UIColor.clear.cgColor
+        view.itemsStack.layer.shadowColor = UIColor.clear.cgColor
         return view
     }()
     
     private(set) var noteItemsView: NoteItemsView = {
         let view = NoteItemsView()
+        view.layer.shadowOpacity = 0
+        view.itemsStack.layer.shadowOpacity = 0
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private(set) var noteItemsBtn: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .black
+        button.backgroundColor = .flatBlue
+        button.layer.cornerRadius = 25
+        button.setTitle("＋", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 30)
         button.isEnabled = false
         button.alpha = 0
-        button.transform = CGAffineTransform(rotationAngle: CGFloat(-35 * CGFloat.pi / 180))
+        button.rotate(per: -45)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -83,11 +89,6 @@ final class CreateMemoUI: CreateMemoUIProtocol {
     }()
     
     var noteItemBtnBottomConstraint: NSLayoutConstraint = {
-        let constraint = NSLayoutConstraint()
-        return constraint
-    }()
-    
-    var noteItemBtnRightConstraint: NSLayoutConstraint = {
         let constraint = NSLayoutConstraint()
         return constraint
     }()
@@ -135,12 +136,11 @@ extension CreateMemoUI {
             noteItemBottomConstraint
         ])
 
-        noteItemBtnRightConstraint = noteItemsBtn.rightAnchor.constraint(equalTo: vc.view.rightAnchor)
         noteItemBtnBottomConstraint = noteItemsBtn.bottomAnchor.constraint(equalTo: vc.view.bottomAnchor)
         NSLayoutConstraint.activate([
             noteItemsBtn.heightAnchor.constraint(equalToConstant: 50),
             noteItemsBtn.widthAnchor.constraint(equalToConstant: 50),
-            noteItemBtnRightConstraint,
+            noteItemsBtn.rightAnchor.constraint(equalTo: vc.view.rightAnchor, constant: -13),
             noteItemBtnBottomConstraint
         ])
     }
@@ -158,7 +158,7 @@ extension CreateMemoUI {
         } else {
             noteItemsBtn.isEnabled = false
             noteItemsBtn.alpha = 0.0
-            rotateItemsBtn(per: percentForRotate)
+            noteItemsBtn.rotate(per: percentForRotate)
             memoTextBottomConstarint.constant = -noteItemsHeight
             noteItemBottomConstraint.constant = noteItemBottomDefaultConstant
             noteItemBtnBottomConstraint.constant = 0
@@ -169,37 +169,35 @@ extension CreateMemoUI {
     func transformNoteItemsBtnState(_ isActive: Bool) {
         guard let vc = viewController else { return }
         if isActive {
-            self.noteItemsBtn.isEnabled = true
+            noteItemsBtn.isEnabled = true
             UIViewPropertyAnimator(duration: 0.25, curve: .easeInOut) { [unowned self] in
-                self.rotateItemsBtn(per: 0)
+                self.noteItemsBtn.rotate(per: 0)
+                self.noteItemsView.cancelItem.rotate(per: 0)
+                self.noteItemsView.alpha = 0.0
                 self.noteItemsBtn.alpha = 1.0
                 // height for item bar
                 self.noteItemBottomConstraint.constant = -self.keyboardHeight + self.noteItemsHeight
                 // height for button
                 self.noteItemBtnBottomConstraint.constant = -self.keyboardHeight - self.noteItemsHeight
-                self.noteItemBtnRightConstraint.constant = -10
                 // height for textView
                 self.memoTextBottomConstarint.constant = -self.keyboardHeight
                 vc.view.layoutIfNeeded()
             }.startAnimation()
         } else {
-            self.noteItemsBtn.isEnabled = false
+            noteItemsBtn.isEnabled = false
             UIViewPropertyAnimator(duration: 0.25, curve: .easeInOut) { [unowned self] in
-                self.rotateItemsBtn(per: self.percentForRotate)
+                self.noteItemsBtn.rotate(per: self.percentForRotate)
+                self.noteItemsView.cancelItem.rotate(per: -45)
+                self.noteItemsView.alpha = 1.0
                 self.noteItemsBtn.alpha = 0.0
                 // height for item bar
                 self.noteItemBottomConstraint.constant = -self.keyboardHeight
                 // height for button
                 self.noteItemBtnBottomConstraint.constant = -self.keyboardHeight
-                self.noteItemBtnRightConstraint.constant = 0
                 // height for textView
                 self.memoTextBottomConstarint.constant = -self.keyboardHeight - self.noteItemsHeight
                 vc.view.layoutIfNeeded()
             }.startAnimation()
         }
-    }
-    
-    func rotateItemsBtn(per: CGFloat) {
-        noteItemsBtn.transform = CGAffineTransform(rotationAngle: CGFloat(per * CGFloat.pi / 180))
     }
 }

@@ -72,7 +72,7 @@ extension CreateMemoViewController {
                 self.showError(message: R.string.localizable.error_message_network())
             }).disposed(by: disposeBag)
         
-        ui.noteItemsView.cameraItem.rx.tap.asDriver()
+        ui.noteItemsView.cancelItem.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
                 self.ui.transformNoteItemsBtnState(true)
             }).disposed(by: disposeBag)

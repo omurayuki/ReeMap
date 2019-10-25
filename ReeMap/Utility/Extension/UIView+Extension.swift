@@ -126,4 +126,8 @@ extension UIView {
         shakeGroup.duration = duration
         self.layer.add(shakeGroup, forKey: "shakeIt")
     }
+    
+    func rotate(per: CGFloat) {
+        transform = CGAffineTransform(rotationAngle: CGFloat(per * CGFloat.pi / 180))
+    }
 }
