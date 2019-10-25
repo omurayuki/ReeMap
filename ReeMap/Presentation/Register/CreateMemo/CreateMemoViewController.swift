@@ -21,6 +21,8 @@ final class CreateMemoViewController: UIViewController {
     var viewModel: CreateMemoViewModel?
     var disposeBag: DisposeBag!
     
+    var keyboardNotifier: KeyboardNotifier! = KeyboardNotifier()
+    
     var didRecieve: String? {
         didSet {
             self.ui.streetAddressLabel.text = didRecieve
@@ -36,6 +38,7 @@ final class CreateMemoViewController: UIViewController {
         super.viewDidLoad()
         bindUI()
         setupConfig()
+        listenKeyboard(keyboardNotifier: keyboardNotifier)
     }
 }
 
@@ -69,6 +72,16 @@ extension CreateMemoViewController {
                 self.showError(message: R.string.localizable.error_message_network())
             }).disposed(by: disposeBag)
         
+        ui.noteItemsView.cameraItem.rx.tap.asDriver()
+            .drive(onNext: { [unowned self] _ in
+                self.ui.transformNoteItemsBtnState(true)
+            }).disposed(by: disposeBag)
+        
+        ui.noteItemsBtn.rx.tap.asDriver()
+            .drive(onNext: { [unowned self] _ in
+                self.ui.transformNoteItemsBtnState(false)
+            }).disposed(by: disposeBag)
+        
         ui.memoTextView.rx.text.asDriver()
             .drive(onNext: { [unowned self] text in
                 guard let text = text else { return }
@@ -78,10 +91,27 @@ extension CreateMemoViewController {
         
         ui.cancelBtn.rx.tap.asDriver()
             .drive(onNext: { [unowned self] _ in
-                self.showActionSheet(title: R.string.localizable.attention_title(),
-                                     message: R.string.localizable.attention_missing_info()) { [unowned self] in
-                    self.routing?.dismiss()
-                }
+//                self.showActionSheet(title: R.string.localizable.attention_title(),
+//                                     message: R.string.localizable.attention_missing_info()) { [unowned self] in
+//                    self.routing?.dismiss()
+//                }
+                self.ui.memoTextView.resignFirstResponder()
             }).disposed(by: disposeBag)
+        
+        ui.noteItemsBottomView.returnItem.rx.tap.asDriver()
+            .drive(onNext: { _ in
+                print("return")
+            }).disposed(by: disposeBag)
+    }
+}
+
+extension CreateMemoViewController: KeyboardListener {
+    
+    func keyboardPresent(_ height: CGFloat) {
+        ui.changeViewWithKeyboardY(true, height: height)
+    }
+    
+    func keyboardDismiss(_ height: CGFloat) {
+        ui.changeViewWithKeyboardY(false, height: height)
     }
 }
