@@ -25,6 +25,7 @@ final class CreateMemoUI: CreateMemoUIProtocol {
     private let noteItemsHeight: CGFloat = 40.0
     private let percentForRotate: CGFloat = -35.0
     private let noteItemBottomDefaultConstant: CGFloat = 100
+    private let noteItemsBtnRotatePer: CGFloat = -45.5
     
     private(set) var memoTextView: PlaceHolderTextView = {
         let textview = PlaceHolderTextView()
@@ -62,7 +63,7 @@ final class CreateMemoUI: CreateMemoUIProtocol {
         return view
     }()
     
-    private(set) var noteItemsBtn: UIButton = {
+    private(set) lazy var noteItemsBtn: UIButton = {
         let button = UIButton()
         button.backgroundColor = .flatBlue
         button.layer.cornerRadius = 25
@@ -70,7 +71,7 @@ final class CreateMemoUI: CreateMemoUIProtocol {
         button.titleLabel?.font = .systemFont(ofSize: 30)
         button.isEnabled = false
         button.alpha = 0
-        button.rotate(per: -45)
+        button.rotate(per: -46)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -174,7 +175,7 @@ extension CreateMemoUI {
             noteItemsBtn.isEnabled = false
             noteItemsView.alpha = 1.0
             noteItemsBtn.alpha = 0.0
-            noteItemsView.cancelItem.rotate(per: -45)
+            noteItemsView.cancelItem.rotate(per: noteItemsBtnRotatePer)
             noteItemsBtn.rotate(per: percentForRotate)
             memoTextBottomConstarint.constant = -noteItemsHeight
             noteItemBottomConstraint.constant = noteItemBottomDefaultConstant
@@ -204,7 +205,7 @@ extension CreateMemoUI {
             noteItemsBtn.isEnabled = false
             UIViewPropertyAnimator(duration: 0.25, curve: .easeInOut) { [unowned self] in
                 self.noteItemsBtn.rotate(per: self.percentForRotate)
-                self.noteItemsView.cancelItem.rotate(per: -45)
+                self.noteItemsView.cancelItem.rotate(per: self.noteItemsBtnRotatePer)
                 self.noteItemsView.alpha = 1.0
                 self.noteItemsBtn.alpha = 0.0
                 // height for item bar

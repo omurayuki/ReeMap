@@ -11,9 +11,8 @@ final class NetworkService: NSObject {
     
     override init() {
         super.init()
-        reachability = Reachability()
-        
         do {
+            reachability = try Reachability()
             try reachability?.startNotifier()
         } catch {
             fatalError("Unable to stast notifier")
@@ -29,14 +28,14 @@ final class NetworkService: NSObject {
     }
 
     static func isReachable() -> Bool {
-        if NetworkService.sharedInstance.reachability.connection != .none {
+        if NetworkService.sharedInstance.reachability.connection != .unavailable {
             return true
         }
         return false
     }
     
     static func isUnreachable() -> Bool {
-        if NetworkService.sharedInstance.reachability.connection == .none {
+        if NetworkService.sharedInstance.reachability.connection == .unavailable {
             return true
         }
         return false

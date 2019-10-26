@@ -119,8 +119,13 @@ extension CreateMemoViewController {
         [ui.noteItemsBottomView.cameraItem, ui.noteItemsView.cameraItem].forEach {
             $0.rx.tap.asDriver()
                 .drive(onNext: { [unowned self] _ in
-                    self.imagePickerService.pickImage(from: self, allowEditing: true, source: nil) { image in
-                        print(image)
+                    self.imagePickerService.pickImage(from: self, allowEditing: true, source: nil) { [unowned self] result in
+                        switch result {
+                        case .success(let image):
+                            print(image)
+                        case .failure(_):
+                            self.showError(message: R.string.localizable.failure_load_document())
+                        }
                     }
                 }).disposed(by: disposeBag)
         }

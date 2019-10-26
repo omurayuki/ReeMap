@@ -27,6 +27,7 @@
 "could_not_update_note" = "Noteの更新に失敗しました。通信状況を確認してください。";
 "attention_close_pin" = "既存のピンと近すぎます。";
 "message_range_select" = "※範囲を広げることでより遠くまでシステムが配置したピンを認識出来ます。";
+"failure_load_document" = "ドキュメントの読み込みに失敗しました。再度やり直してください。";
 
 // content
 "no_title" = "no title";

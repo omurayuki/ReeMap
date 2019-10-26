@@ -1,5 +1,6 @@
 import UIKit
 import Photos
+import WeScan
 
 class ImagePickerService: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -9,12 +10,12 @@ class ImagePickerService: NSObject, UIImagePickerControllerDelegate, UINavigatio
         return picker
     }()
     
-    var completionBlock: CompletionObject<UIImage>?
+    var completionBlock: CompletionObject<Result<UIImage, Error>>?
     
     func pickImage(from vc: UIViewController,
                    allowEditing: Bool = true,
                    source: UIImagePickerController.SourceType? = nil,
-                   completion: CompletionObject<UIImage>?) {
+                   completion: CompletionObject<Result<UIImage, Error>>?) {
         completionBlock = completion
         picker.allowsEditing = allowEditing
         guard let source = source else {
@@ -30,7 +31,9 @@ class ImagePickerService: NSObject, UIImagePickerControllerDelegate, UINavigatio
                 vc.present(weakSelf.picker, animated: true)
             }
             let scanAction = UIAlertAction(title: R.string.localizable.document(), style: .default) { _ in
-                print("WeScan")
+                let scannerVC = ImageScannerController(delegate: self)
+                scannerVC.modalPresentationStyle = .fullScreen
+                vc.present(scannerVC, animated: true)
             }
             let cancelAction = UIAlertAction(title: R.string.localizable.cance(), style: .cancel)
             sheet.addAction(cameraAction)
@@ -48,8 +51,25 @@ class ImagePickerService: NSObject, UIImagePickerControllerDelegate, UINavigatio
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         picker.dismiss(animated: true) { [unowned self] in
             if let image = info[.originalImage] as? UIImage {
-                self.completionBlock?(image.fixOrientation())
+                self.completionBlock?(.success(image.fixOrientation()))
             }
         }
+    }
+}
+
+extension ImagePickerService: ImageScannerControllerDelegate {
+    
+    func imageScannerController(_ scanner: ImageScannerController, didFailWithError error: Error) {
+        completionBlock?(.failure(error))
+    }
+    
+    func imageScannerController(_ scanner: ImageScannerController, didFinishScanningWithResults results: ImageScannerResults) {
+        scanner.dismiss(animated: true) { [unowned self] in
+            self.completionBlock?(.success(results.scannedImage.fixOrientation()))
+        }
+    }
+    
+    func imageScannerControllerDidCancel(_ scanner: ImageScannerController) {
+        scanner.dismiss(animated: true, completion: nil)
     }
 }

@@ -39,7 +39,7 @@ final class NoteItemsView: UIView {
         button.setTitle("＋  ", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 30)
         button.setTitleColor(.gray, for: .normal)
-        button.rotate(per: -45)
+        button.rotate(per: -45.5)
         return button
     }()
     

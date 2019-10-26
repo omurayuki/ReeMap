@@ -41,6 +41,8 @@
 		C92C822A2323FC0B00983C36 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92C82292323FC0B00983C36 /* MapKit.framework */; };
 		C92CD5C8235C4C7B00DFF50E /* MKMapItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92CD5C7235C4C7B00DFF50E /* MKMapItem+Extension.swift */; };
 		C92F857623641D550090BD38 /* check_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = C92F857523641D550090BD38 /* check_animation.json */; };
+		C92F857A23644AF50090BD38 /* WeScan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92F857923644AF50090BD38 /* WeScan.framework */; };
+		C92F857B23644AF50090BD38 /* WeScan.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C92F857923644AF50090BD38 /* WeScan.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C946E0B62351869D00576A72 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C946E0B52351869D00576A72 /* WebKit.framework */; };
 		C94996FA233B8F3500165AD6 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996F9233B8F3500165AD6 /* SideMenuViewController.swift */; };
 		C94996FC233BB30600165AD6 /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996FB233BB30600165AD6 /* SideMenuCell.swift */; };
@@ -216,6 +218,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				C92F857B23644AF50090BD38 /* WeScan.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,6 +260,7 @@
 		C92C82292323FC0B00983C36 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C92CD5C7235C4C7B00DFF50E /* MKMapItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapItem+Extension.swift"; sourceTree = "<group>"; };
 		C92F857523641D550090BD38 /* check_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = check_animation.json; sourceTree = "<group>"; };
+		C92F857923644AF50090BD38 /* WeScan.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WeScan.framework; path = Carthage/Build/iOS/WeScan.framework; sourceTree = "<group>"; };
 		C946E0B52351869D00576A72 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		C94996F9233B8F3500165AD6 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		C94996FB233BB30600165AD6 /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
@@ -439,6 +443,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9908821233B747100A0994E /* StoreKit.framework in Frameworks */,
+				C92F857A23644AF50090BD38 /* WeScan.framework in Frameworks */,
 				C990881F233B746700A0994E /* libc++.tbd in Frameworks */,
 				C9AD9E04235057060001C42A /* Crashlytics.framework in Frameworks */,
 				C990881D233B745700A0994E /* libsqlite3.tbd in Frameworks */,
@@ -494,6 +499,7 @@
 		AA67C0CD851106E09160443A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C92F857923644AF50090BD38 /* WeScan.framework */,
 				C946E0B52351869D00576A72 /* WebKit.framework */,
 				C9AD9DFD2350558B0001C42A /* Crashlytics.framework */,
 				C9AD9DFE2350558B0001C42A /* Fabric.framework */,
