@@ -43,6 +43,7 @@
 		C92F857623641D550090BD38 /* check_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = C92F857523641D550090BD38 /* check_animation.json */; };
 		C92F857A23644AF50090BD38 /* WeScan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92F857923644AF50090BD38 /* WeScan.framework */; };
 		C92F857B23644AF50090BD38 /* WeScan.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C92F857923644AF50090BD38 /* WeScan.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C92F857D23646F9C0090BD38 /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92F857C23646F9C0090BD38 /* UITextView+Extension.swift */; };
 		C946E0B62351869D00576A72 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C946E0B52351869D00576A72 /* WebKit.framework */; };
 		C94996FA233B8F3500165AD6 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996F9233B8F3500165AD6 /* SideMenuViewController.swift */; };
 		C94996FC233BB30600165AD6 /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996FB233BB30600165AD6 /* SideMenuCell.swift */; };
@@ -261,6 +262,7 @@
 		C92CD5C7235C4C7B00DFF50E /* MKMapItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapItem+Extension.swift"; sourceTree = "<group>"; };
 		C92F857523641D550090BD38 /* check_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = check_animation.json; sourceTree = "<group>"; };
 		C92F857923644AF50090BD38 /* WeScan.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WeScan.framework; path = Carthage/Build/iOS/WeScan.framework; sourceTree = "<group>"; };
+		C92F857C23646F9C0090BD38 /* UITextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
 		C946E0B52351869D00576A72 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		C94996F9233B8F3500165AD6 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		C94996FB233BB30600165AD6 /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
@@ -650,6 +652,7 @@
 				C95543B52349788700CE8E53 /* UNMutableNotification+Extension.swift */,
 				C920A45E235971AA00A93B66 /* MainMapViewController+Extension.swift */,
 				C92CD5C7235C4C7B00DFF50E /* MKMapItem+Extension.swift */,
+				C92F857C23646F9C0090BD38 /* UITextView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1347,6 +1350,7 @@
 				C9499700233BE15D00165AD6 /* Nillable.swift in Sources */,
 				C9A0564C232263B000EB9563 /* CountService.swift in Sources */,
 				C9142719233E4C2900567B8E /* CreateMemoRouting.swift in Sources */,
+				C92F857D23646F9C0090BD38 /* UITextView+Extension.swift in Sources */,
 				C9D6C5E12321086C0064AACD /* MainMapViewController.swift in Sources */,
 				C909510D2322380D0080A25B /* KeyboardNotifier.swift in Sources */,
 				C9FEEA642338AD1B00C5C84D /* BasicPanelLayout.swift in Sources */,

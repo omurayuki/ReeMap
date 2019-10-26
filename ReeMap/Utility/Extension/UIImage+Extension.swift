@@ -39,4 +39,10 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return newImage
     }
+    
+    func savedPhotosAlbum() {
+        let imageData = pngData()
+        guard let saveImage = UIImage(data: imageData ?? Data()) else { return }
+        UIImageWriteToSavedPhotosAlbum(saveImage, self, nil, nil)
+    }
 }

@@ -122,7 +122,8 @@ extension CreateMemoViewController {
                     self.imagePickerService.pickImage(from: self, allowEditing: true, source: nil) { [unowned self] result in
                         switch result {
                         case .success(let image):
-                            print(image)
+                            self.ui.memoTextView.addImage(image: image)
+                            image.savedPhotosAlbum()
                         case .failure(_):
                             self.showError(message: R.string.localizable.failure_load_document())
                         }
