@@ -92,13 +92,13 @@ extension NoteItemsView {
         
         [cameraItem, writeItem, saveItem, returnItem, cancelItem].forEach {
             $0.anchor()
-                .width(constant: frame.height * 0.6)
-                .height(constant: frame.height * 0.6)
+                .width(constant: frame.height * 0.5)
+                .height(constant: frame.height * 0.5)
                 .activate()
         }
         
         cushionView.anchor()
-            .height(constant: 7)
+            .height(constant: 9)
             .activate()
     }
 }

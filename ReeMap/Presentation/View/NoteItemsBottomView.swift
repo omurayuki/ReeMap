@@ -77,8 +77,8 @@ extension NoteItemsBottomView {
         
         [deleteItem, cameraItem, writeItem, saveItem, returnItem].forEach {
             $0.anchor()
-                .width(constant: frame.height * 0.65)
-                .height(constant: frame.height * 0.65)
+                .width(constant: frame.height * 0.5)
+                .height(constant: frame.height * 0.5)
                 .activate()
         }
     }

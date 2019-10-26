@@ -40,6 +40,7 @@
 		C920A45F235971AA00A93B66 /* MainMapViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C920A45E235971AA00A93B66 /* MainMapViewController+Extension.swift */; };
 		C92C822A2323FC0B00983C36 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92C82292323FC0B00983C36 /* MapKit.framework */; };
 		C92CD5C8235C4C7B00DFF50E /* MKMapItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92CD5C7235C4C7B00DFF50E /* MKMapItem+Extension.swift */; };
+		C92F857623641D550090BD38 /* check_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = C92F857523641D550090BD38 /* check_animation.json */; };
 		C946E0B62351869D00576A72 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C946E0B52351869D00576A72 /* WebKit.framework */; };
 		C94996FA233B8F3500165AD6 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996F9233B8F3500165AD6 /* SideMenuViewController.swift */; };
 		C94996FC233BB30600165AD6 /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94996FB233BB30600165AD6 /* SideMenuCell.swift */; };
@@ -255,6 +256,7 @@
 		C920A45E235971AA00A93B66 /* MainMapViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainMapViewController+Extension.swift"; sourceTree = "<group>"; };
 		C92C82292323FC0B00983C36 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C92CD5C7235C4C7B00DFF50E /* MKMapItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapItem+Extension.swift"; sourceTree = "<group>"; };
+		C92F857523641D550090BD38 /* check_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = check_animation.json; sourceTree = "<group>"; };
 		C946E0B52351869D00576A72 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		C94996F9233B8F3500165AD6 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		C94996FB233BB30600165AD6 /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
@@ -855,6 +857,7 @@
 				C9855A652324ADFA00AA7DC6 /* output.xcfilelist */,
 				C97D77E22348E53F0010EEA2 /* checked_note.png */,
 				C98F789D234AF98400802678 /* location_map_pin.json */,
+				C92F857523641D550090BD38 /* check_animation.json */,
 				C9B9F44D231765C00013ED05 /* ReeMap */,
 				C94CAD8F23192DEA00BB1BB6 /* UITest */,
 				C9D50CEB2324F1CC003466A8 /* ReeMapUnitTests */,
@@ -1163,6 +1166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C990881B233B73FC00A0994E /* gRPCCertificates-Cpp.bundle in Resources */,
+				C92F857623641D550090BD38 /* check_animation.json in Resources */,
 				C9B9F459231765C10013ED05 /* LaunchScreen.storyboard in Resources */,
 				C9B2F0F92317D37200F29B51 /* GoogleService-Info.plist in Resources */,
 				C97D77E32348E53F0010EEA2 /* checked_note.png in Resources */,

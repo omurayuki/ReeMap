@@ -17,6 +17,12 @@ struct Constants {
         static let streetAddress = "street_addresss"
     }
     
+    struct Json {
+        
+        static let locationMapPin = "location_map_pin"
+        static let check = "check_animation"
+    }
+    
     struct Resource {
         
         static let resource = (image: "checked_note", type: "png")

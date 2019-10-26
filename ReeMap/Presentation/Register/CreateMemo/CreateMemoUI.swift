@@ -1,3 +1,4 @@
+import Lottie
 import MapKit
 import UIKit
 
@@ -5,15 +6,16 @@ protocol CreateMemoUIProtocol: UI {
     
     var memoTextView: PlaceHolderTextView { get }
     var streetAddressLabel: UILabel { get }
-    var saveBtn: UIBarButtonItem { get }
-    var cancelBtn: UIBarButtonItem { get }
+    var doneBtn: UIBarButtonItem { get }
     var noteItemsBottomView: NoteItemsBottomView { get }
     var noteItemsView: NoteItemsView { get }
     var noteItemsBtn: UIButton { get }
+    var checkAnimationView: AnimationView { get }
     var keyboardHeight: CGFloat { get set }
     
     func changeViewWithKeyboardY(_ bool: Bool, height: CGFloat)
     func transformNoteItemsBtnState(_ isActive: Bool)
+    func completeTask(completion: @escaping () -> Void)
 }
 
 final class CreateMemoUI: CreateMemoUIProtocol {
@@ -40,13 +42,8 @@ final class CreateMemoUI: CreateMemoUIProtocol {
         return label
     }()
     
-    private(set) var saveBtn: UIBarButtonItem = {
-        let button = UIBarButtonItem(barButtonSystemItem: .save, target: nil, action: nil)
-        return button
-    }()
-    
-    private(set) var cancelBtn: UIBarButtonItem = {
-        let button = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: nil)
+    private(set) var doneBtn: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
         return button
     }()
     
@@ -78,6 +75,17 @@ final class CreateMemoUI: CreateMemoUIProtocol {
         return button
     }()
     
+    private(set) lazy var checkAnimationView: AnimationView = {
+        guard let vc = viewController else { return AnimationView() }
+        let view = AnimationView(name: Constants.Json.check)
+        view.center = vc.view.center
+        view.loopMode = .playOnce
+        view.contentMode = .scaleAspectFit
+        view.animationSpeed = 1.2
+        view.isHidden = true
+        return view
+    }()
+    
     var memoTextBottomConstarint: NSLayoutConstraint = {
         let constraint = NSLayoutConstraint()
         return constraint
@@ -101,9 +109,10 @@ extension CreateMemoUI {
     func setup() {
         guard let vc = viewController else { return }
         vc.view.backgroundColor = .white
-        vc.navigationItem.rightBarButtonItems = [saveBtn, cancelBtn]
+        vc.navigationItem.rightBarButtonItems = [doneBtn]
         
-        [streetAddressLabel, memoTextView, noteItemsBottomView, noteItemsView, noteItemsBtn].forEach { vc.view.addSubview($0) }
+        [streetAddressLabel, memoTextView, noteItemsBottomView,
+         noteItemsView, noteItemsBtn, checkAnimationView].forEach { vc.view.addSubview($0) }
         
         streetAddressLabel.anchor()
             .centerXToSuperview()
@@ -143,6 +152,12 @@ extension CreateMemoUI {
             noteItemsBtn.rightAnchor.constraint(equalTo: vc.view.rightAnchor, constant: -13),
             noteItemBtnBottomConstraint
         ])
+        
+        checkAnimationView.anchor()
+            .centerToSuperview()
+            .width(constant: 40)
+            .height(constant: 40)
+            .activate()
     }
 }
 
@@ -157,7 +172,9 @@ extension CreateMemoUI {
             noteItemBtnBottomConstraint.constant = -keyboardHeight
         } else {
             noteItemsBtn.isEnabled = false
+            noteItemsView.alpha = 1.0
             noteItemsBtn.alpha = 0.0
+            noteItemsView.cancelItem.rotate(per: -45)
             noteItemsBtn.rotate(per: percentForRotate)
             memoTextBottomConstarint.constant = -noteItemsHeight
             noteItemBottomConstraint.constant = noteItemBottomDefaultConstant
@@ -198,6 +215,15 @@ extension CreateMemoUI {
                 self.memoTextBottomConstarint.constant = -self.keyboardHeight - self.noteItemsHeight
                 vc.view.layoutIfNeeded()
             }.startAnimation()
+        }
+    }
+    
+    func completeTask(completion: @escaping () -> Void) {
+        checkAnimationView.isHidden = false
+        checkAnimationView.play { bool in
+            if bool {
+                completion()
+            }
         }
     }
 }

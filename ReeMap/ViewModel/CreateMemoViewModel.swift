@@ -21,34 +21,31 @@ extension CreateMemoViewModel {
     
     struct Input {
         
-        let saveBtnTapped: Observable<Void>
+        let noteItemBottomSaveBtnTapped: Observable<Void>
+        let noteItemSaveBtnTapped: Observable<Void>
     }
     
     struct Output {
         
         var isLoading: Driver<Bool>
         var isSaveBtnEnable: Driver<Bool>
-        var noteSaveSuccess: Observable<()>
-        var noteSaveError: Observable<Error>
+        var noteItemBottomSaveSuccess: Observable<()>
+        var noteItemBottomSaveError: Observable<Error>
+        var noteItemSaveSuccess: Observable<()>
+        var noteItemSaveError: Observable<Error>
     }
     
     func transform(input: Input) -> Output {
-        let noteSavedAttribute = input.saveBtnTapped
-            .flatMap { [unowned self] _ -> Observable<CLPlacemark> in
-                self.getPlacemarks(streetAddress: self.didRecieveStreetAddress ?? "").asObservable()
-            }.flatMap { placemark -> Observable<Event<()>> in
-                self.updateLoading(true)
-                self.setSaveBtnEnable(false)
-                return self.setNote(self.createEntity(latitude: placemark.location?.coordinate.latitude ?? 0.0,
-                                                      longitude: placemark.location?.coordinate.longitude ?? 0.0))
-                    .asObservable()
-                    .materialize()
-            }.share(replay: 1)
+        let noteItemBottomSavedAttribute = createObservable(object: input.noteItemBottomSaveBtnTapped)
+        
+        let noteItemSavedAttribute = createObservable(object: input.noteItemSaveBtnTapped)
         
         return Output(isLoading: isLoading.asDriver(),
                       isSaveBtnEnable: isSaveBtnEnable.asDriver(),
-                      noteSaveSuccess: noteSavedAttribute.elements(),
-                      noteSaveError: noteSavedAttribute.errors())
+                      noteItemBottomSaveSuccess: noteItemBottomSavedAttribute.elements(),
+                      noteItemBottomSaveError: noteItemBottomSavedAttribute.errors(),
+                      noteItemSaveSuccess: noteItemSavedAttribute.elements(),
+                      noteItemSaveError: noteItemSavedAttribute.errors())
     }
 }
 
@@ -66,8 +63,9 @@ extension CreateMemoViewModel {
         return useCase.getUIDToken()
     }
     
-    func updateLoading(_ loading: Bool) {
+    func updateLoading(_ loading: Bool, completion: (() -> Void)? = nil) {
         isLoading.accept(loading)
+        completion?()
     }
     
     func setSaveBtnEnable(_ bool: Bool) {
@@ -76,6 +74,19 @@ extension CreateMemoViewModel {
     
     func setMemoTextView(_ text: String) {
         memoTextView.accept(text)
+    }
+    
+    private func createObservable(object: Observable<Void>) -> Observable<Event<()>> {
+        object.flatMap { [unowned self] _ -> Observable<CLPlacemark> in
+            self.getPlacemarks(streetAddress: self.didRecieveStreetAddress ?? "").asObservable()
+        }.flatMap { placemark -> Observable<Event<()>> in
+            self.updateLoading(true)
+            self.setSaveBtnEnable(false)
+            return self.setNote(self.createEntity(latitude: placemark.location?.coordinate.latitude ?? 0.0,
+                                                  longitude: placemark.location?.coordinate.longitude ?? 0.0))
+                .asObservable()
+                .materialize()
+        }.share(replay: 1)
     }
     
     private func createEntity(latitude: Double, longitude: Double) -> EntityType {

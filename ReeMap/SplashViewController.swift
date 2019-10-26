@@ -9,15 +9,10 @@ protocol SplashDelegate: NSObject {
 
 final class SplashViewController: UIViewController {
     
-    struct Const {
-        
-        static let animationFile = "location_map_pin"
-    }
-    
     weak var delegate: SplashDelegate!
     
     lazy var loadingView: AnimationView = {
-        let view = AnimationView(name: Const.animationFile)
+        let view = AnimationView(name: Constants.Json.locationMapPin)
         view.center = self.view.center
         view.loopMode = .playOnce
         view.contentMode = .scaleAspectFit

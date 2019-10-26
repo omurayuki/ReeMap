@@ -2,6 +2,7 @@
 import Accounts
 import CoreLocation
 import Foundation
+import Lottie
 import Social
 import MBProgressHUD
 import MessageUI
@@ -72,6 +73,7 @@ extension UIViewController {
         var hud = MBProgressHUD()
         if show {
             hud = MBProgressHUD.showAdded(to: view, animated: true)
+            
             hud.bezelView.style = .solidColor
             hud.bezelView.backgroundColor = .clear
         } else {
