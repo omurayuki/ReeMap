@@ -23,6 +23,8 @@ final class CreateMemoViewController: UIViewController {
     
     var keyboardNotifier: KeyboardNotifier! = KeyboardNotifier()
     
+    var imagePickerService = ImagePickerService()
+    
     var didRecieve: String? {
         didSet {
             self.ui.streetAddressLabel.text = didRecieve
@@ -116,8 +118,10 @@ extension CreateMemoViewController {
         
         [ui.noteItemsBottomView.cameraItem, ui.noteItemsView.cameraItem].forEach {
             $0.rx.tap.asDriver()
-                .drive(onNext: { _ in
-                    print("camera")
+                .drive(onNext: { [unowned self] _ in
+                    self.imagePickerService.pickImage(from: self, allowEditing: true, source: nil) { image in
+                        print(image)
+                    }
                 }).disposed(by: disposeBag)
         }
         

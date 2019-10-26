@@ -32,7 +32,7 @@ final class NoteDetailViewController: UIViewController {
         }
     }
     
-    // MARK: UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     private(set) lazy var dataSource: DataSource = {
         DataSource(cellReuseIdentifier: String(describing: NoteDetailCell.self),

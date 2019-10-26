@@ -25,7 +25,7 @@ final class SearchStreetAddressViewController: UIViewController {
     var viewModel: SearchStreetAddressViewModel?
     var disposeBag: DisposeBag!
     
-    // MARK: UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     private(set) lazy var dataSource: DataSource = {
         DataSource(cellReuseIdentifier: String(describing: StreetAddressCell.self),
@@ -83,7 +83,7 @@ extension SearchStreetAddressViewController {
     }
 }
 
-// MARK: UITableViewDelegate
+// MARK: - UITableViewDelegate
 
 extension SearchStreetAddressViewController: UITableViewDelegate {
     

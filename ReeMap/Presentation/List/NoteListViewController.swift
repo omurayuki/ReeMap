@@ -112,7 +112,7 @@ extension NoteListViewController: UITableViewDelegate {
     }
 }
 
-// MARK: UISearchBarDelegate
+// MARK: - UISearchBarDelegate
 
 extension NoteListViewController: UISearchBarDelegate {
     

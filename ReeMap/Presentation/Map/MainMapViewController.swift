@@ -34,7 +34,7 @@ final class MainMapViewController: UIViewController {
     
     private var isShownSidemenu: Bool { return ui.sideMenuVC.parent == self }
     
-    // MARK: FloatingPanelDelegate
+    // MARK: - FloatingPanelDelegate
     
     // swiftlint:disable all
     private lazy var listPanelDelegate: PanelDelegate = {
@@ -198,7 +198,7 @@ extension MainMapViewController {
     }
 }
 
-// MARK: MKMapViewDelegate
+// MARK: - MKMapViewDelegate
 
 extension MainMapViewController: MKMapViewDelegate {
     
@@ -226,7 +226,7 @@ extension MainMapViewController: MKMapViewDelegate {
     }
 }
 
-// MARK: TappedSearchBarDelegate
+// MARK: - TappedSearchBarDelegate
 
 extension MainMapViewController: TappedSearchBarDelegate {
     
@@ -243,7 +243,7 @@ extension MainMapViewController: TappedSearchBarDelegate {
     }
 }
 
-// MARK: TappedCellDelegate
+// MARK: - TappedCellDelegate
 
 extension MainMapViewController: TappedCellDelegate {
     
@@ -256,7 +256,7 @@ extension MainMapViewController: TappedCellDelegate {
     }
 }
 
-// MARK: SideMenuViewControllerDelegate
+// MARK: - SideMenuViewControllerDelegate
 
 extension MainMapViewController: SideMenuViewControllerDelegate {
     
@@ -278,7 +278,7 @@ extension MainMapViewController: SideMenuViewControllerDelegate {
     }
 }
 
-// MARK: NoteDetailDelegate
+// MARK: - NoteDetailDelegate
 
 extension MainMapViewController: NoteDetailDelegate {
     

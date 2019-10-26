@@ -116,7 +116,7 @@ extension SelectDestinationViewController {
     }
 }
 
-// MARK: MKMapViewDelegate
+// MARK: - MKMapViewDelegate
 
 extension SelectDestinationViewController: MKMapViewDelegate {
     

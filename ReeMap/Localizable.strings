@@ -10,6 +10,10 @@
 "frame_selected_action_sheet_save" = "保存";
 "delete" = "削除";
 "close" = "閉じる";
+"camera" = "カメラ";
+"library" = "ライブラリ";
+"document" = "ドキュメント";
+"cance" = "キャンセル";
 
 // message
 "error_message_network" = "ネットワークに接続出来ません。";
