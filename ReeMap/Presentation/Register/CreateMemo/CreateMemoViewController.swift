@@ -108,12 +108,39 @@ extension CreateMemoViewController {
                 [self.ui.noteItemsView.saveItem, self.ui.noteItemsBottomView.saveItem].forEach {
                     $0.isEnabled = !text.isEmpty
                 }
-                self.viewModel?.setMemoTextView(text)
+                self.viewModel?.setMemoText(self.ui.memoTextView.attributedText.string)
+            }).disposed(by: disposeBag)
+        
+        ui.memoTextView.rx.text.asDriver()
+            .debounce(1.0)
+            .drive(onNext: { text in
+                guard let text = text else { return }
+                guard !text.isEmpty else { return }
+                
             }).disposed(by: disposeBag)
         
         ui.noteItemsBottomView.deleteItem.rx.tap.asDriver()
             .drive(onNext: { _ in
-                print("delete以外のもので何か考える")
+                // 画像を全て配列で取得 可能
+                let images = self.ui.memoTextView.getImages()
+                // 画像の行番を配列で取得 可能
+                let lineNum = self.ui.memoTextView.getParts()
+                    .enumerated()
+                    .compactMap { index, object -> Int? in
+                    guard let _ = object as? UIImage else { return nil }
+                    return index
+                }
+                // テキストデータとしてattributeStringを取得(画像データはfirestoreで特殊文字列に変換されるけど大丈夫)
+                let text = self.ui.memoTextView.attributedText.string
+                // 取得したimageをstorageに保存 URLを取得 data層で
+                // URL, 行番, テキストをfirestoreに保存 data層で
+                
+                /// viewmodelにpoost用のstoredpropertyが多くなるから、structで作成 edit画面でもいくつか同一のデータをpostするから公開用のprotocolを作成
+                /// viewmodelの責務としてデータの入出力とviewに渡すデータの加工がある だから画像を保存先にして、そしてデータを保存するみたいなdata層のための加工?はやらない
+//                guard let htmlString = self.ui.memoTextView.attributedText.convertHTML() else { return }
+//                guard let image = self.ui.memoTextView.getParts()[0] as? UIImage else { return }
+//                let vc = SampleVC(text: image)
+//                self.present(vc, animated: true)
             }).disposed(by: disposeBag)
         
         [ui.noteItemsBottomView.cameraItem, ui.noteItemsView.cameraItem].forEach {

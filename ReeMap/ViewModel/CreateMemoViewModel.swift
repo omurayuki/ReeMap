@@ -3,13 +3,16 @@ import FirebaseFirestore
 import Foundation
 import RxCocoa
 import RxSwift
+import UIKit
 
 final class CreateMemoViewModel: ViewModel {
     
     private let useCase: CreateMemoUseCaseProtocol
     private var isLoading = BehaviorRelay<Bool>(value: false)
     private var isSaveBtnEnable = BehaviorRelay<Bool>(value: false)
-    private var memoTextView = BehaviorRelay<String>(value: "")
+    private var images = BehaviorRelay<[UIImage]?>(value: nil)
+    private var lineNums = BehaviorRelay<[Int]?>(value: nil)
+    private var memoText = BehaviorRelay<String>(value: "")
     var didRecieveStreetAddress: String?
 
     init(useCase: CreateMemoUseCaseProtocol) {
@@ -72,8 +75,16 @@ extension CreateMemoViewModel {
         isSaveBtnEnable.accept(bool)
     }
     
-    func setMemoTextView(_ text: String) {
-        memoTextView.accept(text)
+    func setImages(_ images: [UIImage]?) {
+        self.images.accept(images)
+    }
+    
+    func setLineNums(_ lineNums: [Int]?) {
+        self.lineNums.accept(lineNums)
+    }
+    
+    func setMemoText(_ text: String) {
+        memoText.accept(text)
     }
     
     private func createObservable(object: Observable<Void>) -> Observable<Event<()>> {
@@ -94,7 +105,7 @@ extension CreateMemoViewModel {
             Constants.DictKey.uid: getUIDToken(),
             Constants.DictKey.createdAt: FieldValue.serverTimestamp(),
             Constants.DictKey.updatedAt: FieldValue.serverTimestamp(),
-            Constants.DictKey.content: memoTextView.value,
+            Constants.DictKey.content: memoText.value,
             Constants.DictKey.notification: true,
             Constants.DictKey.streetAddress: didRecieveStreetAddress ?? "",
             Constants.DictKey.geoPoint: GeoPoint(latitude: latitude, longitude: longitude)
