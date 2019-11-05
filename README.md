@@ -27,6 +27,9 @@ ReeMap is compatible with iOS 12.0+.
 - MVVM + Clean Architecture
 
 
+## Qiita
+[1年前までプログラミング初心者だった人間が爆速でアプリリリースしたのでノウハウをまとめてみた](https://qiita.com/yukiomura0319/items/aa5d0440e41ebcd7d35c)
+
 
 ## Author
 
