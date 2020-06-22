@@ -10,8 +10,8 @@ VERSION    = get_info_plist_value(path: PLIST_PATH, key: "CFBundleShortVersionSt
 BUILD      = get_info_plist_value(path: PLIST_PATH, key: "CFBundleVersion")
 
 before_all do
-	ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
-	ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"] = "gyuz-vund-kqia-piws"
+	ENV["SLACK_URL"] = ""
+	ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"] = ""
 end
 
 platform :ios do
